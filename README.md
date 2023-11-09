@@ -13,7 +13,7 @@ In an iterative and ongoing fashion, we developed CLIF's schema, contents, and l
 
 To develop a structured relational database, we initiated a comprehensive data collection and cleaning effort at the eight health systems. We designed CLIF as an encounter-centric relational database with a clinically determined limited vocabulary for vitals, laboratory names, medications, patient locations, and respiratory device names. By consensus, we determined that CLIF would prioritize (1) completeness of routine clinical data, (2) temporal granularity, and (3) consistently measured clinical outcomes. The entity-relationship diagram from relational CLIF is presented below as a human-readable and clinically meaningful flow of information. Tables are organized into clinically relevant column categories (demographics, objective measures, respiratory support, orders and inputs-outputs)
 
-| ![ERD_ss.jpg](/images/ERD_ss.jpg) | 
+| ![ERD.png](/images/ERD.png) | 
 |:--:| 
 ||
 
