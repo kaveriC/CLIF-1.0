@@ -18,12 +18,12 @@ Relational CLIF has 19 tables that are organized into clinically relevant column
 
 | encounter | lab_order_time | lab_result_time | lab_group | lab_name |lab_value  | reference_unit    | lab_type_name |
 |-----------|----------|------------|-----------|-------|-------|--------------|----------|
-| 2         | 10/6/2022  10:20:00 AM| Vent | A/C Volume   | Volume  |NA | 0.4 |4        | 400          |  
-| 2       | 10/6/2022  11:00:00 AM       | Vent | A/C Volume   | Volume  |NA | 0.4 |4        | 400          | 
-| 2       | 10/6/2022  3:00:00 PM      | Vent | A/C Volume   | Volume  |NA | 0.4 |4        | 400          | 
-| 2         | 10/7/2022  6:45:00 AM| Nasal Cannula | PS/CPAP   | Spontaneous  |4 | 0.4 |5       | NA         | 
-| 2         | 10/7/2022  4:00:00 PM | Nasal Cannula | PS/CPAP   | Spontaneous  |2 | 0.4 |5       | NA          | 
-| 2         | 10/9/2022  5:07:00 AM | Room Air | NA   | NA  |NA | NA | NA        | NA          | 
+| 2         | 10/6/2022  10:20:00 AM| Vent | A/C Volume   | Volume  |NA | 0.4 |4        | 
+| 2       | 10/6/2022  11:00:00 AM       | Vent | A/C Volume   | Volume  |NA | 0.4 |4        | 
+| 2       | 10/6/2022  3:00:00 PM      | Vent | A/C Volume   | Volume  |NA | 0.4 |4        | 
+| 2         | 10/7/2022  6:45:00 AM| Nasal Cannula | PS/CPAP   | Spontaneous  |4 | 0.4 |5       | 
+| 2         | 10/7/2022  4:00:00 PM | Nasal Cannula | PS/CPAP   | Spontaneous  |2 | 0.4 |5       | 
+| 2         | 10/9/2022  5:07:00 AM | Room Air | NA   | NA  |NA | NA | NA        | 
 
 
 
