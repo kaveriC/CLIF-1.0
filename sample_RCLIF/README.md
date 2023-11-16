@@ -1,4 +1,4 @@
-## Sample R-CLIF
+## Sample R-CLIF Tables
 
 Relational CLIF has 19 tables that are organized into clinically relevant column categories - demographics, objective measures, respiratory support, orders and inputs-outputs. Below are sample templates for each table in R-CLIF
 
