@@ -17,7 +17,7 @@ Relational CLIF has 19 tables that are organized into clinically relevant column
 ### Labs
 
 | encounter | lab_order_time | lab_result_time | lab_group | lab_name |lab_value  | reference_unit    | lab_type_name |
-|-----------|----------|------------|-----------|-------|-------|--------------|----------|------------|
+|-----------|----------|------------|-----------|-------|-------|--------------|----------|
 | 2         | 10/6/2022  10:20:00 AM| Vent | A/C Volume   | Volume  |NA | 0.4 |4        | 400          |  
 | 2       | 10/6/2022  11:00:00 AM       | Vent | A/C Volume   | Volume  |NA | 0.4 |4        | 400          | 
 | 2       | 10/6/2022  3:00:00 PM      | Vent | A/C Volume   | Volume  |NA | 0.4 |4        | 400          | 
