@@ -20,7 +20,7 @@ Relational CLIF has 19 tables that are organized into clinically relevant column
 ### Respiratory_support
 
 | encounter | recorded_time | device_name | mode_name | mode_category |lpm  | fiO2    | peep |set_volume | pressure_support | set_resp_rate | 
-|-----------|----------|------------|-----------|-------|-------|--------------|----------|------------|------|--------|-------|------------|
+|-----------|----------|------------|-----------|-------|-------|--------------|----------|------------|------|--------|
 | 1         | 10/6/2022  10:20:00 AM| Vent | A/C Volume   | Volume  |NA | 0.4 |4        | 400          | NA    | 16    |  
 | 1         | 10/6/2022  11:00:00 AM       | Vent | A/C Volume   | Volume  |NA | 0.4 |4        | 400          | NA    | 16    | 
 | 1         | 10/6/2022  3:00:00 PM      | Vent | A/C Volume   | Volume  |NA | 0.4 |4        | 400          | NA    | 14   | 
