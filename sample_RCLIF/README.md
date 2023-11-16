@@ -16,14 +16,24 @@ Relational CLIF has 19 tables that are organized into clinically relevant column
 
 ### Labs
 
+| encounter | lab_order_time | lab_result_time | lab_group | lab_name |lab_value  | reference_unit    | lab_type_name |
+|-----------|----------|------------|-----------|-------|-------|--------------|----------|------------|
+| 2         | 10/6/2022  10:20:00 AM| Vent | A/C Volume   | Volume  |NA | 0.4 |4        | 400          |  
+| 2       | 10/6/2022  11:00:00 AM       | Vent | A/C Volume   | Volume  |NA | 0.4 |4        | 400          | 
+| 2       | 10/6/2022  3:00:00 PM      | Vent | A/C Volume   | Volume  |NA | 0.4 |4        | 400          | 
+| 2         | 10/7/2022  6:45:00 AM| Nasal Cannula | PS/CPAP   | Spontaneous  |4 | 0.4 |5       | NA         | 
+| 2         | 10/7/2022  4:00:00 PM | Nasal Cannula | PS/CPAP   | Spontaneous  |2 | 0.4 |5       | NA          | 
+| 2         | 10/9/2022  5:07:00 AM | Room Air | NA   | NA  |NA | NA | NA        | NA          | 
+
+
 
 ### Respiratory_support
 
 | encounter | recorded_time | device_name | mode_name | mode_category |lpm  | fiO2    | peep |set_volume | pressure_support | set_resp_rate | 
 |-----------|----------|------------|-----------|-------|-------|--------------|----------|------------|------|--------|
-| 1         | 10/6/2022  10:20:00 AM| Vent | A/C Volume   | Volume  |NA | 0.4 |4        | 400          | NA    | 16    |  
-| 1         | 10/6/2022  11:00:00 AM       | Vent | A/C Volume   | Volume  |NA | 0.4 |4        | 400          | NA    | 16    | 
-| 1         | 10/6/2022  3:00:00 PM      | Vent | A/C Volume   | Volume  |NA | 0.4 |4        | 400          | NA    | 14   | 
-| 1         | 10/7/2022  6:45:00 AM| Nasal Cannula | PS/CPAP   | Spontaneous  |4 | 0.4 |5       | NA         | NA    | 16    |  
-| 1         | 10/7/2022  4:00:00 PM | Nasal Cannula | PS/CPAP   | Spontaneous  |2 | 0.4 |5       | NA          | 0    | NA    | 
-| 1         | 10/9/2022  5:07:00 AM | Room Air | NA   | NA  |NA | NA | NA        | NA          | NA    | NA  | 
+| 4         | 10/6/2022  10:20:00 AM| Vent | A/C Volume   | Volume  |NA | 0.4 |4        | 400          | NA    | 16    |  
+| 4         | 10/6/2022  11:00:00 AM       | Vent | A/C Volume   | Volume  |NA | 0.4 |4        | 400          | NA    | 16    | 
+| 4         | 10/6/2022  3:00:00 PM      | Vent | A/C Volume   | Volume  |NA | 0.4 |4        | 400          | NA    | 14   | 
+| 4         | 10/7/2022  6:45:00 AM| Nasal Cannula | PS/CPAP   | Spontaneous  |4 | 0.4 |5       | NA         | NA    | 16    |  
+| 4         | 10/7/2022  4:00:00 PM | Nasal Cannula | PS/CPAP   | Spontaneous  |2 | 0.4 |5       | NA          | 0    | NA    | 
+| 4         | 10/9/2022  5:07:00 AM | Room Air | NA   | NA  |NA | NA | NA        | NA          | NA    | NA  | 
