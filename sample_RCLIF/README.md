@@ -24,10 +24,13 @@ Relational CLIF has 19 tables that are organized into clinically relevant column
 | 2         | 6/28/2021  7:00:00 | 6/27/2021  19:00:00 | 2/11/2000  6:00:00 | |
 | 3         | 9/17/2021  8:43:00 | 9/17/2021  18:59:00 | 2/11/2000  6:00:00| |
 | 10       | 8/12/2020  00:44:00 | 8/12/2020  18:59:00 | 4/21/1990  7:00:00  | |
-| 11         | 4/19/2021  6:23:00| 4/19/2021  18:59:00 | 1/23/2019  12:46:00 PM | |
-| 12         | 10/6/2022  10:43:00| 10/6/2022 18:59:00 | 1/23/2019  12:46:00 PM | |
+| 11         | 4/19/2021  6:23:00| 4/19/2021  18:59:00 | 1/23/2019  12:46:00 | |
+| 12         | 10/6/2022  10:43:00| 10/6/2022 18:59:00 | 1/23/2019  12:46:00 | |
 
-
+* **encounter_id** is an ID variable for each patient encounter (a given patient can have multiple encounters)
+* **admission_dttm** is the date and time the patient is admitted (in the format %Y-%m-%d %H:%M:% )
+* **discharge_dttm** is the date and time the patient is discharged (in the format %Y-%m-%d %H:%M:% )
+* **birth_dttm** is the date and time of birth
 
 ### Vitals
 
