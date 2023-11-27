@@ -2,6 +2,31 @@
 
 Relational CLIF has 19 tables that are organized into clinically relevant column categories - demographics, objective measures, respiratory support, orders and inputs-outputs. Below are sample templates for each table in R-CLIF
 
+## Patient_encounters
+
+| patient_id | encounter_id  | 
+|-----------|----------|
+| 1         | 1        | 
+| 1         | 2        | 
+| 1         | 3        | 
+| 5         | 10       | 
+| 6         | 11       | 
+| 6         | 12       | 
+
+* **patient_id** is an ID variable for each patient 
+* **encounter_id** is an ID variable for each patient encounter (a given patient can have multiple encounters)
+
+## Limited_identifiers
+
+| encounter_id | admission_dttm  | discharge_dttm | birth_dttm | coordinates |
+|-----------|----------|------------|-----------|-------|
+| 1         | 8/27/2020  8:15:00 |8/27/2020  18:59:00  | 8/10/2014  19:00:00 |  |
+| 2         | 6/28/2021  7:00:00 | 6/27/2021  19:00:00 | 2/11/2000  6:00:00 | |
+| 3         | 9/17/2021  8:43:00 | 9/17/2021  18:59:00 | 2/11/2000  6:00:00| |
+| 10       | 8/12/2020  00:44:00 | 8/12/2020  18:59:00 | 4/21/1990  7:00:00  | |
+| 11         | 4/19/2021  6:23:00| 4/19/2021  18:59:00 | 1/23/2019  12:46:00 PM | |
+| 12         | 10/6/2022  10:43:00| 10/6/2022 18:59:00 | 1/23/2019  12:46:00 PM | |
+
 ### Vitals
 
 | encounter_id | recorded_time  | vital_name | vital_value | meas_site_name |
@@ -54,7 +79,7 @@ Relational CLIF has 19 tables that are organized into clinically relevant column
 * **recorded_time** is the date and time when the device started
 * **device_name** includes a limited number of devices identified by the CLIF consortium
 * **mode_name** includes a limited number of modes identified by the CLIF consortium
-* **mode_category** includes a limited number of mode categories identified by the CLIF consortium, namely - pressure, volume, spontenous
+* **mode_category** includes a limited number of mode categories identified by the CLIF consortium, namely - pressure, volume, spontaneous
 * **lpm** is liters per minute
 * **fiO2** is fraction of inspired O2
 * **peep** is positive-end-expiratory pressure
