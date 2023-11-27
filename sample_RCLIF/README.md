@@ -19,7 +19,7 @@ Relational CLIF has 19 tables that are organized into clinically relevant column
 ### Patient_demographics
 
 | patient_id | race  | ethinicity | sex | 
-|-----------|----------|------------|-----------|-------|
+|-----------|----------|------------|-----------|
 | 1         | Black or African-American | Non-hispanic | Female |
 | 5         | Black or African-American | Non-hispanic | Male | 
 | 6         | White | Non-hispanic | Male |
@@ -52,7 +52,7 @@ Relational CLIF has 19 tables that are organized into clinically relevant column
 ### Encounter_demographics_disposition
 
 | encounter_id | age_at_admission  | zipcode | disposition | 
-|-----------|----------|------------|-----------|-------|
+|-----------|----------|------------|-----------|
 | 1         | 6 | | Home |
 | 2         | 22 | | Home |
 | 3         | 2 || Home |
