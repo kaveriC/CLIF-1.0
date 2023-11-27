@@ -27,6 +27,8 @@ Relational CLIF has 19 tables that are organized into clinically relevant column
 | 11         | 4/19/2021  6:23:00| 4/19/2021  18:59:00 | 1/23/2019  12:46:00 PM | |
 | 12         | 10/6/2022  10:43:00| 10/6/2022 18:59:00 | 1/23/2019  12:46:00 PM | |
 
+
+
 ### Vitals
 
 | encounter_id | recorded_time  | vital_name | vital_value | meas_site_name |
