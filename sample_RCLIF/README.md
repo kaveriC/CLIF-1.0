@@ -2,7 +2,7 @@
 
 Relational CLIF has 19 tables that are organized into clinically relevant column categories - demographics, objective measures, respiratory support, orders and inputs-outputs. Below are sample templates for each table in R-CLIF
 
-## Patient_encounters
+### Patient_encounters
 
 | patient_id | encounter_id  | 
 |-----------|----------|
@@ -16,21 +16,54 @@ Relational CLIF has 19 tables that are organized into clinically relevant column
 * **patient_id** is an ID variable for each patient 
 * **encounter_id** is an ID variable for each patient encounter (a given patient can have multiple encounters)
 
-## Limited_identifiers
+### Patient_demographics
+
+| patient_id | race  | ethinicity | sex | 
+|-----------|----------|------------|-----------|-------|
+| 1         | Black or African-American | Non-hispanic | Female |
+| 5         | Black or African-American | Non-hispanic | Male | 
+| 6         | White | Non-hispanic | Male |
+| 32        | Black or African-American | Non-hispanic | Male |
+| 43        | White | Hispanic | Female |
+| 62        | Asian | Non-hispanic | Female |
+
+* **patient_id** is an ID variable for each patient 
+* **race** description of patient's race. Categories include Black or African-American,White, American Indian or Alaska Native, Asian, Native Hawaiian or Other Pacific Islander, Unknown, Other
+* **ethinicity** description of patient's ethinicity. Categories include Hispanic or Non-hispanic
+* **sex** is patient's biological sex - Male or Female
+
+### Limited_identifiers
 
 | encounter_id | admission_dttm  | discharge_dttm | birth_dttm | coordinates |
 |-----------|----------|------------|-----------|-------|
-| 1         | 8/27/2020  8:15:00 |8/27/2020  18:59:00  | 8/10/2014  19:00:00 |  |
-| 2         | 6/28/2021  7:00:00 | 6/27/2021  19:00:00 | 2/11/2000  6:00:00 | |
-| 3         | 9/17/2021  8:43:00 | 9/17/2021  18:59:00 | 2/11/2000  6:00:00| |
-| 10       | 8/12/2020  00:44:00 | 8/12/2020  18:59:00 | 4/21/1990  7:00:00  | |
-| 11         | 4/19/2021  6:23:00| 4/19/2021  18:59:00 | 1/23/2019  12:46:00 | |
-| 12         | 10/6/2022  10:43:00| 10/6/2022 18:59:00 | 1/23/2019  12:46:00 | |
+| 1         | 8/27/2020  8:15:00 |8/27/2020  18:59:00  | 8/10/2014   | |
+| 2         | 6/28/2021  7:00:00 | 6/27/2021  19:00:00 | 2/11/2000   | |
+| 3         | 9/17/2021  8:43:00 | 9/17/2021  18:59:00 | 2/11/2000   | |
+| 10       | 8/12/2020  00:44:00 | 8/12/2020  18:59:00 | 4/21/1990   | |
+| 11         | 4/19/2021  6:23:00| 4/19/2021  18:59:00 | 1/23/2019   | |
+| 12         | 10/6/2022  10:43:00| 10/6/2022 18:59:00 | 1/23/2019   | |
 
 * **encounter_id** is an ID variable for each patient encounter (a given patient can have multiple encounters)
 * **admission_dttm** is the date and time the patient is admitted (in the format %Y-%m-%d %H:%M:% )
 * **discharge_dttm** is the date and time the patient is discharged (in the format %Y-%m-%d %H:%M:% )
-* **birth_dttm** is the date and time of birth
+* **birth_dttm** is the date of birth
+* **coordinates** provide patient coordinates 
+
+### Encounter_demographics_disposition
+
+| encounter_id | age_at_admission  | zipcode | disposition | 
+|-----------|----------|------------|-----------|-------|
+| 1         | 6 | | Home |
+| 2         | 22 | | Home |
+| 3         | 2 || Home |
+| 10        | 20|| Discharged to another facility |
+| 11        | 2|| Home
+| 62        | 66|| Hospice |
+
+* **encounter_id** is an ID variable for each patient encounter (a given patient can have multiple encounters)
+* **age_at_admission** is the age of the patient at the time of admission (in the format %Y-%m-%d %H:%M:% )
+* **zipcode** is the 9-digit zipcode indicating patient's address
+* **disposition** is the description of disposition when discharged. Categories include Home, Hospice, Discharged to another facility, Dead, Admitted and Other
 
 ### Vitals
 
@@ -49,7 +82,6 @@ Relational CLIF has 19 tables that are organized into clinically relevant column
 * **vital_name** includes a limited number of vitals, namely - temp(C), pulse, sbp, dbp, sp02, respiration, map, height (inches), weight (oz)
 * **vital_value** is the recorded value of the vital identified by the CLIF consortium 
 * **meas_site_name** is the site where vital is recorded. It has three categories - arterial, core, not specified.
-
 
 ### Labs
 
