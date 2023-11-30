@@ -109,8 +109,8 @@ Relational CLIF has 19 tables that are organized into clinically relevant column
 | 4         | 10/6/2022  10:20:00 | Vent | A/C Volume   | Volume  |NA | 0.4 |4        | 400          | NA    | 16    |  
 | 4         | 10/6/2022  11:00:00 | Vent | A/C Volume   | Volume  |NA | 0.4 |4        | 400          | NA    | 16    | 
 | 4         | 10/6/2022  15:00:00 | Vent | A/C Volume   | Volume  |NA | 0.4 |4        | 400          | NA    | 14   | 
-| 4         | 10/7/2022  6:45:00 | Nasal Cannula | PS/CPAP   | Spontaneous  |4 | 0.4 |5       | NA         | NA    | 16    |  
-| 4         | 10/7/2022  16:00:00 | Nasal Cannula | PS/CPAP   | Spontaneous  |2 | 0.4 |5       | NA          | 0    | NA    | 
+| 4         | 10/7/2022  6:45:00 | Nasal Cannula | NA  | NA  |4 | 0.4 |5       | NA         | NA    | 16    |  
+| 4         | 10/7/2022  16:00:00 | Nasal Cannula | NA   | NA  |2 | 0.4 |5       | NA          | 0    | NA    | 
 | 4         | 10/9/2022  5:07:00 | Room Air | NA   | NA  |NA | NA | NA        | NA          | NA    | NA  | 
 
 * **recorded_time** is the date and time when the device started
