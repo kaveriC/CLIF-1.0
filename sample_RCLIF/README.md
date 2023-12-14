@@ -28,9 +28,9 @@ Relational CLIF has 19 tables that are organized into clinically relevant column
 | 62        | Asian | Non-hispanic | Female |
 
 * **patient_id** is an ID variable for each patient 
-* **race** description of patient's race. Categories include Black or African-American,White, American Indian or Alaska Native, Asian, Native Hawaiian or Other Pacific Islander, Unknown, Other
-* **ethinicity** description of patient's ethinicity. Categories include Hispanic or Non-hispanic
-* **sex** is patient's biological sex - Male or Female
+* **race** description of patient's race. Categories include Black or African-American, White, American Indian or Alaska Native, Asian, Native Hawaiian or Other Pacific Islander, Unknown, Other
+* **ethnicity** description of patient's ethnicity. Categories include Hispanic or Non-Hispanic
+* **sex** is the patient's biological sex - Male or Female
 
 ### Limited_identifiers
 
@@ -51,18 +51,17 @@ Relational CLIF has 19 tables that are organized into clinically relevant column
 
 ### Encounter_demographics_disposition
 
-| encounter_id | age_at_admission  | zipcode | disposition | 
-|-----------|----------|------------|-----------|
-| 1         | 6 | | Home |
-| 2         | 22 | | Home |
+| encounter_id | age_at_admission  |  disposition | 
+|-----------|----------|-----------|
+| 1         | 6 | Home |
+| 2         | 22 | Home |
 | 3         | 2 || Home |
-| 10        | 20|| Discharged to another facility |
-| 11        | 2|| Home
-| 62        | 66|| Hospice |
+| 10        | 20| Discharged to another facility |
+| 11        | 2| Home
+| 62        | 66| Hospice |
 
 * **encounter_id** is an ID variable for each patient encounter (a given patient can have multiple encounters)
 * **age_at_admission** is the age of the patient at the time of admission (in the format %Y-%m-%d %H:%M:% )
-* **zipcode** is the 9-digit zipcode indicating patient's address
 * **disposition** is the description of disposition when discharged. Categories include Home, Hospice, Discharged to another facility, Dead, Admitted and Other
 
 ### Vitals
@@ -79,7 +78,7 @@ Relational CLIF has 19 tables that are organized into clinically relevant column
 
 * **encounter_id** is an ID variable for each patient encounter ( a given patient can have multiple encounters )
 * **recorded_time** is the date and time when the vital is recorded
-* **vital_name** includes a limited number of vitals, namely - temp(C), pulse, sbp, dbp, sp02, respiration, map, height (inches), weight (oz)
+* **vital_name** includes a limited number of vitals, namely - temp(C), pulse, sbp, dbp, sp02, respiration, map, height_in, weight_kg
 * **vital_value** is the recorded value of the vital identified by the CLIF consortium 
 * **meas_site_name** is the site where vital is recorded. It has three categories - arterial, core, not specified.
 
@@ -123,3 +122,39 @@ Relational CLIF has 19 tables that are organized into clinically relevant column
 * **set_volume** is measured in mL
 * **pressure_support** measured in cmH2O
 * **set_resp_rate** measured in bpm
+
+### ADT
+
+| encounter_id | in_time  |  location_name | 
+|-----------|----------|-----------|
+| 1         | 8/31/2021  5:02:00 AM  | Home |
+| 2         | 10/6/2022  10:20:00  | Home |
+| 3         | 8/31/2021  5:02:00 AM  | Home |
+| 10        | 7/26/2022  1:57:00 PM | Discharged to another facility |
+| 11        | 10/6/2022  10:20:00 | Home
+| 62        | 10/6/2022  10:20:00 | Hospice |
+
+* **encounter_id** is an ID variable for each patient encounter (a given patient can have multiple encounters)
+* **in_time** start date and time at a particular location (in the format %Y-%m-%d %H:%M:% )
+* **location_name** is the location of the patient inside the hospital. Categories include ER, OR, ICU, Ward, and Other
+
+### Medication_admin_continuous
+
+| encounter_id | med_order_id | admin_time | med_name | med_category |med_route  | med_dose    | med_dose_unit |
+|-----------|----------|------------|-----------|-------|-------|--------------|----------|
+| 2         |  | 2022-09-30 18:53:00 | CBC  | basophil  |1 | % | standard;poc  | 
+| 2         | 2022-09-30 17:50:00 | 2022-09-30 18:53:00 | CBC  | monocyte  |7 | % | standard;poc  | 
+| 2         | 2022-09-30 17:50:00 | 2022-09-30 18:53:00 | CBC  | neutrophil  |47 | % | standard;poc  | 
+| 2         | 2022-09-30 17:50:00 | 2022-09-30 18:53:00 | CBC  | lymphocyte  |44 | % | standard;poc  | 
+| 2         | 2022-09-30 17:50:00 | 2022-09-30 18:53:00 | CBC  | eosinophils  |1 | % | standard;poc  | 
+| 2         | 2022-09-30 17:50:00 | 2022-09-30 18:53:00 | LFT  | bilirubin_unconjugated  |0.9 | mg/dL | standard;poc  | 
+
+* **encounter_id** 
+* **med_order_id** 
+* **admin_time** 
+* **med_name** 
+* **med_category** 
+* **med_route** 
+* **med_dose** 
+* **med_dose_unit** 
+
