@@ -113,8 +113,8 @@ Relational CLIF has 19 tables that are organized into clinically relevant column
 | 4         | 10/7/2022  16:00:00 | Nasal Cannula | NA   | NA  |2 | 0.4 |5       | NA          | 0    | NA    | 
 | 4         | 10/9/2022  5:07:00 | Room Air | NA   | NA  |NA | NA | NA        | NA          | NA    | NA  | 
 
-* **recorded_time** is the date and time when the device started
-* **device_name** includes a limited number of devices identified by the CLIF consortium
+* **recorded_time** is the date and time when the device started (in the format %Y-%m-%d %H:%M:% )
+* **device_name** includes a limited number of devices identified by the CLIF consortium, namely - Vent, NIPPV, High Flow NC, Face Mask, Trach Collar, Nasal Cannula, Room Air, Other
 * **mode_name** includes a limited number of modes identified by the CLIF consortium
 * **mode_category** includes a limited number of mode categories identified by the CLIF consortium, namely - pressure, volume, spontaneous
 * **lpm** is liters per minute
