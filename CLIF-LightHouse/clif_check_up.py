@@ -1,0 +1,2 @@
+def checkup():
+    return 'hello'
