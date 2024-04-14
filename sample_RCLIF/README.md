@@ -139,14 +139,14 @@ Relational CLIF has 19 tables that are organized into clinically relevant column
 
 ### ADT
 
-| encounter_id | in_time  |  location_name | 
-|-----------|----------|-----------|
-| 1         | 8/31/2021  5:02:00 AM  | Home |
-| 2         | 10/6/2022  10:20:00  | Home |
-| 3         | 8/31/2021  5:02:00 AM  | Home |
-| 10        | 7/26/2022  1:57:00 PM | Discharged to another facility |
-| 11        | 10/6/2022  10:20:00 | Home
-| 62        | 10/6/2022  10:20:00 | Hospice |
+| encounter_id | in_time  | location_name |location_category | 
+|-----------|----------|-----------|-----------|
+| 1         | 8/31/2021  5:02:00 AM  | | Home |
+| 2         | 10/6/2022  10:20:00    | | Home |
+| 3         | 8/31/2021  5:02:00 AM  | | Home |
+| 10        | 7/26/2022  1:57:00 PM  | | Discharged to another facility |
+| 11        | 10/6/2022  10:20:00    | | Home
+| 62        | 10/6/2022  10:20:00    | | Hospice |
 
 * **encounter_id** is an ID variable for each patient encounter (a given patient can have multiple encounters)
 * **in_time** start date and time at a particular location (in the format %Y-%m-%d %H:%M:% )
@@ -155,18 +155,18 @@ Relational CLIF has 19 tables that are organized into clinically relevant column
 
 ### Medication_admin_continuous
 
-| encounter_id | med_order_id | admin_time | med_name | med_category |med_route  | med_dose    | med_dose_unit |
+| encounter_id | med_order_id | admin_dttm | med_category | med_name |med_route  | med_dose    | med_dose_unit |
 |-----------|----------|------------|-----------|-------|-------|--------------|----------|
-| 2         |  | 2022-09-30 18:53:00 | CBC  | basophil  |1 | % | standard;poc  | 
-| 2         | 2022-09-30 17:50:00 | 2022-09-30 18:53:00 | CBC  | monocyte  |7 | % | standard;poc  | 
-| 2         | 2022-09-30 17:50:00 | 2022-09-30 18:53:00 | CBC  | neutrophil  |47 | % | standard;poc  | 
-| 2         | 2022-09-30 17:50:00 | 2022-09-30 18:53:00 | CBC  | lymphocyte  |44 | % | standard;poc  | 
-| 2         | 2022-09-30 17:50:00 | 2022-09-30 18:53:00 | CBC  | eosinophils  |1 | % | standard;poc  | 
-| 2         | 2022-09-30 17:50:00 | 2022-09-30 18:53:00 | LFT  | bilirubin_unconjugated  |0.9 | mg/dL | standard;poc  | 
+| 2         |  | 2022-09-30 18:53:00 | CBC  | basophil                | | 1   | %     |  
+| 2         |  | 2022-09-30 18:53:00 | CBC  | monocyte                | | 7   | %     |  
+| 2         |  | 2022-09-30 18:53:00 | CBC  | neutrophil              | | 47  | %     |  
+| 2         |  | 2022-09-30 18:53:00 | CBC  | lymphocyte              | | 44  | %     |  
+| 2         |  | 2022-09-30 18:53:00 | CBC  | eosinophils             | | 1   | %     |  
+| 2         |  | 2022-09-30 18:53:00 | LFT  | bilirubin_unconjugated  | | 0.9 | mg/dL |  
 
 * **encounter_id** 
 * **med_order_id** 
-* **admin_time** 
+* **admin_dttm** 
 * **med_name** 
 * **med_category** 
 * **med_route** 
