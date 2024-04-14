@@ -71,14 +71,14 @@ Relational CLIF has 19 tables that are organized into clinically relevant column
 
 ### Vitals
 
-| encounter_id | recorded_time  | vital_name| |vital_category | vital_value | meas_site_name |
+| encounter_id | recorded_time  | vital_name |vital_category | vital_value | meas_site_name |
 |-----------|----------|------------|-----------|-------|-------|
 | 1         | 2022-05-05 04:18:00   | |respiratory_rate| 18        | not specified |
-| 1         | 2022-05-05 04:18:00   | |spO2          | 97        | not specified |
+| 1         | 2022-05-05 04:18:00   | |spO2            | 97        | not specified |
 | 1         | 2022-05-05 04:18:00   | |height          | 73        | not specified |
-| 1         | 2022-05-05 04:18:00   | |temp          | 98.1        | not specified |
-| 1         | 2022-05-05 04:18:00   | |heart_rate          | 73        | not specified |
-| 1         | 2022-05-05 04:18:00   | |weight          | 1756.8       | not specified |
+| 1         | 2022-05-05 04:18:00   | |temp            | 98.1      | not specified |
+| 1         | 2022-05-05 04:18:00   | |heart_rate      | 73        | not specified |
+| 1         | 2022-05-05 04:18:00   | |weight          | 1756.8    | not specified |
 
 
 * **encounter_id** is an ID variable for each patient encounter ( a given patient can have multiple encounters )
@@ -112,12 +112,12 @@ Relational CLIF has 19 tables that are organized into clinically relevant column
 
 | encounter_id | recorded_time | device_name |device_category| mode_name | mode_category |lpm  | fiO2    | peep | tracheostomy |set_volume | exhaled_volume| pressure_support | pressure_inspiratory|peak_pressure|plateau_pressure |set_resp_rate | minute_vent | 
 |-----------|----------|------------|-----------|-------|-------|--------------|----------|------------|------|--------|--------|--------|------------|------|--------|--------|--------|
-| 4         | 10/6/2022  10:20:00 | | Vent          | A/C Volume   | Volume  |NA | 0.4 |4  | 400  | |NA | |  | |16  |  | | 
-| 4         | 10/6/2022  11:00:00 | | Vent          | A/C Volume   | Volume  |NA | 0.4 |4  | 400  | |NA | |  | |16  |  | |
-| 4         | 10/6/2022  15:00:00 | | Vent          | A/C Volume   | Volume  |NA | 0.4 |4  | 400  | |NA | |  | |14  |  | |
-| 4         | 10/7/2022  6:45:00  | | Nasal Cannula | NA           | NA      |4  | 0.4 |5  | NA   | |NA | |  | |16  |  | | 
-| 4         | 10/7/2022  16:00:00 | | Nasal Cannula | NA           | NA      |2  | 0.4 |5  | NA   | |0  | |  | |NA  |  | |
-| 4         | 10/9/2022  5:07:00  | | Room Air      | NA           | NA      |NA | NA  |NA | NA   | |NA | |  | |NA  |  | |
+| 4         | 10/6/2022  10:20:00 | | Vent          | A/C Volume   | Volume  |NA | 0.4 |4  | |400 | |NA | |  | |16  | | 
+| 4         | 10/6/2022  11:00:00 | | Vent          | A/C Volume   | Volume  |NA | 0.4 |4  | |400 | |NA | |  | |16  | |
+| 4         | 10/6/2022  15:00:00 | | Vent          | A/C Volume   | Volume  |NA | 0.4 |4  | |400 | |NA | |  | |14  | |
+| 4         | 10/7/2022  6:45:00  | | Nasal Cannula | NA           | NA      |4  | 0.4 |5  | |NA  | |NA | |  | |16  | | 
+| 4         | 10/7/2022  16:00:00 | | Nasal Cannula | NA           | NA      |2  | 0.4 |5  | |NA  | |0  | |  | |NA  | |
+| 4         | 10/9/2022  5:07:00  | | Room Air      | NA           | NA      |NA | NA  |NA | |NA  | |NA | |  | |NA  | |
 
 * **recorded_time** is the date and time when the device started (in the format %Y-%m-%d %H:%M:% )
 * **device_name** includes a limited number of devices identified by the CLIF consortium
