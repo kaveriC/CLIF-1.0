@@ -1,1 +1,7 @@
 .DS_Store
+
+# Ignore Parquet files
+*.parquet
+
+# Ignore Excel files
+*.xlsx
