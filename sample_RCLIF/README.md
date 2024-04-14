@@ -39,7 +39,7 @@ Relational CLIF has 19 tables that are organized into clinically relevant column
 ### Limited_identifiers
 
 | encounter_id | admission_dttm  | discharge_dttm | birth_dttm | coordinates | zipcode_9digit |
-|-----------|----------|------------|-----------|-------|
+|-----------|----------|------------|-----------|-------|-------|
 | 1         | 8/27/2020  8:15:00 |8/27/2020  18:59:00  | 8/10/2014   | | |
 | 2         | 6/28/2021  7:00:00 | 6/27/2021  19:00:00 | 2/11/2000   | | |
 | 3         | 9/17/2021  8:43:00 | 9/17/2021  18:59:00 | 2/11/2000   | | |
@@ -72,7 +72,7 @@ Relational CLIF has 19 tables that are organized into clinically relevant column
 ### Vitals
 
 | encounter_id | recorded_time  | vital_name| |vital_category | vital_value | meas_site_name |
-|-----------|----------|------------|-----------|-------|
+|-----------|----------|------------|-----------|-------|-------|
 | 1         | 2022-05-05 04:18:00   | |respiratory_rate| 18        | not specified |
 | 1         | 2022-05-05 04:18:00   | |spO2          | 97        | not specified |
 | 1         | 2022-05-05 04:18:00   | |height          | 73        | not specified |
@@ -91,7 +91,7 @@ Relational CLIF has 19 tables that are organized into clinically relevant column
 ### Labs
 
 | encounter_id | lab_order_time | lab_result_time | lab_group | lab_category |lab_name |lab_value  | reference_unit    | lab_type_name |
-|-----------|----------|------------|-----------|-------|-------|--------------|----------|
+|-----------|----------|------------|-----------|-------|-------|--------------|----------|----------|
 | 2         | 2022-09-30 17:50:00 | 2022-09-30 18:53:00 | CBC  | basophil  | |1 | % | standard;poc  | 
 | 2         | 2022-09-30 17:50:00 | 2022-09-30 18:53:00 | CBC  | monocyte  | |7 | % | standard;poc  | 
 | 2         | 2022-09-30 17:50:00 | 2022-09-30 18:53:00 | CBC  | neutrophil| |47 | % | standard;poc  | 
@@ -110,14 +110,14 @@ Relational CLIF has 19 tables that are organized into clinically relevant column
 
 ### Respiratory_support
 
-| encounter_id | recorded_time | device_name | mode_name | mode_category |lpm  | fiO2    | peep |set_volume | pressure_support | set_resp_rate | 
-|-----------|----------|------------|-----------|-------|-------|--------------|----------|------------|------|--------|
-| 4         | 10/6/2022  10:20:00 | Vent | A/C Volume   | Volume  |NA | 0.4 |4        | 400          | NA    | 16    |  
-| 4         | 10/6/2022  11:00:00 | Vent | A/C Volume   | Volume  |NA | 0.4 |4        | 400          | NA    | 16    | 
-| 4         | 10/6/2022  15:00:00 | Vent | A/C Volume   | Volume  |NA | 0.4 |4        | 400          | NA    | 14   | 
-| 4         | 10/7/2022  6:45:00 | Nasal Cannula | NA  | NA  |4 | 0.4 |5       | NA         | NA    | 16    |  
-| 4         | 10/7/2022  16:00:00 | Nasal Cannula | NA   | NA  |2 | 0.4 |5       | NA          | 0    | NA    | 
-| 4         | 10/9/2022  5:07:00 | Room Air | NA   | NA  |NA | NA | NA        | NA          | NA    | NA  | 
+| encounter_id | recorded_time | device_name |device_category| mode_name | mode_category |lpm  | fiO2    | peep | tracheostomy |set_volume | exhaled_volume| pressure_support | pressure_inspiratory|peak_pressure|plateau_pressure |set_resp_rate | minute_vent | 
+|-----------|----------|------------|-----------|-------|-------|--------------|----------|------------|------|--------|--------|--------|------------|------|--------|--------|--------|
+| 4         | 10/6/2022  10:20:00 | | Vent          | A/C Volume   | Volume  |NA | 0.4 |4  | 400  | |NA | |  | |16  |  | | 
+| 4         | 10/6/2022  11:00:00 | | Vent          | A/C Volume   | Volume  |NA | 0.4 |4  | 400  | |NA | |  | |16  |  | |
+| 4         | 10/6/2022  15:00:00 | | Vent          | A/C Volume   | Volume  |NA | 0.4 |4  | 400  | |NA | |  | |14  |  | |
+| 4         | 10/7/2022  6:45:00  | | Nasal Cannula | NA           | NA      |4  | 0.4 |5  | NA   | |NA | |  | |16  |  | | 
+| 4         | 10/7/2022  16:00:00 | | Nasal Cannula | NA           | NA      |2  | 0.4 |5  | NA   | |0  | |  | |NA  |  | |
+| 4         | 10/9/2022  5:07:00  | | Room Air      | NA           | NA      |NA | NA  |NA | NA   | |NA | |  | |NA  |  | |
 
 * **recorded_time** is the date and time when the device started (in the format %Y-%m-%d %H:%M:% )
 * **device_name** includes a limited number of devices identified by the CLIF consortium
@@ -135,6 +135,7 @@ Relational CLIF has 19 tables that are organized into clinically relevant column
 * **peak_pressure** 
 * **plateau_pressure** 
 * **set_resp_rate** measured in bpm
+* **minute_vent**
 
 ### ADT
 
