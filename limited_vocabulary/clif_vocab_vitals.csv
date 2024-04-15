@@ -1,12 +1,12 @@
-﻿UCMCflo_meas_name,vital_name,meas_site_name
+﻿vital_name  (UCMC),vital_category,meas_site_name
 BLOOD PRESSURE,blood_pressure,not specified
 NUR RS ARTERIAL BLOOD PRESSURE,blood_pressure,arterial
 NUR RS ARTERIAL BLOOD PRESSURE 2,blood_pressure,arterial
 PULSE,heart_rate,not specified
-NUR TS MEAN ARTERIAL PRESSURE NOT CALCULATED,MAP,not specified
-NUR RS ARTERIAL LINE MEAN PRESSURE,MAP,arterial
-NUR RS IABP MAP (MONITOR),MAP,not specified
-NUR RS ARTERIAL LINE MEAN PRESSURE 2,MAP,arterial
+NUR TS MEAN ARTERIAL PRESSURE NOT CALCULATED,map,not specified
+NUR RS ARTERIAL LINE MEAN PRESSURE,map,arterial
+NUR RS IABP MAP (MONITOR),map,not specified
+NUR RS ARTERIAL LINE MEAN PRESSURE 2,map,arterial
 RESPIRATIONS,respiratory_rate,not specified
 PULSE OXIMETRY,spO2,not specified
 TEMPERATURE,temp,not specified

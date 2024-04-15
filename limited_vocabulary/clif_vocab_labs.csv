@@ -1,4 +1,4 @@
-﻿lab_name,lab_group,reference_value,lab_type_name
+﻿lab_category,lab_group,reference_value,lab_type_name
 ﻿pao2,ABG,mm[Hg],standard; poc
 ﻿paco2,ABG,mm[Hg],standard; poc
 ﻿ph_arterial,ABG,mm[Hg],standard; poc
