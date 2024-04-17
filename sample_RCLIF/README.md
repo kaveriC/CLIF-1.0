@@ -139,17 +139,18 @@ Relational CLIF has 19 tables that are organized into clinically relevant column
 
 ### ADT
 
-| encounter_id | in_time  | location_name |location_category | 
-|-----------|----------|-----------|-----------|
-| 1         | 8/31/2021  5:02:00 AM  | | Home |
-| 2         | 10/6/2022  10:20:00    | | Home |
-| 3         | 8/31/2021  5:02:00 AM  | | Home |
-| 10        | 7/26/2022  1:57:00 PM  | | Discharged to another facility |
-| 11        | 10/6/2022  10:20:00    | | Home
-| 62        | 10/6/2022  10:20:00    | | Hospice |
+| encounter_id | in_dttm  | out_dttm  | location_name |location_category | 
+|-----------|----------|-----------|-----------|-----------|
+| 1         | 8/31/2021  5:02:00 AM  |  |  | Home |
+| 2         | 10/6/2022  10:20:00    |  |  | Home |
+| 3         | 8/31/2021  5:02:00 AM  |  |  | Home |
+| 10        | 7/26/2022  1:57:00 PM  |  |  | Discharged to another facility |
+| 11        | 10/6/2022  10:20:00    |  |  | Home
+| 62        | 10/6/2022  10:20:00    |  |  | Hospice |
 
 * **encounter_id** is an ID variable for each patient encounter (a given patient can have multiple encounters)
-* **in_time** start date and time at a particular location (in the format %Y-%m-%d %H:%M:% )
+* **in_dttm** start date and time at a particular location (in the format %Y-%m-%d %H:%M:% )
+* **out_dttm** exit date and time at a particular location (in the format %Y-%m-%d %H:%M:% )
 * **location_name** is the raw EHR string of patient location
 * **location_category** is the location of the patient inside the hospital. Categories include ER, OR, ICU, Ward, and Other
 
