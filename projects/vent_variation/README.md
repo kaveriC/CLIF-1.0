@@ -13,7 +13,7 @@ Demonstrating CLIF’s value in aligning hourly mechanical  ventilation data fro
 * vitals 
 * labs
 
-Follow the schema laid out in the [RCLIF ERD](https://github.com/kaveriC/CLIF-1.0/tree/main/sample_RCLIF) for each of these tables. 
+Follow the schema laid out in the [RCLIF ERD](https://github.com/kaveriC/CLIF-1.0/tree/main/sample_RCLIF) for each of these tables. The naming convention for input files is provided [here](https://github.com/kaveriC/CLIF-1.0/tree/main/rclif)
 
 ## Setup instructions
 
