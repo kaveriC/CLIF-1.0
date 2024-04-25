@@ -2,7 +2,7 @@
 
 # Ignore Parquet files
 *.parquet
-
+*.csv
 # Ignore Excel files
 *.xlsx
 .Rproj.user
