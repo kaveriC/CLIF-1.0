@@ -1,4 +1,4 @@
-﻿lab_category,lab_group,reference_value,lab_type_name
+﻿lab_category,lab_group,reference_unit,lab_type_name
 ﻿pao2,ABG,mm[Hg],standard; poc
 ﻿paco2,ABG,mm[Hg],standard; poc
 ﻿ph_arterial,ABG,mm[Hg],standard; poc
@@ -45,4 +45,4 @@ LDH,MISC,U/L,standard; poc
 procalcitonin,MISC,ng/mL,standard; poc
 pco2_venous,VBG,mg/dL,standard; poc
 ph_venous,VBG,mg/dL,standard; poc
-so2_mixed_venous,VBG,mg/dL,standard; poc
+so2_mixed_venous,VBG,%,standard; poc

@@ -7,3 +7,6 @@
 *.xlsx
 .Rproj.user
 .Rhistory
+
+# ignore R scripts for now
+*.R 
