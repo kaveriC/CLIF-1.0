@@ -13,7 +13,7 @@ The following tables from the RCLIF database are required for the Mortality Mode
 * **adt** (`encounter_id`, `location_category`, `in_dttm`, `out_dttm`)
 * **vitals** (`encounter_id`, `recorded_dttm`, `vital_category`, `vital_value`) 
     * `vital_category` must include `weight_kg`, `pulse`, `sbp`, `dbp`, `temp_c`,`height_inches`
-* labs** (`encounter_id`, `lab_order_dttm`, `lab_category`, `lab_value`, `lab_type_name`) 
+* **labs** (`encounter_id`, `lab_order_dttm`, `lab_category`, `lab_value`, `lab_type_name`) 
     * `lab_category` must include  'albumin', 'alkaline_phosphatase', 'ast', 'basophil', 'bilirubin_conjugated', 'bilirubin_total', 'calcium', 'chloride', 'hemoglobin', 'lymphocyte', 'monocyte', 'glucose_serum',  'neutrophil', 'potassium', 'sodium', 'total_protein','platelet count', 'wbc'. 
 
 Note- 
