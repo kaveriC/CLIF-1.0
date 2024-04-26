@@ -24,14 +24,14 @@ Note-
 
 ## Setup instructions
 
-##### Direct Package Intsallation 
+### Direct Package Installation 
 
 If you don't want to create a virtual env, you can run the below command in the terminal or jupyter notebook. 
 ```
 !{sys.executable} -m pip install pandas numpy scikit-learn lightgbm matplotlib duckdb 
 ```
 
-##### Creating and Activating a Virtual Environment
+### Creating and Activating a Virtual Environment
 Follow these steps to create a virtual environment.
 1. In this directory, run the `setup_mortality_model.sh` shell script in terminal to set up and activate a virtual environment for this project. 
      ```
