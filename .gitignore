@@ -10,3 +10,6 @@
 
 # ignore R scripts for now
 *.R 
+
+# jupter checkpoints
+.ipynb_checkpoints/
