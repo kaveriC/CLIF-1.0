@@ -33,7 +33,11 @@ If you don't want to create a virtual env, you can run the below command in the 
 
 ### Creating and Activating a Virtual Environment
 Follow these steps to create a virtual environment.
+<<<<<<< HEAD
 1. In this directory, run the `setup_mortality_model.sh` (Mac/Unix) or `setup_mortality_model.bat` (Win) shell script in terminal to set up a virtual environment for this project. 
+=======
+1. In this directory, run the `setup_mortality_model.sh` shell script in terminal to set up a virtual environment for this project. 
+>>>>>>> c331713ccf9ff23444f3ffd0f5ae3e7f6ae7bcb4
      ```
         chmod +x setup_mortality_model.sh
         ./setup_mortality_model.sh
