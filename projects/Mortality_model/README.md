@@ -31,12 +31,17 @@ If you don't want to create a virtual env, you can run the below command in the 
 !{sys.executable} -m pip install pandas numpy scikit-learn lightgbm matplotlib duckdb 
 ```
 
-### Creating and Activating a Virtual Environment
+### Creating and Activating a Virtual Environment and RUN!!!!!!!
 Follow these steps to create a virtual environment.
-1. In this directory, run the `setup_mortality_model.sh` shell script in terminal to set up a virtual environment for this project. 
-     ```
+1. In the Mortality_Model directory, Open terminal & run the `setup_mortality_model.sh`(mac) or `setup_mortality_model.bat` (win) script in terminal to set up a virtual environment for this project. 
+    Mac Setup: 
+    ```
         chmod +x setup_mortality_model.sh
         ./setup_mortality_model.sh
+     ```
+   Win Setup
+     ```
+        ./setup_mortality_model.bat
      ```
 2.  Activate the virtual environment by running the below command in the terminal
     ```
@@ -44,5 +49,5 @@ Follow these steps to create a virtual environment.
     ```
 3. Select the new kernel `Python (mortality_model)` in your Jupyter notebook.
 
-Ready to run the notebook! 
+Ready to run the Inference_py/Inference_R notebook to run the model! 
 
