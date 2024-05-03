@@ -59,7 +59,7 @@ icu_48hr_check <- icu_data %>%
          in_dttm >= admission_dttm,
          in_dttm <= admission_dttm + lubridate::hours(48),
          lubridate::year(in_dttm) >= 2020,
-         lubridate::year(in_dttm) <= 2022,
+         lubridate::year(in_dttm) <= 2021,
          age_at_admission >= 18,
          !is.na(age_at_admission)) %>%
   distinct(encounter_id) %>%
