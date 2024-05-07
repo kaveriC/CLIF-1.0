@@ -148,7 +148,7 @@ icu_data <- icu_data %>%
   filter(!is.na(sex)) %>%
   mutate(
     Isfemale = as.integer(tolower(sex) == "female"),
-    dead = as.integer(grepl("dead|expired|death", dispo, ignore.case = TRUE)),
+    dead = as.integer(grepl("dead|expired|death|died", dispo, ignore.case = TRUE)),
     site = site,
     Ventilator = ifelse(encounter_id %in% ventilator, 1, 0))
 

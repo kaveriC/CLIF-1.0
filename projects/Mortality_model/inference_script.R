@@ -143,7 +143,7 @@ icu_data <- icu_data %>%
   filter(!is.na(sex)) %>%
   mutate(
     isfemale = as.integer(tolower(sex) == "female"),
-    isdeathdispo = as.integer(grepl("dead|expired", dispo, ignore.case = TRUE))
+    isdeathdispo = as.integer(grepl("dead|expired|death|died", dispo, ignore.case = TRUE))
   )
 
 # Define race and ethnicity mappings using case_when
