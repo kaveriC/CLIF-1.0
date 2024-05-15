@@ -1,10 +1,10 @@
 .DS_Store
 
-# Ignore Parquet files
+# Ignore Parquet, csv, excel, and R project files
 *.parquet
-
-# Ignore Excel files
+*.csv
 *.xlsx
+*.txt
 .Rproj.user
 .Rhistory
 

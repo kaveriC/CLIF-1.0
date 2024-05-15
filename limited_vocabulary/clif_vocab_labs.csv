@@ -21,7 +21,7 @@ hemoglobin,CBC,g/dL,standard; poc
 inorganic_phosphate,BMP,mg/dL,standard; poc
 inr,Coags,,standard; poc
 lactic_acid,Lactic_acid,mmol/L,"arterial, venous, poc"
-LDH,MISC,U/L,standard; poc
+ldh,MISC,U/L,standard; poc
 lymphocyte,CBC,%,standard; poc
 magnesium,BMP,mg/dL,standard; poc
 monocyte,CBC,%,standard; poc
