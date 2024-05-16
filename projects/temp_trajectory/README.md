@@ -9,7 +9,7 @@ Retrospective multi-hospital study using the CLIF framework to analyse the hospi
 * **encounter_demographics_dispo** (`encounter_id`, `age_at_admission`, `disposition_category`)
 * **limited_identifiers** (`encounter_id`, `admission_dttm`)
 * **adt** (`encounter_id`, `location_category`, `in_dttm`, `out_dttm`)
-* **respiratory_support** (`encounter_id`, `recorded_dttm`, `device_category`, `vital_value`)
+* **respiratory_support** (`encounter_id`, `recorded_dttm`, `device_category`)
 * **vitals** (`encounter_id`, `recorded_dttm`, `vital_category`, `vital_value`) 
     * `vital_category` must include  `temp_c`
 
