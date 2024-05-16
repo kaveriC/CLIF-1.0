@@ -18,5 +18,6 @@ Follow the schema laid out in the [RCLIF ERD](https://github.com/kaveriC/CLIF-1.
 
 ## Setup instructions
 
-Step 1. Run the `icu_cohort_id_script.R` script to generate the `ICU_cohort.csv` that is used as an input to the analysis script
-Step 2. Run the `temp_traj_analysis.R` analysis script. The `ICU_cohort.csv` file generated from the cohort identification script is used as an input in this analysis script. This script generates and saves aggregate results in the current directory. 
+**Step 1.** Run the `icu_cohort_id_script.R` script to generate the `ICU_cohort.csv` that is used as an input to the analysis script.
+
+**Step 2.** Run the `temp_traj_analysis.R` analysis script. The `ICU_cohort.csv` file generated from the cohort identification script is used as an input in this analysis script. This script generates and saves aggregate results in the current directory. 
