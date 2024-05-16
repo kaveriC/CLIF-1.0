@@ -11,9 +11,9 @@ sapply(packages, install_if_missing)
 
 con <- duckdb::dbConnect(duckdb::duckdb(), dbdir = ":memory:")
 
-tables_location <- "C:/Users/vchaudha/OneDrive - rush.edu/CLIF-1.0-main" 
-site <-'RUSH'
-file_type <- '.csv'
+tables_location <- '/Users/kavenchhikara/Desktop/CLIF-1.0'
+site <-'UCMC'
+file_type <- '.parquet'
 
 # Check if the output directory exists; if not, create it
 if (!dir.exists("output")) {
@@ -46,7 +46,7 @@ join <- location %>%
 
 # Second join operation to get 'icu_data'
 icu_data <- join %>%
-  left_join(encounter %>% select(encounter_id, age_at_admission, disposition), by = "encounter_id") %>%
+  left_join(encounter %>% select(encounter_id, age_at_admission, disposition_category), by = "encounter_id") %>%
   mutate(
     admission_dttm = ymd_hms(admission_dttm), # Convert to POSIXct, adjust the function as per your date format
     in_dttm = ymd_hms(in_dttm) # Convert to POSIXct, adjust the function as per your date format
@@ -159,6 +159,7 @@ icu_data <- icu_data %>%
     race = case_when(
       race == "White" ~ "White",
       race == "Black or African American" ~ "Black",
+      race == "Black or African-American" ~ "Black",
       race == "Asian" ~ "Asian",
       race %in% c("Other", "Unknown", "Did Not Encounter", "Refusal", 
                   "American Indian or Alaska Native", 
@@ -166,6 +167,7 @@ icu_data <- icu_data %>%
       TRUE ~ "Others"  # Default case for NA and any other unexpected values
     ),
     ethnicity = case_when(
+      ethnicity == "Hispanic" ~ "Hispanic or Latino",
       ethnicity == "Hispanic or Latino" ~ "Hispanic or Latino",
       TRUE ~ "Not Hispanic"  # Default case for NA and any other unexpected values
     )
