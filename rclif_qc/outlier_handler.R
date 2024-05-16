@@ -37,7 +37,7 @@ encounter_output_filepath <- paste0(root_location, "/rclif/clif_encounter_demogr
 
 
 # Specify directory for result files
-results_path <- paste0(root_location, "/outlier_handlers")
+results_path <- paste0(root_location, "/rclif_qc")
 
 ##################### Functions  ###############################################
 # Define function to read data
