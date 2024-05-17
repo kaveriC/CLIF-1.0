@@ -1,6 +1,6 @@
 ﻿vital_category,lower_limit,upper_limit
 height_inches,30,96
-weight_kg,30,110
+weight_kg,30,1100
 sbp,0,300
 dbp,0,200
 map,0,250
