@@ -60,7 +60,7 @@ temp_algorithm <- merged_data %>%
   mutate(temperature = ifelse(temperature < 32 | temperature > 44, NA, temperature)) %>%
   filter(!is.na(temperature)) %>%
   mutate(
-    temperature = scale(temperature) / sd(temperature), #standardizing temperature; we will not be standardizing at the end (we want raw temps from each site)
+    temperature = scale(temperature), #standardizing temperature; we will not be standardizing at the end (we want raw temps from each site)
     temp_time = as.POSIXct(recorded_dttm, format = "%m/%d/%Y %H:%M:%S"),
     in_time = as.POSIXct(in_time, format = "%m/%d/%Y %H:%M:%S") 
   ) %>%
