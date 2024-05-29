@@ -34,7 +34,7 @@ read_data <- function(file_path) {
 
 # Read data using the function and assign to variables
 location <- read_data(paste0(tables_location, "/rclif/clif_adt", file_type))
-encounter <- read_data(paste0(tables_location, "/rclif/clif_encounter_demographics_dispo", file_type))
+encounter <- read_data(paste0(tables_location, "/rclif/clif_encounter_demographics_dispo_clean", file_type))
 limited <- read_data(paste0(tables_location, "/rclif/clif_limited_identifiers", file_type))
 demog <- read_data(paste0(tables_location, "/rclif/clif_patient_demographics", file_type))
 
@@ -168,7 +168,7 @@ icu_data <- icu_data %>%
 
 rm( encounter, limited, demog)
 gc()  # invokes garbage collection
-vitals <- read_data(paste0(tables_location, "/rclif/clif_vitals", file_type))
+vitals <- read_data(paste0(tables_location, "/rclif/clif_vitals_clean", file_type))
 duckdb_register(con, "vitals", vitals)
 duckdb_register(con, "icu_data", icu_data)
 vitals <- dbGetQuery(con, "SELECT 
@@ -240,7 +240,7 @@ icu_data <- left_join(icu_data, icu_data_agg, by = "encounter_id")
 duckdb_unregister(con, "icu_data_agg")
 rm(icu_data_agg,pivoted_data)
 gc()  # invokes garbage collection
-labs <- read_data(paste0(tables_location, "/rclif/clif_labs", file_type))
+labs <- read_data(paste0(tables_location, "/rclif/clif_labs_clean", file_type))
 duckdb_register(con, "labs", labs)
 labs <- dbGetQuery(con, "
  SELECT 
@@ -309,7 +309,7 @@ icu_data <- left_join(icu_data, icu_data_agg, by = "encounter_id") %>%   as.data
 
 rm(icu_data_agg,pivoted_data,labs)
 gc() 
-write.csv(icu_data, "icu_data.csv", row.names = FALSE)
+#write.csv(icu_data, "icu_data.csv", row.names = FALSE)
 # to skip next time
 #icu_data <- read_data(paste0(tables_location, "/rclif/icu_data", file_type))
 dim(icu_data)
@@ -337,7 +337,7 @@ model_col <- c('isfemale', 'age', 'min_bmi', 'max_bmi', 'avg_bmi',
                'total_protein_mean', 'wbc_min', 'wbc_max', 'wbc_mean')
 
 
-model_file_path <- sprintf("%s/projects/Mortality_model/models/lgbm_model_20240429-083130.txt", tables_location)
+model_file_path <- sprintf("%s/projects/Mortality_model/models/lgbm_model_20240529-110556.txt", tables_location)
 
 # Load the model
 model <- lgb.load(model_file_path)
@@ -445,4 +445,66 @@ result_df <- calculate_metrics(icu_data, 'isdeathdispo', 'pred_proba', c('race',
 
 write.csv(result_df, file = paste0("output/fairness_test_", site, ".csv"), row.names = FALSE)
 
-result_df
+top_n_percentile <- function(target_var, pred_proba, site_name) {
+  # Generating thresholds from 99% to 1%
+  thr_list <- seq(0.99, 0.01, by = -0.01)
+  results <- data.frame(N_Percentile = character(),
+                        Thr_Value = numeric(),
+                        TN = integer(),
+                        FP = integer(),
+                        FN = integer(),
+                        TP = integer(),
+                        Sensitivity = numeric(),
+                        Specificity = numeric(),
+                        PPV = numeric(),
+                        NPV = numeric(),
+                        Recall = numeric(),
+                        Accuracy = numeric(),
+                        Site_Name = character(),
+                        stringsAsFactors = FALSE)
+  
+  for (thr in thr_list) {
+    prob <- data.frame(target_var = target_var, pred_proba = pred_proba)
+    thr_value <- quantile(prob$pred_proba, thr)
+    prob$pred_proba_bin <- ifelse(prob$pred_proba >= thr_value, 1, 0)
+    
+    cm <- table(factor(prob$target_var, levels = c(0, 1)),
+                factor(prob$pred_proba_bin, levels = c(0, 1)))
+    tn <- cm[1, 1]
+    fp <- cm[1, 2]
+    fn <- cm[2, 1]
+    tp <- cm[2, 2]
+    
+    sensitivity <- tp / (tp + fn)
+    specificity <- tn / (tn + fp)
+    ppv <- tp / (tp + fp)
+    npv <- tn / (tn + fn)
+    recall <- tp / (tp + fn)
+    acc <- (tp + tn) / sum(cm)
+    n_prec <- paste0("Top ", round((1 - thr) * 100, 0), "%")
+    
+    # Define each row as a dataframe before appending
+    row <- data.frame(N_Percentile = n_prec,
+                      Thr_Value = thr_value,
+                      TN = tn,
+                      FP = fp,
+                      FN = fn,
+                      TP = tp,
+                      Sensitivity = sensitivity,
+                      Specificity = specificity,
+                      PPV = ppv,
+                      NPV = npv,
+                      Recall = recall,
+                      Accuracy = acc,
+                      Site_Name = site_name,
+                      stringsAsFactors = FALSE)
+    results <- rbind(results, row)
+  }
+  return(results)
+}
+
+# Usage example (you need to define y_test, y_pred_proba, and site_name)
+topn <- top_n_percentile(y_test, y_pred_proba, site)
+
+
+write.csv(topn, file =  paste0("output/Top_N_percentile_PPV_", site, ".csv"), row.names = FALSE)
