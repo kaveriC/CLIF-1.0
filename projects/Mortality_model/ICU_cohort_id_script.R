@@ -34,7 +34,7 @@ read_data <- function(file_path) {
 
 # Read data using the function and assign to variables
 location <- read_data(paste0(tables_location, "/rclif/clif_adt", file_type))
-encounter <- read_data(paste0(tables_location, "/rclif/clif_encounter_demographics_dispo", file_type))
+encounter <- read_data(paste0(tables_location, "/rclif/clif_encounter_demographics_dispo_clean", file_type))
 limited <- read_data(paste0(tables_location, "/rclif/clif_limited_identifiers", file_type))
 demog <- read_data(paste0(tables_location, "/rclif/clif_patient_demographics", file_type))
 ventilator <- read_data(paste0(tables_location, "/rclif/clif_respiratory_support", file_type))

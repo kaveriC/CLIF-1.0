@@ -3,7 +3,7 @@
 # Ignore Parquet, excel, and R project files
 *.parquet
 *.xlsx
-*.txt
+
 .Rproj.user
 .Rhistory
 
