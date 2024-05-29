@@ -140,7 +140,7 @@ icu_data <- icu_data %>%
   select(encounter_id, min_in_dttm, after_24hr, age, dispo, sex, ethnicity, race)
 
 ventilator <- ventilator %>%
-  filter(Delivery_Device =="Ventilator")%>%
+  filter(device_category =="Vent")%>%
   select(encounter_id) %>% distinct() %>% deframe()
 
 # Remove rows with missing 'sex' and create new variables
