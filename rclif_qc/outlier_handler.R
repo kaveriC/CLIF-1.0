@@ -17,22 +17,22 @@ max_age_at_adm = 119
 # below filepaths should work if you are operating within the GitHub repo. 
 labs_filepath <- paste0(root_location, "/rclif/clif_labs.", 
                         filetype)
-labs_output_filepath <- paste0(root_location, "/rclif/clif_labs_clean_R.", 
+labs_output_filepath <- paste0(root_location, "/rclif/clif_labs_clean.", 
                                filetype)
 labs_outlier_thresholds_filepath <- paste0(root_location, 
-                                           "/outlier_handlers/nejm_outlier_thresholds_labs.csv")
+                                           "/rclif_qc/nejm_outlier_thresholds_labs.csv")
 
 vitals_filepath <- paste0(root_location, "/rclif/clif_vitals.", 
                           filetype)
-vitals_output_filepath <- paste0(root_location, "/rclif/clif_vitals_clean_R.", 
+vitals_output_filepath <- paste0(root_location, "/rclif/clif_vitals_clean.", 
                                  filetype)
 vitals_outlier_thresholds_filepath <- paste0(root_location, 
-                                             "/outlier_handlers/nejm_outlier_thresholds_vitals.csv")
+                                             "/rclif_qc/nejm_outlier_thresholds_vitals.csv")
 
 encounter_filepath <- paste0(root_location, 
                              "/rclif/clif_encounter_demographics_dispo.", 
                              filetype)
-encounter_output_filepath <- paste0(root_location, "/rclif/clif_encounter_demographics_dispo._clean_R.", 
+encounter_output_filepath <- paste0(root_location, "/rclif/clif_encounter_demographics_dispo_clean.", 
                                  filetype)
 
 

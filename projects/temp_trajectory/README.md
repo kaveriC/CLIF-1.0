@@ -18,6 +18,8 @@ Follow the schema laid out in the [RCLIF ERD](https://github.com/kaveriC/CLIF-1.
 
 ## Setup instructions
 
-**Step 1.** Run the `ICU_cohort_id_script.R` script to generate the `ICU_cohort.csv` that is used as an input to the analysis script.
+**Step 1.** Run the `outlier_handler.R` script to replace outliers with NAs. This script is available in the rclif_qc directory. If you run the outlier scripts, then use the `_clean` version for `labs`, `vitals` and `encounter_demographics_dispo` tables.
 
-**Step 2.** Run the `temp_traj_analysis.R` analysis script. The `ICU_cohort.csv` file generated from the cohort identification script is used as an input in this analysis script. This script generates and saves aggregate results in the current directory. 
+**Step 2.** Run the `ICU_cohort_id_script.R` script to generate the `ICU_cohort.csv` that is used as an input to the analysis script.
+
+**Step 3.** Run the `temp_traj_analysis.R` analysis script. The `ICU_cohort.csv` file generated from the cohort identification script is used as an input in this analysis script. This script generates and saves aggregate results in the current directory. 
