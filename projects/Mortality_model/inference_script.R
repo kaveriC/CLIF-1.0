@@ -344,7 +344,7 @@ model <- lgb.load(model_file_path)
 X_test <- as.matrix(icu_data[model_col])
 y_test <- factor(icu_data$isdeathdispo)  
 y_pred_proba <- predict(model, X_test)
-y_pred_class <- as.numeric(y_pred_proba > 0.5)
+y_pred_class <- as.numeric(y_pred_proba > 0.194)
 icu_data$pred_proba <- y_pred_proba
 
 site_label <- y_test
@@ -355,7 +355,7 @@ write.csv(prob_df_lgbm, file = paste0("output/Model_probabilities_", site, ".csv
 head(prob_df_lgbm)
 # Predict probabilities and binary predictions
 predicted_probabilities <- predict(model, X_test)
-predicted_classes <- as.integer(predicted_probabilities >= 0.5)
+predicted_classes <- as.integer(predicted_probabilities >= 0.194)
 
 # Generate a confusion matrix
 conf_matrix <- confusionMatrix(as.factor(predicted_classes), as.factor(y_test))
@@ -365,7 +365,7 @@ accuracy <- conf_matrix$overall['Accuracy']
 roc_auc <- pROC::auc(pROC::roc(y_test, predicted_probabilities))
 
 # Calculate metrics for each threshold
-predicted_positive <- predict(model, X_test) >= 0.5
+predicted_positive <- predict(model, X_test) >= 0.194
 actual_positive <- icu_data$isdeathdispo == 1
 actual_negative <- icu_data$isdeathdispo == 0
 
@@ -417,7 +417,7 @@ calculate_metrics <- function(data, true_col, pred_prob_col, subgroup_cols) {
         auc <- performance(pred, "auc")@y.values[[1]]
         # Calculate confusion matrix
         cm <- table(factor(subgroup_data[[true_col]], levels = c(0, 1)),
-                    factor(as.numeric(subgroup_data[[pred_prob_col]] > 0.5), levels = c(0, 1)))
+                    factor(as.numeric(subgroup_data[[pred_prob_col]] > 0.194), levels = c(0, 1)))
         tn <- cm[1, 1]
         fp <- cm[1, 2]
         fn <- cm[2, 1]
@@ -508,3 +508,59 @@ topn <- top_n_percentile(y_test, y_pred_proba, site)
 
 
 write.csv(topn, file =  paste0("output/Top_N_percentile_PPV_", site, ".csv"), row.names = FALSE)
+
+
+## RUSH THR TOPN 
+
+thr<-0.194
+# Define column names
+col <- c('Thr_Value', 'TN', 'FP', 'FN', 'TP', 'Sensitivity', 'Specificity', 'PPV', 'NPV', 'Recall', 'Accuracy', 'Site_Name')
+
+# Create an empty data frame with the specified columns
+results <- data.frame(matrix(ncol = length(col), nrow = 0))
+colnames(results) <- col
+
+# Create a data frame with target_var and pred_proba
+prob <- data.frame(target_var = y_test, pred_proba = y_pred_proba)
+
+# Create pred_proba_bin based on the threshold
+prob$pred_proba_bin <- ifelse(prob$pred_proba >= thr, 1, 0)
+
+# Calculate confusion matrix
+cm <- table(factor(prob$target_var, levels = c(0, 1)),
+            factor(prob$pred_proba_bin, levels = c(0, 1)))
+tn <- cm[1, 1]
+fp <- cm[1, 2]
+fn <- cm[2, 1]
+tp <- cm[2, 2]
+
+# Calculate metrics
+sensitivity <- tp / (tp + fn)
+specificity <- tn / (tn + fp)
+ppv <- tp / (tp + fp)
+npv <- tn / (tn + fn)
+recall <- tp / (tp + fn)
+acc <- (tp + tn) / sum(cm)
+
+# Define each row as a dataframe before appending
+row <- data.frame(Thr_Value = thr,
+                  TN = tn,
+                  FP = fp,
+                  FN = fn,
+                  TP = tp,
+                  Sensitivity = sensitivity,
+                  Specificity = specificity,
+                  PPV = ppv,
+                  NPV = npv,
+                  Recall = recall,
+                  Accuracy = acc,
+                  Site_Name = site_name,
+                  stringsAsFactors = FALSE)
+
+# Append the row to the results data frame
+results <- rbind(results, row)
+
+
+write.csv(head(results,1), file =  paste0("output/Top_N_percentile_atRushThr_", site, ".csv"), row.names = FALSE)
+
+head(results,1)
