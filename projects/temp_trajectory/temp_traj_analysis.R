@@ -295,17 +295,17 @@ table2_alg = table2_alg%>%
   filter(Characteristics!="model")
 
 # Perform logistic regression for mechanical ventilation and mortality outcomes
-df_alg <- as.data.frame(summary(glm(vent ~ HSR + NT + HT +  age_at_admission + sex + factor(race) + ethnicity, data = table_alg, family = "binomial"))$coefficients)%>%
+df_alg <- as.data.frame(summary(glm(vent ~ HSR + HFR + HT +  age_at_admission + sex + factor(race) + ethnicity, data = table_alg, family = "binomial"))$coefficients)%>%
   remove_rownames()%>%
   mutate(outcome = "Mechanical ventilation")
 
 df_alg <- df_alg %>%
-  rbind(as.data.frame(summary(glm(death ~ HSR + NT + HT +  age_at_admission + sex + factor(race) + ethnicity, data = table_alg, family = "binomial"))$coefficients)%>%
+  rbind(as.data.frame(summary(glm(death ~ HSR + HFR + HT +  age_at_admission + sex + factor(race) + ethnicity, data = table_alg, family = "binomial"))$coefficients)%>%
           remove_rownames()%>%
           mutate(outcome = "Mortality"))
 
 df_alg <- df_alg %>%
-  mutate(Features = rep(c("Intercept", "HSR", "NT", "HT", "Age", "Male sex", "Asian", "Black", "Pacific Islander", "Other", "White", "Non-Hispanic"), times = 2))
+  mutate(Features = rep(c("Intercept", "HSR", "HFR", "HT", "Age", "Male sex", "Asian", "Black", "Pacific Islander", "Other", "White", "Non-Hispanic"), times = 2))
 
 # Calculate confidence intervals and odds ratios, and format p-values in df_alg
 df_alg <- df_alg %>%
@@ -332,15 +332,15 @@ df_alg <- df_alg %>%
   mutate(lower = as.numeric(lower))  %>%
   mutate(outcome = factor(outcome, levels = c("Mechanical ventilation",
                                               "Mortality")))%>%
-  filter(Features=="HSR"|Features=="NT"|Features=="HT")
+ filter(Features=="HSR"|Features=="HFR"|Features=="HT")
 
 # Prepare data for plotting
 graph_alg = df_alg%>%
   mutate(order = ifelse(Features=="HSR", 1, NA))%>%
-  mutate(order = ifelse(Features=="NT", 3, order))%>%
+  mutate(order = ifelse(Features=="HFR", 2, order))%>%
   mutate(order = ifelse(Features=="HT", 4, order))%>%
-  rbind(c("HFR", 1, NA, NA, "Mechanical ventilation", 1, 1, 2), fill = TRUE) %>%
-  rbind(c("HFR", 1, NA, NA, "Mortality", 1, 1, 2), fill = TRUE) %>%
+  rbind(c("NT", 1, NA, NA, "Mechanical ventilation", 1, 1, 3), fill = TRUE) %>%
+  rbind(c("NT", 1, NA, NA, "Mortality", 1, 1, 3), fill = TRUE) %>%
   mutate(order = as.factor(order))%>%
   mutate(`Odds ratio`= as.numeric(`Odds ratio`))%>%
   mutate(upper = as.numeric(upper))%>%
@@ -349,24 +349,24 @@ graph_alg = df_alg%>%
 graph_alg <- df_alg %>%
   mutate(order = case_when(
     Features == "HSR" ~ 1,
-    Features == "NT" ~ 3,
+    Features == "HFR" ~ 2,
     Features == "HT" ~ 4,
     TRUE ~ NA_integer_ # Ensuring other features have NA assigned correctly
   )) %>%
-  rbind(c("HFR", 1, NA, NA, "Mechanical ventilation", 1, 1, 2)) %>%
-  rbind(c("HFR", 1, NA, NA, "Mortality", 1, 1, 2)) %>%
+  rbind(c("NT", 1, NA, NA, "Mechanical ventilation", 1, 1, 3)) %>%
+  rbind(c("NT", 1, NA, NA, "Mortality", 1, 1, 3)) %>%
   mutate(order = factor(order, levels = c(1, 2, 3, 4))) %>%
   mutate(`Odds ratio` = as.numeric(`Odds ratio`),
          upper = as.numeric(upper),
          lower = as.numeric(lower))
 
 # Plot
-or_plot <- ggplot(graph_alg, aes(x = order, y = `Odds ratio`, color = order)) + 
+ggplot(graph_alg, aes(x = order, y = `Odds ratio`, color = order)) + 
   geom_point(position = position_dodge(width = 0.5), size = 3) + 
   geom_errorbar(aes(ymin = lower, ymax = upper), width = 0,
                 position = position_dodge(width = 0.5)) +
   theme_classic() + xlab("") +
-  scale_color_manual(values = c("#FF9900","#0000FF", "#336600", "#990000"),
+  scale_color_manual(values = c("#FF9900", "#336600", "#990000","#0000FF"),
                      name = "", 
                      labels = c("HSR", "HFR", "NT", "HT"),
                      guide = guide_legend()) +
