@@ -11,9 +11,9 @@ sapply(packages, install_if_missing)
 
 con <- duckdb::dbConnect(duckdb::duckdb(), dbdir = ":memory:")
 
-tables_location <- '/Users/kavenchhikara/Desktop/CLIF-1.0'
-site <-'UCMC'
-file_type <- '.parquet'
+tables_location <- 'C:/Users/vchaudha/OneDrive - rush.edu/CLIF-1.0-main'
+site <-'RUSH'
+file_type <- '.csv'
 
 # Check if the output directory exists; if not, create it
 if (!dir.exists("output")) {
@@ -39,6 +39,7 @@ limited <- read_data(paste0(tables_location, "/rclif/clif_limited_identifiers", 
 demog <- read_data(paste0(tables_location, "/rclif/clif_patient_demographics", file_type))
 ventilator <- read_data(paste0(tables_location, "/rclif/clif_respiratory_support", file_type))
 
+
 # First join operation
 join <- location %>%
   select(encounter_id, location_category, in_dttm, out_dttm) %>%
@@ -46,10 +47,11 @@ join <- location %>%
 
 # Second join operation to get 'icu_data'
 icu_data <- join %>%
-  left_join(encounter %>% select(encounter_id, age_at_admission, disposition_category), by = "encounter_id") %>%
+  left_join(encounter %>% select(encounter_id, age_at_admission, disposition), by = "encounter_id") %>%
   mutate(
     admission_dttm = ymd_hms(admission_dttm), # Convert to POSIXct, adjust the function as per your date format
-    in_dttm = ymd_hms(in_dttm) # Convert to POSIXct, adjust the function as per your date format
+    in_dttm = ymd_hms(in_dttm), # Convert to POSIXct, adjust the function as per your date format
+    out_dttm = ymd_hms(out_dttm)
   )
 
 # Filter rows where location is ICU and in_dttm is within 48 hours of admission_dttm
@@ -58,8 +60,8 @@ icu_48hr_check <- icu_data %>%
   filter(location_category == "ICU",
          in_dttm >= admission_dttm,
          in_dttm <= admission_dttm + lubridate::hours(48),
-         lubridate::year(in_dttm) >= 2020,
-         lubridate::year(in_dttm) <= 2021,
+         lubridate::year(admission_dttm) >= 2020,
+         lubridate::year(admission_dttm) <= 2021,
          age_at_admission >= 18,
          !is.na(age_at_admission)) %>%
   distinct(encounter_id) %>%
@@ -132,25 +134,28 @@ icu_data <- icu_data %>%
 
 # Select specific columns
 icu_data <- icu_data %>%
-  select(encounter_id, min_in_dttm, after_24hr, age, dispo)
+  select(encounter_id, min_in_dttm, after_24hr,max_out_dttm, age, dispo)
 
 # Merge with demographic data and select specific columns
 icu_data <- icu_data %>%
   left_join(demog, by = "encounter_id") %>%
-  select(encounter_id, min_in_dttm, after_24hr, age, dispo, sex, ethnicity, race)
+  select(encounter_id, min_in_dttm, after_24hr,max_out_dttm, age, dispo, sex, ethnicity, race)
 
 ventilator <- ventilator %>%
-  filter(device_category =="Vent")%>%
+  filter(Delivery_Device =="Ventilator")%>%
   select(encounter_id) %>% distinct() %>% deframe()
+
 
 # Remove rows with missing 'sex' and create new variables
 icu_data <- icu_data %>%
   filter(!is.na(sex)) %>%
   mutate(
-    Isfemale = as.integer(tolower(sex) == "female"),
-    dead = as.integer(grepl("dead|expired|death|died", dispo, ignore.case = TRUE)),
+    isfemale = as.integer(tolower(sex) == "female"),
+    Mortality  = as.integer(grepl("dead|expired|death|died", dispo, ignore.case = TRUE)),
     site = site,
-    Ventilator = ifelse(encounter_id %in% ventilator, 1, 0))
+    Ventilator = ifelse(encounter_id %in% ventilator, 1, 0)
+  )
+
 
 
 # Define race and ethnicity mappings using case_when
@@ -171,31 +176,21 @@ icu_data <- icu_data %>%
       ethnicity == "Hispanic or Latino" ~ "Hispanic or Latino",
       TRUE ~ "Not Hispanic"  # Default case for NA and any other unexpected values
     )
-  )
-
-icu_data <- icu_data %>%
-  rename(
-    icu_start_dttm = min_in_dttm,
-    icu_24hr_dttm = after_24hr,
-    Age=age,
-    Sex=sex,
-    Race= race,
-    Ethnicity	=ethnicity,
-    Mortality = dead
   ) %>%
-  mutate(Sex = as.factor(Sex),
-         Race = as.factor(Race),
-         Ethnicity = as.factor(Ethnicity),
+  mutate(sex = as.factor(sex),
+         race = as.factor(race),
+         ethnicity = as.factor(ethnicity),
          Mortality = as.factor(Mortality),
          Ventilator = as.factor(Ventilator))
 
+# Calculate the difference in hours
+icu_data$ICU_stay_hrs <- as.numeric(difftime(icu_data$max_out_dttm, icu_data$min_in_dttm, units = "secs")) / 3600
 
-rm( encounter, limited, demog)
-gc()  # invokes garbage collection
-write.csv(icu_data, paste0(tables_location, "/projects/temp_trajectory/ICU_cohort", file_type), row.names = FALSE)
+write.csv(icu_data, paste0(tables_location, "/projects/Mortality_model/output/ICU_cohort", file_type), row.names = FALSE)
+
 
 # HTML content (make sure your actual HTML string is correctly input here)
-html_content <- table1(~ Sex + Age + Race + Ethnicity + Mortality + Ventilator , data=icu_data)
+html_content <- table1(~ sex + age + race + ethnicity + Mortality + Ventilator + ICU_stay_hrs, data=icu_data)
 
 # Use rvest to read the HTML table
 table <- read_html(html_content) %>%
@@ -206,5 +201,4 @@ df <- table[[1]]
 
 # Rename 'Overall(N=14598)' to 'fabc(N=14598)' using the site variable
 names(df) <- gsub("Overall\\(N=(\\d+)\\)", paste0(site, ' ', "(N=\\1)"), names(df))
-write.csv(df, paste0(tables_location, "/projects/temp_trajectory/table1_",site, file_type), row.names = FALSE)
-df
+write.csv(df, paste0(tables_location, "/projects/Mortality_model/output/table1_",site, file_type), row.names = FALSE)
