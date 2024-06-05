@@ -47,7 +47,7 @@ join <- location %>%
 
 # Second join operation to get 'icu_data'
 icu_data <- join %>%
-  left_join(encounter %>% select(encounter_id, age_at_admission, disposition), by = "encounter_id") %>%
+  left_join(encounter %>% select(encounter_id, age_at_admission, disposition_category), by = "encounter_id") %>%
   mutate(
     admission_dttm = ymd_hms(admission_dttm), # Convert to POSIXct, adjust the function as per your date format
     in_dttm = ymd_hms(in_dttm), # Convert to POSIXct, adjust the function as per your date format
@@ -142,7 +142,7 @@ icu_data <- icu_data %>%
   select(encounter_id, min_in_dttm, after_24hr,max_out_dttm, age, dispo, sex, ethnicity, race)
 
 ventilator <- ventilator %>%
-  filter(Delivery_Device =="Ventilator")%>%
+  filter(device_category =="Ventilator")%>%
   select(encounter_id) %>% distinct() %>% deframe()
 
 
