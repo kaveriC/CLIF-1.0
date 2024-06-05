@@ -142,7 +142,7 @@ icu_data <- icu_data %>%
   select(encounter_id, min_in_dttm, after_24hr,max_out_dttm, age, dispo, sex, ethnicity, race)
 
 ventilator <- ventilator %>%
-  filter(device_category =="Ventilator")%>%
+  filter(device_category =="Vent")%>%
   select(encounter_id) %>% distinct() %>% deframe()
 
 
