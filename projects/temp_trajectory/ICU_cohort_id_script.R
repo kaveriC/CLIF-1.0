@@ -186,7 +186,7 @@ icu_data <- icu_data %>%
 # Calculate the difference in hours
 icu_data$ICU_stay_hrs <- as.numeric(difftime(icu_data$max_out_dttm, icu_data$min_in_dttm, units = "secs")) / 3600
 
-write.csv(icu_data, paste0(tables_location, "/projects/Mortality_model/output/ICU_cohort", file_type), row.names = FALSE)
+write.csv(icu_data, paste0(tables_location, "/projects/Mortality_model/output/ICU_cohort", '.csv'), row.names = FALSE)
 
 
 # HTML content (make sure your actual HTML string is correctly input here)
@@ -201,4 +201,4 @@ df <- table[[1]]
 
 # Rename 'Overall(N=14598)' to 'fabc(N=14598)' using the site variable
 names(df) <- gsub("Overall\\(N=(\\d+)\\)", paste0(site, ' ', "(N=\\1)"), names(df))
-write.csv(df, paste0(tables_location, "/projects/Mortality_model/output/table1_",site, file_type), row.names = FALSE)
+write.csv(df, paste0(tables_location, "/projects/Mortality_model/output/table1_",site, '.csv'), row.names = FALSE)
