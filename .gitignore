@@ -4,6 +4,7 @@
 *.parquet
 *.xlsx
 
+*.Rproj
 .Rproj.user
 .Rhistory
 
