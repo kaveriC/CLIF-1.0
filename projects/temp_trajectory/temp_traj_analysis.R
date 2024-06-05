@@ -332,7 +332,7 @@ df_alg <- df_alg %>%
   mutate(lower = as.numeric(lower))  %>%
   mutate(outcome = factor(outcome, levels = c("Mechanical ventilation",
                                               "Mortality")))%>%
-  filter(Features=="HSR"|Features=="HFR"|Features=="HT")
+ filter(Features=="HSR"|Features=="HFR"|Features=="HT")
 
 # Prepare data for plotting
 graph_alg = df_alg%>%

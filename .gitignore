@@ -1,9 +1,13 @@
 .DS_Store
 
-# Ignore Parquet files
+# Ignore Parquet, excel, and R project files
 *.parquet
-
-# Ignore Excel files
 *.xlsx
+
 .Rproj.user
 .Rhistory
+
+# ignore R scripts for now
+
+# jupter checkpoints
+.ipynb_checkpoints/
