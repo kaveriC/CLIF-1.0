@@ -3,9 +3,10 @@ install.packages("radiant.data")
 library(radiant.data)
 install.packages("remotes")
 library(flipTime)
+library(here)
 
 ###################### User Input. ############################################
-tables_location <- '/Users/kavenchhikara/Desktop/CLIF-1.0-UCMC'
+tables_location <- here()
 site <-'UCMC'
 file_type <- '.parquet'
 
