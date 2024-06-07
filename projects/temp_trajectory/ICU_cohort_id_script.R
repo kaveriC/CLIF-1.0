@@ -1,4 +1,3 @@
-## ICU Cohort for Temp Trajectory 
 packages <- c("duckdb", "lubridate", "tidyverse", "dplyr","table1",'rvest', "readr", "arrow", "fst", "lightgbm", "caret", "Metrics", "ROCR", "pROC")
 
 install_if_missing <- function(package) {
@@ -110,7 +109,7 @@ icu_data <- icu_data %>%
     max_out_dttm = max(out_dttm),
     admission_dttm = first(admission_dttm),
     age = first(age_at_admission),
-    dispo = first(disposition),
+    dispo = first(disposition_category),
     .groups = 'drop'
   )
 
