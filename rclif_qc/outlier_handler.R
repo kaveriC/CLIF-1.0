@@ -3,16 +3,18 @@
 library(data.table)
 library(arrow)
 library(tidyverse)
+library(collapse)
+library(here)
 
 ##################### User input ###############################################
 # Set parameters
 filetype <- "parquet"
 
 # change to CLIF-1.0 root directory 
-root_location <- '/Users/kavenchhikara/Desktop/CLIF-1.0'
+root_location <- here()
 
 # maximum age allowed, beyond this are replaced with NAs
-max_age_at_adm = 119
+max_age_at_adm <- 119
 
 # below filepaths should work if you are operating within the GitHub repo. 
 labs_filepath <- paste0(root_location, "/rclif/clif_labs.", 
@@ -72,19 +74,17 @@ write_data <- function(data, filepath, filetype) {
 
 # Define function to replace outliers with NA values (long format)
 replace_outliers_with_na_long <- function(df, df_outlier_thresholds,
-                                          category_variable, numeric_variable) {
-  # Merge the data frames on lab_category
-  merged_data <- merge(df, df_outlier_thresholds, by = category_variable, all.x = TRUE)
-  # Filter and replace outliers
-  merged_data[[numeric_variable]] <- with(merged_data, ifelse(
-    get(numeric_variable) < lower_limit | get(numeric_variable) > upper_limit,
-    NA,
-    get(numeric_variable)
-  ))
-  # Drop the outlier threshold columns
-  merged_data <- merged_data[, !(names(merged_data) %in% c("lower_limit", "upper_limit"))]
-  # Replace the original clif_labs with the updated values
-  df <- merged_data
+                                               category_variable, numeric_variable) {
+  # Join the data frames on the category variable
+  df <- df %>%
+    left_join(df_outlier_thresholds, by = category_variable) %>%
+    mutate(!!sym(numeric_variable) := ifelse(
+      get(numeric_variable) < lower_limit | get(numeric_variable) > upper_limit,
+      NA,
+      get(numeric_variable)
+    )) %>%
+    select(-lower_limit, -upper_limit)
+  
   return(df)
 }
 
@@ -92,20 +92,19 @@ generate_summary_stats <- function(data, category_variable, numeric_variable) {
   summary_stats <- data %>%
     group_by({{ category_variable }}) %>%
     summarise(
-      N = sum(!is.na({{ numeric_variable }})),
-      Min = min({{ numeric_variable }}, na.rm = TRUE),
-      Max = max({{ numeric_variable }}, na.rm = TRUE),
-      Mean = mean({{ numeric_variable }}, na.rm = TRUE),
-      Median = median({{ numeric_variable }}, na.rm = TRUE),
-      First_Quartile = quantile({{ numeric_variable }}, 0.25, na.rm = TRUE),
-      Third_Quartile = quantile({{ numeric_variable }}, 0.75, na.rm = TRUE)
+      N = fsum(!is.na({{ numeric_variable }})),
+      Min = fmin({{ numeric_variable }}, na.rm = TRUE),
+      Max = fmax({{ numeric_variable }}, na.rm = TRUE),
+      Mean = fmean({{ numeric_variable }}, na.rm = TRUE),
+      Median = fmedian({{ numeric_variable }}, na.rm = TRUE),
+      First_Quartile = fquantile({{ numeric_variable }}, 0.25, na.rm = TRUE),
+      Third_Quartile = fquantile({{ numeric_variable }}, 0.75, na.rm = TRUE)
     ) %>%
     ungroup() %>%
     arrange(-desc({{ category_variable }}))
   
   return(summary_stats)
 }
-
 
 #####################     Labs   ###############################################
 # Read labs data
@@ -170,8 +169,6 @@ write_data(vital_summary_stats, paste0(results_path,
 ################Encounter Demographics Dispo  ##################################
 
 clif_encounter<- read_data(encounter_filepath, filetype)
-dir_path <- file.path(results_path, 'encounter_demographic_dispo')
-dir.create(dir_path, recursive = TRUE, showWarnings = FALSE)
 
 clif_encounter$age_at_admission <- ifelse(clif_encounter$age_at_admission > max_age_at_adm, 
                                           NA, 
