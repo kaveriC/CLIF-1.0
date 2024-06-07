@@ -117,8 +117,12 @@ dir.create(dir_path, recursive = TRUE, showWarnings = FALSE)
 # if lab_value_numeric doesn't exist, create it
 if (!"lab_value_numeric" %in% colnames(clif_labs)) {
   print("lab_value_numeric does not exist")
-  clif_labs$lab_value_numeric <- as.numeric(parse_number(clif_labs$lab_value))
-  print("lab_value_numeric created")
+  if (is.character(clif_labs$lab_value)){
+    clif_labs$lab_value_numeric <- as.numeric(parse_number(clif_labs$lab_value))
+    print("lab_value_numeric created from character")
+  }
+  clif_labs$lab_value_numeric <- clif_labs$lab_value
+    print("lab_value_numeric created from integer")
 }
 
 ## replace outliers with NA
