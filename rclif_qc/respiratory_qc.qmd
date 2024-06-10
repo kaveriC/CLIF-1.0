@@ -257,7 +257,8 @@ clif_respiratory_support %>%
   group_by(encounter_id) %>%
   mutate(min_time = min(recorded_dttm),
          time = difftime(recorded_dttm, min_time, units = "hours")) %>%
-  select(encounter_id, time, mode_category, fio2_set, peep_set, pressure_support_set)  %>%
+  select(encounter_id, time, device_category, mode_category, fio2_set, peep_set, 
+         pressure_support_set, peak_inspiratory_pressure_set)  %>%
   head(n = 20) %>%
   kable()
 ```
@@ -269,10 +270,13 @@ clif_respiratory_support %>%
   filter(device_name == "NIPPV") %>%
   group_by(encounter_id) %>%
   summarise(mean_peep_set = mean(peep_set, na.rm = TRUE),
-            mean_pressure_support_set = mean(pressure_support_set, na.rm = TRUE)) %>%
+            mean_pressure_support_set = mean(pressure_support_set, na.rm = TRUE),
+            mean_peak_inspiratory_pressure_set = mean(peak_inspiratory_pressure_set, 
+                                                      na.rm = TRUE)) %>%
   ungroup() %>%
   summarise(missing_peep = mean(is.na(mean_peep_set))*100,
-            missing_pressure_support_set = mean(is.na(mean_pressure_support_set))*100)  %>%
+            missing_pressure_support_set = mean(is.na(mean_pressure_support_set))*100,
+            missing_peak_inspiratory_pressure_set = mean(is.na(mean_peak_inspiratory_pressure_set))*100)  %>%
   kable()
 ```
 
