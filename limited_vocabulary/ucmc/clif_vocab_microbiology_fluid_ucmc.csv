@@ -26,6 +26,7 @@ COCCIDIOIDES AB,0,Blood/Buffy Coat
 CORONAVIRUS (COVID-19) SARS-COV-2 ANTIBODY IGM AND IGG PANEL,0,Blood/Buffy Coat
 "CRYPTOCOCCAL AG, BLOOD",0,Blood/Buffy Coat
 "CULTURE, BLOOD (BACTERIAL & FUNGAL)",1,Blood/Buffy Coat
+"CULTURE, BLOOD BANK",1,blood/buffy coat
 DENGUE FEVER AB PANEL,0,Blood/Buffy Coat
 DIPHTHERIA TOXOID IGG ANTIBODY,0,Blood/Buffy Coat
 E. HISTOLYTICA AB,0,Blood/Buffy Coat
@@ -136,23 +137,16 @@ TOXOPLASMA GONDII IGM AB,0,Blood/Buffy Coat
 "VARICELLA-ZOSTER AB, IGM, S",0,Blood/Buffy Coat
 VARICELLA-ZOSTER IGG,0,Blood/Buffy Coat
 "WEST NILE VIRUS AB, IGG & IGM, SERUM",0,Blood/Buffy Coat
-"CULTURE, BLOOD (BACTERIAL & FUNGAL)",1,blood/buffy coat
-"CULTURE, BLOOD BANK",1,blood/buffy coat
 "CULTURE, AFB BONE MARROW",1,Bone Marrow
 "CULTURE, BONE MARROW",1,Bone Marrow
 "CULTURE, STEM CELL",1,Bone Marrow
-"CULTURE, BONE MARROW",1,bone marrow
 "CULTURE, CATHETER TIP",1,Catheter Tip
 "CULTURE, FUNGAL, CATH TIP",1,Catheter Tip
-"CULTURE, CATHETER TIP",1,catheter tip
 "CULTURE & STAIN, EAR",1,Ears
 "CULTURE, FUNGAL, EAR",1,Ears
-"CULTURE & STAIN, EAR",1,ears
 "CULTURE & STAIN, EYE",1,Eyes
 "CULTURE ONLY, EYE",1,Eyes
 "CULTURE, FUNGAL, EYE",1,Eyes
-"CULTURE & STAIN, EYE",1,eyes
-"CULTURE ONLY, EYE",1,eyes
 "C. DIFFICILE PCR, SCREENING",0,Feces/Stool
 C.DIFFICILE ASSAY BY PCR,0,Feces/Stool
 "CHLAMYDIA/GC AMPLIFIED PROBE, RECTAL",0,Feces/Stool
@@ -165,10 +159,7 @@ ENTEROCOCCUS VA R SCREEN,1,Feces/Stool
 "NOROVIRUS ANTIGEN, STOOL",0,Feces/Stool
 "OVA AND PARASITES (O&P), DIRECT EXAM",0,Feces/Stool
 "PARASITIC EXAMINATION, FECES(SEND-OUT)",0,Feces/Stool
-SINGLE AGENT SCREEN,1,Feces/Stool
-"CULTURE, STOOL",1,feces/stool
 "CULTURE & STAIN, GALL BLADDER",1,"Gallbladder and Billary Tree (Not Hepatitis), Pancreas"
-"CULTURE & STAIN, GALL BLADDER",1,"gallbladder and billary tree (not hepatitis), pancreas"
 "BETA STREP SCREEN, GENITAL",1,Genital Area
 "CHLAMYDIA/GC AMPLIFIED PROBE, CERVIX",0,Genital Area
 "CULTURE & STAIN, EXTERNAL FEMALE GENITAL",1,Genital Area
@@ -176,6 +167,7 @@ SINGLE AGENT SCREEN,1,Feces/Stool
 "CULTURE & STAIN, INTERNAL FEMALE GENITAL",1,Genital Area
 "CULTURE & STAIN, INTERNAL GENITAL",1,Genital Area
 "CULTURE & STAIN, MALE GENITAL",1,Genital Area
+"CULTURE & STAIN, MALE INTERNAL GENITAL",1,Genital Area
 "CULTURE, FUNGAL, GENITAL",1,Genital Area
 POC VAGINITIS/VAGINOSIS PANEL,0,Genital Area
 POCT WET MOUNT,0,Genital Area
@@ -183,10 +175,6 @@ POCT WET MOUNT INCLUDING PREP FOR VAG SKIN,0,Genital Area
 "TRICHOMONAS VAGINALIS ASSAY, ENDOCERVICAL",0,Genital Area
 VAGINITIS PANEL (LABORATORY PERFORMED),0,Genital Area
 VAGINITIS PANEL SENDOUT TO MDL,0,Genital Area
-"CULTURE & STAIN, EXTERNAL FEMALE GENITAL",1,Genital Area
-"CULTURE & STAIN, INTERNAL FEMALE GENITAL",1,Genital Area
-"CULTURE & STAIN, MALE GENITAL",1,Genital Area
-"CULTURE & STAIN, MALE INTERNAL GENITAL",1,Genital Area
 "BK VIRUS QUANTITATIVE PCR, URINE (MAYO)",0,Genito-Urinary Tract Unspecified
 "CHLAMYDIA/GC AMPLIFIED PROBE, URETHRAL",0,Genito-Urinary Tract Unspecified
 "CHLAMYDIA/GC AMPLIFIED PROBE, URINE",0,Genito-Urinary Tract Unspecified
@@ -208,39 +196,30 @@ HISTOPLASMA AG URINE,0,Genito-Urinary Tract Unspecified
 "TRICHOMONAS VAGINALIS, NUCLEIC ACID AMPLIFICATION, URINE (MAYO SENDO",0,Genito-Urinary Tract Unspecified
 URINARY PNEUMOCOCCAL ANTIGEN,0,Genito-Urinary Tract Unspecified
 "URINE CYTOMEGALOVIRUS QUALITATIVE, PCR",0,Genito-Urinary Tract Unspecified
-"CULTURE, URINE, REFLEXIVE FROM URINALYSIS",1,genito-urinary tract unspecified
-"CULTURE, URINE, POC UA POSITIVE WITH RESULT DOCUMENTED IN EPIC",1,genito-urinary tract unspecified
-"CULTURE, URINE, UROLOGY/UROGYNECOLOGY PATIENT",1,genito-urinary tract unspecified
-"CULTURE, URINE",1,genito-urinary tract unspecified
-"CULTURE, URINE, PREGNANT PATIENT",1,genito-urinary tract unspecified
-"CULTURE, URINE, PEDIATRIC PATIENT (LESS THAN 18 YEARS)",1,genito-urinary tract unspecified
-"CULTURE, URINE, TRANSPLANT PATIENT",1,genito-urinary tract unspecified
-"CULTURE, URINE, PATIENT WITH UROLOGIC HARDWARE IN PLACE",1,genito-urinary tract unspecified
-"CULTURE, URINE, UTI THERAPY FAILURE",1,genito-urinary tract unspecified
-"CULTURE, URINE, NEUTROPENIC PATIENT (ANC LESS THAN 1000)",1,genito-urinary tract unspecified
 "CULTURE & STAIN, JOINT (SYNOVIAL) FLUID",1,Joints
-"CULTURE & STAIN, JOINT (SYNOVIAL) FLUID",1,Joints
-"CULTURE & STAIN, RESPIRATORY",1,Lower Respiratory Tract (Lung)
-"CULTURE, CF RESPIRATORY",1,Lower Respiratory Tract (Lung)
-"CULTURE, QUANTITATIVE RESPIRATORY",1,Lower Respiratory Tract (Lung)
-"CULTURE & STAIN, LOWER RESPIRATORY",1,Lower Respiratory Tract (Lung)
-"CULTURE, CF QUANTITATIVE RESPIRATORY",1,Lower Respiratory Tract (Lung)
-"CULTURE, RESPIRATORY, REFLEXIVE FROM GRAM STAIN",1,Lower Respiratory Tract (Lung)
 "ASPERGILLUS ANTIGEN, BAL",0,Lower Respiratory Tract (Lung)
-"CULTURE & STAIN, LOWER RESPIRATORY",1,Lower Respiratory Tract (Lung)
-"CULTURE, CF QUANTITATIVE RESPIRATORY",1,Lower Respiratory Tract (Lung)
-"CULTURE, QUANTITATIVE RESPIRATORY",1,Lower Respiratory Tract (Lung)
-PNEUMOCYSTIS ASSAY,0,Lower Respiratory Tract (Lung)
 "CULTURE & STAIN, FUNGAL, RESPIRATORY",1,Lower Respiratory Tract (Lung)
+"CULTURE & STAIN, LOWER RESPIRATORY",1,Lower Respiratory Tract (Lung)
 "CULTURE & STAIN, RESPIRATORY",1,Lower Respiratory Tract (Lung)
 "CULTURE, AFB, CF RESPIRATORY",1,Lower Respiratory Tract (Lung)
+"CULTURE, CF QUANTITATIVE RESPIRATORY",1,Lower Respiratory Tract (Lung)
 "CULTURE, CF RESPIRATORY",1,Lower Respiratory Tract (Lung)
+"CULTURE, QUANTITATIVE RESPIRATORY",1,Lower Respiratory Tract (Lung)
 "CULTURE, RESPIRATORY, REFLEXIVE FROM GRAM STAIN",1,Lower Respiratory Tract (Lung)
 GRAM STAIN ONLY,1,Lower Respiratory Tract (Lung)
 "HP CULTURE & STAIN, RESPIRATORY",1,Lower Respiratory Tract (Lung)
+INFLUENZA A/B & RSV PCR,0,Lower Respiratory Tract (Lung)
+INFLUENZA A&B VIRAL RNA,0,Lower Respiratory Tract (Lung)
 "ING CULTURE & STAIN, RESPIRATORY",1,Lower Respiratory Tract (Lung)
+PNEUMOCYSTIS ASSAY,0,Lower Respiratory Tract (Lung)
+"POC COVID-19, INFLUENZA, RSV PCR",0,Lower Respiratory Tract (Lung)
+"POCT COVID-19, INFLUENZA, RSV PCR",0,Lower Respiratory Tract (Lung)
+POCT INFLUENZA SWAB,0,Lower Respiratory Tract (Lung)
 RESPIRATORY PANEL,0,Lower Respiratory Tract (Lung)
 RESPIRATORY PANEL PCR (NAAT),0,Lower Respiratory Tract (Lung)
+SARS-COV-2 (COVID-19) AND INFLUENZA PCR (NAAT),0,Lower Respiratory Tract (Lung)
+SARS-COV-2 (COVID-19) QUALITATIVE PCR (NAAT),0,Lower Respiratory Tract (Lung)
+"SARS-COV-2 (COVID-19), INFLUENZA & RSV PCR (NAAT)",0,Lower Respiratory Tract (Lung)
 "CRYPTOCOCCAL AG, CSF",0,Meninges and CSF
 CSF LYME PCR,0,Meninges and CSF
 "CSF PRION DISEASE (RTQULC, TAU, 14 3 3)(SENDOUT)",0,Meninges and CSF
@@ -259,7 +238,6 @@ CSF VDRL SCREEN (SENDOUT),0,Meninges and CSF
 "VDRL, CSF, QUANT.",0,Meninges and CSF
 VZV PCR CSF,0,Meninges and CSF
 "WEST NILE VIRUS AB, IGG AND IGM, CSF",0,Meninges and CSF
-"CULTURE & STAIN, CSF",1,Meninges and CSF
 ACID FAST STAIN,1,Other Unspecified
 "ADENOVIRUS QUALITATIVE PCR, OTHER",0,Other Unspecified
 ANAL PAP W/WO HPV,0,Other Unspecified
@@ -274,6 +252,8 @@ CHLAMYDIAE SPECIES CULTURE,1,Other Unspecified
 "CULTURE & STAIN, FUNGAL, TISSUE",1,Other Unspecified
 "CULTURE & STAIN, QUANT.",1,Other Unspecified
 "CULTURE & STAIN, QUANTITATIVE W/ ANAEROBES",1,Other Unspecified
+"CULTURE, BREAST MILK",1,Other Unspecified
+"CULTURE, FLUOROQUINOLONE-RESISTANT ORGANISM",1,Other Unspecified
 "CULTURE, FUNGAL, MISC.",1,Other Unspecified
 "CULTURE, FUNGAL, NAIL",1,Other Unspecified
 "CULTURE, FUNGAL, QUANT BX",1,Other Unspecified
@@ -300,6 +280,7 @@ MYCOBACTERIUM TB DNA BY PCR (SENDOUT),0,Other Unspecified
 "PARASITE, WORM IDENTIFICATION",0,Other Unspecified
 PARVOVIRUS PCR FLUID,0,Other Unspecified
 REFERRAL IDENTIFICATION,1,Other Unspecified
+SINGLE AGENT SCREEN,1,Other Unspecified
 STAPH AUREUS (MSSA-MRSA) COMPLETE,0,Other Unspecified
 "SUSCEPTIBILITY PANEL, YEAST",0,Other Unspecified
 "SUSCEPTIBILITY, AEROBIC, MIC",0,Other Unspecified
@@ -312,22 +293,7 @@ TOXOPLASMA GONDII PCR FLUID,0,Other Unspecified
 "VARICELLA-ZOSTER VIRUS, PCR, VARIES",0,Other Unspecified
 "VIRAL CULTURE, NON-RESPIRATORY",0,Other Unspecified
 VRE SCREEN FOR INFECTION CONTROL,0,Other Unspecified
-"CULTURE & STAIN, BIOPSY",1,Other Unspecified
-"CULTURE, YERSINIA SCREEN ONLY, BIOPSY",1,Other Unspecified
-"CULTURE & STAIN, ANAEROBE/AEROBE",1,Other Unspecified
-"CULTURE & STAIN, QUANTITATIVE W/ ANAEROBES",1,Other Unspecified
-"CULTURE & STAIN, FLUID",1,Other Unspecified
-"CULTURE, MISC. BACTERIAL",1,Other Unspecified
-"CULTURE, MISC. W/O STAIN",1,Other Unspecified
-"CULTURE & STAIN, QUANT.",1,Other Unspecified
-"CULTURE, QUANTITATIVE",1,Other Unspecified
-SINGLE AGENT SCREEN,1,Other Unspecified
-"CULTURE, FLUOROQUINOLONE-RESISTANT ORGANISM",1,Other Unspecified
-REFERRAL IDENTIFICATION,1,Other Unspecified
-"CULTURE, BREAST MILK",1,Other Unspecified
 "CULTURE & STAIN, DIALYSIS FLUID",1,Peritoneum
-"CULTURE & STAIN, DIALYSIS FLUID",1,Peritoneum
-"CULTURE & STAIN, PLEURAL FLUID",1,"Pleural Cavity, Pleural Fluid"
 "CULTURE & STAIN, PLEURAL FLUID",1,"Pleural Cavity, Pleural Fluid"
 "CULTURE, DERMATOPHYTE",1,Skin Unspecified
 "CULTURE, FUNGAL, SKIN",1,Skin Unspecified
@@ -335,6 +301,7 @@ POCT PPD TEST,0,Skin Unspecified
 POCT SCABIES SLIDES REVIEW,0,Skin Unspecified
 POCT TZANCK SMEAR,1,Skin Unspecified
 "CHLAMYDIA/GC AMPLIFIED PROBE, OROPHARYNGEAL",0,"Tongue, Oral Cavity, and Oro-Pharynx"
+"CULTURE, BETA STREP SCREEN, THROAT",1,"Tongue, Oral Cavity, and Oro-Pharynx"
 "CULTURE, FUNGAL, OROPHARYNGEAL",1,"Tongue, Oral Cavity, and Oro-Pharynx"
 "CULTURE, THROAT",1,"Tongue, Oral Cavity, and Oro-Pharynx"
 GP. A STREP BY PCR,0,"Tongue, Oral Cavity, and Oro-Pharynx"
@@ -343,54 +310,9 @@ POC GROUP A STREP PCR,0,"Tongue, Oral Cavity, and Oro-Pharynx"
 POCT GP A STREP PCR,0,"Tongue, Oral Cavity, and Oro-Pharynx"
 POCT QUICKVUE IN-LINE STREP A,0,"Tongue, Oral Cavity, and Oro-Pharynx"
 POCT RAPID STREP,0,"Tongue, Oral Cavity, and Oro-Pharynx"
-"CULTURE, BETA STREP SCREEN, THROAT",1,"Tongue, Oral Cavity, and Oro-Pharynx"
 "CULTURE, NASAL",1,Upper Airway and Nasopharynx
-INFLUENZA A/B & RSV PCR,0,Lower Respiratory Tract (Lung)
-INFLUENZA A&B VIRAL RNA,0,Lower Respiratory Tract (Lung)
 METHICILLIN RESISTANT STAPH AUREUS SCREEN,0,Upper Airway and Nasopharynx
 MRSA BY PCR,0,Upper Airway and Nasopharynx
 MRSA SCREEN FOR ICU,0,Upper Airway and Nasopharynx
-"POC COVID-19, INFLUENZA, RSV PCR",0,Lower Respiratory Tract (Lung)
-"POCT COVID-19, INFLUENZA, RSV PCR",0,Lower Respiratory Tract (Lung)
-POCT INFLUENZA SWAB,0,Lower Respiratory Tract (Lung)
-SARS-COV-2 (COVID-19) AND INFLUENZA PCR (NAAT),0,Lower Respiratory Tract (Lung)
-SARS-COV-2 (COVID-19) QUALITATIVE PCR (NAAT),0,Lower Respiratory Tract (Lung)
-"SARS-COV-2 (COVID-19), INFLUENZA & RSV PCR (NAAT)",0,Lower Respiratory Tract (Lung)
-"CULTURE, NASAL",1,Upper Airway and Nasopharynx
 "CULTURE & STAIN, WOUND DRAINAGE",1,Woundsite
 "CULTURE, WOUND",1,Woundsite
-"CULTURE & STAIN, WOUND DRAINAGE",1,woundsite
-"CULTURE, WOUND",1,woundsite
-"CULTURE & STAIN, RESPIRATORY",1,Lower Respiratory Tract (Lung)
-"CULTURE, CF RESPIRATORY",1,Lower Respiratory Tract (Lung)
-"CULTURE, QUANTITATIVE RESPIRATORY",1,Lower Respiratory Tract (Lung)
-"CULTURE & STAIN, LOWER RESPIRATORY",1,Lower Respiratory Tract (Lung)
-"CULTURE, CF QUANTITATIVE RESPIRATORY",1,Lower Respiratory Tract (Lung)
-"CULTURE, RESPIRATORY, REFLEXIVE FROM GRAM STAIN",1,Lower Respiratory Tract (Lung)
-"ASPERGILLUS ANTIGEN, BAL",0,Lower Respiratory Tract (Lung)
-"CULTURE & STAIN, LOWER RESPIRATORY",1,Lower Respiratory Tract (Lung)
-"CULTURE, CF QUANTITATIVE RESPIRATORY",1,Lower Respiratory Tract (Lung)
-"CULTURE, QUANTITATIVE RESPIRATORY",1,Lower Respiratory Tract (Lung)
-PNEUMOCYSTIS ASSAY,0,Lower Respiratory Tract (Lung)
-"CULTURE & STAIN, FUNGAL, RESPIRATORY",1,Lower Respiratory Tract (Lung)
-"CULTURE & STAIN, RESPIRATORY",1,Lower Respiratory Tract (Lung)
-"CULTURE, AFB, CF RESPIRATORY",1,Lower Respiratory Tract (Lung)
-"CULTURE, CF RESPIRATORY",1,Lower Respiratory Tract (Lung)
-"CULTURE, RESPIRATORY, REFLEXIVE FROM GRAM STAIN",1,Lower Respiratory Tract (Lung)
-GRAM STAIN ONLY,1,Lower Respiratory Tract (Lung)
-"HP CULTURE & STAIN, RESPIRATORY",1,Lower Respiratory Tract (Lung)
-"ING CULTURE & STAIN, RESPIRATORY",1,Lower Respiratory Tract (Lung)
-RESPIRATORY PANEL,0,Lower Respiratory Tract (Lung)
-RESPIRATORY PANEL PCR (NAAT),0,Lower Respiratory Tract (Lung)
-INFLUENZA A/B & RSV PCR,0,Lower Respiratory Tract (Lung)
-INFLUENZA A&B VIRAL RNA,0,Lower Respiratory Tract (Lung)
-"POC COVID-19, INFLUENZA, RSV PCR",0,Lower Respiratory Tract (Lung)
-"POCT COVID-19, INFLUENZA, RSV PCR",0,Lower Respiratory Tract (Lung)
-POCT INFLUENZA SWAB,0,Lower Respiratory Tract (Lung)
-SARS-COV-2 (COVID-19) AND INFLUENZA PCR (NAAT),0,Lower Respiratory Tract (Lung)
-SARS-COV-2 (COVID-19) QUALITATIVE PCR (NAAT),0,Lower Respiratory Tract (Lung)
-"SARS-COV-2 (COVID-19), INFLUENZA & RSV PCR (NAAT)",0,Lower Respiratory Tract (Lung)
-METHICILLIN RESISTANT STAPH AUREUS SCREEN,0,Upper Airway and Nasopharynx
-MRSA BY PCR,0,Upper Airway and Nasopharynx
-MRSA SCREEN FOR ICU,0,Upper Airway and Nasopharynx
-"CULTURE, NASAL",1,Upper Airway and Nasopharynx
