@@ -9,7 +9,7 @@ NUR RS IABP MAP (MONITOR),map,not specified
 NUR RS ARTERIAL LINE MEAN PRESSURE 2,map,arterial
 RESPIRATIONS,respiratory_rate,not specified
 PULSE OXIMETRY,spO2,not specified
-TEMPERATURE,temp,not specified
-NUR RS CORE TEMPERATURE MEASUREMENT,temp,core
+TEMPERATURE,temp_c,not specified
+NUR RS CORE TEMPERATURE MEASUREMENT,temp_c,core
 WEIGHT/SCALE,weight_kg,not specified
 HEIGHT,height_inch,not specified
