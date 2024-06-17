@@ -3,9 +3,10 @@ install.packages("radiant.data")
 library(radiant.data)
 install.packages("remotes")
 library(flipTime)
+library(here)
 
 ###################### User Input. ############################################
-tables_location <- '/Users/kavenchhikara/Desktop/CLIF-1.0-UCMC'
+tables_location <- here()
 site <-'UCMC'
 file_type <- '.parquet'
 
@@ -29,7 +30,7 @@ read_data <- function(file_path) {
 }
 
 #Load ICU Cohort and other files
-icu_cohort <- read_data(paste0(tables_location, "/projects/temp_trajectory/ICU_cohort.csv"))
+icu_cohort <- read_data(paste0(tables_location, "/projects/Mortality_model/output/ICU_cohort.csv"))
 # list of encounter ids from the icu cohort to right join on other clif tables
 keep_cohort <- icu_cohort %>%  select(encounter_id) %>%  distinct()
 
@@ -53,7 +54,7 @@ ventilator <- read_data(paste0(tables_location, "/rclif/clif_respiratory_support
   right_join(keep_cohort)
 
 ventilator <- left_join(ventilator, encounter, by = "encounter_id")%>%
-  filter(device_category =="Vent")%>% # not required; done under cohort identification
+  filter(device_category =="Vent")%>% 
   select(encounter_id)%>%distinct()%>%deframe()
 
 #load Locations and demographics
@@ -73,7 +74,7 @@ mergeddemographics <- encounter %>%
 
 #filter vitals to vital_name temp_c
 vitals<- vitals%>%
-  filter(vital_name == "temp_c")
+  filter(vital_category == "temp_c")
 
 #Merging datasets
 merged_data <- merge(vitals, location, by = "encounter_id")
@@ -106,7 +107,7 @@ mean_r = function(v)
 # Data preprocessing & algorithm creation for temperature trajectories
 
 temp_algorithm <- merged_data %>%
-  filter(vital_name == "temp_c") %>%
+  filter(vital_category == "temp_c") %>%
   rename(temperature = vital_value) %>%
   mutate(temperature = ifelse(temperature < 32 | temperature > 44, NA, temperature)) %>%
   filter(!is.na(temperature)) %>%
@@ -332,7 +333,7 @@ df_alg <- df_alg %>%
   mutate(lower = as.numeric(lower))  %>%
   mutate(outcome = factor(outcome, levels = c("Mechanical ventilation",
                                               "Mortality")))%>%
-  filter(Features=="HSR"|Features=="HFR"|Features=="HT")
+ filter(Features=="HSR"|Features=="HFR"|Features=="HT")
 
 # Prepare data for plotting
 graph_alg = df_alg%>%
@@ -361,7 +362,7 @@ graph_alg <- df_alg %>%
          lower = as.numeric(lower))
 
 # Plot
-ggplot(graph_alg, aes(x = order, y = `Odds ratio`, color = order)) + 
+or_plot <- ggplot(graph_alg, aes(x = order, y = `Odds ratio`, color = order)) + 
   geom_point(position = position_dodge(width = 0.5), size = 3) + 
   geom_errorbar(aes(ymin = lower, ymax = upper), width = 0,
                 position = position_dodge(width = 0.5)) +
