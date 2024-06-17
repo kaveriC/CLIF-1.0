@@ -32,8 +32,8 @@ ph_arterial,6,10
 ph_venous,5,10
 albumin,0,15
 platelet_count,0,2000
-potassium,0,1000
-procalcitonin,0,4
+potassium,0,15
+procalcitonin,0,1000
 pt,1,200
 ptt,1,200
 sao2,0,100
