@@ -1,8 +1,7 @@
 ---
-title: "Respiratory support QC report"
+title: "Respiratory support table ETL QC report"
 format: html
 editor: visual
-author: Will parker
 ---
 
 # Introduction
