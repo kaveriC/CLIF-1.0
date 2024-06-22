@@ -32,6 +32,6 @@ We have constructed a minimum set of Common ICU Data Elements (mCIDE) for a CLIF
 | SIMV                             | Synchronized intermittent mandatory ventilation. delivery of `tidal_volume_set` during inspiration at a minimum `resp_rate_set`, breaths above the set rate are supported with `pressure_support_set`. | "SIMV - PC PS"                 |
 | Other                            | Not well defined by the above, e.g. Neurally Adjusted Ventilatory Assist                                                                                                       | "NAVA"                         |
 
-`*_name` variables are source EHR strings that can be retained in CLIF for
+`*_name` variables are source EHR strings that can be retained in CLIF for research questions that may require them
 
 Full description of each CIDE is available in the [CLIF data dictionary](https://kaveric.github.io/clif-consortium/data-dictionary.html). This folder contains `*_name` -\> `*_category` mapping tables designed to help sites ETL into CLIF and meet the minimum CIDE requirements.
