@@ -117,7 +117,7 @@ To-Do: Calibration Plot by site
 decision_curve <- function(df){
   df %>%
     mutate(n = TN + FP + FN + TP,
-           net_benefit = (TP+ FP*(Thr_Value/(1-Thr_Value)))/n) %>%
+           net_benefit = (TP -  FP*(Thr_Value/(1-Thr_Value)))/n) %>%
     ggplot(aes(x = Thr_Value, y = net_benefit, color = Site_Name)) +
     geom_line(size = 1) + 
     geom_vline(aes(xintercept =  0.19, 
