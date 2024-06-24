@@ -58,7 +58,6 @@ for (i in seq_along(clif_table_filenames)) {
 
 # Sample random hospitalizations and sort
 
-
 ```{r}
 n_sample <- 1000
 sample_hospitalizations <- clif_encounter_demographics_dispo %>%
@@ -66,6 +65,7 @@ sample_hospitalizations <- clif_encounter_demographics_dispo %>%
   sample(size = n_sample)
 
 ```
+
 `clif_vitals`is typically an enormous dataset, so we randomly sample a `r n_sample` hospitalizations to make this QC check faster
 
 ```{r}
@@ -78,6 +78,7 @@ clif_vitals_sample <- clif_vitals %>%
 ## Load in and run general outlier handling script
 
 ## Box plots of each vital by measurement site
+
 ```{r}
 clif_vitals_sample %>%
   ggplot(aes(x = meas_site_name, y =vital_value)) +
@@ -85,10 +86,10 @@ clif_vitals_sample %>%
 ```
 
 ## Temperature QC
+
 ```{r}
 clif_vitals %>%
   filter(vital_category == "temp_c") %>%
   pull(vital_value) %>%
   summary()
 ```
-

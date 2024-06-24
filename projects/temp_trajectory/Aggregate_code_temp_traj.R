@@ -63,7 +63,7 @@ ucmc_perhour<- read_csv("C:/Users/manour/Documents/GitHub/CLIF-1.0/projects/temp
 rush_perhour<- read_csv("C:/Users/manour/Documents/GitHub/CLIF-1.0/projects/temp_trajectory/Sites/table_temp_traj_cohort_RUSH.csv")
 ohsu_perhour<- read_csv("C:/Users/manour/Documents/GitHub/CLIF-1.0/projects/temp_trajectory/Sites/table_temp_traj_cohort_ohsu.csv")
 
-
+# Need to add Michigan to this mapping
 eu_perhour$Site <- 'Emory University'
 umn_perhour$Site <- 'University of Minnesota'
 nw_perhour$Site <- 'Northwestern University'
@@ -72,9 +72,18 @@ ucmc_perhour$Site <- 'University of Chicago'
 ohsu_perhour$Site <- 'Oregon Health & Science University'
 rush_perhour$Site<- 'Rush University'
 
-# Combine the datasets
-combined_perhour_data <- bind_rows(nw_perhour, umn_perhour,eu_perhour, jh_perhour, ucmc_perhour, rush_perhour, ohsu_perhour)%>%
-  rename("Trajectory"="group")
+# Combine the datasets 
+combined_perhour_data <- bind_rows(nw_perhour, umn_perhour,eu_perhour, 
+                                   jh_perhour, ucmc_perhour, rush_perhour, ohsu_perhour)%>%
+  rename("Trajectory"="group") %>%
+  mutate(Site = factor(Site, levels = c("Emory University",
+                                        "Johns Hopkins University",
+                                        "Northwestern University",
+                                        "Oregon Health & Science University",
+                                        "University of Chicago",
+                                        "University of Michigan",
+                                        "Rush University",
+                                        "University of Minnesota")))
 
 #### Average Temp per Hour Plot Across Sites
 ggplot(combined_perhour_data, aes(x = hour, y = avg_temperature, color = Trajectory, linetype = Site, group = interaction(Trajectory, Site))) +
