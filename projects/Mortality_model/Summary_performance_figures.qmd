@@ -1,0 +1,134 @@
+---
+title: "summary figures for ICU prediction model"
+format: html
+editor: visual
+---
+
+```{r}
+library(knitr)
+library(here)
+library(arrow)
+library(tidyverse)
+library(pROC)
+```
+
+```{r}
+# Function to read in CSV files and combine them into a single tibble
+read_and_combine_tibbles <- function() {
+  # List all files in the directory with the specific prefix
+  files <- list.files(pattern = "^Top_N_percentile_PPV_.*\\.csv$", full.names = TRUE)
+  
+  # Initialize an empty list to store data
+  data_list <- list()
+  
+  # Loop through each file
+  for (file in files) {
+    # Read the CSV file into a tibble
+    tibble_data <- read_csv(file)
+    
+    # Add the tibble to the list
+    data_list <- append(data_list, list(tibble_data))
+  }
+  
+  # Combine all tibbles into a single tibble
+  combined_data <- bind_rows(data_list)
+  
+  return(combined_data)
+}
+
+
+combined_tibble <- read_and_combine_tibbles()
+
+
+site_full_names <- c(
+  "Emory" = "Emory University",
+  "JHU" = "Johns Hopkins University",
+  "NU" = "Northwestern University",
+  "OHSU" = "Oregon Health & Science University",
+  "UCMC" = "University of Chicago",
+  "UMich" = "University of Michigan",
+  "Rush" = "'Rush University",
+  "UMN" = "University of Minnesota"
+)
+
+combined_tibble$Site_Name <-site_full_names[combined_tibble$Site_Name]
+
+combined_tibble <- combined_tibble %>%
+  mutate(Site_Name = factor(Site_Name, 
+                            levels = c("Emory University",
+  "Johns Hopkins University",
+  "Northwestern University",
+  "Oregon Health & Science University",
+  "University of Chicago",
+  "University of Michigan",
+  "Rush University",
+  "University of Minnesota"
+  )))
+
+combined_tibble %>%
+  count(Site_Name)
+```
+```{r}
+write_csv(combined_tibble, "combined_threshold_performance.csv")
+```
+
+# Discrimination
+
+```{r}
+
+# Define a color mapping for each site
+color_mapping <- c(
+  "Emory University" = "#012169",          # Emory Blue
+  "Johns Hopkins University" = "#68ACE5",  # Johns Hopkins spirit blue
+  "Northwestern University" = "#4E2A84",   # Northwestern Purple
+  "Oregon Health & Science University" = "#55b244",  # OHSU Teal
+  "University of Chicago" = "#800000",      # UChicago Maroon
+  "University of Michigan" = "#FFCB05",    # Michigan Maize
+  "Rush University" = "#004C54",   #Rush Green
+  "University of Minnesota" = "#7A0019" # Minnesota Maroon
+  
+)
+
+
+# Plot the ROC curves
+combined_tibble %>%
+  mutate(FPR = 1- Specificity,
+         TPR = Sensitivity) %>%
+ggplot(aes(x = FPR, y = TPR, 
+           color = Site_Name, 
+           linetype = Site_Name)) +
+  geom_line(size = 1) +
+  scale_color_manual(values = color_mapping) +
+  labs(title = "Combined AUROC Plot by Site",
+       x = "False Positive Rate",
+       y = "True Positive Rate",
+       color = "Site",
+       linetype = "Site") +
+  theme_minimal()
+```
+
+# Calibration
+
+To-Do: Calibration Plot by site
+
+# Clinical Utility
+
+```{r}
+decision_curve <- function(df){
+  df %>%
+    mutate(n = TN + FP + FN + TP,
+           net_benefit = (TP+ FP*(Thr_Value/(1-Thr_Value)))/n) %>%
+    ggplot(aes(x = Thr_Value, y = net_benefit, color = Site_Name)) +
+    geom_line(size = 1) + 
+    geom_vline(aes(xintercept =  0.19, 
+                                 linetype = "threshold")) +
+    scale_color_manual(values = color_mapping) + 
+    scale_linetype_manual(values = "dashed") +
+    theme_minimal() + 
+    labs(linetype = "", color = "Site",
+                                   x ="Threshold Probability",
+                                   y = "Net Benefit")
+}
+
+decision_curve(combined_tibble)
+```
