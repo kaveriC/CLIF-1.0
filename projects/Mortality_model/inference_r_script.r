@@ -667,3 +667,40 @@ row <- data.frame(Thr_Value = thr,
 results <- rbind(results, row)
 write.csv(head(results,1), file =  paste0("output/Top_N_percentile_atRushThr_", site, ".csv"), row.names = FALSE)
 head(results,1)
+
+
+## Calibration plot
+
+
+# Function to create calibration plot data
+create_calibration_data <- function(y_test, y_pred_proba, n_bins = 10) {
+  # Create a data frame
+  df <- data.frame(y_test = y_test, y_pred_proba = y_pred_proba)
+  
+  # Create bins
+  df$bin <- cut(df$y_pred_proba, breaks = n_bins, labels = FALSE, include.lowest = TRUE)
+  
+  # Calculate mean predicted probability and actual probability in each bin
+  calibration_data <- df %>%
+    group_by(bin) %>%
+    summarise(
+      predicted_prob = mean(y_pred_proba),
+      actual_prob = (1-mean(y_test))*-1,
+       site = site
+    )
+  
+  return(calibration_data)
+}
+
+# Plot calibration plot
+ggplot(calibration_data, aes(x = predicted_prob, y = actual_prob)) +
+  geom_point() +
+  geom_smooth(method = "loess", se = FALSE) +
+  labs(x = "Predicted Probability", y = "Actual Probability") +
+  ggtitle("Calibration Plot") +
+  theme_minimal()
+
+calibration_data <- create_calibration_data(as.numeric(y_test), y_pred_proba)
+write.csv(calibration_data, file =  paste0("output/calibration_data_", site, ".csv"), row.names = FALSE)
+
+calibration_data
