@@ -746,7 +746,7 @@ create_calibration_data <- function(y_test, y_pred_proba, n_bins = 10) {
     group_by(bin) %>%
     summarise(
       predicted_prob = mean(y_pred_proba),
-      actual_prob = (1-mean(y_test))*-1,
+      actual_prob = mean(y_test),
       n = n(),
       .groups = 'drop'
     ) %>%
@@ -759,9 +759,6 @@ create_calibration_data <- function(y_test, y_pred_proba, n_bins = 10) {
   return(calibration_data)
 }
 
-# Example usage
-# y_test and y_pred_proba should be provided
-# site should be defined
 
 # Create calibration data with confidence intervals
 calibration_data <- create_calibration_data(as.numeric(y_test), y_pred_proba)
@@ -779,3 +776,47 @@ ggplot(calibration_data, aes(x = predicted_prob, y = actual_prob)) +
   theme_minimal()
 
 calibration_data
+
+
+## PR Curve
+
+
+# Ensure y_test is a factor with levels control = 0, case = 1
+y_test <- factor(y_test, levels = c(0, 1))
+
+# Compute ROC curve and AUC
+roc_obj <- roc(y_test, y_pred_proba, levels = c(0, 1), direction = "<")
+roc_auc <- auc(roc_obj)
+
+# Compute Precision-Recall curve and AUC
+pr_obj <- pr.curve(scores.class0 = y_pred_proba, weights.class0 = as.numeric(as.character(y_test)), curve = TRUE)
+pr_auc <- pr_obj$auc.integral
+
+# Ensure all arrays have the same length by matching dimensions correctly
+roc_thresholds <- roc_obj$thresholds
+if (length(roc_obj$sensitivities) != length(roc_thresholds)) {
+  roc_thresholds <- c(roc_thresholds, 1)
+}
+
+# Save values to CSV
+roc_data <- data.frame(fpr = 1 - roc_obj$specificities, 
+                       tpr = roc_obj$sensitivities, 
+                       roc_thresholds = roc_thresholds)
+pr_data <- data.frame(precision = pr_obj$curve[,2], 
+                      recall = pr_obj$curve[,1], 
+                      pr_thresholds = pr_obj$curve[,3])
+
+write.csv(roc_data, file = paste0('output/roc_curve_data_', site, '.csv'), row.names = FALSE)
+write.csv(pr_data, file = paste0('output/pr_curve_data_', site, '.csv'), row.names = FALSE)
+
+# Plot ROC curve and PR curve in one image
+par(mfrow = c(1, 2))
+
+# Plot ROC curve
+plot(roc_obj, col = 'blue', lwd = 2, main = 'Receiver Operating Characteristic (ROC) Curve', xlab = 'False Positive Rate', ylab = 'True Positive Rate')
+abline(a = 0, b = 1, col = 'gray', lty = 2)
+legend('bottomright', legend = paste('ROC curve (area =', round(roc_auc, 2), ')'), col = 'blue', lwd = 2)
+
+# Plot PR curve
+plot(pr_obj$curve[,1], pr_obj$curve[,2], type = 'l', col = 'blue', lwd = 2, xlab = 'Recall', ylab = 'Precision', main = 'Precision-Recall (PR) Curve')
+legend('bottomleft', legend = paste('PR curve (area =', round(pr_auc, 2), ')'), col = 'blue', lwd = 2)
