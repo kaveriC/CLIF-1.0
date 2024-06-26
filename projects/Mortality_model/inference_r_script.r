@@ -488,6 +488,67 @@ write.csv(results_metric, sprintf("output/result_metrics_%s.csv", site), row.nam
 
 # Print the results
 results_metric
+
+#-----
+# Ensure y_test is numeric
+y_test <- as.numeric(as.character(y_test))
+predicted_probabilities <- as.numeric(as.character(predicted_probabilities))
+
+# Function to calculate metrics
+calculate_metrics <- function(predicted_probabilities, predicted_classes, y_test) {
+  conf_matrix <- confusionMatrix(as.factor(predicted_classes), as.factor(y_test))
+  
+  accuracy <- conf_matrix$overall['Accuracy']
+  roc_auc <- pROC::auc(pROC::roc(y_test, predicted_probabilities))
+  
+  tp <- sum(predicted_classes == 1 & y_test == 1, na.rm = TRUE)
+  fp <- sum(predicted_classes == 1 & y_test == 0, na.rm = TRUE)
+  fn <- sum(predicted_classes == 0 & y_test == 1, na.rm = TRUE)
+  tn <- sum(predicted_classes == 0 & y_test == 0, na.rm = TRUE)
+  
+  recall <- ifelse((tp + fn) > 0, tp / (tp + fn), 0)
+  precision <- ifelse((tp + fp) > 0, tp / (tp + fp), 0)
+  brier_score <- mean((predicted_probabilities - y_test)^2, na.rm = TRUE)
+  
+  return(c(accuracy, recall, precision, roc_auc, brier_score))
+}
+
+# Bootstrapping to calculate 95% confidence intervals
+set.seed(123)
+n_iterations <- 1000
+metrics <- matrix(NA, ncol = 5, nrow = n_iterations)
+colnames(metrics) <- c("Accuracy", "Recall", "Precision", "ROC AUC", "Brier Score Loss")
+
+for (i in 1:n_iterations) {
+  sample_indices <- sample(1:length(y_test), replace = TRUE)
+  y_test_sample <- y_test[sample_indices]
+  predicted_probabilities_sample <- predicted_probabilities[sample_indices]
+  predicted_classes_sample <- as.integer(predicted_probabilities_sample >= 0.190)
+  
+  metrics[i, ] <- calculate_metrics(predicted_probabilities_sample, predicted_classes_sample, y_test_sample)
+}
+
+# Calculate mean and 95% confidence intervals
+mean_metrics <- apply(metrics, 2, mean, na.rm = TRUE)
+ci_lower <- apply(metrics, 2, function(x) quantile(x, 0.025, na.rm = TRUE))
+ci_upper <- apply(metrics, 2, function(x) quantile(x, 0.975, na.rm = TRUE))
+
+# Combine results into a data frame
+results_metric <- data.frame(
+  Metric = c('Accuracy', 'Recall', 'Precision', 'ROC AUC', 'Brier Score Loss'),
+  Value = mean_metrics,
+  CI_Lower = ci_lower,
+  CI_Upper = ci_upper,
+  SiteName = rep(site, 5)
+)
+
+# Export to CSV
+write.csv(results_metric, sprintf("output/result_metrics_2_%s.csv", site), row.names = FALSE)
+#----
+
+# Print the results
+print(results_metric)
+
 #### model fairness test accross 'race', 'ethnicity', 'sex'
 
 calculate_metrics <- function(data, true_col, pred_prob_col, subgroup_cols, threshold = 0.190) {
@@ -672,7 +733,7 @@ head(results,1)
 ## Calibration plot
 
 
-# Function to create calibration plot data
+# Function to create calibration plot data with confidence intervals
 create_calibration_data <- function(y_test, y_pred_proba, n_bins = 10) {
   # Create a data frame
   df <- data.frame(y_test = y_test, y_pred_proba = y_pred_proba)
@@ -680,27 +741,41 @@ create_calibration_data <- function(y_test, y_pred_proba, n_bins = 10) {
   # Create bins
   df$bin <- cut(df$y_pred_proba, breaks = n_bins, labels = FALSE, include.lowest = TRUE)
   
-  # Calculate mean predicted probability and actual probability in each bin
+  # Calculate mean predicted probability, actual probability, and confidence intervals in each bin
   calibration_data <- df %>%
     group_by(bin) %>%
     summarise(
       predicted_prob = mean(y_pred_proba),
       actual_prob = (1-mean(y_test))*-1,
-       site = site
+      n = n(),
+      .groups = 'drop'
+    ) %>%
+    mutate(
+      se = sqrt((actual_prob * (1 - actual_prob)) / n),
+      lower_ci = actual_prob - 1.96 * se,
+      upper_ci = actual_prob + 1.96 * se
     )
   
   return(calibration_data)
 }
 
-# Plot calibration plot
+# Example usage
+# y_test and y_pred_proba should be provided
+# site should be defined
+
+# Create calibration data with confidence intervals
+calibration_data <- create_calibration_data(as.numeric(y_test), y_pred_proba)
+
+# Write the calibration data to a CSV file
+write.csv(calibration_data, file = paste0("output/calibration_data_", site, ".csv"), row.names = FALSE)
+
+# Plot calibration plot with confidence intervals
 ggplot(calibration_data, aes(x = predicted_prob, y = actual_prob)) +
   geom_point() +
+  geom_errorbar(aes(ymin = lower_ci, ymax = upper_ci), width = 0.02) +
   geom_smooth(method = "loess", se = FALSE) +
   labs(x = "Predicted Probability", y = "Actual Probability") +
-  ggtitle("Calibration Plot") +
+  ggtitle("Calibration Plot with Confidence Intervals") +
   theme_minimal()
-
-calibration_data <- create_calibration_data(as.numeric(y_test), y_pred_proba)
-write.csv(calibration_data, file =  paste0("output/calibration_data_", site, ".csv"), row.names = FALSE)
 
 calibration_data
