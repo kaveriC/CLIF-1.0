@@ -71,11 +71,9 @@ combined_tibble <- combined_tibble %>%
 write_csv(combined_tibble, "combined_threshold_performance.csv")
 ```
 
-# Discrimination
 
+# Paramters
 ```{r}
-
-# Define a color mapping for each site
 color_mapping <- c(
   "Emory University" = "#012169",          # Emory Blue
   "Johns Hopkins University" = "#68ACE5",  # Johns Hopkins spirit blue
@@ -89,7 +87,28 @@ color_mapping <- c(
 )
 
 
-# Plot the ROC curves
+```
+
+
+# Discrimination
+
+## Performance at the decision threshold
+```{r}
+threshold_value <- 0.19
+
+intersection_points <- combined_tibble %>%
+    group_by(Site_Name) %>%
+    filter(abs(Thr_Value - threshold_value) == min(abs(Thr_Value - threshold_value))) %>%
+    ungroup() %>%
+    mutate(FPR = 1- Specificity,
+         TPR = Sensitivity)
+
+intersection_points %>%
+  kable()
+```
+
+```{r}
+# Plot the ROC curves for each site
 combined_tibble %>%
   mutate(FPR = 1- Specificity,
          TPR = Sensitivity) %>%
@@ -105,7 +124,30 @@ ggplot(aes(x = FPR, y = TPR,
        linetype = "Site") +
   theme_minimal()
 
-ggsave("combined_roc_plot.pdf")
+ggsave("combined_roc_plot_no_threshold_points.pdf")
+```
+
+
+```{r}
+# Plot the ROC curves for each site
+combined_tibble %>%
+  mutate(FPR = 1- Specificity,
+         TPR = Sensitivity) %>%
+ggplot(aes(x = FPR, y = TPR, 
+           color = Site_Name, 
+           linetype = Site_Name)) +
+  geom_line(size = 1) +
+  geom_point(data = intersection_points, 
+             aes(x = FPR, y = TPR, color = Site_Name), size = 3, alpha = 0.5) +
+  scale_color_manual(values = color_mapping) +
+  labs(title = "Combined AUROC Plot by Site",
+       x = "False Positive Rate",
+       y = "True Positive Rate",
+       color = "Site",
+       linetype = "Site") +
+  theme_minimal()
+
+ggsave("combined_roc_plot_w_threshold_dots.pdf")
 ```
 
 # Calibration
@@ -119,7 +161,6 @@ To-Do: Calibration Plot by site
 #create alpha mapping that is 0.5 for the threshold line and 1 for the rest of the lines
 alpha_mapping <- c(0.4, 1)
 
-threshold_value <- 0.19
 
 decision_curve <- function(df){
   df %>%
@@ -158,7 +199,8 @@ decision_curve_w_insterction_points <- function(df){
   df %>%
     ggplot(aes(x = Thr_Value, y = net_benefit, color = Site_Name, linetype = Site_Name)) +
     geom_line(size = 1, alpha = 1) + 
-    geom_vline(aes(xintercept = threshold_value, alpha = "threshold"), color = "red", size = 0.5, linetype = "dashed") +
+    geom_vline(aes(xintercept = threshold_value, alpha = "threshold"), 
+               color = "red", size = 0.5, linetype = "dashed") +
     geom_point(data = intersection_points, 
                aes(x = Thr_Value, y = net_benefit, color = Site_Name), 
                size = 2, alpha = 0.7) +
