@@ -115,23 +115,64 @@ To-Do: Calibration Plot by site
 # Clinical Utility
 
 ```{r}
+
+#create alpha mapping that is 0.5 for the threshold line and 1 for the rest of the lines
+alpha_mapping <- c(0.4, 1)
+
+threshold_value <- 0.19
+
 decision_curve <- function(df){
   df %>%
     mutate(n = TN + FP + FN + TP,
            net_benefit = (TP -  FP*(Thr_Value/(1-Thr_Value)))/n) %>%
-    ggplot(aes(x = Thr_Value, y = net_benefit, color = Site_Name)) +
+    ggplot(aes(x = Thr_Value, y = net_benefit, 
+               color = Site_Name, linetype = Site_Name)) +
+    geom_vline(aes(xintercept =  threshold_value, 
+                                 alpha = "threshold",
+                   ), color = "red", size =0.5, linetype = "dashed") +
     geom_line(size = 1) + 
-    geom_vline(aes(xintercept =  0.19, 
-                                 linetype = "threshold")) +
     scale_color_manual(values = color_mapping) + 
-    scale_linetype_manual(values = "dashed") +
     theme_minimal() + 
-    labs(linetype = "", color = "Site",
-                                   x ="Threshold Probability",
-                                   y = "Net Benefit")
+    scale_alpha_manual(values = alpha_mapping) +
+    labs(linetype = "", color = "Site", linetype = "Site",
+         x = "Threshold Probability", y = "Net Benefit", alpha = "") +
+    guides(color = guide_legend(title = "Site"), linetype = guide_legend(title = "Site"))
 }
 
 decision_curve(combined_tibble)
 
 ggsave("combined_decision_curve.pdf")
 ```
+```{r}
+decision_curve_w_insterction_points <- function(df){
+  df <- df %>%
+    mutate(n = TN + FP + FN + TP,
+           net_benefit = (TP - FP * (Thr_Value / (1 - Thr_Value))) / n)
+  
+  # Find intersection points
+  intersection_points <- df %>%
+    group_by(Site_Name) %>%
+    filter(abs(Thr_Value - threshold_value) == min(abs(Thr_Value - threshold_value))) %>%
+    ungroup()
+
+  df %>%
+    ggplot(aes(x = Thr_Value, y = net_benefit, color = Site_Name, linetype = Site_Name)) +
+    geom_line(size = 1, alpha = 1) + 
+    geom_vline(aes(xintercept = threshold_value, alpha = "threshold"), color = "red", size = 0.5, linetype = "dashed") +
+    geom_point(data = intersection_points, 
+               aes(x = Thr_Value, y = net_benefit, color = Site_Name), 
+               size = 2, alpha = 0.7) +
+    scale_color_manual(values = color_mapping) + 
+    scale_alpha_manual(values = alpha_mapping) +
+    theme_minimal() + 
+    labs(linetype = "", color = "Site", linetype = "Site",
+         x = "Threshold Probability", y = "Net Benefit", alpha = "") +
+    guides(color = guide_legend(title = "Site"), linetype = guide_legend(title = "Site"), alpha = "none")
+}
+
+# Example usage
+decision_curve_w_insterction_points(combined_tibble)
+ggsave("combined_decision_curve_w_points.pdf")
+
+```
+
