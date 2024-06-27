@@ -64,10 +64,9 @@ combined_tibble <- combined_tibble %>%
   "Rush University",
   "University of Minnesota"
   )))
-
-combined_tibble %>%
-  count(Site_Name)
 ```
+
+
 ```{r}
 write_csv(combined_tibble, "combined_threshold_performance.csv")
 ```
@@ -105,6 +104,8 @@ ggplot(aes(x = FPR, y = TPR,
        color = "Site",
        linetype = "Site") +
   theme_minimal()
+
+ggsave("combined_roc_plot.pdf")
 ```
 
 # Calibration
@@ -131,4 +132,6 @@ decision_curve <- function(df){
 }
 
 decision_curve(combined_tibble)
+
+ggsave("combined_decision_curve.pdf")
 ```
