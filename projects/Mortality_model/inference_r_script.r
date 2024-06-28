@@ -1,4 +1,4 @@
-packages <- c("duckdb", "lubridate", "tidyverse", "dplyr", "readr", "arrow", "fst", "lightgbm", "caret", "Metrics", "ROCR", "pROC", "ggplot2", "reshape2")
+packages <- c("duckdb", "lubridate", "tidyverse", "dplyr", "readr", "arrow", "fst", "lightgbm", "caret", "Metrics", "ROCR", "pROC", "ggplot2","PRROC", "reshape2")
 
 install_if_missing <- function(package) {
   if (!require(package, character.only = TRUE)) {
@@ -10,6 +10,7 @@ install_if_missing <- function(package) {
 sapply(packages, install_if_missing)
 
 con <- duckdb::dbConnect(duckdb::duckdb(), dbdir = ":memory:")
+
 tables_location <- "C:/Users/vchaudha/OneDrive - rush.edu/CLIF-1.0-main" 
 site <-'RUSH'
 file_type <- '.csv'
@@ -315,10 +316,7 @@ icu_data <- left_join(icu_data, icu_data_agg, by = "encounter_id") %>%   as.data
 
 rm(icu_data_agg,pivoted_data,labs)
 gc() 
-#write.csv(icu_data, "icu_data.csv", row.names = FALSE)
-# to skip next time
-#icu_data <- read_data(paste0(tables_location, "/rclif/icu_data", file_type))
-### model
+### Model
 dim(icu_data)
 
 model_col <- c('isfemale', 'age', 'min_bmi', 'max_bmi', 'avg_bmi',
@@ -344,7 +342,7 @@ model_col <- c('isfemale', 'age', 'min_bmi', 'max_bmi', 'avg_bmi',
                'total_protein_mean', 'wbc_min', 'wbc_max', 'wbc_mean')
 
 
-model_file_path <- sprintf("%s/projects/Mortality_model/models/lgbm_model_20240529-110556.txt", tables_location)
+model_file_path <- sprintf("%s/projects/Mortality_model/models/lgbm_model_20240628-092136.txt", tables_location)
 
 # Load the model
 model <- lgb.load(model_file_path)
@@ -431,11 +429,11 @@ data_summary_t <- data_summary %>%
 # Save the transposed summary statistics to a CSV file
 write.csv(data_summary_t, sprintf("output/imp_features_gain_stats_%s.csv", site), row.names = FALSE)
 data_summary
-### probablity table
+### Probablity table
 X_test <- as.matrix(icu_data[model_col])
 y_test <- factor(icu_data$isdeathdispo)  
 y_pred_proba <- predict(model, X_test)
-y_pred_class <- as.numeric(y_pred_proba > 0.190)
+y_pred_class <- as.numeric(y_pred_proba > 0.208)
 icu_data$pred_proba <- y_pred_proba
 
 site_label <- y_test
@@ -445,54 +443,11 @@ prob_df_lgbm <- data.frame(site_label, site_proba, site_name)
 # write.csv(prob_df_lgbm, file = paste0("output/Model_probabilities_", site, ".csv"), row.names = FALSE)
 head(prob_df_lgbm)
 # Do Not share this file
-### basic metrics
-# Predict probabilities and binary predictions
-predicted_probabilities <- predict(model, X_test)
-predicted_classes <- as.integer(predicted_probabilities >= 0.190)
+### Metrics
 
-# Generate a confusion matrix
-conf_matrix <- confusionMatrix(as.factor(predicted_classes), as.factor(y_test))
-
-# Extract metrics
-accuracy <- conf_matrix$overall['Accuracy']
-roc_auc <- pROC::auc(pROC::roc(y_test, predicted_probabilities))
-
-# Calculate metrics for each threshold
-predicted_positive <- predict(model, X_test) >= 0.190
-actual_positive <- icu_data$isdeathdispo == 1
-actual_negative <- icu_data$isdeathdispo == 0
-
-tp <- sum(predicted_positive & actual_positive, na.rm = TRUE)
-fp <- sum(predicted_positive & actual_negative, na.rm = TRUE)
-fn <- sum(!predicted_positive & actual_positive, na.rm = TRUE)
-tn <- sum(!predicted_positive & actual_negative, na.rm = TRUE)
-
-recall <- ifelse((tp + fn) > 0, tp / (tp + fn), 0)
-
-precision <- ifelse((tp + fp) > 0, tp / (tp + fp), 0)
-brier_score <- mean((y_pred_proba - y_test)^2)
-
-Metric = c('Accuracy', 'Recall', 'Precision', 'ROC AUC','Brier Score Loss')
-Value = c(accuracy, recall, precision, roc_auc,brier_score)
-SiteName = rep(site,5)  # Change 7 to the number of metrics
-
-# Create a data frame to store the results
-results_metric <- data.frame(
-  Metric ,
-  Value ,
-  SiteName 
-)
-
-# Export to CSV
-write.csv(results_metric, sprintf("output/result_metrics_%s.csv", site), row.names = FALSE)
-
-# Print the results
-results_metric
-
-#-----
 # Ensure y_test is numeric
 y_test <- as.numeric(as.character(y_test))
-predicted_probabilities <- as.numeric(as.character(predicted_probabilities))
+predicted_probabilities <- as.numeric(as.character(y_pred_proba))
 
 # Function to calculate metrics
 calculate_metrics <- function(predicted_probabilities, predicted_classes, y_test) {
@@ -523,7 +478,7 @@ for (i in 1:n_iterations) {
   sample_indices <- sample(1:length(y_test), replace = TRUE)
   y_test_sample <- y_test[sample_indices]
   predicted_probabilities_sample <- predicted_probabilities[sample_indices]
-  predicted_classes_sample <- as.integer(predicted_probabilities_sample >= 0.190)
+  predicted_classes_sample <- as.integer(predicted_probabilities_sample >= 0.208)
   
   metrics[i, ] <- calculate_metrics(predicted_probabilities_sample, predicted_classes_sample, y_test_sample)
 }
@@ -544,14 +499,12 @@ results_metric <- data.frame(
 
 # Export to CSV
 write.csv(results_metric, sprintf("output/result_metrics_2_%s.csv", site), row.names = FALSE)
-#----
 
 # Print the results
-print(results_metric)
-
+results_metric
 #### model fairness test accross 'race', 'ethnicity', 'sex'
 
-calculate_metrics <- function(data, true_col, pred_prob_col, subgroup_cols, threshold = 0.190) {
+calculate_metrics <- function(data, true_col, pred_prob_col, subgroup_cols, threshold = 0.208) {
   results <- list()
   total_count <- nrow(data)
   
@@ -613,7 +566,7 @@ result_df <- calculate_metrics(icu_data, 'isdeathdispo', 'pred_proba', c('race',
 write.csv(result_df, file = paste0("output/fairness_test_", site, ".csv"), row.names = FALSE)
 
 result_df
-### Site Wise thr analysis
+### Site Thr Analysis
 top_n_percentile <- function(target_var, pred_proba, site_name) {
   # Generating thresholds from 99% to 1%
   thr_list <- seq(0.99, 0.01, by = -0.01)
@@ -678,8 +631,8 @@ topn <- top_n_percentile(y_test, y_pred_proba, site)
 write.csv(topn, file =  paste0("output/Top_N_percentile_PPV_", site, ".csv"), row.names = FALSE)
 head(topn,5)
 
-#### Rush THR top N
-thr<-0.190
+#### Rush THR Top N
+thr<-0.208
 # Define column names
 col <- c('Thr_Value', 'TN', 'FP', 'FN', 'TP', 'Sensitivity', 'Specificity', 'PPV', 'NPV', 'Recall', 'Accuracy', 'Site_Name')
 
@@ -728,20 +681,12 @@ row <- data.frame(Thr_Value = thr,
 results <- rbind(results, row)
 write.csv(head(results,1), file =  paste0("output/Top_N_percentile_atRushThr_", site, ".csv"), row.names = FALSE)
 head(results,1)
-
-
-## Calibration plot
-
-
-# Function to create calibration plot data with confidence intervals
 create_calibration_data <- function(y_test, y_pred_proba, n_bins = 10) {
-  # Create a data frame
+
   df <- data.frame(y_test = y_test, y_pred_proba = y_pred_proba)
-  
-  # Create bins
+
   df$bin <- cut(df$y_pred_proba, breaks = n_bins, labels = FALSE, include.lowest = TRUE)
-  
-  # Calculate mean predicted probability, actual probability, and confidence intervals in each bin
+
   calibration_data <- df %>%
     group_by(bin) %>%
     summarise(
@@ -753,20 +698,18 @@ create_calibration_data <- function(y_test, y_pred_proba, n_bins = 10) {
     mutate(
       se = sqrt((actual_prob * (1 - actual_prob)) / n),
       lower_ci = actual_prob - 1.96 * se,
-      upper_ci = actual_prob + 1.96 * se
+      upper_ci = actual_prob + 1.96 * se,
+      site=site
     )
   
   return(calibration_data)
 }
 
 
-# Create calibration data with confidence intervals
 calibration_data <- create_calibration_data(as.numeric(y_test), y_pred_proba)
 
-# Write the calibration data to a CSV file
 write.csv(calibration_data, file = paste0("output/calibration_data_", site, ".csv"), row.names = FALSE)
 
-# Plot calibration plot with confidence intervals
 ggplot(calibration_data, aes(x = predicted_prob, y = actual_prob)) +
   geom_point() +
   geom_errorbar(aes(ymin = lower_ci, ymax = upper_ci), width = 0.02) +
@@ -776,47 +719,39 @@ ggplot(calibration_data, aes(x = predicted_prob, y = actual_prob)) +
   theme_minimal()
 
 calibration_data
-
-
-## PR Curve
-
-
-# Ensure y_test is a factor with levels control = 0, case = 1
+### AUC & PR curve
 y_test <- factor(y_test, levels = c(0, 1))
 
-# Compute ROC curve and AUC
+
 roc_obj <- roc(y_test, y_pred_proba, levels = c(0, 1), direction = "<")
 roc_auc <- auc(roc_obj)
 
-# Compute Precision-Recall curve and AUC
 pr_obj <- pr.curve(scores.class0 = y_pred_proba, weights.class0 = as.numeric(as.character(y_test)), curve = TRUE)
 pr_auc <- pr_obj$auc.integral
 
-# Ensure all arrays have the same length by matching dimensions correctly
+
 roc_thresholds <- roc_obj$thresholds
 if (length(roc_obj$sensitivities) != length(roc_thresholds)) {
   roc_thresholds <- c(roc_thresholds, 1)
 }
 
-# Save values to CSV
 roc_data <- data.frame(fpr = 1 - roc_obj$specificities, 
                        tpr = roc_obj$sensitivities, 
-                       roc_thresholds = roc_thresholds)
+                       roc_thresholds = roc_thresholds,
+                       site=site)
 pr_data <- data.frame(precision = pr_obj$curve[,2], 
                       recall = pr_obj$curve[,1], 
-                      pr_thresholds = pr_obj$curve[,3])
+                      pr_thresholds = pr_obj$curve[,3],
+                      site=site)
 
 write.csv(roc_data, file = paste0('output/roc_curve_data_', site, '.csv'), row.names = FALSE)
 write.csv(pr_data, file = paste0('output/pr_curve_data_', site, '.csv'), row.names = FALSE)
 
-# Plot ROC curve and PR curve in one image
 par(mfrow = c(1, 2))
 
-# Plot ROC curve
 plot(roc_obj, col = 'blue', lwd = 2, main = 'Receiver Operating Characteristic (ROC) Curve', xlab = 'False Positive Rate', ylab = 'True Positive Rate')
 abline(a = 0, b = 1, col = 'gray', lty = 2)
 legend('bottomright', legend = paste('ROC curve (area =', round(roc_auc, 2), ')'), col = 'blue', lwd = 2)
 
-# Plot PR curve
 plot(pr_obj$curve[,1], pr_obj$curve[,2], type = 'l', col = 'blue', lwd = 2, xlab = 'Recall', ylab = 'Precision', main = 'Precision-Recall (PR) Curve')
 legend('bottomleft', legend = paste('PR curve (area =', round(pr_auc, 2), ')'), col = 'blue', lwd = 2)
