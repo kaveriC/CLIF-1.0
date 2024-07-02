@@ -1,790 +1,757 @@
-{
- "cells": [
-  {
-   "cell_type": "code",
-   "execution_count": null,
-   "metadata": {
-    "vscode": {
-     "languageId": "r"
-    }
-   },
-   "outputs": [],
-   "source": [
-    "packages <- c(\"duckdb\", \"lubridate\", \"tidyverse\", \"dplyr\", \"readr\", \"arrow\", \"fst\", \"lightgbm\", \"caret\", \"Metrics\", \"ROCR\", \"pROC\", \"ggplot2\",\"PRROC\", \"reshape2\")\n",
-    "\n",
-    "install_if_missing <- function(package) {\n",
-    "  if (!require(package, character.only = TRUE)) {\n",
-    "    install.packages(package, dependencies = TRUE)\n",
-    "    library(package, character.only = TRUE)\n",
-    "  }\n",
-    "}\n",
-    "\n",
-    "sapply(packages, install_if_missing)\n",
-    "\n",
-    "con <- duckdb::dbConnect(duckdb::duckdb(), dbdir = \":memory:\")\n",
-    "\n",
-    "tables_location <- \"C:/Users/vchaudha/OneDrive - rush.edu/CLIF-1.0-main\" \n",
-    "site <-'RUSH'\n",
-    "file_type <- '.csv'\n",
-    "\n",
-    "# Check if the output directory exists; if not, create it\n",
-    "if (!dir.exists(\"output\")) {\n",
-    "  dir.create(\"output\")\n",
-    "}\n",
-    "\n",
-    "read_data <- function(file_path) {\n",
-    "  if (grepl(\"\\\\.csv$\", file_path)) {\n",
-    "    return(read.csv(file_path))\n",
-    "  } else if (grepl(\"\\\\.parquet$\", file_path)) {\n",
-    "    return(arrow::read_parquet(file_path))\n",
-    "  } else if (grepl(\"\\\\.fst$\", file_path)) {\n",
-    "    return(fst::read.fst(file_path))\n",
-    "  } else {\n",
-    "    stop(\"Unsupported file format\")\n",
-    "  }\n",
-    "}\n",
-    "\n",
-    "# Read data using the function and assign to variables\n",
-    "location <- read_data(paste0(tables_location, \"/rclif/clif_adt\", file_type))\n",
-    "encounter <- read_data(paste0(tables_location, \"/rclif/clif_encounter_demographics_dispo_clean\", file_type))\n",
-    "limited <- read_data(paste0(tables_location, \"/rclif/clif_limited_identifiers\", file_type))\n",
-    "demog <- read_data(paste0(tables_location, \"/rclif/clif_patient_demographics\", file_type))\n",
-    "\n",
-    "# First join operation\n",
-    "join <- location %>%\n",
-    "  select(encounter_id, location_category, in_dttm, out_dttm) %>%\n",
-    "  left_join(limited %>% select(encounter_id, admission_dttm), by = \"encounter_id\")\n",
-    "\n",
-    "# Second join operation to get 'icu_data'\n",
-    "icu_data <- join %>%\n",
-    "  left_join(encounter %>% select(encounter_id, age_at_admission, disposition), by = \"encounter_id\") %>%\n",
-    "  mutate(\n",
-    "    admission_dttm = ymd_hms(admission_dttm), # Convert to POSIXct, adjust the function as per your date format\n",
-    "    in_dttm = ymd_hms(in_dttm), # Convert to POSIXct, adjust the function as per your date format\n",
-    "    out_dttm = ymd_hms(out_dttm)\n",
-    "  )\n",
-    "\n",
-    "# Filter rows where location is ICU and in_dttm is within 48 hours of admission_dttm\n",
-    "\n",
-    "icu_48hr_check <- icu_data %>%\n",
-    "  filter(location_category == \"ICU\",\n",
-    "         in_dttm >= admission_dttm,\n",
-    "         in_dttm <= admission_dttm + lubridate::hours(48),\n",
-    "         lubridate::year(admission_dttm) >= 2020,\n",
-    "         lubridate::year(admission_dttm) <= 2021,\n",
-    "         age_at_admission >= 18,\n",
-    "         !is.na(age_at_admission)) %>%\n",
-    "  distinct(encounter_id) %>%\n",
-    "  pull(encounter_id)\n",
-    "  \n",
-    "# Filter icu_data to only include rows with encounter_ids in icu_48hr_check and within 72 hours of admission\n",
-    "icu_data <- icu_data %>%\n",
-    "  filter(encounter_id %in% icu_48hr_check,\n",
-    "         in_dttm <= admission_dttm + hours(72)) %>%\n",
-    "  arrange(in_dttm) %>%\n",
-    "  mutate(RANK = rank(in_dttm, ties.method = \"first\")) %>%\n",
-    "  arrange(encounter_id, in_dttm) %>%\n",
-    "  group_by(encounter_id) %>%\n",
-    "  mutate(RANK = rank(in_dttm, ties.method = \"first\"))\n",
-    "\n",
-    "  # Compute minimum rank for ICU locations\n",
-    "min_icu <- icu_data %>%\n",
-    "  filter(location_category == \"ICU\") %>%\n",
-    "  group_by(encounter_id) %>%\n",
-    "  summarize(min_icu = min(RANK))\n",
-    "\n",
-    "# Merge the minimum ICU rank back into the original dataset\n",
-    "icu_data <- icu_data %>%\n",
-    "  left_join(min_icu, by = \"encounter_id\")\n",
-    "\n",
-    "# Filter based on rank being at least the minimum ICU rank\n",
-    "icu_data <- icu_data %>%\n",
-    "  filter(RANK >= min_icu) %>%\n",
-    "  arrange(in_dttm)\n",
-    "\n",
-    "# Change 'OR' to 'ICU' in location_category\n",
-    "icu_data <- icu_data %>%\n",
-    "  mutate(location_category = ifelse(location_category == \"OR\", \"ICU\", location_category))\n",
-    "\n",
-    "# Create a new group_id based on changes in location_category\n",
-    "icu_data <- icu_data %>%\n",
-    "  group_by(encounter_id) %>%\n",
-    "  mutate(group_id = cumsum(location_category != lag(location_category, default = first(location_category)))) %>%\n",
-    "  ungroup()\n",
-    "\n",
-    "icu_data <- icu_data %>%\n",
-    "  group_by(encounter_id, location_category, group_id) %>%\n",
-    "  summarize(\n",
-    "    min_in_dttm = min(in_dttm),\n",
-    "    max_out_dttm = max(out_dttm),\n",
-    "    admission_dttm = first(admission_dttm),\n",
-    "    age = first(age_at_admission),\n",
-    "    dispo = first(disposition),\n",
-    "    .groups = 'drop'\n",
-    "  )\n",
-    "\n",
-    "# Compute minimum group_id for each encounter_id where location_category is 'ICU'\n",
-    "min_icu <- icu_data %>%\n",
-    "  filter(location_category == \"ICU\") %>%\n",
-    "  group_by(encounter_id) %>%\n",
-    "  summarize(min_icu = min(group_id), .groups = 'drop')\n",
-    "\n",
-    "# Merge the minimum ICU group_id back into the original dataset\n",
-    "icu_data <- left_join(icu_data, min_icu, by = \"encounter_id\")\n",
-    "\n",
-    "# Filter based on group_id matching min_icu and duration condition\n",
-    "icu_data <- icu_data %>%\n",
-    "  filter(min_icu == group_id,\n",
-    "         interval(min_in_dttm, max_out_dttm) >= dhours(24)) %>%\n",
-    "  arrange(min_in_dttm)\n",
-    "\n",
-    "  # Add 24 hours to the 'min_in_dttm' column\n",
-    "icu_data <- icu_data %>%\n",
-    "  mutate(after_24hr = min_in_dttm + hours(24))\n",
-    "\n",
-    "# Select specific columns\n",
-    "icu_data <- icu_data %>%\n",
-    "  select(encounter_id, min_in_dttm, after_24hr,max_out_dttm, age, dispo)\n",
-    "\n",
-    "# Merge with demographic data and select specific columns\n",
-    "icu_data <- icu_data %>%\n",
-    "  left_join(demog, by = \"encounter_id\") %>%\n",
-    "  select(encounter_id, min_in_dttm, after_24hr,max_out_dttm, age, dispo, sex, ethnicity, race)\n",
-    "\n",
-    "# Remove rows with missing 'sex' and create new variables\n",
-    "icu_data <- icu_data %>%\n",
-    "  filter(!is.na(sex)) %>%\n",
-    "  mutate(\n",
-    "    isfemale = as.integer(tolower(sex) == \"female\"),\n",
-    "    isdeathdispo = as.integer(grepl(\"dead|expired|death|died\", dispo, ignore.case = TRUE))\n",
-    "  )\n",
-    "\n",
-    "# Define race and ethnicity mappings using case_when\n",
-    "icu_data <- icu_data %>%\n",
-    "  mutate(\n",
-    "    race = case_when(\n",
-    "      race == \"White\" ~ \"White\",\n",
-    "      race == \"Black or African American\" ~ \"Black\",\n",
-    "      race == \"Asian\" ~ \"Asian\",\n",
-    "      race %in% c(\"Other\", \"Unknown\", \"Did Not Encounter\", \"Refusal\", \n",
-    "                  \"American Indian or Alaska Native\", \n",
-    "                  \"Native Hawaiian or Other Pacific Islander\") ~ \"Others\",\n",
-    "      TRUE ~ \"Others\"  # Default case for NA and any other unexpected values\n",
-    "    ),\n",
-    "    ethnicity = case_when(\n",
-    "      ethnicity == \"Not Hispanic or Latino\" ~ \"Not Hispanic or Latino\",\n",
-    "      ethnicity == \"Hispanic or Latino\" ~ \"Hispanic or Latino\",\n",
-    "      ethnicity %in% c(\"Did Not Encounter\", \"Refusal\", \"*Unspecified\") ~ \"Not Hispanic or Latino\",\n",
-    "      TRUE ~ \"Not Hispanic or Latino\"  # Default case for NA and any other unexpected values\n",
-    "    )\n",
-    "  )\n",
-    "\n",
-    "# Calculate the difference in hours\n",
-    "icu_data$ICU_stay_hrs <- as.numeric(difftime(icu_data$max_out_dttm, icu_data$min_in_dttm, units = \"secs\")) / 3600\n",
-    "\n",
-    "\n",
-    "rm( encounter, limited, demog)\n",
-    "gc()  # invokes garbage collection\n",
-    "### vitals\n",
-    "vitals <- read_data(paste0(tables_location, \"/rclif/clif_vitals_clean\", file_type))\n",
-    "duckdb_register(con, \"vitals\", vitals)\n",
-    "duckdb_register(con, \"icu_data\", icu_data)\n",
-    "vitals <- dbGetQuery(con, \"SELECT \n",
-    "        encounter_id,\n",
-    "        CAST(recorded_dttm AS datetime) AS recorded_dttm,\n",
-    "        CAST(vital_value AS float) AS vital_value,\n",
-    "        vital_category \n",
-    "    FROM \n",
-    "        vitals\n",
-    "    WHERE \n",
-    "        vital_category IN ('weight_kg', 'pulse', 'sbp', 'dbp', 'temp_c','height_inches') \n",
-    "        AND encounter_id IN (SELECT DISTINCT encounter_id FROM icu_data);\")\n",
-    "duckdb_unregister(con, \"vitals\")       \n",
-    "pivoted_data <- vitals %>%\n",
-    "  group_by(encounter_id, recorded_dttm, vital_category) %>%\n",
-    "  summarise(first_vital_value = first(vital_value), .groups = 'drop') %>%\n",
-    "  pivot_wider(\n",
-    "    names_from = vital_category,\n",
-    "    values_from = first_vital_value\n",
-    "  ) %>%  as.data.frame\n",
-    "\n",
-    "rm(vitals)\n",
-    "gc()  # invokes garbage collection\n",
-    "pivoted_data <- pivoted_data %>%\n",
-    "  mutate(\n",
-    "    height_meters = height_inches * 0.0254,\n",
-    "    bmi = weight_kg / (height_meters ^ 2)\n",
-    "  ) %>%  as.data.frame\n",
-    "\n",
-    "# Merge vitals data with icu_data\n",
-    "icu_data_agg <- icu_data %>%\n",
-    "  left_join(pivoted_data, by = \"encounter_id\") %>%  as.data.frame\n",
-    "\n",
-    "# Filter records based on time conditions\n",
-    "icu_data_agg <- icu_data_agg %>%\n",
-    "  filter(recorded_dttm >= min_in_dttm & recorded_dttm <= after_24hr) %>%\n",
-    "  arrange(recorded_dttm) %>%\n",
-    "  select(-recorded_dttm)  %>%  as.data.frame\n",
-    "\n",
-    "duckdb_register(con, \"icu_data_agg\", icu_data_agg)\n",
-    "# Aggregate data\n",
-    "icu_data_agg <- tbl(con, \"icu_data_agg\") %>% \n",
-    "  group_by(encounter_id) %>%\n",
-    "  summarize(\n",
-    "    min_bmi = min(bmi, na.rm = TRUE),\n",
-    "    max_bmi = max(bmi, na.rm = TRUE),\n",
-    "    avg_bmi = mean(bmi, na.rm = TRUE),\n",
-    "    min_weight_kg = min(weight_kg, na.rm = TRUE), \n",
-    "    max_weight_kg = max(weight_kg, na.rm = TRUE),\n",
-    "    avg_weight_kg = mean(weight_kg, na.rm = TRUE),\n",
-    "    min_pulse = min(pulse, na.rm = TRUE),\n",
-    "    max_pulse = max(pulse, na.rm = TRUE),\n",
-    "    avg_pulse = mean(pulse, na.rm = TRUE),\n",
-    "    min_sbp = min(sbp, na.rm = TRUE),\n",
-    "    max_sbp = max(sbp, na.rm = TRUE),\n",
-    "    avg_sbp = mean(sbp, na.rm = TRUE),\n",
-    "    min_dbp = min(dbp, na.rm = TRUE),\n",
-    "    max_dbp = max(dbp, na.rm = TRUE),\n",
-    "    avg_dbp = mean(dbp, na.rm = TRUE),\n",
-    "    min_temp_c = min(temp_c, na.rm = TRUE),\n",
-    "    max_temp_c = max(temp_c, na.rm = TRUE),\n",
-    "    avg_temp_c = mean(temp_c, na.rm = TRUE),\n",
-    "    .groups = \"drop\"  # Avoid auto-grouping in subsequent operations\n",
-    "  ) %>% collect() %>%   as.data.frame\n",
-    "\n",
-    "# Merge aggregated data back into the original icu_data\n",
-    "icu_data <- left_join(icu_data, icu_data_agg, by = \"encounter_id\")\n",
-    "\n",
-    "duckdb_unregister(con, \"icu_data_agg\")\n",
-    "rm(icu_data_agg,pivoted_data)\n",
-    "gc()  # invokes garbage collection\n",
-    "### labs\n",
-    "labs <- read_data(paste0(tables_location, \"/rclif/clif_labs_clean\", file_type))\n",
-    "duckdb_register(con, \"labs\", labs)\n",
-    "labs <- dbGetQuery(con, \"\n",
-    " SELECT \n",
-    "        encounter_id,\n",
-    "        CAST(lab_order_dttm AS datetime) AS lab_order_dttm,\n",
-    "        TRY_CAST(lab_value AS float) AS lab_value,\n",
-    "        lab_category \n",
-    "    FROM \n",
-    "        labs\n",
-    "    WHERE \n",
-    "      ((lab_category='monocyte'               and lab_type_name='standard') OR\n",
-    "        (lab_category='lymphocyte'              and lab_type_name='standard') OR\n",
-    "        (lab_category='basophil'                and lab_type_name='standard') OR\n",
-    "        (lab_category='neutrophil'              and lab_type_name='standard') OR\n",
-    "        (lab_category='albumin'                 and lab_type_name='standard') OR\n",
-    "        (lab_category='ast'                     and lab_type_name='standard') OR\n",
-    "        (lab_category='total_protein'           and lab_type_name='standard') OR\n",
-    "        (lab_category='alkaline_phosphatase'    and lab_type_name='standard') OR\n",
-    "        (lab_category='bilirubin_total'         and lab_type_name='standard') OR\n",
-    "        (lab_category='bilirubin_conjugated'    and lab_type_name='standard') OR\n",
-    "        (lab_category='calcium'                 and lab_type_name='standard') OR\n",
-    "        (lab_category='chloride'                and lab_type_name='standard') OR\n",
-    "        (lab_category='potassium'               and lab_type_name='standard') OR\n",
-    "        (lab_category='sodium'                  and lab_type_name='standard') OR\n",
-    "        (lab_category='glucose_serum'           and lab_type_name='standard') OR\n",
-    "        (lab_category='hemoglobin'              and lab_type_name='standard') OR\n",
-    "        (lab_category='platelet count'          and lab_type_name='standard') OR\n",
-    "        (lab_category='wbc'                     and lab_type_name='standard'))\n",
-    "        AND encounter_id IN (SELECT DISTINCT encounter_id FROM icu_data);\n",
-    "\")\n",
-    "\n",
-    "pivoted_data <- labs  %>%\n",
-    "  group_by(encounter_id, lab_order_dttm, lab_category) %>%\n",
-    "  summarise(first_lab_value = first(lab_value), .groups = 'drop') %>%\n",
-    "  pivot_wider(\n",
-    "    names_from = lab_category,\n",
-    "    values_from = first_lab_value\n",
-    "  )  %>% \n",
-    "  as.data.frame\n",
-    "\n",
-    "icu_data_agg <- left_join(icu_data, pivoted_data, by = \"encounter_id\")\n",
-    "\n",
-    "icu_data_agg <- filter(icu_data_agg, lab_order_dttm >= min_in_dttm & lab_order_dttm <= after_24hr) %>% \n",
-    "  as.data.frame\n",
-    "duckdb_register(con, \"icu_data_agg\", icu_data_agg)\n",
-    "\n",
-    "Lab_variables <- c('albumin', 'alkaline_phosphatase',\n",
-    "       'ast', 'basophil', 'bilirubin_conjugated', 'bilirubin_total', 'calcium',\n",
-    "       'chloride', 'hemoglobin', 'lymphocyte', 'monocyte', 'glucose_serum', \n",
-    "       'neutrophil', 'potassium', 'sodium', 'total_protein','platelet count', \n",
-    "       'wbc')\n",
-    "\n",
-    "icu_data_agg <- tbl(con, \"icu_data_agg\") %>% \n",
-    "  group_by(encounter_id) %>%\n",
-    "  summarise(across(all_of(Lab_variables), list(\n",
-    "    min = ~min(., na.rm = TRUE), \n",
-    "    max = ~max(., na.rm = TRUE), \n",
-    "    mean = ~mean(., na.rm = TRUE)\n",
-    "  ), .names = \"{.col}_{.fn}\")) %>%\n",
-    "  ungroup() %>% collect() %>%   as.data.frame # Ensure no residual grouping\n",
-    "\n",
-    "duckdb_unregister(con, \"icu_data_agg\")\n",
-    "\n",
-    "# Merge aggregated data back into the original icu_data\n",
-    "icu_data <- left_join(icu_data, icu_data_agg, by = \"encounter_id\") %>%   as.data.frame\n",
-    "\n",
-    "rm(icu_data_agg,pivoted_data,labs)\n",
-    "gc() \n",
-    "### Model\n",
-    "dim(icu_data)\n",
-    "\n",
-    "model_col <- c('isfemale', 'age', 'min_bmi', 'max_bmi', 'avg_bmi',\n",
-    "               'min_weight_kg', 'max_weight_kg', 'avg_weight_kg', 'min_pulse',\n",
-    "               'max_pulse', 'avg_pulse', 'min_sbp', 'max_sbp', 'avg_sbp', 'min_dbp',\n",
-    "               'max_dbp', 'avg_dbp', 'min_temp_c', 'max_temp_c', 'avg_temp_c',\n",
-    "               'albumin_min', 'albumin_max', 'albumin_mean',\n",
-    "               'alkaline_phosphatase_min', 'alkaline_phosphatase_max',\n",
-    "               'alkaline_phosphatase_mean', 'ast_min', 'ast_max', 'ast_mean',\n",
-    "               'basophil_min', 'basophil_max', 'basophil_mean',\n",
-    "               'bilirubin_conjugated_min', 'bilirubin_conjugated_max',\n",
-    "               'bilirubin_conjugated_mean', 'bilirubin_total_min',\n",
-    "               'bilirubin_total_max', 'bilirubin_total_mean', 'calcium_min',\n",
-    "               'calcium_max', 'calcium_mean', 'chloride_min', 'chloride_max',\n",
-    "               'chloride_mean', 'glucose_serum_min', 'glucose_serum_max',\n",
-    "               'glucose_serum_mean', 'hemoglobin_min', 'hemoglobin_max',\n",
-    "               'hemoglobin_mean', 'lymphocyte_min', 'lymphocyte_max',\n",
-    "               'lymphocyte_mean', 'monocyte_min', 'monocyte_max', 'monocyte_mean',\n",
-    "               'neutrophil_min', 'neutrophil_max', 'neutrophil_mean',\n",
-    "               'platelet count_min', 'platelet count_max', 'platelet count_mean',\n",
-    "               'potassium_min', 'potassium_max', 'potassium_mean', 'sodium_min',\n",
-    "               'sodium_max', 'sodium_mean', 'total_protein_min', 'total_protein_max',\n",
-    "               'total_protein_mean', 'wbc_min', 'wbc_max', 'wbc_mean')\n",
-    "\n",
-    "\n",
-    "model_file_path <- sprintf(\"%s/projects/Mortality_model/models/lgbm_model_20240628-092136.txt\", tables_location)\n",
-    "\n",
-    "# Load the model\n",
-    "model <- lgb.load(model_file_path)\n",
-    "#### Feature Distribution\n",
-    "generate_facetgrid_histograms <- function(data, category_column, value_column) {\n",
-    "  p <- ggplot(data, aes_string(x = value_column)) +\n",
-    "    geom_histogram(bins = 30, fill = 'blue', color = 'black') +\n",
-    "    facet_wrap(as.formula(paste('~', category_column)), scales = 'free') +\n",
-    "    labs(x = value_column, y = 'Frequency') +\n",
-    "    theme(strip.text = element_text(face = 'bold', size = 10),\n",
-    "          plot.title = element_text(hjust = 0.5, size = 16))\n",
-    "\n",
-    "  p <- p + ggtitle(paste('Histograms of', value_column, 'by', category_column))\n",
-    "  \n",
-    "  print(p)\n",
-    "}\n",
-    "\n",
-    "\n",
-    "# Important features list\n",
-    "imp_features_split <- c(\n",
-    "  \"age\", \"min_pulse\", \"max_pulse\", \"max_temp_c\", \"max_sbp\", \"glucose_serum_min\",\n",
-    "  \"avg_temp_c\", \"sodium_max\", \"min_dbp\", \"platelet count_min\", \"min_temp_c\",\n",
-    "  \"min_sbp\", \"avg_sbp\", \"avg_pulse\", \"wbc_min\", \"glucose_serum_mean\",\n",
-    "  \"alkaline_phosphatase_max\", \"hemoglobin_min\", \"ast_max\", \"avg_dbp\"\n",
-    ")\n",
-    "\n",
-    "# Assuming icu_data is your data frame and output_directory, site_name are defined\n",
-    "data_unstack <- melt(icu_data[imp_features_split], variable.name = 'imp_features_split', value.name = 'value')\n",
-    "\n",
-    "# Generate the facet grid histograms\n",
-    "generate_facetgrid_histograms(data_unstack, 'imp_features_split', 'value')\n",
-    "\n",
-    "data_summary <- data_unstack %>%\n",
-    "  group_by(imp_features_split) %>%\n",
-    "  summarise(count = n(), \n",
-    "            mean = mean(value, na.rm = TRUE),\n",
-    "            std = sd(value, na.rm = TRUE), \n",
-    "            min = min(value, na.rm = TRUE), \n",
-    "            `25%` = quantile(value, 0.25, na.rm = TRUE), \n",
-    "            `50%` = median(value, na.rm = TRUE), \n",
-    "            `75%` = quantile(value, 0.75, na.rm = TRUE), \n",
-    "            max = max(value, na.rm = TRUE))\n",
-    "\n",
-    "data_summary_t <- data_summary %>%\n",
-    "  pivot_longer(cols = -imp_features_split, names_to = 'statistic', values_to = 'value') %>%\n",
-    "  pivot_wider(names_from = imp_features_split, values_from = value)\n",
-    "\n",
-    "write.csv(data_summary_t, sprintf(\"output/imp_features_split_stats_%s.csv\", site), row.names = FALSE)\n",
-    "\n",
-    "\n",
-    "data_summary_t\n",
-    "\n",
-    "# Important features list\n",
-    "imp_features_gain <- c(\n",
-    "  \"albumin_min\", \"min_pulse\", \"ast_mean\", \"sodium_max\", \"age\", \"min_dbp\", \n",
-    "  \"min_sbp\", \"max_pulse\", \"avg_temp_c\", \"ast_max\", \"max_temp_c\", \"max_sbp\", \n",
-    "  \"platelet count_min\", \"min_temp_c\", \"glucose_serum_min\", \"glucose_serum_max\", \n",
-    "  \"wbc_mean\", \"wbc_min\", \"albumin_mean\", \"glucose_serum_mean\"\n",
-    ")\n",
-    "\n",
-    "# Unstack the data\n",
-    "data_unstack <- melt(icu_data[imp_features_gain], variable.name = 'imp_features_gain', value.name = 'value')\n",
-    "\n",
-    "# Generate and display the histograms\n",
-    "generate_facetgrid_histograms(data_unstack, 'imp_features_gain', 'value')\n",
-    "\n",
-    "# Perform summarization on data_unstack\n",
-    "data_summary <- data_unstack %>%\n",
-    "  group_by(imp_features_gain) %>%\n",
-    "  summarise(count = n(), \n",
-    "            mean = mean(value, na.rm = TRUE),\n",
-    "            std = sd(value, na.rm = TRUE), \n",
-    "            min = min(value, na.rm = TRUE), \n",
-    "            `25%` = quantile(value, 0.25, na.rm = TRUE), \n",
-    "            `50%` = median(value, na.rm = TRUE), \n",
-    "            `75%` = quantile(value, 0.75, na.rm = TRUE), \n",
-    "            max = max(value, na.rm = TRUE))\n",
-    "\n",
-    "# Transpose the data_summary\n",
-    "data_summary_t <- data_summary %>%\n",
-    "  pivot_longer(cols = -imp_features_gain, names_to = 'statistic', values_to = 'value') %>%\n",
-    "  pivot_wider(names_from = imp_features_gain, values_from = value)\n",
-    "\n",
-    "# Save the transposed summary statistics to a CSV file\n",
-    "write.csv(data_summary_t, sprintf(\"output/imp_features_gain_stats_%s.csv\", site), row.names = FALSE)\n",
-    "data_summary\n",
-    "### Probablity table\n",
-    "X_test <- as.matrix(icu_data[model_col])\n",
-    "y_test <- factor(icu_data$isdeathdispo)  \n",
-    "y_pred_proba <- predict(model, X_test)\n",
-    "y_pred_class <- as.numeric(y_pred_proba > 0.208)\n",
-    "icu_data$pred_proba <- y_pred_proba\n",
-    "\n",
-    "site_label <- y_test\n",
-    "site_proba <- y_pred_proba\n",
-    "site_name <- rep(site, length(site_label))\n",
-    "prob_df_lgbm <- data.frame(site_label, site_proba, site_name)\n",
-    "# write.csv(prob_df_lgbm, file = paste0(\"output/Model_probabilities_\", site, \".csv\"), row.names = FALSE)\n",
-    "head(prob_df_lgbm)\n",
-    "# Do Not share this file\n",
-    "### Metrics\n",
-    "\n",
-    "# Ensure y_test is numeric\n",
-    "y_test <- as.numeric(as.character(y_test))\n",
-    "predicted_probabilities <- as.numeric(as.character(y_pred_proba))\n",
-    "\n",
-    "# Function to calculate metrics\n",
-    "calculate_metrics <- function(predicted_probabilities, predicted_classes, y_test) {\n",
-    "  conf_matrix <- confusionMatrix(as.factor(predicted_classes), as.factor(y_test))\n",
-    "  \n",
-    "  accuracy <- conf_matrix$overall['Accuracy']\n",
-    "  roc_auc <- pROC::auc(pROC::roc(y_test, predicted_probabilities))\n",
-    "  \n",
-    "  tp <- sum(predicted_classes == 1 & y_test == 1, na.rm = TRUE)\n",
-    "  fp <- sum(predicted_classes == 1 & y_test == 0, na.rm = TRUE)\n",
-    "  fn <- sum(predicted_classes == 0 & y_test == 1, na.rm = TRUE)\n",
-    "  tn <- sum(predicted_classes == 0 & y_test == 0, na.rm = TRUE)\n",
-    "  \n",
-    "  recall <- ifelse((tp + fn) > 0, tp / (tp + fn), 0)\n",
-    "  precision <- ifelse((tp + fp) > 0, tp / (tp + fp), 0)\n",
-    "  brier_score <- mean((predicted_probabilities - y_test)^2, na.rm = TRUE)\n",
-    "  \n",
-    "  return(c(accuracy, recall, precision, roc_auc, brier_score))\n",
-    "}\n",
-    "\n",
-    "# Bootstrapping to calculate 95% confidence intervals\n",
-    "set.seed(123)\n",
-    "n_iterations <- 1000\n",
-    "metrics <- matrix(NA, ncol = 5, nrow = n_iterations)\n",
-    "colnames(metrics) <- c(\"Accuracy\", \"Recall\", \"Precision\", \"ROC AUC\", \"Brier Score Loss\")\n",
-    "\n",
-    "for (i in 1:n_iterations) {\n",
-    "  sample_indices <- sample(1:length(y_test), replace = TRUE)\n",
-    "  y_test_sample <- y_test[sample_indices]\n",
-    "  predicted_probabilities_sample <- predicted_probabilities[sample_indices]\n",
-    "  predicted_classes_sample <- as.integer(predicted_probabilities_sample >= 0.208)\n",
-    "  \n",
-    "  metrics[i, ] <- calculate_metrics(predicted_probabilities_sample, predicted_classes_sample, y_test_sample)\n",
-    "}\n",
-    "\n",
-    "# Calculate mean and 95% confidence intervals\n",
-    "mean_metrics <- apply(metrics, 2, mean, na.rm = TRUE)\n",
-    "ci_lower <- apply(metrics, 2, function(x) quantile(x, 0.025, na.rm = TRUE))\n",
-    "ci_upper <- apply(metrics, 2, function(x) quantile(x, 0.975, na.rm = TRUE))\n",
-    "\n",
-    "# Combine results into a data frame\n",
-    "results_metric <- data.frame(\n",
-    "  Metric = c('Accuracy', 'Recall', 'Precision', 'ROC AUC', 'Brier Score Loss'),\n",
-    "  Value = mean_metrics,\n",
-    "  CI_Lower = ci_lower,\n",
-    "  CI_Upper = ci_upper,\n",
-    "  SiteName = rep(site, 5)\n",
-    ")\n",
-    "\n",
-    "# Export to CSV\n",
-    "write.csv(results_metric, sprintf(\"output/result_metrics_2_%s.csv\", site), row.names = FALSE)\n",
-    "\n",
-    "# Print the results\n",
-    "results_metric\n",
-    "#### model fairness test accross 'race', 'ethnicity', 'sex'\n",
-    "\n",
-    "calculate_metrics <- function(data, true_col, pred_prob_col, subgroup_cols, threshold = 0.208) {\n",
-    "  results <- list()\n",
-    "  total_count <- nrow(data)\n",
-    "  \n",
-    "  for (subgroup_col in subgroup_cols) {\n",
-    "    # Filter out rows with NA in the current subgroup column\n",
-    "    filtered_data <- data %>% filter(!is.na(.data[[subgroup_col]])) %>% drop_na(.data[[true_col]], .data[[pred_prob_col]])\n",
-    "    \n",
-    "    # Loop over unique groups in the subgroup column\n",
-    "    for (group in unique(filtered_data[[subgroup_col]])) {\n",
-    "      subgroup_data <- filtered_data %>% filter(.data[[subgroup_col]] == group)\n",
-    "      group_count <- nrow(subgroup_data)\n",
-    "      proportion <- group_count / total_count\n",
-    "      \n",
-    "      # Check if there are at least two distinct classes and no NA in predictor\n",
-    "      if (length(unique(subgroup_data[[true_col]])) > 1 && sum(!is.na(subgroup_data[[pred_prob_col]])) == nrow(subgroup_data)) {\n",
-    "        # Calculate AUC\n",
-    "        pred <- prediction(subgroup_data[[pred_prob_col]], subgroup_data[[true_col]])\n",
-    "        auc <- performance(pred, \"auc\")@y.values[[1]]\n",
-    "        # Calculate confusion matrix\n",
-    "        cm <- table(factor(subgroup_data[[true_col]], levels = c(0, 1)),\n",
-    "                    factor(as.numeric(subgroup_data[[pred_prob_col]] > threshold), levels = c(0, 1)))\n",
-    "        tn <- cm[1, 1]\n",
-    "        fp <- cm[1, 2]\n",
-    "        fn <- cm[2, 1]\n",
-    "        tp <- cm[2, 2]\n",
-    "        \n",
-    "        sensitivity <- ifelse((tp + fn) != 0, tp / (tp + fn), 0)\n",
-    "        specificity <- ifelse((tn + fp) != 0, tn / (tn + fp), 0)\n",
-    "        ppv <- ifelse((tp + fp) != 0, tp / (tp + fp), 0)\n",
-    "        npv <- ifelse((tn + fn) != 0, tn / (tn + fn), 0)\n",
-    "        recall <- sensitivity\n",
-    "        acc <- ifelse((tp + fn + tn + fp) != 0, (tp + tn) / (tp + fn + tn + fp), 0)\n",
-    "        bri <- mean((subgroup_data[[pred_prob_col]] - subgroup_data[[true_col]])^2)\n",
-    "\n",
-    "        result <- list(\n",
-    "          Subgroup = subgroup_col, Group = group,TP=tp,TN=tn,FP=fp,FN=fn, AUC = auc, PPV = ppv, Sensitivity = sensitivity,\n",
-    "          Specificity = specificity, NPV = npv, Recall = recall, Accuracy = acc,Brier = bri,\n",
-    "          GroupCount = group_count, TotalCount = total_count, Proportion = proportion\n",
-    "        )\n",
-    "      } else {\n",
-    "        result <- list(\n",
-    "          Subgroup = subgroup_col, Group = group,TP='NA',TN='NA',FP='NA',FN='NA', AUC = 'Not defined', PPV = 'Not applicable', Sensitivity = 'Not applicable',\n",
-    "          Specificity = 'Not applicable', NPV = 'Not applicable', Recall = 'Not applicable', Accuracy = 'Not applicable',Brier = 'NA',\n",
-    "          GroupCount = group_count, TotalCount = total_count, Proportion = proportion\n",
-    "        )\n",
-    "      }\n",
-    "      \n",
-    "      results <- c(results, list(result))\n",
-    "    }\n",
-    "  }\n",
-    "  \n",
-    "  # Convert the list of results to a data frame\n",
-    "  results_df <- do.call(rbind, lapply(results, as.data.frame))\n",
-    "  return(results_df)\n",
-    "}\n",
-    "\n",
-    "# Example usage\n",
-    "result_df <- calculate_metrics(icu_data, 'isdeathdispo', 'pred_proba', c('race', 'ethnicity', 'sex'))\n",
-    "write.csv(result_df, file = paste0(\"output/fairness_test_\", site, \".csv\"), row.names = FALSE)\n",
-    "\n",
-    "result_df\n",
-    "### Site Thr Analysis\n",
-    "top_n_percentile <- function(target_var, pred_proba, site_name) {\n",
-    "  # Generating thresholds from 99% to 1%\n",
-    "  thr_list <- seq(0.99, 0.01, by = -0.01)\n",
-    "  results <- data.frame(N_Percentile = character(),\n",
-    "                        Thr_Value = numeric(),\n",
-    "                        TN = integer(),\n",
-    "                        FP = integer(),\n",
-    "                        FN = integer(),\n",
-    "                        TP = integer(),\n",
-    "                        Sensitivity = numeric(),\n",
-    "                        Specificity = numeric(),\n",
-    "                        PPV = numeric(),\n",
-    "                        NPV = numeric(),\n",
-    "                        Recall = numeric(),\n",
-    "                        Accuracy = numeric(),\n",
-    "                        Site_Name = character(),\n",
-    "                        stringsAsFactors = FALSE)\n",
-    "  \n",
-    "  for (thr in thr_list) {\n",
-    "    prob <- data.frame(target_var = target_var, pred_proba = pred_proba)\n",
-    "    thr_value <- quantile(prob$pred_proba, thr)\n",
-    "    prob$pred_proba_bin <- ifelse(prob$pred_proba >= thr_value, 1, 0)\n",
-    "    \n",
-    "    cm <- table(factor(prob$target_var, levels = c(0, 1)),\n",
-    "                factor(prob$pred_proba_bin, levels = c(0, 1)))\n",
-    "    tn <- cm[1, 1]\n",
-    "    fp <- cm[1, 2]\n",
-    "    fn <- cm[2, 1]\n",
-    "    tp <- cm[2, 2]\n",
-    "    \n",
-    "    sensitivity <- tp / (tp + fn)\n",
-    "    specificity <- tn / (tn + fp)\n",
-    "    ppv <- tp / (tp + fp)\n",
-    "    npv <- tn / (tn + fn)\n",
-    "    recall <- tp / (tp + fn)\n",
-    "    acc <- (tp + tn) / sum(cm)\n",
-    "    n_prec <- paste0(\"Top \", round((1 - thr) * 100, 0), \"%\")\n",
-    "    \n",
-    "    # Define each row as a dataframe before appending\n",
-    "    row <- data.frame(N_Percentile = n_prec,\n",
-    "                      Thr_Value = thr_value,\n",
-    "                      TN = tn,\n",
-    "                      FP = fp,\n",
-    "                      FN = fn,\n",
-    "                      TP = tp,\n",
-    "                      Sensitivity = sensitivity,\n",
-    "                      Specificity = specificity,\n",
-    "                      PPV = ppv,\n",
-    "                      NPV = npv,\n",
-    "                      Recall = recall,\n",
-    "                      Accuracy = acc,\n",
-    "                      Site_Name = site_name,\n",
-    "                      stringsAsFactors = FALSE)\n",
-    "    results <- rbind(results, row)\n",
-    "  }\n",
-    "  return(results)\n",
-    "}\n",
-    "\n",
-    "# Usage example (you need to define y_test, y_pred_proba, and site_name)\n",
-    "topn <- top_n_percentile(y_test, y_pred_proba, site)\n",
-    "\n",
-    "write.csv(topn, file =  paste0(\"output/Top_N_percentile_PPV_\", site, \".csv\"), row.names = FALSE)\n",
-    "head(topn,5)\n",
-    "\n",
-    "#### Rush THR Top N\n",
-    "thr<-0.208\n",
-    "# Define column names\n",
-    "col <- c('Thr_Value', 'TN', 'FP', 'FN', 'TP', 'Sensitivity', 'Specificity', 'PPV', 'NPV', 'Recall', 'Accuracy', 'Site_Name')\n",
-    "\n",
-    "# Create an empty data frame with the specified columns\n",
-    "results <- data.frame(matrix(ncol = length(col), nrow = 0))\n",
-    "colnames(results) <- col\n",
-    "\n",
-    "# Create a data frame with target_var and pred_proba\n",
-    "prob <- data.frame(target_var = y_test, pred_proba = y_pred_proba)\n",
-    "\n",
-    "# Create pred_proba_bin based on the threshold\n",
-    "prob$pred_proba_bin <- ifelse(prob$pred_proba >= thr, 1, 0)\n",
-    "\n",
-    "# Calculate confusion matrix\n",
-    "cm <- table(factor(prob$target_var, levels = c(0, 1)),\n",
-    "            factor(prob$pred_proba_bin, levels = c(0, 1)))\n",
-    "tn <- cm[1, 1]\n",
-    "fp <- cm[1, 2]\n",
-    "fn <- cm[2, 1]\n",
-    "tp <- cm[2, 2]\n",
-    "\n",
-    "# Calculate metrics\n",
-    "sensitivity <- tp / (tp + fn)\n",
-    "specificity <- tn / (tn + fp)\n",
-    "ppv <- tp / (tp + fp)\n",
-    "npv <- tn / (tn + fn)\n",
-    "recall <- tp / (tp + fn)\n",
-    "acc <- (tp + tn) / sum(cm)\n",
-    "\n",
-    "# Define each row as a dataframe before appending\n",
-    "row <- data.frame(Thr_Value = thr,\n",
-    "                  TN = tn,\n",
-    "                  FP = fp,\n",
-    "                  FN = fn,\n",
-    "                  TP = tp,\n",
-    "                  Sensitivity = sensitivity,\n",
-    "                  Specificity = specificity,\n",
-    "                  PPV = ppv,\n",
-    "                  NPV = npv,\n",
-    "                  Recall = recall,\n",
-    "                  Accuracy = acc,\n",
-    "                  Site_Name = site_name,\n",
-    "                  stringsAsFactors = FALSE)\n",
-    "\n",
-    "# Append the row to the results data frame\n",
-    "results <- rbind(results, row)\n",
-    "write.csv(head(results,1), file =  paste0(\"output/Top_N_percentile_atRushThr_\", site, \".csv\"), row.names = FALSE)\n",
-    "head(results,1)\n",
-    "create_calibration_data <- function(y_test, y_pred_proba, n_bins = 10) {\n",
-    "\n",
-    "  df <- data.frame(y_test = y_test, y_pred_proba = y_pred_proba)\n",
-    "\n",
-    "  df$bin <- cut(df$y_pred_proba, breaks = n_bins, labels = FALSE, include.lowest = TRUE)\n",
-    "\n",
-    "  calibration_data <- df %>%\n",
-    "    group_by(bin) %>%\n",
-    "    summarise(\n",
-    "      predicted_prob = mean(y_pred_proba),\n",
-    "      actual_prob = mean(y_test),\n",
-    "      n = n(),\n",
-    "      .groups = 'drop'\n",
-    "    ) %>%\n",
-    "    mutate(\n",
-    "      se = sqrt((actual_prob * (1 - actual_prob)) / n),\n",
-    "      lower_ci = actual_prob - 1.96 * se,\n",
-    "      upper_ci = actual_prob + 1.96 * se,\n",
-    "      site=site\n",
-    "    )\n",
-    "  \n",
-    "  return(calibration_data)\n",
-    "}\n",
-    "\n",
-    "\n",
-    "calibration_data <- create_calibration_data(as.numeric(y_test), y_pred_proba)\n",
-    "\n",
-    "write.csv(calibration_data, file = paste0(\"output/calibration_data_\", site, \".csv\"), row.names = FALSE)\n",
-    "\n",
-    "ggplot(calibration_data, aes(x = predicted_prob, y = actual_prob)) +\n",
-    "  geom_point() +\n",
-    "  geom_errorbar(aes(ymin = lower_ci, ymax = upper_ci), width = 0.02) +\n",
-    "  geom_smooth(method = \"loess\", se = FALSE) +\n",
-    "  labs(x = \"Predicted Probability\", y = \"Actual Probability\") +\n",
-    "  ggtitle(\"Calibration Plot with Confidence Intervals\") +\n",
-    "  theme_minimal()\n",
-    "\n",
-    "calibration_data\n",
-    "### AUC & PR curve\n",
-    "y_test <- factor(y_test, levels = c(0, 1))\n",
-    "\n",
-    "\n",
-    "roc_obj <- roc(y_test, y_pred_proba, levels = c(0, 1), direction = \"<\")\n",
-    "roc_auc <- auc(roc_obj)\n",
-    "\n",
-    "pr_obj <- pr.curve(scores.class0 = y_pred_proba, weights.class0 = as.numeric(as.character(y_test)), curve = TRUE)\n",
-    "pr_auc <- pr_obj$auc.integral\n",
-    "\n",
-    "\n",
-    "roc_thresholds <- roc_obj$thresholds\n",
-    "if (length(roc_obj$sensitivities) != length(roc_thresholds)) {\n",
-    "  roc_thresholds <- c(roc_thresholds, 1)\n",
-    "}\n",
-    "\n",
-    "roc_data <- data.frame(fpr = 1 - roc_obj$specificities, \n",
-    "                       tpr = roc_obj$sensitivities, \n",
-    "                       roc_thresholds = roc_thresholds,\n",
-    "                       site=site)\n",
-    "pr_data <- data.frame(precision = pr_obj$curve[,2], \n",
-    "                      recall = pr_obj$curve[,1], \n",
-    "                      pr_thresholds = pr_obj$curve[,3],\n",
-    "                      site=site)\n",
-    "\n",
-    "write.csv(roc_data, file = paste0('output/roc_curve_data_', site, '.csv'), row.names = FALSE)\n",
-    "write.csv(pr_data, file = paste0('output/pr_curve_data_', site, '.csv'), row.names = FALSE)\n",
-    "\n",
-    "par(mfrow = c(1, 2))\n",
-    "\n",
-    "plot(roc_obj, col = 'blue', lwd = 2, main = 'Receiver Operating Characteristic (ROC) Curve', xlab = 'False Positive Rate', ylab = 'True Positive Rate')\n",
-    "abline(a = 0, b = 1, col = 'gray', lty = 2)\n",
-    "legend('bottomright', legend = paste('ROC curve (area =', round(roc_auc, 2), ')'), col = 'blue', lwd = 2)\n",
-    "\n",
-    "plot(pr_obj$curve[,1], pr_obj$curve[,2], type = 'l', col = 'blue', lwd = 2, xlab = 'Recall', ylab = 'Precision', main = 'Precision-Recall (PR) Curve')\n",
-    "legend('bottomleft', legend = paste('PR curve (area =', round(pr_auc, 2), ')'), col = 'blue', lwd = 2)"
-   ]
+packages <- c("duckdb", "lubridate", "tidyverse", "dplyr", "readr", "arrow", "fst", "lightgbm", "caret", "Metrics", "ROCR", "pROC", "ggplot2","PRROC", "reshape2")
+
+install_if_missing <- function(package) {
+  if (!require(package, character.only = TRUE)) {
+    install.packages(package, dependencies = TRUE)
+    library(package, character.only = TRUE)
   }
- ],
- "metadata": {
-  "kernelspec": {
-   "display_name": "R",
-   "language": "R",
-   "name": "ir"
-  },
-  "language_info": {
-   "codemirror_mode": "r",
-   "file_extension": ".r",
-   "mimetype": "text/x-r-source",
-   "name": "R",
-   "pygments_lexer": "r",
-   "version": "4.1.3"
-  }
- },
- "nbformat": 4,
- "nbformat_minor": 4
 }
+
+sapply(packages, install_if_missing)
+
+con <- duckdb::dbConnect(duckdb::duckdb(), dbdir = ":memory:")
+
+tables_location <- "C:/Users/vchaudha/OneDrive - rush.edu/CLIF-1.0-main" 
+site <-'RUSH'
+file_type <- '.csv'
+
+# Check if the output directory exists; if not, create it
+if (!dir.exists("output")) {
+  dir.create("output")
+}
+
+read_data <- function(file_path) {
+  if (grepl("\\.csv$", file_path)) {
+    return(read.csv(file_path))
+  } else if (grepl("\\.parquet$", file_path)) {
+    return(arrow::read_parquet(file_path))
+  } else if (grepl("\\.fst$", file_path)) {
+    return(fst::read.fst(file_path))
+  } else {
+    stop("Unsupported file format")
+  }
+}
+
+# Read data using the function and assign to variables
+location <- read_data(paste0(tables_location, "/rclif/clif_adt", file_type))
+encounter <- read_data(paste0(tables_location, "/rclif/clif_encounter_demographics_dispo_clean", file_type))
+limited <- read_data(paste0(tables_location, "/rclif/clif_limited_identifiers", file_type))
+demog <- read_data(paste0(tables_location, "/rclif/clif_patient_demographics", file_type))
+
+# First join operation
+join <- location %>%
+  select(encounter_id, location_category, in_dttm, out_dttm) %>%
+  left_join(limited %>% select(encounter_id, admission_dttm), by = "encounter_id")
+
+# Second join operation to get 'icu_data'
+icu_data <- join %>%
+  left_join(encounter %>% select(encounter_id, age_at_admission, disposition), by = "encounter_id") %>%
+  mutate(
+    admission_dttm = ymd_hms(admission_dttm), # Convert to POSIXct, adjust the function as per your date format
+    in_dttm = ymd_hms(in_dttm), # Convert to POSIXct, adjust the function as per your date format
+    out_dttm = ymd_hms(out_dttm)
+  )
+
+# Filter rows where location is ICU and in_dttm is within 48 hours of admission_dttm
+
+icu_48hr_check <- icu_data %>%
+  filter(location_category == "ICU",
+         in_dttm >= admission_dttm,
+         in_dttm <= admission_dttm + lubridate::hours(48),
+         lubridate::year(admission_dttm) >= 2020,
+         lubridate::year(admission_dttm) <= 2021,
+         age_at_admission >= 18,
+         !is.na(age_at_admission)) %>%
+  distinct(encounter_id) %>%
+  pull(encounter_id)
+  
+# Filter icu_data to only include rows with encounter_ids in icu_48hr_check and within 72 hours of admission
+icu_data <- icu_data %>%
+  filter(encounter_id %in% icu_48hr_check,
+         in_dttm <= admission_dttm + hours(72)) %>%
+  arrange(in_dttm) %>%
+  mutate(RANK = rank(in_dttm, ties.method = "first")) %>%
+  arrange(encounter_id, in_dttm) %>%
+  group_by(encounter_id) %>%
+  mutate(RANK = rank(in_dttm, ties.method = "first"))
+
+  # Compute minimum rank for ICU locations
+min_icu <- icu_data %>%
+  filter(location_category == "ICU") %>%
+  group_by(encounter_id) %>%
+  summarize(min_icu = min(RANK))
+
+# Merge the minimum ICU rank back into the original dataset
+icu_data <- icu_data %>%
+  left_join(min_icu, by = "encounter_id")
+
+# Filter based on rank being at least the minimum ICU rank
+icu_data <- icu_data %>%
+  filter(RANK >= min_icu) %>%
+  arrange(in_dttm)
+
+# Change 'OR' to 'ICU' in location_category
+icu_data <- icu_data %>%
+  mutate(location_category = ifelse(location_category == "OR", "ICU", location_category))
+
+# Create a new group_id based on changes in location_category
+icu_data <- icu_data %>%
+  group_by(encounter_id) %>%
+  mutate(group_id = cumsum(location_category != lag(location_category, default = first(location_category)))) %>%
+  ungroup()
+
+icu_data <- icu_data %>%
+  group_by(encounter_id, location_category, group_id) %>%
+  summarize(
+    min_in_dttm = min(in_dttm),
+    max_out_dttm = max(out_dttm),
+    admission_dttm = first(admission_dttm),
+    age = first(age_at_admission),
+    dispo = first(disposition),
+    .groups = 'drop'
+  )
+
+# Compute minimum group_id for each encounter_id where location_category is 'ICU'
+min_icu <- icu_data %>%
+  filter(location_category == "ICU") %>%
+  group_by(encounter_id) %>%
+  summarize(min_icu = min(group_id), .groups = 'drop')
+
+# Merge the minimum ICU group_id back into the original dataset
+icu_data <- left_join(icu_data, min_icu, by = "encounter_id")
+
+# Filter based on group_id matching min_icu and duration condition
+icu_data <- icu_data %>%
+  filter(min_icu == group_id,
+         interval(min_in_dttm, max_out_dttm) >= dhours(24)) %>%
+  arrange(min_in_dttm)
+
+  # Add 24 hours to the 'min_in_dttm' column
+icu_data <- icu_data %>%
+  mutate(after_24hr = min_in_dttm + hours(24))
+
+# Select specific columns
+icu_data <- icu_data %>%
+  select(encounter_id, min_in_dttm, after_24hr,max_out_dttm, age, dispo)
+
+# Merge with demographic data and select specific columns
+icu_data <- icu_data %>%
+  left_join(demog, by = "encounter_id") %>%
+  select(encounter_id, min_in_dttm, after_24hr,max_out_dttm, age, dispo, sex, ethnicity, race)
+
+# Remove rows with missing 'sex' and create new variables
+icu_data <- icu_data %>%
+  filter(!is.na(sex)) %>%
+  mutate(
+    isfemale = as.integer(tolower(sex) == "female"),
+    isdeathdispo = as.integer(grepl("dead|expired|death|died", dispo, ignore.case = TRUE))
+  )
+
+# Define race and ethnicity mappings using case_when
+icu_data <- icu_data %>%
+  mutate(
+    race = case_when(
+      race == "White" ~ "White",
+      race == "Black or African American" ~ "Black",
+      race == "Asian" ~ "Asian",
+      race %in% c("Other", "Unknown", "Did Not Encounter", "Refusal", 
+                  "American Indian or Alaska Native", 
+                  "Native Hawaiian or Other Pacific Islander") ~ "Others",
+      TRUE ~ "Others"  # Default case for NA and any other unexpected values
+    ),
+    ethnicity = case_when(
+      ethnicity == "Not Hispanic or Latino" ~ "Not Hispanic or Latino",
+      ethnicity == "Hispanic or Latino" ~ "Hispanic or Latino",
+      ethnicity %in% c("Did Not Encounter", "Refusal", "*Unspecified") ~ "Not Hispanic or Latino",
+      TRUE ~ "Not Hispanic or Latino"  # Default case for NA and any other unexpected values
+    )
+  )
+
+# Calculate the difference in hours
+icu_data$ICU_stay_hrs <- as.numeric(difftime(icu_data$max_out_dttm, icu_data$min_in_dttm, units = "secs")) / 3600
+
+
+rm( encounter, limited, demog)
+gc()  # invokes garbage collection
+### vitals
+vitals <- read_data(paste0(tables_location, "/rclif/clif_vitals_clean", file_type))
+duckdb_register(con, "vitals", vitals)
+duckdb_register(con, "icu_data", icu_data)
+vitals <- dbGetQuery(con, "SELECT 
+        encounter_id,
+        CAST(recorded_dttm AS datetime) AS recorded_dttm,
+        CAST(vital_value AS float) AS vital_value,
+        vital_category 
+    FROM 
+        vitals
+    WHERE 
+        vital_category IN ('weight_kg', 'pulse', 'sbp', 'dbp', 'temp_c','height_inches') 
+        AND encounter_id IN (SELECT DISTINCT encounter_id FROM icu_data);")
+duckdb_unregister(con, "vitals")       
+pivoted_data <- vitals %>%
+  group_by(encounter_id, recorded_dttm, vital_category) %>%
+  summarise(first_vital_value = first(vital_value), .groups = 'drop') %>%
+  pivot_wider(
+    names_from = vital_category,
+    values_from = first_vital_value
+  ) %>%  as.data.frame
+
+rm(vitals)
+gc()  # invokes garbage collection
+pivoted_data <- pivoted_data %>%
+  mutate(
+    height_meters = height_inches * 0.0254,
+    bmi = weight_kg / (height_meters ^ 2)
+  ) %>%  as.data.frame
+
+# Merge vitals data with icu_data
+icu_data_agg <- icu_data %>%
+  left_join(pivoted_data, by = "encounter_id") %>%  as.data.frame
+
+# Filter records based on time conditions
+icu_data_agg <- icu_data_agg %>%
+  filter(recorded_dttm >= min_in_dttm & recorded_dttm <= after_24hr) %>%
+  arrange(recorded_dttm) %>%
+  select(-recorded_dttm)  %>%  as.data.frame
+
+duckdb_register(con, "icu_data_agg", icu_data_agg)
+# Aggregate data
+icu_data_agg <- tbl(con, "icu_data_agg") %>% 
+  group_by(encounter_id) %>%
+  summarize(
+    min_bmi = min(bmi, na.rm = TRUE),
+    max_bmi = max(bmi, na.rm = TRUE),
+    avg_bmi = mean(bmi, na.rm = TRUE),
+    min_weight_kg = min(weight_kg, na.rm = TRUE), 
+    max_weight_kg = max(weight_kg, na.rm = TRUE),
+    avg_weight_kg = mean(weight_kg, na.rm = TRUE),
+    min_pulse = min(pulse, na.rm = TRUE),
+    max_pulse = max(pulse, na.rm = TRUE),
+    avg_pulse = mean(pulse, na.rm = TRUE),
+    min_sbp = min(sbp, na.rm = TRUE),
+    max_sbp = max(sbp, na.rm = TRUE),
+    avg_sbp = mean(sbp, na.rm = TRUE),
+    min_dbp = min(dbp, na.rm = TRUE),
+    max_dbp = max(dbp, na.rm = TRUE),
+    avg_dbp = mean(dbp, na.rm = TRUE),
+    min_temp_c = min(temp_c, na.rm = TRUE),
+    max_temp_c = max(temp_c, na.rm = TRUE),
+    avg_temp_c = mean(temp_c, na.rm = TRUE),
+    .groups = "drop"  # Avoid auto-grouping in subsequent operations
+  ) %>% collect() %>%   as.data.frame
+
+# Merge aggregated data back into the original icu_data
+icu_data <- left_join(icu_data, icu_data_agg, by = "encounter_id")
+
+duckdb_unregister(con, "icu_data_agg")
+rm(icu_data_agg,pivoted_data)
+gc()  # invokes garbage collection
+### labs
+labs <- read_data(paste0(tables_location, "/rclif/clif_labs_clean", file_type))
+duckdb_register(con, "labs", labs)
+labs <- dbGetQuery(con, "
+ SELECT 
+        encounter_id,
+        CAST(lab_order_dttm AS datetime) AS lab_order_dttm,
+        TRY_CAST(lab_value AS float) AS lab_value,
+        lab_category 
+    FROM 
+        labs
+    WHERE 
+      ((lab_category='monocyte'               and lab_type_name='standard') OR
+        (lab_category='lymphocyte'              and lab_type_name='standard') OR
+        (lab_category='basophil'                and lab_type_name='standard') OR
+        (lab_category='neutrophil'              and lab_type_name='standard') OR
+        (lab_category='albumin'                 and lab_type_name='standard') OR
+        (lab_category='ast'                     and lab_type_name='standard') OR
+        (lab_category='total_protein'           and lab_type_name='standard') OR
+        (lab_category='alkaline_phosphatase'    and lab_type_name='standard') OR
+        (lab_category='bilirubin_total'         and lab_type_name='standard') OR
+        (lab_category='bilirubin_conjugated'    and lab_type_name='standard') OR
+        (lab_category='calcium'                 and lab_type_name='standard') OR
+        (lab_category='chloride'                and lab_type_name='standard') OR
+        (lab_category='potassium'               and lab_type_name='standard') OR
+        (lab_category='sodium'                  and lab_type_name='standard') OR
+        (lab_category='glucose_serum'           and lab_type_name='standard') OR
+        (lab_category='hemoglobin'              and lab_type_name='standard') OR
+        (lab_category='platelet count'          and lab_type_name='standard') OR
+        (lab_category='wbc'                     and lab_type_name='standard'))
+        AND encounter_id IN (SELECT DISTINCT encounter_id FROM icu_data);
+")
+
+pivoted_data <- labs  %>%
+  group_by(encounter_id, lab_order_dttm, lab_category) %>%
+  summarise(first_lab_value = first(lab_value), .groups = 'drop') %>%
+  pivot_wider(
+    names_from = lab_category,
+    values_from = first_lab_value
+  )  %>% 
+  as.data.frame
+
+icu_data_agg <- left_join(icu_data, pivoted_data, by = "encounter_id")
+
+icu_data_agg <- filter(icu_data_agg, lab_order_dttm >= min_in_dttm & lab_order_dttm <= after_24hr) %>% 
+  as.data.frame
+duckdb_register(con, "icu_data_agg", icu_data_agg)
+
+Lab_variables <- c('albumin', 'alkaline_phosphatase',
+       'ast', 'basophil', 'bilirubin_conjugated', 'bilirubin_total', 'calcium',
+       'chloride', 'hemoglobin', 'lymphocyte', 'monocyte', 'glucose_serum', 
+       'neutrophil', 'potassium', 'sodium', 'total_protein','platelet count', 
+       'wbc')
+
+icu_data_agg <- tbl(con, "icu_data_agg") %>% 
+  group_by(encounter_id) %>%
+  summarise(across(all_of(Lab_variables), list(
+    min = ~min(., na.rm = TRUE), 
+    max = ~max(., na.rm = TRUE), 
+    mean = ~mean(., na.rm = TRUE)
+  ), .names = "{.col}_{.fn}")) %>%
+  ungroup() %>% collect() %>%   as.data.frame # Ensure no residual grouping
+
+duckdb_unregister(con, "icu_data_agg")
+
+# Merge aggregated data back into the original icu_data
+icu_data <- left_join(icu_data, icu_data_agg, by = "encounter_id") %>%   as.data.frame
+
+rm(icu_data_agg,pivoted_data,labs)
+gc() 
+### Model
+dim(icu_data)
+
+model_col <- c('isfemale', 'age', 'min_bmi', 'max_bmi', 'avg_bmi',
+               'min_weight_kg', 'max_weight_kg', 'avg_weight_kg', 'min_pulse',
+               'max_pulse', 'avg_pulse', 'min_sbp', 'max_sbp', 'avg_sbp', 'min_dbp',
+               'max_dbp', 'avg_dbp', 'min_temp_c', 'max_temp_c', 'avg_temp_c',
+               'albumin_min', 'albumin_max', 'albumin_mean',
+               'alkaline_phosphatase_min', 'alkaline_phosphatase_max',
+               'alkaline_phosphatase_mean', 'ast_min', 'ast_max', 'ast_mean',
+               'basophil_min', 'basophil_max', 'basophil_mean',
+               'bilirubin_conjugated_min', 'bilirubin_conjugated_max',
+               'bilirubin_conjugated_mean', 'bilirubin_total_min',
+               'bilirubin_total_max', 'bilirubin_total_mean', 'calcium_min',
+               'calcium_max', 'calcium_mean', 'chloride_min', 'chloride_max',
+               'chloride_mean', 'glucose_serum_min', 'glucose_serum_max',
+               'glucose_serum_mean', 'hemoglobin_min', 'hemoglobin_max',
+               'hemoglobin_mean', 'lymphocyte_min', 'lymphocyte_max',
+               'lymphocyte_mean', 'monocyte_min', 'monocyte_max', 'monocyte_mean',
+               'neutrophil_min', 'neutrophil_max', 'neutrophil_mean',
+               'platelet count_min', 'platelet count_max', 'platelet count_mean',
+               'potassium_min', 'potassium_max', 'potassium_mean', 'sodium_min',
+               'sodium_max', 'sodium_mean', 'total_protein_min', 'total_protein_max',
+               'total_protein_mean', 'wbc_min', 'wbc_max', 'wbc_mean')
+
+
+model_file_path <- sprintf("%s/projects/Mortality_model/models/lgbm_model_20240628-092136.txt", tables_location)
+
+# Load the model
+model <- lgb.load(model_file_path)
+#### Feature Distribution
+generate_facetgrid_histograms <- function(data, category_column, value_column) {
+  p <- ggplot(data, aes_string(x = value_column)) +
+    geom_histogram(bins = 30, fill = 'blue', color = 'black') +
+    facet_wrap(as.formula(paste('~', category_column)), scales = 'free') +
+    labs(x = value_column, y = 'Frequency') +
+    theme(strip.text = element_text(face = 'bold', size = 10),
+          plot.title = element_text(hjust = 0.5, size = 16))
+
+  p <- p + ggtitle(paste('Histograms of', value_column, 'by', category_column))
+  
+  print(p)
+}
+
+
+# Important features list
+imp_features_split <- c(
+  "age", "min_pulse", "max_pulse", "max_temp_c", "max_sbp", "glucose_serum_min",
+  "avg_temp_c", "sodium_max", "min_dbp", "platelet count_min", "min_temp_c",
+  "min_sbp", "avg_sbp", "avg_pulse", "wbc_min", "glucose_serum_mean",
+  "alkaline_phosphatase_max", "hemoglobin_min", "ast_max", "avg_dbp"
+)
+
+# Assuming icu_data is your data frame and output_directory, site_name are defined
+data_unstack <- melt(icu_data[imp_features_split], variable.name = 'imp_features_split', value.name = 'value')
+
+# Generate the facet grid histograms
+generate_facetgrid_histograms(data_unstack, 'imp_features_split', 'value')
+
+data_summary <- data_unstack %>%
+  group_by(imp_features_split) %>%
+  summarise(count = n(), 
+            mean = mean(value, na.rm = TRUE),
+            std = sd(value, na.rm = TRUE), 
+            min = min(value, na.rm = TRUE), 
+            `25%` = quantile(value, 0.25, na.rm = TRUE), 
+            `50%` = median(value, na.rm = TRUE), 
+            `75%` = quantile(value, 0.75, na.rm = TRUE), 
+            max = max(value, na.rm = TRUE))
+
+data_summary_t <- data_summary %>%
+  pivot_longer(cols = -imp_features_split, names_to = 'statistic', values_to = 'value') %>%
+  pivot_wider(names_from = imp_features_split, values_from = value)
+
+write.csv(data_summary_t, sprintf("output/imp_features_split_stats_%s.csv", site), row.names = FALSE)
+
+
+data_summary_t
+
+# Important features list
+imp_features_gain <- c(
+  "albumin_min", "min_pulse", "ast_mean", "sodium_max", "age", "min_dbp", 
+  "min_sbp", "max_pulse", "avg_temp_c", "ast_max", "max_temp_c", "max_sbp", 
+  "platelet count_min", "min_temp_c", "glucose_serum_min", "glucose_serum_max", 
+  "wbc_mean", "wbc_min", "albumin_mean", "glucose_serum_mean"
+)
+
+# Unstack the data
+data_unstack <- melt(icu_data[imp_features_gain], variable.name = 'imp_features_gain', value.name = 'value')
+
+# Generate and display the histograms
+generate_facetgrid_histograms(data_unstack, 'imp_features_gain', 'value')
+
+# Perform summarization on data_unstack
+data_summary <- data_unstack %>%
+  group_by(imp_features_gain) %>%
+  summarise(count = n(), 
+            mean = mean(value, na.rm = TRUE),
+            std = sd(value, na.rm = TRUE), 
+            min = min(value, na.rm = TRUE), 
+            `25%` = quantile(value, 0.25, na.rm = TRUE), 
+            `50%` = median(value, na.rm = TRUE), 
+            `75%` = quantile(value, 0.75, na.rm = TRUE), 
+            max = max(value, na.rm = TRUE))
+
+# Transpose the data_summary
+data_summary_t <- data_summary %>%
+  pivot_longer(cols = -imp_features_gain, names_to = 'statistic', values_to = 'value') %>%
+  pivot_wider(names_from = imp_features_gain, values_from = value)
+
+# Save the transposed summary statistics to a CSV file
+write.csv(data_summary_t, sprintf("output/imp_features_gain_stats_%s.csv", site), row.names = FALSE)
+data_summary
+### Probablity table
+X_test <- as.matrix(icu_data[model_col])
+y_test <- factor(icu_data$isdeathdispo)  
+y_pred_proba <- predict(model, X_test)
+y_pred_class <- as.numeric(y_pred_proba > 0.208)
+icu_data$pred_proba <- y_pred_proba
+
+site_label <- y_test
+site_proba <- y_pred_proba
+site_name <- rep(site, length(site_label))
+prob_df_lgbm <- data.frame(site_label, site_proba, site_name)
+# write.csv(prob_df_lgbm, file = paste0("output/Model_probabilities_", site, ".csv"), row.names = FALSE)
+head(prob_df_lgbm)
+# Do Not share this file
+### Metrics
+
+# Ensure y_test is numeric
+y_test <- as.numeric(as.character(y_test))
+predicted_probabilities <- as.numeric(as.character(y_pred_proba))
+
+# Function to calculate metrics
+calculate_metrics <- function(predicted_probabilities, predicted_classes, y_test) {
+  conf_matrix <- confusionMatrix(as.factor(predicted_classes), as.factor(y_test))
+  
+  accuracy <- conf_matrix$overall['Accuracy']
+  roc_auc <- pROC::auc(pROC::roc(y_test, predicted_probabilities))
+  
+  tp <- sum(predicted_classes == 1 & y_test == 1, na.rm = TRUE)
+  fp <- sum(predicted_classes == 1 & y_test == 0, na.rm = TRUE)
+  fn <- sum(predicted_classes == 0 & y_test == 1, na.rm = TRUE)
+  tn <- sum(predicted_classes == 0 & y_test == 0, na.rm = TRUE)
+  
+  recall <- ifelse((tp + fn) > 0, tp / (tp + fn), 0)
+  precision <- ifelse((tp + fp) > 0, tp / (tp + fp), 0)
+  brier_score <- mean((predicted_probabilities - y_test)^2, na.rm = TRUE)
+  
+  return(c(accuracy, recall, precision, roc_auc, brier_score))
+}
+
+# Bootstrapping to calculate 95% confidence intervals
+set.seed(123)
+n_iterations <- 1000
+metrics <- matrix(NA, ncol = 5, nrow = n_iterations)
+colnames(metrics) <- c("Accuracy", "Recall", "Precision", "ROC AUC", "Brier Score Loss")
+
+for (i in 1:n_iterations) {
+  sample_indices <- sample(1:length(y_test), replace = TRUE)
+  y_test_sample <- y_test[sample_indices]
+  predicted_probabilities_sample <- predicted_probabilities[sample_indices]
+  predicted_classes_sample <- as.integer(predicted_probabilities_sample >= 0.208)
+  
+  metrics[i, ] <- calculate_metrics(predicted_probabilities_sample, predicted_classes_sample, y_test_sample)
+}
+
+# Calculate mean and 95% confidence intervals
+mean_metrics <- apply(metrics, 2, mean, na.rm = TRUE)
+ci_lower <- apply(metrics, 2, function(x) quantile(x, 0.025, na.rm = TRUE))
+ci_upper <- apply(metrics, 2, function(x) quantile(x, 0.975, na.rm = TRUE))
+
+# Combine results into a data frame
+results_metric <- data.frame(
+  Metric = c('Accuracy', 'Recall', 'Precision', 'ROC AUC', 'Brier Score Loss'),
+  Value = mean_metrics,
+  CI_Lower = ci_lower,
+  CI_Upper = ci_upper,
+  SiteName = rep(site, 5)
+)
+
+# Export to CSV
+write.csv(results_metric, sprintf("output/result_metrics_2_%s.csv", site), row.names = FALSE)
+
+# Print the results
+results_metric
+#### model fairness test accross 'race', 'ethnicity', 'sex'
+
+calculate_metrics <- function(data, true_col, pred_prob_col, subgroup_cols, threshold = 0.208) {
+  results <- list()
+  total_count <- nrow(data)
+  
+  for (subgroup_col in subgroup_cols) {
+    # Filter out rows with NA in the current subgroup column
+    filtered_data <- data %>% filter(!is.na(.data[[subgroup_col]])) %>% drop_na(.data[[true_col]], .data[[pred_prob_col]])
+    
+    # Loop over unique groups in the subgroup column
+    for (group in unique(filtered_data[[subgroup_col]])) {
+      subgroup_data <- filtered_data %>% filter(.data[[subgroup_col]] == group)
+      group_count <- nrow(subgroup_data)
+      proportion <- group_count / total_count
+      
+      # Check if there are at least two distinct classes and no NA in predictor
+      if (length(unique(subgroup_data[[true_col]])) > 1 && sum(!is.na(subgroup_data[[pred_prob_col]])) == nrow(subgroup_data)) {
+        # Calculate AUC
+        pred <- prediction(subgroup_data[[pred_prob_col]], subgroup_data[[true_col]])
+        auc <- performance(pred, "auc")@y.values[[1]]
+        # Calculate confusion matrix
+        cm <- table(factor(subgroup_data[[true_col]], levels = c(0, 1)),
+                    factor(as.numeric(subgroup_data[[pred_prob_col]] > threshold), levels = c(0, 1)))
+        tn <- cm[1, 1]
+        fp <- cm[1, 2]
+        fn <- cm[2, 1]
+        tp <- cm[2, 2]
+        
+        sensitivity <- ifelse((tp + fn) != 0, tp / (tp + fn), 0)
+        specificity <- ifelse((tn + fp) != 0, tn / (tn + fp), 0)
+        ppv <- ifelse((tp + fp) != 0, tp / (tp + fp), 0)
+        npv <- ifelse((tn + fn) != 0, tn / (tn + fn), 0)
+        recall <- sensitivity
+        acc <- ifelse((tp + fn + tn + fp) != 0, (tp + tn) / (tp + fn + tn + fp), 0)
+        bri <- mean((subgroup_data[[pred_prob_col]] - subgroup_data[[true_col]])^2)
+
+        result <- list(
+          Subgroup = subgroup_col, Group = group,TP=tp,TN=tn,FP=fp,FN=fn, AUC = auc, PPV = ppv, Sensitivity = sensitivity,
+          Specificity = specificity, NPV = npv, Recall = recall, Accuracy = acc,Brier = bri,
+          GroupCount = group_count, TotalCount = total_count, Proportion = proportion
+        )
+      } else {
+        result <- list(
+          Subgroup = subgroup_col, Group = group,TP='NA',TN='NA',FP='NA',FN='NA', AUC = 'Not defined', PPV = 'Not applicable', Sensitivity = 'Not applicable',
+          Specificity = 'Not applicable', NPV = 'Not applicable', Recall = 'Not applicable', Accuracy = 'Not applicable',Brier = 'NA',
+          GroupCount = group_count, TotalCount = total_count, Proportion = proportion
+        )
+      }
+      
+      results <- c(results, list(result))
+    }
+  }
+  
+  # Convert the list of results to a data frame
+  results_df <- do.call(rbind, lapply(results, as.data.frame))
+  return(results_df)
+}
+
+# Example usage
+result_df <- calculate_metrics(icu_data, 'isdeathdispo', 'pred_proba', c('race', 'ethnicity', 'sex'))
+write.csv(result_df, file = paste0("output/fairness_test_", site, ".csv"), row.names = FALSE)
+
+result_df
+### Site Thr Analysis
+top_n_percentile <- function(target_var, pred_proba, site_name) {
+  # Generating thresholds from 99% to 1%
+  thr_list <- seq(0.99, 0.01, by = -0.01)
+  results <- data.frame(N_Percentile = character(),
+                        Thr_Value = numeric(),
+                        TN = integer(),
+                        FP = integer(),
+                        FN = integer(),
+                        TP = integer(),
+                        Sensitivity = numeric(),
+                        Specificity = numeric(),
+                        PPV = numeric(),
+                        NPV = numeric(),
+                        Recall = numeric(),
+                        Accuracy = numeric(),
+                        Site_Name = character(),
+                        stringsAsFactors = FALSE)
+  
+  for (thr in thr_list) {
+    prob <- data.frame(target_var = target_var, pred_proba = pred_proba)
+    thr_value <- quantile(prob$pred_proba, thr)
+    prob$pred_proba_bin <- ifelse(prob$pred_proba >= thr_value, 1, 0)
+    
+    cm <- table(factor(prob$target_var, levels = c(0, 1)),
+                factor(prob$pred_proba_bin, levels = c(0, 1)))
+    tn <- cm[1, 1]
+    fp <- cm[1, 2]
+    fn <- cm[2, 1]
+    tp <- cm[2, 2]
+    
+    sensitivity <- tp / (tp + fn)
+    specificity <- tn / (tn + fp)
+    ppv <- tp / (tp + fp)
+    npv <- tn / (tn + fn)
+    recall <- tp / (tp + fn)
+    acc <- (tp + tn) / sum(cm)
+    n_prec <- paste0("Top ", round((1 - thr) * 100, 0), "%")
+    
+    # Define each row as a dataframe before appending
+    row <- data.frame(N_Percentile = n_prec,
+                      Thr_Value = thr_value,
+                      TN = tn,
+                      FP = fp,
+                      FN = fn,
+                      TP = tp,
+                      Sensitivity = sensitivity,
+                      Specificity = specificity,
+                      PPV = ppv,
+                      NPV = npv,
+                      Recall = recall,
+                      Accuracy = acc,
+                      Site_Name = site_name,
+                      stringsAsFactors = FALSE)
+    results <- rbind(results, row)
+  }
+  return(results)
+}
+
+# Usage example (you need to define y_test, y_pred_proba, and site_name)
+topn <- top_n_percentile(y_test, y_pred_proba, site)
+
+write.csv(topn, file =  paste0("output/Top_N_percentile_PPV_", site, ".csv"), row.names = FALSE)
+head(topn,5)
+
+#### Rush THR Top N
+thr<-0.208
+# Define column names
+col <- c('Thr_Value', 'TN', 'FP', 'FN', 'TP', 'Sensitivity', 'Specificity', 'PPV', 'NPV', 'Recall', 'Accuracy', 'Site_Name')
+
+# Create an empty data frame with the specified columns
+results <- data.frame(matrix(ncol = length(col), nrow = 0))
+colnames(results) <- col
+
+# Create a data frame with target_var and pred_proba
+prob <- data.frame(target_var = y_test, pred_proba = y_pred_proba)
+
+# Create pred_proba_bin based on the threshold
+prob$pred_proba_bin <- ifelse(prob$pred_proba >= thr, 1, 0)
+
+# Calculate confusion matrix
+cm <- table(factor(prob$target_var, levels = c(0, 1)),
+            factor(prob$pred_proba_bin, levels = c(0, 1)))
+tn <- cm[1, 1]
+fp <- cm[1, 2]
+fn <- cm[2, 1]
+tp <- cm[2, 2]
+
+# Calculate metrics
+sensitivity <- tp / (tp + fn)
+specificity <- tn / (tn + fp)
+ppv <- tp / (tp + fp)
+npv <- tn / (tn + fn)
+recall <- tp / (tp + fn)
+acc <- (tp + tn) / sum(cm)
+
+# Define each row as a dataframe before appending
+row <- data.frame(Thr_Value = thr,
+                  TN = tn,
+                  FP = fp,
+                  FN = fn,
+                  TP = tp,
+                  Sensitivity = sensitivity,
+                  Specificity = specificity,
+                  PPV = ppv,
+                  NPV = npv,
+                  Recall = recall,
+                  Accuracy = acc,
+                  Site_Name = site_name,
+                  stringsAsFactors = FALSE)
+
+# Append the row to the results data frame
+results <- rbind(results, row)
+write.csv(head(results,1), file =  paste0("output/Top_N_percentile_atRushThr_", site, ".csv"), row.names = FALSE)
+head(results,1)
+create_calibration_data <- function(y_test, y_pred_proba, n_bins = 10) {
+
+  df <- data.frame(y_test = y_test, y_pred_proba = y_pred_proba)
+
+  df$bin <- cut(df$y_pred_proba, breaks = n_bins, labels = FALSE, include.lowest = TRUE)
+
+  calibration_data <- df %>%
+    group_by(bin) %>%
+    summarise(
+      predicted_prob = mean(y_pred_proba),
+      actual_prob = mean(y_test),
+      n = n(),
+      .groups = 'drop'
+    ) %>%
+    mutate(
+      se = sqrt((actual_prob * (1 - actual_prob)) / n),
+      lower_ci = actual_prob - 1.96 * se,
+      upper_ci = actual_prob + 1.96 * se,
+      site=site
+    )
+  
+  return(calibration_data)
+}
+
+
+calibration_data <- create_calibration_data(as.numeric(y_test), y_pred_proba)
+
+write.csv(calibration_data, file = paste0("output/calibration_data_", site, ".csv"), row.names = FALSE)
+
+ggplot(calibration_data, aes(x = predicted_prob, y = actual_prob)) +
+  geom_point() +
+  geom_errorbar(aes(ymin = lower_ci, ymax = upper_ci), width = 0.02) +
+  geom_smooth(method = "loess", se = FALSE) +
+  labs(x = "Predicted Probability", y = "Actual Probability") +
+  ggtitle("Calibration Plot with Confidence Intervals") +
+  theme_minimal()
+
+calibration_data
+### AUC & PR curve
+y_test <- factor(y_test, levels = c(0, 1))
+
+
+roc_obj <- roc(y_test, y_pred_proba, levels = c(0, 1), direction = "<")
+roc_auc <- auc(roc_obj)
+
+pr_obj <- pr.curve(scores.class0 = y_pred_proba, weights.class0 = as.numeric(as.character(y_test)), curve = TRUE)
+pr_auc <- pr_obj$auc.integral
+
+
+roc_thresholds <- roc_obj$thresholds
+if (length(roc_obj$sensitivities) != length(roc_thresholds)) {
+  roc_thresholds <- c(roc_thresholds, 1)
+}
+
+roc_data <- data.frame(fpr = 1 - roc_obj$specificities, 
+                       tpr = roc_obj$sensitivities, 
+                       roc_thresholds = roc_thresholds,
+                       site=site)
+pr_data <- data.frame(precision = pr_obj$curve[,2], 
+                      recall = pr_obj$curve[,1], 
+                      pr_thresholds = pr_obj$curve[,3],
+                      site=site)
+
+write.csv(roc_data, file = paste0('output/roc_curve_data_', site, '.csv'), row.names = FALSE)
+write.csv(pr_data, file = paste0('output/pr_curve_data_', site, '.csv'), row.names = FALSE)
+
+par(mfrow = c(1, 2))
+
+plot(roc_obj, col = 'blue', lwd = 2, main = 'Receiver Operating Characteristic (ROC) Curve', xlab = 'False Positive Rate', ylab = 'True Positive Rate')
+abline(a = 0, b = 1, col = 'gray', lty = 2)
+legend('bottomright', legend = paste('ROC curve (area =', round(roc_auc, 2), ')'), col = 'blue', lwd = 2)
+
+plot(pr_obj$curve[,1], pr_obj$curve[,2], type = 'l', col = 'blue', lwd = 2, xlab = 'Recall', ylab = 'Precision', main = 'Precision-Recall (PR) Curve')
+legend('bottomleft', legend = paste('PR curve (area =', round(pr_auc, 2), ')'), col = 'blue', lwd = 2)
