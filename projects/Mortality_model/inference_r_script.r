@@ -274,7 +274,7 @@ labs <- dbGetQuery(con, "
         (lab_category='sodium'                  and lab_type_name='standard') OR
         (lab_category='glucose_serum'           and lab_type_name='standard') OR
         (lab_category='hemoglobin'              and lab_type_name='standard') OR
-        (lab_category='platelet count'          and lab_type_name='standard') OR
+        (lab_category='platelet_count'          and lab_type_name='standard') OR
         (lab_category='wbc'                     and lab_type_name='standard'))
         AND encounter_id IN (SELECT DISTINCT encounter_id FROM icu_data);
 ")
@@ -297,7 +297,7 @@ duckdb_register(con, "icu_data_agg", icu_data_agg)
 Lab_variables <- c('albumin', 'alkaline_phosphatase',
        'ast', 'basophil', 'bilirubin_conjugated', 'bilirubin_total', 'calcium',
        'chloride', 'hemoglobin', 'lymphocyte', 'monocyte', 'glucose_serum', 
-       'neutrophil', 'potassium', 'sodium', 'total_protein','platelet count', 
+       'neutrophil', 'potassium', 'sodium', 'total_protein','platelet_count', 
        'wbc')
 
 icu_data_agg <- tbl(con, "icu_data_agg") %>% 
@@ -336,7 +336,7 @@ model_col <- c('isfemale', 'age', 'min_bmi', 'max_bmi', 'avg_bmi',
                'hemoglobin_mean', 'lymphocyte_min', 'lymphocyte_max',
                'lymphocyte_mean', 'monocyte_min', 'monocyte_max', 'monocyte_mean',
                'neutrophil_min', 'neutrophil_max', 'neutrophil_mean',
-               'platelet count_min', 'platelet count_max', 'platelet count_mean',
+               'platelet_count_min', 'platelet_count_max', 'platelet_count_mean',
                'potassium_min', 'potassium_max', 'potassium_mean', 'sodium_min',
                'sodium_max', 'sodium_mean', 'total_protein_min', 'total_protein_max',
                'total_protein_mean', 'wbc_min', 'wbc_max', 'wbc_mean')
@@ -364,7 +364,7 @@ generate_facetgrid_histograms <- function(data, category_column, value_column) {
 # Important features list
 imp_features_split <- c(
   "age", "min_pulse", "max_pulse", "max_temp_c", "max_sbp", "glucose_serum_min",
-  "avg_temp_c", "sodium_max", "min_dbp", "platelet count_min", "min_temp_c",
+  "avg_temp_c", "sodium_max", "min_dbp", "platelet_count_min", "min_temp_c",
   "min_sbp", "avg_sbp", "avg_pulse", "wbc_min", "glucose_serum_mean",
   "alkaline_phosphatase_max", "hemoglobin_min", "ast_max", "avg_dbp"
 )
@@ -399,7 +399,7 @@ data_summary_t
 imp_features_gain <- c(
   "albumin_min", "min_pulse", "ast_mean", "sodium_max", "age", "min_dbp", 
   "min_sbp", "max_pulse", "avg_temp_c", "ast_max", "max_temp_c", "max_sbp", 
-  "platelet count_min", "min_temp_c", "glucose_serum_min", "glucose_serum_max", 
+  "platelet_count_min", "min_temp_c", "glucose_serum_min", "glucose_serum_max", 
   "wbc_mean", "wbc_min", "albumin_mean", "glucose_serum_mean"
 )
 
