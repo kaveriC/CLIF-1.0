@@ -1,0 +1,71 @@
+disposition_category,disposition_name,n,site
+Admitted,Admitted as an Inpatient,90,JHU
+Dead,Expired,11171,JHU
+Dead,"Expired Medical Facility-hospital, SNF, ICF, free standing hospice-claim for hospice",51,JHU
+Dead,Expired - Place Unknown (Medicare and TRICARE claims for hospice care),5,JHU
+Discharged to another facility,Acute Care Hospital,9309,JHU
+Discharged to another facility,Psych Hospital or Unit,1250,JHU
+Discharged to another facility,Other Health Care Facility,1124,JHU
+Discharged to another facility,Psychiatric Unit,199,JHU
+Discharged to another facility,Designated Disaster Alternative Care Site,94,JHU
+Discharged to another facility,Acute Care Hospital with a Planned Readmission,88,JHU
+Discharged to another facility,To Acute Care Unit From On-Site Rehabilitation Unit,67,JHU
+Discharged to another facility,Designated Cancer Center or Children's Hospital,56,JHU
+Discharged to another facility,Psychiatric Hospital and/or Distinct Psych. Unit of Hosp w planned IP Readmit,28,JHU
+Discharged to another facility,"Federal Health Care Facility (Dep. of Def. Hospital, Veteran's Facility)",26,JHU
+Discharged to another facility,Critical Access Hospital (CAH),4,JHU
+Discharged to another facility,Psychiatric Hospital,4,JHU
+Discharged to another facility,State Psychiatric Hospital,2,JHU
+Discharged to another facility,D/C Other Acute Care Hospital,1,JHU
+Home,Home or Self Care,185364,JHU
+Home,Home-Health Care Services,51378,JHU
+Home,Assisted Living Facility,850,JHU
+Home,Facility that Provides Custodial or Supportive Care,767,JHU
+Home,Court/Police Custody,411,JHU
+Home,Shelter,64,JHU
+Home,Home or Self Care with a Planned IP Readmission,46,JHU
+Home,Home Under Care of Organized Home Health Service Org. w Planned IP Readmit,14,JHU
+Home,Supervised/Congregate House (Group Home),11,JHU
+Home,Administrative Discharged - Psych Patients - Non-Compliance With Program,6,JHU
+Home,Facility providing Custodial or Supportive Care with a Planned IP Readmit,6,JHU
+Home,Custodial Care Facility,2,JHU
+Hospice,Hospice Home,2892,JHU
+Hospice,Hospice Facility,2342,JHU
+Hospice,Home Hospice,327,JHU
+Hospice,Inpatient Hospice,244,JHU
+Hospice,To On-Site Hospice,1,JHU
+Other,Skilled Nursing Facility/Subacute Rehab,29513,JHU
+Other,Acute Rehab,7842,JHU
+Other,Left Against Medical Advice or Discontinued Care,6457,JHU
+Other,NA,618,JHU
+Other,AWOL (Whereabouts Unknown),454,JHU
+Other,To Rehab Unit From On-Site Acute Care Unit,396,JHU
+Other,Chronic Hospital and/or Distinct Chronic Unit of a Hospital,390,JHU
+Other,Eloped,142,JHU
+Other,Subacute Fac (More Intensive Than Trad Nurs Facility Care And Less Than Acute Care),135,JHU
+Other,Other Health Care Facility with planned Inpatient Readmission,123,JHU
+Other,To On-Site Subacute,79,JHU
+Other,Substance Abuse Rehab Facility,59,JHU
+Other,To Chronic Unit From On-Site Acute Care Unit,39,JHU
+Other,Chronic Hospital and/or Distinct Chronic unit of a Hospital,29,JHU
+Other,IP Rehabilitation Facility and/or a Distinct Unit of a Hosp w/ a Planned IP Readmit,24,JHU
+Other,Skilled Nursing Facility w/Planned Readmission,24,JHU
+Other,ED Dismiss - Never Arrived,16,JHU
+Other,To Rehabilitation Unit From On-Site Chronic Care Unit,16,JHU
+Other,Left Without Being Seen,14,JHU
+Other,SNF with Medicare Certification with a Planned IP Readmission,11,JHU
+Other,Still Patient (Leave of Absence or Interim Bills),11,JHU
+Other,To Acute Care Unit From On-Site Psych Unit,6,JHU
+Other,Hospital based Medicare Approved Swing Bed,5,JHU
+Other,Nursing Facility Certified for Medicaid but not Cert. Medicare w Planned IP Readmit,4,JHU
+Other,To Acute Care Unit From On-Site Chronic Care Unit,4,JHU
+Other,Crisis Center,3,JHU
+Other,Medicare Certified Long Term Care Hosp. (LTCH) with a Planned IP Readmission,3,JHU
+Other,Nursing Facility Certified under Medicaid but not Cert. under Medicare,3,JHU
+Other,To Chronic Unit From On-Site Rehabilitation Unit,3,JHU
+Other,Max Leave of Absence Reached,2,JHU
+Other,Another Health Care Institution Not Defined,1,JHU
+Other,Court/Police Custody with a Planned IP Readmission,1,JHU
+Other,Designated Cancer Center or Children's Hospital with a Planned IP Readmission,1,JHU
+Other,Psychiatric Unit ,1,JHU
+Other,Rehab Unit - Other Acute Hospital,1,JHU

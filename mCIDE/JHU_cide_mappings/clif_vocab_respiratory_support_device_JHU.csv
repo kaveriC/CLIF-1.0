@@ -1,0 +1,98 @@
+device_category,device_name,n,site
+CPAP,CPAP,3400,JHU
+Face Mask,Simple Facemask,107157,JHU
+Face Mask,Non-rebreather mask,105059,JHU
+Face Mask,Venturi mask,23344,JHU
+Face Mask,Aerosol mask,13700,JHU
+Face Mask,Non-rebreather Mask,12887,JHU
+Face Mask,Aerosol Mask,9804,JHU
+Face Mask,Simple Face Mask,7056,JHU
+Face Mask,Venturi Mask,4898,JHU
+Face Mask,Non-Rebreather mask,1274,JHU
+Face Mask,Venti Mask,280,JHU
+Face Mask,Simple mask,88,JHU
+Face Mask,Partial-Rebreather mask,8,JHU
+HFNC,High flow nasal cannula,350794,JHU
+HFNC,Nasal Cannula,128518,JHU
+HFNC,Heated High Flow,93822,JHU
+HFNC,High-Flow Nasal Cannula,5,JHU
+NIPPV,BiPhasic,7979,JHU
+NIPPV,PS,1436,JHU
+NIPPV,PC,1049,JHU
+NIPPV,Other (comment),139,JHU
+NIPPV,VC,59,JHU
+NIPPV,Adaptive Bilevel,56,JHU
+NIPPV,AVAPS,26,JHU
+NIPPV,CPAP/PS,24,JHU
+NIPPV,Spontaneous (S),24,JHU
+NIPPV,PRVC,19,JHU
+NIPPV,Spontaneous Timed (S/T),18,JHU
+NIPPV,S/T;BiPAP,11,JHU
+NIPPV,Bi-level/Bi-vent,5,JHU
+NIPPV,Spontaneous (S/T),3,JHU
+NIPPV,T-Piece,3,JHU
+NIPPV,VS,3,JHU
+NIPPV,ASV,1,JHU
+NIPPV,MMV,1,JHU
+NIPPV,SIMV Pressure,1,JHU
+NIPPV,SIMV Vol,1,JHU
+NIPPV,SIMV/AC,1,JHU
+NIPPV,SIMV/PC,1,JHU
+Nasal Cannula,Nasal cannula,3118111,JHU
+Nasal Cannula,Nasal Cannula,342780,JHU
+Nasal Cannula,Face tent,26052,JHU
+Nasal Cannula,Face Tent,4326,JHU
+Nasal Cannula,NC-Nasal cannula,6,JHU
+Room Air,None-room air,8212857,JHU
+Room Air,None/Room Air,218439,JHU
+Room Air,None (Room Air),77072,JHU
+Room Air,None-Room Air,8081,JHU
+Trach Collar,Trach mask,507332,JHU
+Trach Collar,Trach Collar,175479,JHU
+Trach Collar,Trach collar,8451,JHU
+Vent,VC,318814,JHU
+Vent,PS,193927,JHU
+Vent,PRVC,165050,JHU
+Vent,SIMV Vol,55503,JHU
+Vent,PC,31982,JHU
+Vent,T-Piece,23369,JHU
+Vent,VS,14736,JHU
+Vent,CPAP,13228,JHU
+Vent,Bi-level/Bi-vent,7523,JHU
+Vent,VC/AC,5548,JHU
+Vent,SIMV Pressure,3183,JHU
+Vent,CPAP/Pressure Support,2961,JHU
+Vent,ASV,2359,JHU
+Vent,SIMV PRVC,596,JHU
+Vent,Other (comment),535,JHU
+Vent,APRV,409,JHU
+Vent,MMV,373,JHU
+Vent,PC/AC,303,JHU
+Vent,Spontaneous (S),254,JHU
+Vent,PAV+,250,JHU
+Vent,Spontaneous Timed (S/T),112,JHU
+Vent,Volume Guarantee,94,JHU
+Vent,SIMV/VC,78,JHU
+Vent,AVAPS,43,JHU
+Vent,PC/VS,36,JHU
+Vent,NAVA,28,JHU
+Vent,CPAP/Pressure Support;VC/AC,15,JHU
+Vent,CPAP/Pressure Support;PRVC,8,JHU
+Vent,SIMV/PC,8,JHU
+Vent,SIMV/PRVC,7,JHU
+Vent,PRVC;CPAP/Pressure Support,5,JHU
+Vent,PRVC;VC/AC,4,JHU
+Vent,APRV;PRVC,2,JHU
+Vent,VOLSUPP,2,JHU
+Vent,PC/AC;PRVC,1,JHU
+Vent,PC/AC;VC/AC,1,JHU
+Vent,PRVC;VOLSUPP,1,JHU
+Vent,PS/VS,1,JHU
+Vent,SIMV/PRVC;VC/AC,1,JHU
+Vent,Spontaneous (S/T),1,JHU
+other,Blow By,1463,JHU
+other,Venturi Trach Collar,371,JHU
+other,Blow-by,3,JHU
+other,Oxygen Hood,1,JHU
+other,Venti Mask;Trach Collar,1,JHU
+NA,NA,6331136,JHU

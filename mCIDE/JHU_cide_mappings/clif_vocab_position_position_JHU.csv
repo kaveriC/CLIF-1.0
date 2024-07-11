@@ -1,0 +1,2538 @@
+position_category,position_name,n,site
+not_prone,Lying down,35308,JHU
+not_prone,Lying left side,28210,JHU
+not_prone,Lying right side,28112,JHU
+not_prone,Semi fowlers;Pillow support,27168,JHU
+not_prone,Sitting,26592,JHU
+not_prone,Supine,25302,JHU
+not_prone,Lying down;HOB equal/greater than 30 degrees,13790,JHU
+not_prone,Lying left side;Pillow support,10244,JHU
+not_prone,Lying right side;Pillow support,10018,JHU
+not_prone,Supine;Pillow support,8308,JHU
+not_prone,Semi fowlers,7394,JHU
+not_prone,Lying right side;Semi fowlers;Pillow support,4891,JHU
+not_prone,Lying left side;Semi fowlers;Pillow support,4719,JHU
+not_prone,Pillow support;Semi fowlers,4167,JHU
+not_prone,Supine;Semi fowlers;Pillow support,4165,JHU
+not_prone,Lying down;HOB less than 30 degrees,1838,JHU
+not_prone,HOB equal/greater than 30 degrees;Lying down,1700,JHU
+not_prone,Semi fowlers;Pillow support;Lying right side,1537,JHU
+not_prone,Semi fowlers;Pillow support;Lying left side,1525,JHU
+not_prone,Supine;Semi fowlers,1441,JHU
+not_prone,Pillow support;Lying right side,1316,JHU
+not_prone,Pillow support;Lying left side,1267,JHU
+not_prone,Pillow support;Supine,1065,JHU
+not_prone,Turns self;Semi fowlers;Pillow support,968,JHU
+not_prone,Sitting;Up in chair,716,JHU
+not_prone,Lying left side;Semi fowlers,672,JHU
+not_prone,Lying right side;Semi fowlers,672,JHU
+not_prone,Lying left side;Pillow support;Semi fowlers,611,JHU
+not_prone,Lying right side;Pillow support;Semi fowlers,584,JHU
+not_prone,Sitting;HOB equal/greater than 30 degrees,537,JHU
+not_prone,Semi fowlers;Pillow support;Supine,515,JHU
+not_prone,Turns self;Supine,463,JHU
+not_prone,Turns self;Semi fowlers,457,JHU
+not_prone,Pillow support;Semi fowlers;Supine,444,JHU
+not_prone,Pillow support;Semi fowlers;Lying left side,421,JHU
+not_prone,Turns self;Lying right side,399,JHU
+not_prone,Pillow support;Semi fowlers;Lying right side,388,JHU
+not_prone,Lying down;HOB flat,382,JHU
+not_prone,Turns self;Lying left side,360,JHU
+not_prone,Semi fowlers;Supine,307,JHU
+not_prone,Semi fowlers;Lying right side,306,JHU
+not_prone,Semi fowlers;Lying left side,300,JHU
+not_prone,Supine;Pillow support;Semi fowlers,285,JHU
+not_prone,Semi fowlers;Supine;Pillow support,270,JHU
+not_prone,Lying right side;Supine;Semi fowlers;Pillow support,247,JHU
+not_prone,Semi fowlers;Pillow support;Turns self,246,JHU
+not_prone,Lying down;Left lateral,244,JHU
+not_prone,Lying left side;Supine;Semi fowlers;Pillow support,241,JHU
+not_prone,Lying down;Right lateral,229,JHU
+not_prone,Supine;Turns self,216,JHU
+not_prone,Up in chair;Sitting,216,JHU
+not_prone,Turns self;Sitting,202,JHU
+not_prone,HOB equal/greater than 30 degrees;Sitting,185,JHU
+not_prone,Supine;Lying left side,179,JHU
+not_prone,Semi fowlers;Pillow support;Head midline,171,JHU
+not_prone,HOB less than 30 degrees;Lying down,169,JHU
+not_prone,Supine;Semi fowlers;Pillow support;Lying right side,161,JHU
+not_prone,Lying right side;Turns self,157,JHU
+not_prone,Supine;Semi fowlers;Pillow support;Lying left side,150,JHU
+not_prone,Turns self;Pillow support;Semi fowlers,148,JHU
+not_prone,Semi-Fowlers,145,JHU
+not_prone,Supine;Lying right side,144,JHU
+not_prone,Supine;Other (Comment),143,JHU
+not_prone,Semi fowlers;Turns self,136,JHU
+not_prone,Supine;Reverse Trendelenburg,130,JHU
+not_prone,Lying left side;Turns self,125,JHU
+not_prone,Semi fowlers;Lying left side;Pillow support,119,JHU
+not_prone,Lying left side;Reverse Trendelenburg,118,JHU
+not_prone,Lying right side;Reverse Trendelenburg,118,JHU
+not_prone,Lying left side;Supine,107,JHU
+not_prone,Head right;Lying right side,106,JHU
+not_prone,Head left;Lying left side,105,JHU
+not_prone,Lying right side;Supine,104,JHU
+not_prone,Head midline;Semi fowlers;Pillow support,103,JHU
+not_prone,Semi fowlers;Lying right side;Pillow support,99,JHU
+not_prone,Sitting;Pillow support,96,JHU
+not_prone,Lying right side;Lying left side,87,JHU
+not_prone,Lying right side;Pillow support;Reverse Trendelenburg,87,JHU
+not_prone,Turns self;Sitting;Up in chair,86,JHU
+not_prone,Lying right side;Supine;Semi fowlers,78,JHU
+not_prone,Supine;Pillow support;Reverse Trendelenburg,78,JHU
+not_prone,Supine;Semi fowlers;Lying right side,77,JHU
+not_prone,Head midline;Lying right side;Semi fowlers;Pillow support,76,JHU
+not_prone,Lying left side;Pillow support;Reverse Trendelenburg,74,JHU
+not_prone,Lying down;HOB self-regulated,73,JHU
+not_prone,Lying right side;Lying left side;Pillow support,73,JHU
+not_prone,Pillow support;Supine;Semi fowlers,72,JHU
+not_prone,Pillow support;Sitting,71,JHU
+not_prone,Supine;Semi fowlers;Lying left side,71,JHU
+not_prone,Lying left side;Other (Comment),70,JHU
+not_prone,Lying right side;Supine;Pillow support,70,JHU
+not_prone,Lying left side;Supine;Semi fowlers,69,JHU
+not_prone,Semi fowlers;Pillow support;Other (Comment),69,JHU
+not_prone,Head midline;Lying left side;Semi fowlers;Pillow support,67,JHU
+not_prone,Sitting;Turns self,67,JHU
+not_prone,Lying right side;Other (Comment),66,JHU
+not_prone,Turns self;Supine;Pillow support,66,JHU
+not_prone,Supine;Refused by patient,65,JHU
+not_prone,Reverse Trendelenburg;Lying right side,63,JHU
+not_prone,Turns self;Lying left side;Pillow support,62,JHU
+not_prone,Left lateral;Lying down,60,JHU
+not_prone,Turns self;Lying right side;Pillow support,59,JHU
+not_prone,Lying left side;Supine;Pillow support,58,JHU
+not_prone,Pillow support;Lying right side;Semi fowlers,58,JHU
+not_prone,Turns self;Supine;Semi fowlers;Pillow support,56,JHU
+not_prone,Lying right side;Head right,55,JHU
+not_prone,Lying down;Left lateral;HOB equal/greater than 30 degrees,53,JHU
+not_prone,Head right;Lying left side,52,JHU
+not_prone,Pillow support;Semi fowlers;Turns self,52,JHU
+not_prone,Head left;Lying right side,51,JHU
+not_prone,HOB flat;Lying down,49,JHU
+not_prone,Sitting;Other (Comment),49,JHU
+not_prone,Lying left side;Head left,46,JHU
+not_prone,Pillow support;Lying left side;Semi fowlers,46,JHU
+not_prone,Unable to reposition;Semi fowlers;Pillow support,46,JHU
+not_prone,Reverse Trendelenburg;Lying left side,42,JHU
+not_prone,Semi fowlers;Other (Comment),42,JHU
+not_prone,Lying down;Sitting,41,JHU
+not_prone,Supine;Pillow support;Turns self,41,JHU
+not_prone,Supine;Lying left side;Pillow support,40,JHU
+not_prone,Supine;Unable to reposition,39,JHU
+not_prone,Lying right side;Lying left side;Supine;Semi fowlers;Pillow support,38,JHU
+not_prone,Supine;Pillow support;Lying left side,38,JHU
+not_prone,Turns self;Supine;Semi fowlers,38,JHU
+not_prone,Lying down;Right lateral;HOB equal/greater than 30 degrees,37,JHU
+not_prone,Lying down;Reverse Trendelenburg,36,JHU
+not_prone,Right lateral;Lying down,36,JHU
+not_prone,Head right;Lying right side;Semi fowlers;Pillow support,34,JHU
+not_prone,Head left;Lying left side;Semi fowlers;Pillow support,33,JHU
+not_prone,Head midline;Semi fowlers,33,JHU
+not_prone,Lying down;HOB equal/greater than 30 degrees;Left lateral,33,JHU
+not_prone,Lying left side;Head left;Semi fowlers;Pillow support,33,JHU
+not_prone,Lying right side;Head right;Semi fowlers;Pillow support,33,JHU
+not_prone,Supine;Pillow support;Lying right side,32,JHU
+not_prone,Supine;Sitting,32,JHU
+not_prone,Head midline;Lying left side;Pillow support,31,JHU
+not_prone,Lying right side;Lying left side;Semi fowlers;Pillow support,31,JHU
+not_prone,Unable to reposition;Supine,31,JHU
+not_prone,Supine;Lying right side;Pillow support,30,JHU
+not_prone,Head midline;Pillow support;Semi fowlers,29,JHU
+not_prone,Head midline;Supine;Semi fowlers;Pillow support,29,JHU
+not_prone,Sitting;Up in chair;Pillow support,29,JHU
+not_prone,Sitting;Up in chair;Turns self,29,JHU
+not_prone,Supine;Pillow support;Other (Comment),29,JHU
+not_prone,Turns self;Pillow support;Lying right side,29,JHU
+not_prone,Head midline;Supine,28,JHU
+not_prone,Semi fowlers;Pillow support;Refused by patient,28,JHU
+not_prone,Head left;Semi fowlers;Pillow support,27,JHU
+not_prone,Head right;Lying right side;Pillow support,27,JHU
+not_prone,Lying left side;Head midline;Pillow support,27,JHU
+not_prone,Sitting;Standing,27,JHU
+not_prone,Supine;Head midline,27,JHU
+not_prone,Head midline;Lying right side;Pillow support,26,JHU
+not_prone,Lying left side;Lying right side,26,JHU
+not_prone,Lying left side;Pillow support;Head midline,26,JHU
+not_prone,Semi fowlers;Sitting,26,JHU
+not_prone,Head left;Lying left side;Pillow support,25,JHU
+not_prone,Lying down;HOB equal/greater than 30 degrees;Right lateral,25,JHU
+not_prone,Refused by patient;Supine,25,JHU
+not_prone,Semi fowlers;Reverse Trendelenburg,25,JHU
+not_prone,Sitting;Other (comment),25,JHU
+not_prone,Lying right side;Head midline;Pillow support,24,JHU
+not_prone,Semi fowlers;Pillow support;Reverse Trendelenburg,24,JHU
+not_prone,supine,24,JHU
+not_prone,Head right;Semi fowlers;Pillow support,23,JHU
+not_prone,Lying left side;Pillow support;Supine,23,JHU
+not_prone,Lying left side;Semi fowlers;Pillow support;Head left,23,JHU
+not_prone,Semi fowlers;Pillow support;Sitting,23,JHU
+not_prone,Turns self;Lying right side;Semi fowlers;Pillow support,23,JHU
+not_prone,Lying left side;Refused by patient,22,JHU
+not_prone,Lying left side;Reverse Trendelenburg;Pillow support,22,JHU
+not_prone,Lying left side;Semi fowlers;Pillow support;Supine,22,JHU
+not_prone,Reverse Trendelenburg;Supine,22,JHU
+not_prone,Sitting;HOB less than 30 degrees,22,JHU
+not_prone,Lying down;HOB equal/greater than 30 degrees;HOB self-regulated,21,JHU
+not_prone,Lying down;Left lateral;HOB less than 30 degrees,21,JHU
+not_prone,Lying down;Other (comment),21,JHU
+not_prone,Lying right side;Head left,21,JHU
+not_prone,Other (Comment);Supine,21,JHU
+not_prone,Standing;Sitting,21,JHU
+not_prone,Head midline;Supine;Pillow support,20,JHU
+not_prone,Lying right side;Semi fowlers;Pillow support;Supine,20,JHU
+not_prone,Other (Comment);Lying left side,20,JHU
+not_prone,Semi fowlers;Head midline,20,JHU
+not_prone,Semi fowlers;Supine;Pillow support;Lying right side,20,JHU
+not_prone,Sitting;Lying down,20,JHU
+not_prone,Lying left side;Head right,19,JHU
+not_prone,Lying left side;Sitting,19,JHU
+not_prone,Pillow support;Sitting;Up in chair,19,JHU
+not_prone,Reverse Trendelenburg;Pillow support;Lying left side,19,JHU
+not_prone,SUPINE,19,JHU
+not_prone,Semi fowlers;Pillow support;Unable to reposition,19,JHU
+not_prone,Lying left side;Pillow support;Other (Comment),18,JHU
+not_prone,Lying left side;Semi fowlers;Supine;Pillow support,18,JHU
+not_prone,Lying right side;Sitting,18,JHU
+not_prone,Refused by patient;Semi fowlers,18,JHU
+not_prone,Sitting;Semi fowlers,18,JHU
+not_prone,Unable to reposition;Lying left side,18,JHU
+not_prone,Pillow support;Semi fowlers;Head midline,17,JHU
+not_prone,Turns self;Pillow support;Supine,17,JHU
+not_prone,Unable to reposition;Supine;Pillow support,17,JHU
+not_prone,Lying down;HOB less than 30 degrees;Reverse Trendelenburg,16,JHU
+not_prone,Lying left side;Head left;Pillow support,16,JHU
+not_prone,Lying left side;Pillow support;Turns self,16,JHU
+not_prone,Lying left side;Supine;Pillow support;Semi fowlers,16,JHU
+not_prone,Lying right side;Pillow support;Head midline,16,JHU
+not_prone,Lying right side;Pillow support;Supine,16,JHU
+not_prone,Lying right side;Pillow support;Turns self,16,JHU
+not_prone,Semi fowlers;Pillow support;Supine;Lying left side,16,JHU
+not_prone,Supine;Semi fowlers;Pillow support;Head midline,16,JHU
+not_prone,Supine;Semi fowlers;Pillow support;Turns self,16,JHU
+not_prone,Lying right side;Pillow support;Other (Comment),15,JHU
+not_prone,Lying right side;Refused by patient,15,JHU
+not_prone,Other (Comment);Lying right side,15,JHU
+not_prone,Reverse Trendelenburg;Pillow support;Lying right side,15,JHU
+not_prone,Semi fowlers;Unable to reposition,15,JHU
+not_prone,Supine;Pillow support;Head midline,15,JHU
+not_prone,Lying down;Right lateral;HOB less than 30 degrees,14,JHU
+not_prone,Lying right side;Head midline,14,JHU
+not_prone,Lying right side;Reverse Trendelenburg;Pillow support,14,JHU
+not_prone,Lying right side;Semi fowlers;Pillow support;Head right,14,JHU
+not_prone,Lying right side;Semi fowlers;Supine;Pillow support,14,JHU
+not_prone,Refused by patient;Lying left side,14,JHU
+not_prone,Semi fowlers;Pillow support;Supine;Lying right side,14,JHU
+not_prone,Semi fowlers;Supine;Pillow support;Lying left side,14,JHU
+not_prone,Up in chair;Lying left side,14,JHU
+not_prone,supined,14,JHU
+not_prone,Lying right side;Supine;Pillow support;Semi fowlers,13,JHU
+not_prone,Refused by patient;Lying right side,13,JHU
+not_prone,Supine;Head left,13,JHU
+not_prone,Supine;Up in chair,13,JHU
+not_prone,Turns self;Lying left side;Semi fowlers;Pillow support,13,JHU
+not_prone,Turns self;Pillow support;Lying left side,13,JHU
+not_prone,Turns self;Sitting;Standing,13,JHU
+not_prone,Lying left side;Lying right side;Pillow support,12,JHU
+not_prone,Pillow support;Supine;Lying left side,12,JHU
+not_prone,Reverse Trendelenburg;Lying left side;Pillow support,12,JHU
+not_prone,Sitting;Lying left side,12,JHU
+not_prone,Unable to reposition;Lying right side,12,JHU
+not_prone,Head left;Lying left side;Reverse Trendelenburg,11,JHU
+not_prone,Head midline;Lying left side,11,JHU
+not_prone,Lying left side;Semi fowlers;Supine,11,JHU
+not_prone,Other (Comment);Semi fowlers;Pillow support,11,JHU
+not_prone,Pillow support;Semi fowlers;Supine;Lying right side,11,JHU
+not_prone,Pillow support;Supine;Turns self,11,JHU
+not_prone,Refused by patient;Supine;Semi fowlers,11,JHU
+not_prone,Reverse Trendelenburg;Supine;Pillow support,11,JHU
+not_prone,Supine;Head midline;Pillow support,11,JHU
+not_prone,Supine;Pillow support;Unable to reposition,11,JHU
+not_prone,Turns self;Pillow support;Sitting,11,JHU
+not_prone,Turns self;Semi fowlers;Pillow support;Supine,11,JHU
+not_prone,Unable to reposition;Supine;Semi fowlers;Pillow support,11,JHU
+not_prone,Head right;Lying left side;Reverse Trendelenburg,10,JHU
+not_prone,Lying left side;Turns self;Pillow support,10,JHU
+not_prone,Lying right side;Semi fowlers;Pillow support;Other (Comment),10,JHU
+not_prone,Lying right side;Turns self;Pillow support,10,JHU
+not_prone,Pillow support;Semi fowlers;Other (Comment),10,JHU
+not_prone,Pillow support;Semi fowlers;Supine;Lying left side,10,JHU
+not_prone,Semi fowlers;Pillow support;Head left,10,JHU
+not_prone,Sitting;Lying right side,10,JHU
+not_prone,HOB self-regulated;Lying down,9,JHU
+not_prone,Head midline;Lying right side,9,JHU
+not_prone,Left lateral;HOB equal/greater than 30 degrees;Lying down,9,JHU
+not_prone,Lying down;Trendelenburg,9,JHU
+not_prone,Lying left side;Semi fowlers;Pillow support;Other (Comment),9,JHU
+not_prone,Lying right side;Supine;Reverse Trendelenburg,9,JHU
+not_prone,Lying right side;Up in chair,9,JHU
+not_prone,Pillow support;Lying right side;Lying left side,9,JHU
+not_prone,Semi fowlers;Pillow support;Head right,9,JHU
+not_prone,Semi fowlers;Pillow support;Lying right side;Head right,9,JHU
+not_prone,Semi fowlers;Pillow support;Lying right side;Lying left side,9,JHU
+not_prone,Semi fowlers;Supine;Lying left side,9,JHU
+not_prone,Supine;Lying left side;Semi fowlers;Pillow support,9,JHU
+not_prone,Supine;Semi fowlers;Pillow support;Lying left side;Lying right side,9,JHU
+not_prone,Turns self;Lying right side;Pillow support;Semi fowlers,9,JHU
+not_prone,Turns self;Semi fowlers;Pillow support;Lying right side,9,JHU
+not_prone,Turns self;Up in chair;Sitting,9,JHU
+not_prone,Unable to reposition;Supine;Semi fowlers,9,JHU
+not_prone,Up in chair;Sitting;Turns self,9,JHU
+not_prone,Lying right side;Head right;Pillow support,8,JHU
+not_prone,Lying right side;Semi fowlers;Head midline,8,JHU
+not_prone,Lying right side;Semi fowlers;Supine,8,JHU
+not_prone,Other (Comment);Semi fowlers,8,JHU
+not_prone,Refused by patient;Lying left side;Pillow support,8,JHU
+not_prone,Reverse Trendelenburg;Semi fowlers;Pillow support,8,JHU
+not_prone,Right lateral;HOB equal/greater than 30 degrees;Lying down,8,JHU
+not_prone,Semi fowlers;Refused by patient,8,JHU
+not_prone,Semi fowlers;Turns self;Pillow support,8,JHU
+not_prone,Supine;Semi fowlers;Turns self,8,JHU
+not_prone,Supined,8,JHU
+not_prone,Turns self;Lying right side;Semi fowlers,8,JHU
+not_prone,Turns self;Pillow support;Semi fowlers;Supine,8,JHU
+not_prone,Up in chair;Sitting;Pillow support,8,JHU
+not_prone,Head left;Lying right side;Reverse Trendelenburg,7,JHU
+not_prone,Head left;Pillow support;Semi fowlers,7,JHU
+not_prone,Head midline;Lying right side;Semi fowlers,7,JHU
+not_prone,Head midline;Supine;Semi fowlers,7,JHU
+not_prone,Head right;Pillow support;Semi fowlers,7,JHU
+not_prone,Lying down;HOB equal/greater than 30 degrees;Reverse Trendelenburg,7,JHU
+not_prone,Lying down;Right lateral;HOB flat,7,JHU
+not_prone,Lying left side;Supine;Reverse Trendelenburg,7,JHU
+not_prone,Lying left side;Up in chair,7,JHU
+not_prone,Lying right side;Pillow support;Sitting,7,JHU
+not_prone,Lying right side;Unable to reposition,7,JHU
+not_prone,Refused by patient;Lying right side;Pillow support,7,JHU
+not_prone,Reverse Trendelenburg;Semi fowlers,7,JHU
+not_prone,Semi fowlers;Pillow support;Lying left side;Head left,7,JHU
+not_prone,Semi fowlers;Supine;Lying right side,7,JHU
+not_prone,Sitting;Standing;Up in chair,7,JHU
+not_prone,Supine;Lying right side;Semi fowlers,7,JHU
+not_prone,Supine;Pillow support;Semi fowlers;Lying right side,7,JHU
+not_prone,Supine;Reverse Trendelenburg;Pillow support,7,JHU
+not_prone,Supine;Semi fowlers;Other (Comment),7,JHU
+not_prone,Turns self;Lying left side;Semi fowlers,7,JHU
+not_prone,Turns self;Semi fowlers;Lying right side,7,JHU
+not_prone,Unable to reposition;Semi fowlers,7,JHU
+not_prone,HOB equal/greater than 30 degrees;Lying down;Right lateral,6,JHU
+not_prone,Head midline;Lying left side;Semi fowlers,6,JHU
+not_prone,Head midline;Semi fowlers;Pillow support;Lying right side,6,JHU
+not_prone,Head right;Lying right side;Semi fowlers,6,JHU
+not_prone,Lying down;HOB less than 30 degrees;HOB self-regulated,6,JHU
+not_prone,Lying left side;Head midline,6,JHU
+not_prone,Lying left side;Head right;Reverse Trendelenburg,6,JHU
+not_prone,Lying left side;Pillow support;Supine;Semi fowlers,6,JHU
+not_prone,Lying right side;Lying left side;Semi fowlers,6,JHU
+not_prone,Lying right side;Pillow support;Semi fowlers;Supine,6,JHU
+not_prone,Other (Comment);Sitting,6,JHU
+not_prone,Pillow support;Head right;Lying right side,6,JHU
+not_prone,Pillow support;Lying right side;Supine,6,JHU
+not_prone,Pillow support;Reverse Trendelenburg;Lying right side,6,JHU
+not_prone,Pillow support;Semi fowlers;Head left,6,JHU
+not_prone,Pillow support;Semi fowlers;Sitting,6,JHU
+not_prone,Pillow support;Semi fowlers;Supine;Turns self,6,JHU
+not_prone,Pillow support;Supine;Other (Comment),6,JHU
+not_prone,Refused by patient;Semi fowlers;Pillow support,6,JHU
+not_prone,Reverse Trendelenburg;Lying down,6,JHU
+not_prone,Reverse Trendelenburg;Pillow support;Supine,6,JHU
+not_prone,Right lateral;Lying down;HOB equal/greater than 30 degrees,6,JHU
+not_prone,Semi fowlers;Head left,6,JHU
+not_prone,Semi fowlers;Pillow support;Up in chair,6,JHU
+not_prone,Sitting;Semi fowlers;Pillow support,6,JHU
+not_prone,Supine;Semi fowlers;Pillow support;Lying right side;Lying left side,6,JHU
+not_prone,Supine;Semi fowlers;Pillow support;Reverse Trendelenburg,6,JHU
+not_prone,Supine;Semi fowlers;Pillow support;Unable to reposition,6,JHU
+not_prone,Turns self;Lying left side;Pillow support;Semi fowlers,6,JHU
+not_prone,Turns self;Pillow support;Sitting;Up in chair,6,JHU
+not_prone,Turns self;Pillow support;Supine;Semi fowlers,6,JHU
+not_prone,Turns self;Semi fowlers;Supine,6,JHU
+not_prone,Up in chair;Semi fowlers,6,JHU
+not_prone,HOB equal/greater than 30 degrees;Left lateral;Lying down,5,JHU
+not_prone,HOB less than 30 degrees;Left lateral;Lying down,5,JHU
+not_prone,HOB less than 30 degrees;Sitting,5,JHU
+not_prone,Head left;Lying left side;Semi fowlers,5,JHU
+not_prone,Head midline;Semi fowlers;Pillow support;Lying left side,5,JHU
+not_prone,Head right;Lying left side;Semi fowlers;Pillow support,5,JHU
+not_prone,Head right;Lying right side;Pillow support;Semi fowlers,5,JHU
+not_prone,Head right;Lying right side;Reverse Trendelenburg,5,JHU
+not_prone,Head right;Semi fowlers,5,JHU
+not_prone,Infant nested;Semi fowlers;Pillow support,5,JHU
+not_prone,Lying down;HOB flat;HOB less than 30 degrees,5,JHU
+not_prone,Lying down;Left lateral;HOB flat,5,JHU
+not_prone,Lying left side;Head left;Pillow support;Semi fowlers,5,JHU
+not_prone,Lying left side;Lying right side;Semi fowlers,5,JHU
+not_prone,Lying left side;Pillow support;Head left,5,JHU
+not_prone,Lying left side;Pillow support;Sitting,5,JHU
+not_prone,Lying left side;Unable to reposition,5,JHU
+not_prone,Lying right side;Lying left side;Supine,5,JHU
+not_prone,Lying right side;Semi fowlers;Pillow support;Turns self,5,JHU
+not_prone,Other (Comment);Supine;Pillow support,5,JHU
+not_prone,Pillow support;Head midline;Supine,5,JHU
+not_prone,Pillow support;Lying left side;Lying right side,5,JHU
+not_prone,Pillow support;Lying right side;Turns self,5,JHU
+not_prone,Pillow support;Turns self;Semi fowlers,5,JHU
+not_prone,Refused by patient;Pillow support;Supine,5,JHU
+not_prone,Semi fowlers;Head right,5,JHU
+not_prone,Semi fowlers;Lying right side;Head right;Pillow support,5,JHU
+not_prone,Semi fowlers;Lying right side;Lying left side,5,JHU
+not_prone,Semi fowlers;Up in chair,5,JHU
+not_prone,Supine;Lying right side;Semi fowlers;Pillow support,5,JHU
+not_prone,Supine;Semi fowlers;Pillow support;Other (Comment),5,JHU
+not_prone,Supine;Semi fowlers;Pillow support;Refused by patient,5,JHU
+not_prone,Turns self;Head midline;Semi fowlers;Pillow support,5,JHU
+not_prone,Turns self;Supine;Sitting,5,JHU
+not_prone,Fowlers,4,JHU
+not_prone,HOB equal/greater than 30 degrees;HOB self-regulated;Lying down,4,JHU
+not_prone,Head left;Semi fowlers,4,JHU
+not_prone,Head midline;Lying right side;Lying left side,4,JHU
+not_prone,Head midline;Pillow support;Lying right side,4,JHU
+not_prone,Head midline;Semi fowlers;Pillow support;Supine,4,JHU
+not_prone,Head right;Lying left side;Pillow support;Reverse Trendelenburg,4,JHU
+not_prone,High fowlers,4,JHU
+not_prone,Left lateral;Lying down;HOB equal/greater than 30 degrees,4,JHU
+not_prone,Lying down;HOB flat;Left lateral,4,JHU
+not_prone,Lying down;HOB flat;Reverse Trendelenburg,4,JHU
+not_prone,Lying down;HOB less than 30 degrees;Right lateral,4,JHU
+not_prone,Lying left side;Semi fowlers;Pillow support;Turns self,4,JHU
+not_prone,Lying right side;Head left;Reverse Trendelenburg,4,JHU
+not_prone,Lying right side;Head right;Pillow support;Semi fowlers,4,JHU
+not_prone,Lying right side;Lying left side;Supine;Pillow support,4,JHU
+not_prone,Lying right side;Pillow support;Head right,4,JHU
+not_prone,Lying right side;Semi fowlers;Pillow support;Unable to reposition,4,JHU
+not_prone,Other (comment);Sitting,4,JHU
+not_prone,Pillow support;Head midline;Lying left side,4,JHU
+not_prone,Pillow support;Head midline;Semi fowlers,4,JHU
+not_prone,Pillow support;Lying left side;Reverse Trendelenburg,4,JHU
+not_prone,Pillow support;Lying left side;Supine,4,JHU
+not_prone,Pillow support;Lying right side;Head midline,4,JHU
+not_prone,Pillow support;Lying right side;Lying left side;Semi fowlers,4,JHU
+not_prone,Pillow support;Semi fowlers;Head right,4,JHU
+not_prone,Pillow support;Semi fowlers;Reverse Trendelenburg,4,JHU
+not_prone,Pillow support;Supine;Lying right side,4,JHU
+not_prone,Pillow support;Up in chair;Sitting,4,JHU
+not_prone,Reverse Trendelenburg;Head left;Lying right side,4,JHU
+not_prone,Reverse Trendelenburg;Lying right side;Pillow support,4,JHU
+not_prone,Semi fowlers;Pillow support;Lying left side;Supine,4,JHU
+not_prone,Semi fowlers;Pillow support;Lying left side;Turns self,4,JHU
+not_prone,Semi fowlers;Pillow support;Turns self;Lying left side,4,JHU
+not_prone,Semi fowlers;Supine;Head midline,4,JHU
+not_prone,Semi fowlers;Supine;Other (Comment),4,JHU
+not_prone,Sitting;Pillow support;Other (Comment),4,JHU
+not_prone,Sitting;Supine,4,JHU
+not_prone,Supine;Lying left side;Lying right side;Semi fowlers;Pillow support,4,JHU
+not_prone,Supine;Lying left side;Semi fowlers,4,JHU
+not_prone,Supine;Other (Comment);Pillow support,4,JHU
+not_prone,Supine;Pillow support;Refused by patient,4,JHU
+not_prone,Supine;Reverse Trendelenburg;Unable to reposition,4,JHU
+not_prone,Supine;Semi fowlers;Lying left side;Pillow support,4,JHU
+not_prone,Supine;Semi fowlers;Reverse Trendelenburg,4,JHU
+not_prone,Turns self;Semi fowlers;Lying left side,4,JHU
+not_prone,Turns self;Semi fowlers;Pillow support;Lying left side,4,JHU
+not_prone,Turns self;Sitting;Pillow support,4,JHU
+not_prone,Unable to reposition;Lying left side;Pillow support,4,JHU
+not_prone,Up in chair;Lying right side,4,JHU
+not_prone,Up in chair;Semi fowlers;Pillow support,4,JHU
+not_prone,"pt sitting in bed, watching TV on tv and Ipad",4,JHU
+not_prone,HOB equal/greater than 30 degrees;Lying down;HOB self-regulated,3,JHU
+not_prone,HOB less than 30 degrees;Lying down;Left lateral,3,JHU
+not_prone,HOB less than 30 degrees;Lying down;Right lateral,3,JHU
+not_prone,HOB less than 30 degrees;Right lateral;Lying down,3,JHU
+not_prone,Head left;Lying left side;Pillow support;Semi fowlers,3,JHU
+not_prone,Head left;Lying right side;Pillow support;Reverse Trendelenburg,3,JHU
+not_prone,Head left;Reverse Trendelenburg;Lying right side;Pillow support,3,JHU
+not_prone,Head left;Semi fowlers;Pillow support;Lying left side,3,JHU
+not_prone,Head midline;Pillow support;Lying left side,3,JHU
+not_prone,Head midline;Pillow support;Supine,3,JHU
+not_prone,Infant nested;Pillow support;Semi fowlers,3,JHU
+not_prone,Left lateral;HOB less than 30 degrees;Lying down,3,JHU
+not_prone,Lying down;HOB equal/greater than 30 degrees;Other (comment),3,JHU
+not_prone,Lying down;HOB flat;HOB equal/greater than 30 degrees,3,JHU
+not_prone,Lying down;Reverse Trendelenburg;HOB equal/greater than 30 degrees,3,JHU
+not_prone,Lying down;Sitting;HOB equal/greater than 30 degrees,3,JHU
+not_prone,Lying left side;Head left;Semi fowlers;Pillow support;Supine,3,JHU
+not_prone,Lying left side;Pillow support;Reverse Trendelenburg;Head left,3,JHU
+not_prone,Lying left side;Pillow support;Semi fowlers;Head midline,3,JHU
+not_prone,Lying left side;Pillow support;Semi fowlers;Supine,3,JHU
+not_prone,Lying left side;Pillow support;Unable to reposition,3,JHU
+not_prone,Lying left side;Semi fowlers;Head midline,3,JHU
+not_prone,Lying left side;Semi fowlers;Turns self,3,JHU
+not_prone,Lying right side;Head midline;Semi fowlers;Pillow support,3,JHU
+not_prone,Lying right side;Pillow support;Lying left side,3,JHU
+not_prone,Other (Comment);Lying right side;Pillow support,3,JHU
+not_prone,PT SUPINE,3,JHU
+not_prone,Pillow support;Head left;Lying left side,3,JHU
+not_prone,Pillow support;Head left;Lying right side,3,JHU
+not_prone,Pillow support;Lying left side;Supine;Semi fowlers,3,JHU
+not_prone,Pillow support;Other (Comment);Lying left side,3,JHU
+not_prone,Pillow support;Semi fowlers;Lying left side;Head left,3,JHU
+not_prone,Pillow support;Semi fowlers;Lying left side;Lying right side,3,JHU
+not_prone,Pillow support;Semi fowlers;Lying right side;Supine,3,JHU
+not_prone,Pillow support;Semi fowlers;Refused by patient,3,JHU
+not_prone,Pillow support;Supine;Head midline,3,JHU
+not_prone,Pillow support;Supine;Refused by patient,3,JHU
+not_prone,Pillow support;Supine;Reverse Trendelenburg,3,JHU
+not_prone,Pillow support;Turns self;Supine,3,JHU
+not_prone,Pt supine,3,JHU
+not_prone,Refused by patient;Supine;Semi fowlers;Pillow support,3,JHU
+not_prone,Reverse Trendelenburg;Lying left side;Head right,3,JHU
+not_prone,Reverse Trendelenburg;Pillow support;Semi fowlers,3,JHU
+not_prone,Reverse Trendelenburg;Semi fowlers;Lying right side,3,JHU
+not_prone,Reverse Trendelenburg;Trendelenburg;Lying right side,3,JHU
+not_prone,Semi fowlers;Head left;Lying left side,3,JHU
+not_prone,Semi fowlers;Lying right side;Lying left side;Pillow support,3,JHU
+not_prone,Semi fowlers;Pillow support;Head midline;Supine,3,JHU
+not_prone,Semi fowlers;Pillow support;Lying left side;Other (Comment),3,JHU
+not_prone,Semi fowlers;Pillow support;Lying right side;Head midline,3,JHU
+not_prone,Semi fowlers;Pillow support;Lying right side;Sitting,3,JHU
+not_prone,Semi fowlers;Pillow support;Lying right side;Turns self,3,JHU
+not_prone,Semi fowlers;Pillow support;Supine;Head midline,3,JHU
+not_prone,Sitting;HOB self-regulated,3,JHU
+not_prone,Sitting;Lying down;HOB equal/greater than 30 degrees,3,JHU
+not_prone,Sitting;Other (Comment);Pillow support,3,JHU
+not_prone,Sitting;Pillow support;Semi fowlers,3,JHU
+not_prone,Sitting;Refused by patient,3,JHU
+not_prone,Sitting;Standing;Supine;Turns self,3,JHU
+not_prone,Sitting;Standing;Turns self,3,JHU
+not_prone,Sitting;Turns self;Pillow support,3,JHU
+not_prone,Sitting;Turns self;Up in chair,3,JHU
+not_prone,Sitting;Up in chair;Turns self;Pillow support,3,JHU
+not_prone,Standing;Sitting;Up in chair,3,JHU
+not_prone,Standing;Up in chair;Sitting,3,JHU
+not_prone,Supine;Head left;Pillow support,3,JHU
+not_prone,Supine;Head midline;Semi fowlers;Pillow support,3,JHU
+not_prone,Supine;Head right,3,JHU
+not_prone,Supine;Lying right side;Pillow support;Semi fowlers,3,JHU
+not_prone,Supine;Pillow support;Head right,3,JHU
+not_prone,Supine;Pillow support;Reverse Trendelenburg;Head midline,3,JHU
+not_prone,Supine;Pillow support;Semi fowlers;Lying left side,3,JHU
+not_prone,Supine;Pillow support;Sitting,3,JHU
+not_prone,Supine;Pillow support;Up in chair,3,JHU
+not_prone,Supine;Reverse Trendelenburg;Head midline,3,JHU
+not_prone,Supine;Reverse Trendelenburg;Lying left side,3,JHU
+not_prone,Supine;Semi fowlers;Unable to reposition,3,JHU
+not_prone,Supine;Sitting;Other (Comment),3,JHU
+not_prone,Supine;Turns self;Pillow support,3,JHU
+not_prone,Supine;Turns self;Semi fowlers,3,JHU
+not_prone,Supined Pt. ,3,JHU
+not_prone,Trendelenburg;Supine,3,JHU
+not_prone,Turns self;Lying right side;Lying left side,3,JHU
+not_prone,Turns self;Semi fowlers;Other (Comment),3,JHU
+not_prone,Turns self;Semi fowlers;Sitting,3,JHU
+not_prone,Turns self;Semi fowlers;Supine;Pillow support,3,JHU
+not_prone,Turns self;Sitting;Standing;Up in chair,3,JHU
+not_prone,Turns self;Sitting;Up in chair;Pillow support,3,JHU
+not_prone,Turns self;Supine;Lying left side,3,JHU
+not_prone,Turns self;Supine;Lying right side,3,JHU
+not_prone,Turns self;Supine;Pillow support;Semi fowlers,3,JHU
+not_prone,Unable to reposition;Lying right side;Pillow support,3,JHU
+not_prone,Up in chair;Pillow support;Semi fowlers,3,JHU
+not_prone,Up in chair;Supine,3,JHU
+not_prone,Up in chair;Turns self;Sitting,3,JHU
+not_prone,pt supine,3,JHU
+not_prone,pt. supined,3,JHU
+not_prone,HOB equal/greater than 30 degrees;Lying down;Left lateral,2,JHU
+not_prone,HOB equal/greater than 30 degrees;Lying down;Other (comment),2,JHU
+not_prone,HOB equal/greater than 30 degrees;Sitting;Left lateral,2,JHU
+not_prone,HOB less than 30 degrees;Reverse Trendelenburg;Lying down,2,JHU
+not_prone,HOB self-regulated;Sitting,2,JHU
+not_prone,Head left;Lying right side;Pillow support,2,JHU
+not_prone,Head left;Semi fowlers;Lying left side,2,JHU
+not_prone,Head left;Supine;Pillow support,2,JHU
+not_prone,Head midline;Head right;Pillow support;Semi fowlers,2,JHU
+not_prone,Head midline;Lying left side;Pillow support;Semi fowlers,2,JHU
+not_prone,Head midline;Semi fowlers;Lying right side,2,JHU
+not_prone,Head midline;Supine;Reverse Trendelenburg,2,JHU
+not_prone,Head midline;Unable to reposition;Lying left side,2,JHU
+not_prone,Head right;Lying left side;Pillow support,2,JHU
+not_prone,Head right;Lying left side;Reverse Trendelenburg;Pillow support,2,JHU
+not_prone,Head right;Lying right side;Pillow support;Reverse Trendelenburg,2,JHU
+not_prone,Head right;Reverse Trendelenburg;Lying left side;Pillow support,2,JHU
+not_prone,Head right;Supine,2,JHU
+not_prone,Head right;Supine;Pillow support,2,JHU
+not_prone,Infant nested;Supine;Pillow support,2,JHU
+not_prone,Lying down;HOB equal/greater than 30 degrees;HOB less than 30 degrees,2,JHU
+not_prone,Lying down;HOB flat;HOB self-regulated,2,JHU
+not_prone,Lying down;HOB flat;Other (comment),2,JHU
+not_prone,Lying down;HOB less than 30 degrees;HOB flat,2,JHU
+not_prone,Lying down;HOB less than 30 degrees;Left lateral,2,JHU
+not_prone,Lying down;Left lateral;HOB self-regulated,2,JHU
+not_prone,Lying down;Other (comment);HOB equal/greater than 30 degrees,2,JHU
+not_prone,Lying left side;Head midline;Pillow support;Semi fowlers,2,JHU
+not_prone,Lying left side;Head midline;Semi fowlers,2,JHU
+not_prone,Lying left side;Infant nested;Supine;Semi fowlers,2,JHU
+not_prone,Lying left side;Lying right side;Semi fowlers;Pillow support,2,JHU
+not_prone,Lying left side;Pillow support;Refused by patient,2,JHU
+not_prone,Lying left side;Pillow support;Semi fowlers;Head left,2,JHU
+not_prone,Lying left side;Pillow support;Up in chair,2,JHU
+not_prone,Lying left side;Semi fowlers;Other (Comment),2,JHU
+not_prone,Lying left side;Semi fowlers;Pillow support;Reverse Trendelenburg,2,JHU
+not_prone,Lying left side;Semi fowlers;Reverse Trendelenburg,2,JHU
+not_prone,Lying right side;Head midline;Pillow support;Semi fowlers,2,JHU
+not_prone,Lying right side;Infant nested,2,JHU
+not_prone,Lying right side;Lying left side;Other (Comment);Pillow support,2,JHU
+not_prone,Lying right side;Lying left side;Pillow support;Semi fowlers,2,JHU
+not_prone,Lying right side;Lying left side;Pillow support;Supine,2,JHU
+not_prone,Lying right side;Lying left side;Semi fowlers;Pillow support;Turns self,2,JHU
+not_prone,Lying right side;Pillow support;Other (Comment);Head right,2,JHU
+not_prone,Lying right side;Pillow support;Refused by patient,2,JHU
+not_prone,Lying right side;Pillow support;Reverse Trendelenburg;Head right,2,JHU
+not_prone,Lying right side;Pillow support;Trendelenburg,2,JHU
+not_prone,Lying right side;Pillow support;Unable to reposition,2,JHU
+not_prone,Lying right side;Pillow support;Up in chair,2,JHU
+not_prone,Lying right side;Semi fowlers;Pillow support;Reverse Trendelenburg,2,JHU
+not_prone,Lying right side;Semi fowlers;Reverse Trendelenburg,2,JHU
+not_prone,Lying right side;Sitting;Other (Comment),2,JHU
+not_prone,Lying right side;Turns self;Pillow support;Semi fowlers,2,JHU
+not_prone,Lying right side;Turns self;Semi fowlers,2,JHU
+not_prone,Lying right side;Turns self;Semi fowlers;Pillow support,2,JHU
+not_prone,Other (Comment);Supine;Semi fowlers;Pillow support,2,JHU
+not_prone,Other (comment);Lying down,2,JHU
+not_prone,Patient positioned Supine,2,JHU
+not_prone,Pillow support;Head midline;Lying right side,2,JHU
+not_prone,Pillow support;Lying left side;Head left,2,JHU
+not_prone,Pillow support;Lying left side;Head midline,2,JHU
+not_prone,Pillow support;Lying left side;Turns self,2,JHU
+not_prone,Pillow support;Lying right side;Head right,2,JHU
+not_prone,Pillow support;Lying right side;Other (Comment),2,JHU
+not_prone,Pillow support;Lying right side;Supine;Semi fowlers,2,JHU
+not_prone,Pillow support;Reverse Trendelenburg;Lying left side,2,JHU
+not_prone,Pillow support;Reverse Trendelenburg;Supine,2,JHU
+not_prone,Pillow support;Semi fowlers;Lying left side;Head midline,2,JHU
+not_prone,Pillow support;Semi fowlers;Lying right side;Head midline,2,JHU
+not_prone,Pillow support;Semi fowlers;Supine;Head midline,2,JHU
+not_prone,Pillow support;Semi fowlers;Turns self;Lying right side,2,JHU
+not_prone,Pillow support;Sitting;Other (Comment),2,JHU
+not_prone,Pillow support;Supine;Semi fowlers;Lying right side,2,JHU
+not_prone,Pillow support;Turns self;Lying right side,2,JHU
+not_prone,Pt SUPINE,2,JHU
+not_prone,Pt sitting up in chair,2,JHU
+not_prone,Refused by patient;Pillow support;Lying left side,2,JHU
+not_prone,Reverse Trendelenburg;Lying right side;Head left,2,JHU
+not_prone,Reverse Trendelenburg;Supine;Lying right side,2,JHU
+not_prone,Right side lying,2,JHU
+not_prone,Semi fowlers;Lying left side;Head left,2,JHU
+not_prone,Semi fowlers;Lying left side;Supine;Pillow support,2,JHU
+not_prone,Semi fowlers;Lying right side;Head right,2,JHU
+not_prone,Semi fowlers;Lying right side;Supine,2,JHU
+not_prone,Semi fowlers;Lying right side;Turns self,2,JHU
+not_prone,Semi fowlers;Pillow support;Head midline;Lying left side,2,JHU
+not_prone,Semi fowlers;Pillow support;Head midline;Lying right side,2,JHU
+not_prone,Semi fowlers;Pillow support;Head right;Lying right side,2,JHU
+not_prone,Semi fowlers;Pillow support;Infant nested,2,JHU
+not_prone,Semi fowlers;Pillow support;Lying left side;Head midline,2,JHU
+not_prone,Semi fowlers;Pillow support;Lying left side;Lying right side,2,JHU
+not_prone,Semi fowlers;Pillow support;Reverse Trendelenburg;Lying left side,2,JHU
+not_prone,Semi fowlers;Reverse Trendelenburg;Head left,2,JHU
+not_prone,Semi fowlers;Reverse Trendelenburg;Lying left side,2,JHU
+not_prone,Semi fowlers;Reverse Trendelenburg;Lying right side,2,JHU
+not_prone,Semi fowlers;Supine;Pillow support;Head midline,2,JHU
+not_prone,Semi fowlers;Supine;Pillow support;Turns self,2,JHU
+not_prone,Semi fowlers;Supine;Turns self,2,JHU
+not_prone,Semi fowlers;Trendelenburg;Pillow support,2,JHU
+not_prone,Semi fowlers;Turns self;Sitting,2,JHU
+not_prone,Semi fowlers;Turns self;Supine,2,JHU
+not_prone,Sitting;HOB equal/greater than 30 degrees;HOB self-regulated,2,JHU
+not_prone,Sitting;HOB equal/greater than 30 degrees;Other (comment),2,JHU
+not_prone,Sitting;HOB flat,2,JHU
+not_prone,Sitting;Lying right side;Pillow support,2,JHU
+not_prone,Sitting;Pillow support;Turns self,2,JHU
+not_prone,Sitting;Pillow support;Up in chair,2,JHU
+not_prone,Sitting;Right lateral,2,JHU
+not_prone,Sitting;Right lateral;HOB equal/greater than 30 degrees,2,JHU
+not_prone,Sitting;Supine;Pillow support,2,JHU
+not_prone,Sitting;Up in chair;Pillow support;Turns self,2,JHU
+not_prone,Sitting;Up in chair;Standing,2,JHU
+not_prone,Standing;Lying down,2,JHU
+not_prone,Standing;Semi fowlers,2,JHU
+not_prone,Standing;Sitting;Semi fowlers,2,JHU
+not_prone,Standing;Supine,2,JHU
+not_prone,Supine;Head left;Lying left side,2,JHU
+not_prone,Supine;Head midline;Semi fowlers,2,JHU
+not_prone,Supine;Head right;Pillow support,2,JHU
+not_prone,Supine;Infant nested,2,JHU
+not_prone,Supine;Infant nested;Pillow support,2,JHU
+not_prone,Supine;Lying left side;Head left,2,JHU
+not_prone,Supine;Lying left side;Lying right side,2,JHU
+not_prone,Supine;Lying left side;Pillow support;Semi fowlers,2,JHU
+not_prone,Supine;Lying right side;Lying left side,2,JHU
+not_prone,Supine;Other (Comment);Turns self,2,JHU
+not_prone,Supine;Pillow support;Semi fowlers;Head midline,2,JHU
+not_prone,Supine;Refused by patient;Other (Comment),2,JHU
+not_prone,Supine;Refused by patient;Turns self,2,JHU
+not_prone,Supine;Reverse Trendelenburg;Semi fowlers;Pillow support,2,JHU
+not_prone,Supine;Semi fowlers;Head midline,2,JHU
+not_prone,Supine;Semi fowlers;Lying left side;Lying right side;Pillow support,2,JHU
+not_prone,Supine;Semi fowlers;Lying right side;Pillow support,2,JHU
+not_prone,Supine;Semi fowlers;Pillow support;Head left,2,JHU
+not_prone,Supine;Semi fowlers;Pillow support;Head right,2,JHU
+not_prone,Supine;Semi fowlers;Pillow support;Head right;Lying right side,2,JHU
+not_prone,Supine;Semi fowlers;Pillow support;Sitting,2,JHU
+not_prone,Supine;Semi fowlers;Refused by patient,2,JHU
+not_prone,Supine;Sitting;Pillow support,2,JHU
+not_prone,Supine;Trendelenburg,2,JHU
+not_prone,Supine;Turns self;Lying right side,2,JHU
+not_prone,Supine;Turns self;Semi fowlers;Pillow support,2,JHU
+not_prone,Supined at this time,2,JHU
+not_prone,Supined pt.,2,JHU
+not_prone,Turns self;Head midline;Lying left side;Semi fowlers;Pillow support,2,JHU
+not_prone,Turns self;Head midline;Supine;Semi fowlers;Pillow support,2,JHU
+not_prone,Turns self;Lying left side;Lying right side,2,JHU
+not_prone,Turns self;Lying left side;Other (Comment),2,JHU
+not_prone,Turns self;Lying left side;Pillow support;Other (Comment),2,JHU
+not_prone,Turns self;Lying right side;Lying left side;Pillow support,2,JHU
+not_prone,Turns self;Lying right side;Lying left side;Pillow support;Semi fowlers,2,JHU
+not_prone,Turns self;Lying right side;Other (Comment),2,JHU
+not_prone,Turns self;Pillow support;Semi fowlers;Lying right side,2,JHU
+not_prone,Turns self;Semi fowlers;Pillow support;Head midline,2,JHU
+not_prone,Turns self;Semi fowlers;Pillow support;Sitting,2,JHU
+not_prone,Turns self;Sitting;Other (Comment),2,JHU
+not_prone,Turns self;Sitting;Standing;Semi fowlers,2,JHU
+not_prone,Turns self;Standing;Sitting,2,JHU
+not_prone,Turns self;Supine;Refused by patient,2,JHU
+not_prone,Unable to reposition;Head midline;Semi fowlers;Pillow support,2,JHU
+not_prone,Unable to reposition;Head midline;Supine;Semi fowlers;Pillow support,2,JHU
+not_prone,Unable to reposition;Lying left side;Semi fowlers;Pillow support,2,JHU
+not_prone,Unable to reposition;Lying right side;Semi fowlers;Pillow support,2,JHU
+not_prone,Unable to reposition;Pillow support;Lying left side,2,JHU
+not_prone,Unable to reposition;Pillow support;Supine,2,JHU
+not_prone,Unable to reposition;Semi fowlers;Supine,2,JHU
+not_prone,Up in chair;Standing;Sitting,2,JHU
+not_prone,lying down,2,JHU
+not_prone,pt supine ,2,JHU
+not_prone,sitting in chair,2,JHU
+not_prone,supine on NO2,2,JHU
+not_prone,"Bradycardiac arrest, now supine",1,JHU
+not_prone,"ETT out of place, patient placed on ambu bag, turned supine",1,JHU
+not_prone,FiO2 increased to 60% in CT before lying flat for scan,1,JHU
+not_prone,HOB equal/greater than 30 degrees;Right lateral;Lying down,1,JHU
+not_prone,HOB equal/greater than 30 degrees;Right lateral;Sitting,1,JHU
+not_prone,HOB equal/greater than 30 degrees;Sitting;Right lateral,1,JHU
+not_prone,HOB flat;Left lateral;Lying down,1,JHU
+not_prone,HOB flat;Right lateral;Lying down,1,JHU
+not_prone,HOB less than 30 degrees;HOB self-regulated;Lying down,1,JHU
+not_prone,HOB self-regulated;HOB equal/greater than 30 degrees;Lying down,1,JHU
+not_prone,HOB self-regulated;HOB less than 30 degrees;Lying down,1,JHU
+not_prone,HOB self-regulated;Lying down;HOB equal/greater than 30 degrees,1,JHU
+not_prone,Head left;Head right;Lying right side;Lying left side;Semi fowlers;Pillow support;Head midline;Supine,1,JHU
+not_prone,Head left;Head right;Pillow support;Sitting,1,JHU
+not_prone,Head left;Head right;Supine;Semi fowlers;Pillow support,1,JHU
+not_prone,Head left;Lying left side;Other (Comment);Pillow support,1,JHU
+not_prone,Head left;Lying left side;Pillow support;Reverse Trendelenburg,1,JHU
+not_prone,Head left;Lying left side;Pillow support;Unable to reposition,1,JHU
+not_prone,Head left;Lying left side;Reverse Trendelenburg;Pillow support,1,JHU
+not_prone,Head left;Lying left side;Semi fowlers;Supine;Pillow support,1,JHU
+not_prone,Head left;Lying left side;Supine;Pillow support,1,JHU
+not_prone,Head left;Lying left side;Supine;Semi fowlers;Pillow support,1,JHU
+not_prone,Head left;Lying right side;Reverse Trendelenburg;Trendelenburg;Unable to reposition,1,JHU
+not_prone,Head left;Lying right side;Semi fowlers,1,JHU
+not_prone,Head left;Lying right side;Semi fowlers;Pillow support;Reverse Trendelenburg,1,JHU
+not_prone,Head left;Lying right side;Supine;Pillow support,1,JHU
+not_prone,Head left;Pillow support;Lying left side,1,JHU
+not_prone,Head left;Pillow support;Lying right side;Reverse Trendelenburg,1,JHU
+not_prone,Head left;Pillow support;Semi fowlers;Lying left side,1,JHU
+not_prone,Head left;Semi fowlers;Lying right side,1,JHU
+not_prone,Head left;Semi fowlers;Pillow support;Reverse Trendelenburg,1,JHU
+not_prone,Head left;Semi fowlers;Pillow support;Turns self,1,JHU
+not_prone,Head left;Supine,1,JHU
+not_prone,Head left;Supine;Pillow support;Reverse Trendelenburg,1,JHU
+not_prone,Head left;Supine;Reverse Trendelenburg;Unable to reposition,1,JHU
+not_prone,Head midline;Head left;Lying left side,1,JHU
+not_prone,Head midline;Head left;Lying right side;Head right;Lying left side;Semi fowlers,1,JHU
+not_prone,Head midline;Lying right side;Pillow support;Other (Comment),1,JHU
+not_prone,Head midline;Lying right side;Pillow support;Semi fowlers,1,JHU
+not_prone,Head midline;Lying right side;Semi fowlers;Turns self,1,JHU
+not_prone,Head midline;Pillow support;Semi fowlers;Lying left side,1,JHU
+not_prone,Head midline;Pillow support;Semi fowlers;Lying right side,1,JHU
+not_prone,Head midline;Pillow support;Semi fowlers;Sitting,1,JHU
+not_prone,Head midline;Pillow support;Supine;Semi fowlers,1,JHU
+not_prone,Head midline;Semi fowlers;Lying left side,1,JHU
+not_prone,Head midline;Semi fowlers;Pillow support;Reverse Trendelenburg,1,JHU
+not_prone,Head midline;Semi fowlers;Pillow support;Unable to reposition,1,JHU
+not_prone,Head midline;Semi fowlers;Supine,1,JHU
+not_prone,Head midline;Semi fowlers;Supine;Pillow support,1,JHU
+not_prone,Head midline;Semi fowlers;Unable to reposition,1,JHU
+not_prone,Head midline;Supine;Pillow support;Lying left side,1,JHU
+not_prone,Head midline;Supine;Pillow support;Semi fowlers,1,JHU
+not_prone,Head midline;Supine;Semi fowlers;Pillow support;Reverse Trendelenburg,1,JHU
+not_prone,Head midline;Supine;Semi fowlers;Pillow support;Turns self,1,JHU
+not_prone,Head midline;Supine;Semi fowlers;Pillow support;Unable to reposition,1,JHU
+not_prone,Head right;Lying left side;Pillow support;Trendelenburg,1,JHU
+not_prone,Head right;Lying left side;Supine;Reverse Trendelenburg,1,JHU
+not_prone,Head right;Lying right side;Pillow support;Reverse Trendelenburg;Other (Comment),1,JHU
+not_prone,Head right;Lying right side;Reverse Trendelenburg;Pillow support,1,JHU
+not_prone,Head right;Lying right side;Semi fowlers;Infant nested,1,JHU
+not_prone,Head right;Lying right side;Semi fowlers;Pillow support;Reverse Trendelenburg,1,JHU
+not_prone,Head right;Lying right side;Supine;Semi fowlers,1,JHU
+not_prone,Head right;Other (Comment);Lying left side;Pillow support,1,JHU
+not_prone,Head right;Pillow support;Lying left side,1,JHU
+not_prone,Head right;Pillow support;Lying right side,1,JHU
+not_prone,Head right;Pillow support;Semi fowlers;Lying right side,1,JHU
+not_prone,Head right;Pillow support;Semi fowlers;Reverse Trendelenburg,1,JHU
+not_prone,Head right;Reverse Trendelenburg;Lying right side,1,JHU
+not_prone,Head right;Reverse Trendelenburg;Lying right side;Pillow support,1,JHU
+not_prone,Head right;Semi fowlers;Lying right side,1,JHU
+not_prone,Head right;Semi fowlers;Pillow support;Lying right side,1,JHU
+not_prone,Head right;Semi fowlers;Pillow support;Supine,1,JHU
+not_prone,Head right;Semi fowlers;Supine,1,JHU
+not_prone,Head right;Supine;Reverse Trendelenburg,1,JHU
+not_prone,Head right;Supine;Unable to reposition,1,JHU
+not_prone,Head turned and supine,1,JHU
+not_prone,Infant nested;Lying left side;Lying right side;Semi fowlers;Pillow support,1,JHU
+not_prone,Infant nested;Lying left side;Pillow support,1,JHU
+not_prone,Infant nested;Lying right side,1,JHU
+not_prone,Infant nested;Semi fowlers,1,JHU
+not_prone,Infant nested;Supine,1,JHU
+not_prone,Left lateral;HOB equal/greater than 30 degrees;Sitting,1,JHU
+not_prone,Left lateral;HOB self-regulated;Lying down,1,JHU
+not_prone,Left lateral;Lying down;HOB less than 30 degrees,1,JHU
+not_prone,Left lateral;Lying down;Other (comment),1,JHU
+not_prone,Left side lying,1,JHU
+not_prone,Lying down;HOB equal/greater than 30 degrees;HOB flat,1,JHU
+not_prone,Lying down;HOB equal/greater than 30 degrees;HOB self-regulated;Left lateral,1,JHU
+not_prone,Lying down;HOB equal/greater than 30 degrees;Right lateral;Left lateral,1,JHU
+not_prone,Lying down;HOB equal/greater than 30 degrees;Sitting,1,JHU
+not_prone,Lying down;HOB flat;Right lateral,1,JHU
+not_prone,Lying down;HOB less than 30 degrees;Other (comment),1,JHU
+not_prone,Lying down;HOB less than 30 degrees;Trendelenburg,1,JHU
+not_prone,Lying down;HOB self-regulated;HOB equal/greater than 30 degrees,1,JHU
+not_prone,Lying down;HOB self-regulated;HOB flat;HOB less than 30 degrees,1,JHU
+not_prone,Lying down;HOB self-regulated;HOB less than 30 degrees,1,JHU
+not_prone,Lying down;HOB self-regulated;Right lateral,1,JHU
+not_prone,Lying down;Left lateral;HOB less than 30 degrees;Other (comment),1,JHU
+not_prone,Lying down;Left lateral;HOB self-regulated;HOB less than 30 degrees,1,JHU
+not_prone,Lying down;Left lateral;Reverse Trendelenburg,1,JHU
+not_prone,Lying down;Left lateral;Right lateral,1,JHU
+not_prone,Lying down;Right lateral;HOB self-regulated,1,JHU
+not_prone,Lying down;Trendelenburg;HOB less than 30 degrees,1,JHU
+not_prone,Lying left side;Head left;Lying right side,1,JHU
+not_prone,Lying left side;Head left;Pillow support;Semi fowlers;Reverse Trendelenburg,1,JHU
+not_prone,Lying left side;Head left;Semi fowlers,1,JHU
+not_prone,Lying left side;Head left;Supine;Semi fowlers;Pillow support,1,JHU
+not_prone,Lying left side;Head midline;Other (Comment),1,JHU
+not_prone,Lying left side;Head midline;Semi fowlers;Pillow support,1,JHU
+not_prone,Lying left side;Head midline;Semi fowlers;Reverse Trendelenburg,1,JHU
+not_prone,Lying left side;Head right;Pillow support,1,JHU
+not_prone,Lying left side;Infant nested;Semi fowlers;Pillow support,1,JHU
+not_prone,Lying left side;Lying right side;Head right;Head left;Infant nested;Supine;Semi fowlers;Pillow support,1,JHU
+not_prone,Lying left side;Lying right side;Other (Comment),1,JHU
+not_prone,Lying left side;Lying right side;Pillow support;Semi fowlers,1,JHU
+not_prone,Lying left side;Lying right side;Pillow support;Sitting,1,JHU
+not_prone,Lying left side;Lying right side;Supine,1,JHU
+not_prone,Lying left side;Lying right side;Supine;Pillow support,1,JHU
+not_prone,Lying left side;Lying right side;Supine;Semi fowlers;Pillow support,1,JHU
+not_prone,Lying left side;Other (Comment);Pillow support,1,JHU
+not_prone,Lying left side;Pillow support;Lying right side,1,JHU
+not_prone,Lying left side;Pillow support;Other (Comment);Head midline,1,JHU
+not_prone,Lying left side;Pillow support;Reverse Trendelenburg;Other (Comment),1,JHU
+not_prone,Lying left side;Pillow support;Reverse Trendelenburg;Unable to reposition,1,JHU
+not_prone,Lying left side;Pillow support;Semi fowlers;Lying right side,1,JHU
+not_prone,Lying left side;Pillow support;Semi fowlers;Reverse Trendelenburg,1,JHU
+not_prone,Lying left side;Pillow support;Semi fowlers;Sitting,1,JHU
+not_prone,Lying left side;Pillow support;Semi fowlers;Turns self,1,JHU
+not_prone,Lying left side;Pillow support;Sitting;Up in chair,1,JHU
+not_prone,Lying left side;Pillow support;Trendelenburg,1,JHU
+not_prone,Lying left side;Refused by patient;Pillow support,1,JHU
+not_prone,Lying left side;Reverse Trendelenburg;Other (Comment),1,JHU
+not_prone,Lying left side;Reverse Trendelenburg;Trendelenburg,1,JHU
+not_prone,Lying left side;Semi fowlers;Head left;Pillow support,1,JHU
+not_prone,Lying left side;Semi fowlers;Head midline;Pillow support,1,JHU
+not_prone,Lying left side;Semi fowlers;Pillow support;Head midline,1,JHU
+not_prone,Lying left side;Semi fowlers;Pillow support;Head right,1,JHU
+not_prone,Lying left side;Semi fowlers;Pillow support;Lying right side,1,JHU
+not_prone,Lying left side;Semi fowlers;Pillow support;Refused by patient,1,JHU
+not_prone,Lying left side;Semi fowlers;Supine;Pillow support;Reverse Trendelenburg,1,JHU
+not_prone,Lying left side;Sitting;Pillow support,1,JHU
+not_prone,Lying left side;Sitting;Up in chair;Other (Comment),1,JHU
+not_prone,Lying left side;Supine;Head midline,1,JHU
+not_prone,Lying left side;Supine;Pillow support;Reverse Trendelenburg,1,JHU
+not_prone,Lying left side;Trendelenburg,1,JHU
+not_prone,Lying left side;Turns self;Reverse Trendelenburg,1,JHU
+not_prone,Lying right side;Head left;Pillow support,1,JHU
+not_prone,Lying right side;Head left;Pillow support;Reverse Trendelenburg,1,JHU
+not_prone,Lying right side;Head left;Pillow support;Semi fowlers,1,JHU
+not_prone,Lying right side;Head left;Reverse Trendelenburg;Pillow support,1,JHU
+not_prone,Lying right side;Head left;Semi fowlers,1,JHU
+not_prone,Lying right side;Head left;Semi fowlers;Pillow support,1,JHU
+not_prone,Lying right side;Head midline;Reverse Trendelenburg,1,JHU
+not_prone,Lying right side;Head midline;Supine;Semi fowlers;Pillow support,1,JHU
+not_prone,Lying right side;Head right;Lying left side;Infant nested;Supine;Semi fowlers;Pillow support,1,JHU
+not_prone,Lying right side;Head right;Reverse Trendelenburg,1,JHU
+not_prone,Lying right side;Head right;Reverse Trendelenburg;Semi fowlers;Pillow support,1,JHU
+not_prone,Lying right side;Head right;Semi fowlers;Pillow support;Reverse Trendelenburg,1,JHU
+not_prone,Lying right side;Head right;Semi fowlers;Reverse Trendelenburg,1,JHU
+not_prone,Lying right side;Head right;Semi fowlers;Supine;Pillow support,1,JHU
+not_prone,Lying right side;Infant nested;Semi fowlers;Pillow support,1,JHU
+not_prone,Lying right side;Infant nested;Supine;Pillow support,1,JHU
+not_prone,Lying right side;Lying left side;Infant nested;Supine;Semi fowlers;Pillow support,1,JHU
+not_prone,Lying right side;Lying left side;Pillow support;Head midline,1,JHU
+not_prone,Lying right side;Lying left side;Pillow support;Semi fowlers;Supine,1,JHU
+not_prone,Lying right side;Lying left side;Supine;Semi fowlers;Pillow support;Up in chair,1,JHU
+not_prone,Lying right side;Lying left side;Turns self,1,JHU
+not_prone,Lying right side;Other (Comment);Pillow support,1,JHU
+not_prone,Lying right side;Other (Comment);Supine,1,JHU
+not_prone,Lying right side;Other (Comment);Unable to reposition,1,JHU
+not_prone,Lying right side;Pillow support;Semi fowlers;Head right,1,JHU
+not_prone,Lying right side;Pillow support;Semi fowlers;Reverse Trendelenburg,1,JHU
+not_prone,Lying right side;Pillow support;Semi fowlers;Sitting,1,JHU
+not_prone,Lying right side;Pillow support;Semi fowlers;Turns self,1,JHU
+not_prone,Lying right side;Pillow support;Sitting;Other (Comment),1,JHU
+not_prone,Lying right side;Pillow support;Standing,1,JHU
+not_prone,Lying right side;Pillow support;Supine;Semi fowlers,1,JHU
+not_prone,Lying right side;Refused by patient;Pillow support,1,JHU
+not_prone,Lying right side;Refused by patient;Turns self,1,JHU
+not_prone,Lying right side;Reverse Trendelenburg;Trendelenburg,1,JHU
+not_prone,Lying right side;Reverse Trendelenburg;Turns self,1,JHU
+not_prone,Lying right side;Semi fowlers;Head right;Pillow support,1,JHU
+not_prone,Lying right side;Semi fowlers;Pillow support;Head midline,1,JHU
+not_prone,Lying right side;Semi fowlers;Pillow support;Lying left side,1,JHU
+not_prone,Lying right side;Semi fowlers;Pillow support;Sitting,1,JHU
+not_prone,Lying right side;Semi fowlers;Sitting,1,JHU
+not_prone,Lying right side;Semi fowlers;Turns self,1,JHU
+not_prone,Lying right side;Semi fowlers;Unable to reposition,1,JHU
+not_prone,Lying right side;Sitting;Pillow support,1,JHU
+not_prone,Lying right side;Sitting;Up in chair,1,JHU
+not_prone,Lying right side;Sitting;Up in chair;Lying left side,1,JHU
+not_prone,Lying right side;Standing,1,JHU
+not_prone,Lying right side;Supine;Lying left side;Semi fowlers;Pillow support,1,JHU
+not_prone,Lying right side;Supine;Pillow support;Other (Comment),1,JHU
+not_prone,Lying right side;Supine;Semi fowlers;Other (Comment),1,JHU
+not_prone,Lying right side;Supine;Semi fowlers;Unable to reposition;Head right,1,JHU
+not_prone,Lying right side;Trendelenburg,1,JHU
+not_prone,Lying right side;Turns self;Head right;Pillow support,1,JHU
+not_prone,Lying right side;Turns self;Lying left side,1,JHU
+not_prone,Lying supine,1,JHU
+not_prone,NP aware of sats sitting in the 80s despite sxn and sedation. NP at bedside to assess,1,JHU
+not_prone,Orthostatic VS sitting,1,JHU
+not_prone,"Orthostatic VS, pt lying down ",1,JHU
+not_prone,Other (Comment);Lying left side;Pillow support;Sitting,1,JHU
+not_prone,Other (Comment);Lying right side;Pillow support;Semi fowlers,1,JHU
+not_prone,Other (Comment);Lying right side;Semi fowlers;Pillow support,1,JHU
+not_prone,Other (Comment);Lying right side;Turns self;Pillow support,1,JHU
+not_prone,Other (Comment);Pillow support;Lying left side,1,JHU
+not_prone,Other (Comment);Pillow support;Lying right side,1,JHU
+not_prone,Other (Comment);Pillow support;Semi fowlers,1,JHU
+not_prone,Other (Comment);Pillow support;Sitting,1,JHU
+not_prone,Other (Comment);Reverse Trendelenburg;Pillow support;Supine,1,JHU
+not_prone,Other (Comment);Semi fowlers;Pillow support;Reverse Trendelenburg,1,JHU
+not_prone,Other (Comment);Sitting;Semi fowlers;Supine,1,JHU
+not_prone,Other (Comment);Sitting;Turns self,1,JHU
+not_prone,Other (Comment);Sitting;Up in chair,1,JHU
+not_prone,Other (Comment);Supine;Reverse Trendelenburg,1,JHU
+not_prone,Other (Comment);Turns self;Lying left side,1,JHU
+not_prone,Other (comment);Reverse Trendelenburg;Lying down,1,JHU
+not_prone,PATIENT repositioned to supine position,1,JHU
+not_prone,PLAN: Maybe wean NO after pt. supine,1,JHU
+not_prone,PT MADE SUPINE,1,JHU
+not_prone,PT lying in bed and repositoned. FC and nods head. No pain noted,1,JHU
+not_prone,PT lying in bed. Speech valve place and patient FC.  AXox4.,1,JHU
+not_prone,PT. lying with rt side up.,1,JHU
+not_prone,Patient Supine with Head of Bed 50 degrees,1,JHU
+not_prone,Patient returned to supine position,1,JHU
+not_prone,Patient sitting at edge of bed to eat breakfast; Bed alarm on,1,JHU
+not_prone,"Patient sitting at edge of bed, working with OT.  Oxygen increased to 60%.  Cuff remains deflated.",1,JHU
+not_prone,Patient sitting in chair ,1,JHU
+not_prone,Patient sitting up in chair eating lunch,1,JHU
+not_prone,Patient supine,1,JHU
+not_prone,Pillow support;Head left;Semi fowlers,1,JHU
+not_prone,Pillow support;Head left;Supine,1,JHU
+not_prone,Pillow support;Head midline;Semi fowlers;Supine,1,JHU
+not_prone,Pillow support;Head midline;Turns self;Semi fowlers,1,JHU
+not_prone,Pillow support;Head right;Lying left side;Semi fowlers,1,JHU
+not_prone,Pillow support;Head right;Lying right side;Semi fowlers,1,JHU
+not_prone,Pillow support;Head right;Supine,1,JHU
+not_prone,Pillow support;Lying left side;Lying right side;Other (Comment),1,JHU
+not_prone,Pillow support;Lying left side;Other (Comment),1,JHU
+not_prone,Pillow support;Lying left side;Other (Comment);Semi fowlers,1,JHU
+not_prone,Pillow support;Lying left side;Refused by patient,1,JHU
+not_prone,Pillow support;Lying left side;Semi fowlers;Head left,1,JHU
+not_prone,Pillow support;Lying right side;Head left,1,JHU
+not_prone,Pillow support;Lying right side;Lying left side;Supine,1,JHU
+not_prone,Pillow support;Lying right side;Reverse Trendelenburg,1,JHU
+not_prone,Pillow support;Lying right side;Semi fowlers;Head right,1,JHU
+not_prone,Pillow support;Lying right side;Sitting,1,JHU
+not_prone,Pillow support;Other (Comment);Lying right side,1,JHU
+not_prone,Pillow support;Reverse Trendelenburg;Supine;Head left,1,JHU
+not_prone,Pillow support;Semi fowlers;Head left;Lying left side,1,JHU
+not_prone,Pillow support;Semi fowlers;Head midline;Lying left side,1,JHU
+not_prone,Pillow support;Semi fowlers;Head midline;Lying right side,1,JHU
+not_prone,Pillow support;Semi fowlers;Infant nested,1,JHU
+not_prone,Pillow support;Semi fowlers;Lying right side;Head left,1,JHU
+not_prone,Pillow support;Semi fowlers;Lying right side;Head right,1,JHU
+not_prone,Pillow support;Semi fowlers;Lying right side;Lying left side,1,JHU
+not_prone,Pillow support;Semi fowlers;Lying right side;Turns self,1,JHU
+not_prone,Pillow support;Semi fowlers;Other (Comment);Supine,1,JHU
+not_prone,Pillow support;Semi fowlers;Sitting;Turns self,1,JHU
+not_prone,Pillow support;Semi fowlers;Supine;Other (Comment),1,JHU
+not_prone,Pillow support;Semi fowlers;Turns self;Sitting,1,JHU
+not_prone,Pillow support;Semi fowlers;Turns self;Supine,1,JHU
+not_prone,Pillow support;Semi fowlers;Unable to reposition,1,JHU
+not_prone,Pillow support;Sitting;Lying right side,1,JHU
+not_prone,Pillow support;Sitting;Supine,1,JHU
+not_prone,Pillow support;Sitting;Up in chair;Turns self,1,JHU
+not_prone,Pillow support;Supine;Head right,1,JHU
+not_prone,Pillow support;Supine;Lying right side;Semi fowlers;Infant nested,1,JHU
+not_prone,Pillow support;Supine;Semi fowlers;Lying left side,1,JHU
+not_prone,Pillow support;Supine;Semi fowlers;Sitting,1,JHU
+not_prone,Pillow support;Supine;Semi fowlers;Turns self,1,JHU
+not_prone,Pillow support;Supine;Trendelenburg,1,JHU
+not_prone,Pillow support;Supine;Unable to reposition,1,JHU
+not_prone,Pillow support;Turns self;Sitting,1,JHU
+not_prone,Pillow support;Unable to reposition;Supine,1,JHU
+not_prone,Pillow support;Up in chair;Semi fowlers,1,JHU
+not_prone,Positioned supine,1,JHU
+not_prone,Post tube exchange and patient supine,1,JHU
+not_prone,"Pt agitated, sitting upright, thrashing head, sats 84%",1,JHU
+not_prone,Pt appears and stated she felt much better and less anxious after our talk this morning.  Does not appear in distress at this time; pt sitting up in chair wathing TV,1,JHU
+not_prone,Pt is Supine,1,JHU
+not_prone,Pt is lying in bed watching TV.  NAD noted.  Respirations are even and unlabored.  Skin is acyanotic and not diaphoretic.  NAD or outward s/sx of pain or discomfort noted.  Bed is low and locked.  SR up x4. Callbell is in reach.  Bed alarm is activated.  Cardiac monitoring is still in place. Pt's speech is low and quiet.  Pt is cooperative but noted to start off during assessment.  Pt noted to gester out from herself but did not elaborate on why or what she was referencing at this time.  This writer will continue to observe Pt through glass while awaiting arrival of sitter ordered for tonight.,1,JHU
+not_prone,Pt is lying in bed watching TV. NAD or changes in Pt's condition to report at this time.  Cardiac monitoring in place.  Bed is low and locked.  SR up x4.  Callbell is in reach.  Sitter is present at bedside.,1,JHU
+not_prone,Pt is now Supined,1,JHU
+not_prone,Pt is now supine position,1,JHU
+not_prone,Pt is supine was self proning  during the day,1,JHU
+not_prone,Pt laying supine; Levo off,1,JHU
+not_prone,Pt lying in bed,1,JHU
+not_prone,Pt lying in bed ,1,JHU
+not_prone,Pt lying in bed on stomach,1,JHU
+not_prone,Pt lying in bed; OOB to BR ,1,JHU
+not_prone,Pt moved to sitting in bed ,1,JHU
+not_prone,Pt paced supine,1,JHU
+not_prone,Pt placed back on Supine position,1,JHU
+not_prone,Pt sitting at edge of bed,1,JHU
+not_prone,Pt sitting at edge of bed eating breakfast,1,JHU
+not_prone,Pt sitting in chair,1,JHU
+not_prone,Pt sitting on chair,1,JHU
+not_prone,Pt sitting to eat ,1,JHU
+not_prone,Pt sitting up,1,JHU
+not_prone,Pt supine.,1,JHU
+not_prone,Pt supine; Will continue to encourage self proning,1,JHU
+not_prone,Pt supined,1,JHU
+not_prone,Pt supined during PEA,1,JHU
+not_prone,Pt turned supine w/o incident.,1,JHU
+not_prone,"Pt zooming with family, sitting in chair in good spirits",1,JHU
+not_prone,Pt. sitting on bedpan.,1,JHU
+not_prone,"R side lying, pt's Ppeak went from 39-40 to 33-34",1,JHU
+not_prone,Refused by patient;Lying left side;Semi fowlers;Pillow support,1,JHU
+not_prone,Refused by patient;Lying right side;Semi fowlers;Pillow support,1,JHU
+not_prone,Refused by patient;Supine;Pillow support,1,JHU
+not_prone,Repositioned to lying on right side,1,JHU
+not_prone,"Resting comfortably in bed, sleeping easily aroused to voice, even unlabored respirations in high fowlers position with HHFNC 85%/60L.  ",1,JHU
+not_prone,Reverse Trendelenburg;HOB equal/greater than 30 degrees;Lying down,1,JHU
+not_prone,Reverse Trendelenburg;Head right;Lying left side,1,JHU
+not_prone,Reverse Trendelenburg;Head right;Lying right side,1,JHU
+not_prone,Reverse Trendelenburg;Lying down;Other (comment),1,JHU
+not_prone,Reverse Trendelenburg;Lying left side;Semi fowlers,1,JHU
+not_prone,Reverse Trendelenburg;Lying right side;Head left;Pillow support,1,JHU
+not_prone,Reverse Trendelenburg;Pillow support;Lying left side;Lying right side,1,JHU
+not_prone,Reverse Trendelenburg;Pillow support;Semi fowlers;Lying left side,1,JHU
+not_prone,Reverse Trendelenburg;Semi fowlers;Lying left side,1,JHU
+not_prone,Reverse Trendelenburg;Semi fowlers;Pillow support;Head left,1,JHU
+not_prone,Reverse Trendelenburg;Semi fowlers;Supine,1,JHU
+not_prone,Reverse Trendelenburg;Semi fowlers;Supine;Pillow support;Head midline,1,JHU
+not_prone,Reverse Trendelenburg;Supine;Head midline,1,JHU
+not_prone,Reverse Trendelenburg;Supine;Lying left side,1,JHU
+not_prone,Reverse Trendelenburg;Supine;Semi fowlers,1,JHU
+not_prone,Reverse Trendelenburg;Trendelenburg;Lying left side,1,JHU
+not_prone,Right lateral;HOB equal/greater than 30 degrees;Sitting,1,JHU
+not_prone,Right lateral;HOB flat;Lying down,1,JHU
+not_prone,Right lateral;HOB less than 30 degrees;Lying down,1,JHU
+not_prone,Right lateral;Lying down;HOB self-regulated,1,JHU
+not_prone,Right lateral;Reverse Trendelenburg;Lying down,1,JHU
+not_prone,SUPINED,1,JHU
+not_prone,SUPINED.,1,JHU
+not_prone,Semi fowlers;Head left;Head midline;Pillow support,1,JHU
+not_prone,Semi fowlers;Head midline;Pillow support,1,JHU
+not_prone,Semi fowlers;Head midline;Pillow support;Other (Comment),1,JHU
+not_prone,Semi fowlers;Head right;Lying right side,1,JHU
+not_prone,Semi fowlers;Lying left side;Head right,1,JHU
+not_prone,Semi fowlers;Lying left side;Lying right side,1,JHU
+not_prone,Semi fowlers;Lying left side;Lying right side;Supine,1,JHU
+not_prone,Semi fowlers;Lying left side;Other (Comment),1,JHU
+not_prone,Semi fowlers;Lying left side;Pillow support;Other (Comment),1,JHU
+not_prone,Semi fowlers;Lying left side;Pillow support;Refused by patient,1,JHU
+not_prone,Semi fowlers;Lying left side;Pillow support;Reverse Trendelenburg,1,JHU
+not_prone,Semi fowlers;Lying left side;Reverse Trendelenburg,1,JHU
+not_prone,Semi fowlers;Lying left side;Turns self,1,JHU
+not_prone,Semi fowlers;Lying right side;Lying left side;Supine;Pillow support,1,JHU
+not_prone,Semi fowlers;Lying right side;Pillow support;Sitting,1,JHU
+not_prone,Semi fowlers;Lying right side;Sitting,1,JHU
+not_prone,Semi fowlers;Other (Comment);Lying left side,1,JHU
+not_prone,Semi fowlers;Other (Comment);Pillow support,1,JHU
+not_prone,Semi fowlers;Pillow support;Head left;Head midline,1,JHU
+not_prone,Semi fowlers;Pillow support;Head left;Lying left side,1,JHU
+not_prone,Semi fowlers;Pillow support;Head left;Lying right side,1,JHU
+not_prone,Semi fowlers;Pillow support;Head left;Turns self,1,JHU
+not_prone,Semi fowlers;Pillow support;Head midline;Head right,1,JHU
+not_prone,Semi fowlers;Pillow support;Head right;Head midline,1,JHU
+not_prone,Semi fowlers;Pillow support;Lying left side;Head right,1,JHU
+not_prone,Semi fowlers;Pillow support;Lying left side;Sitting,1,JHU
+not_prone,Semi fowlers;Pillow support;Lying right side;Lying left side;Supine,1,JHU
+not_prone,Semi fowlers;Pillow support;Lying right side;Lying left side;Turns self,1,JHU
+not_prone,Semi fowlers;Pillow support;Lying right side;Supine,1,JHU
+not_prone,Semi fowlers;Pillow support;Other (Comment);Lying left side,1,JHU
+not_prone,Semi fowlers;Pillow support;Other (Comment);Refused by patient,1,JHU
+not_prone,Semi fowlers;Pillow support;Other (Comment);Supine,1,JHU
+not_prone,Semi fowlers;Pillow support;Refused by patient;Lying left side,1,JHU
+not_prone,Semi fowlers;Pillow support;Reverse Trendelenburg;Supine,1,JHU
+not_prone,Semi fowlers;Pillow support;Sitting;Standing,1,JHU
+not_prone,Semi fowlers;Pillow support;Supine;Lying left side;Lying right side,1,JHU
+not_prone,Semi fowlers;Pillow support;Supine;Lying right side;Reverse Trendelenburg,1,JHU
+not_prone,Semi fowlers;Pillow support;Supine;Other (Comment),1,JHU
+not_prone,Semi fowlers;Pillow support;Supine;Refused by patient,1,JHU
+not_prone,Semi fowlers;Pillow support;Supine;Unable to reposition,1,JHU
+not_prone,Semi fowlers;Pillow support;Trendelenburg;Lying left side,1,JHU
+not_prone,Semi fowlers;Pillow support;Turns self;Lying right side,1,JHU
+not_prone,Semi fowlers;Pillow support;Unable to reposition;Lying left side,1,JHU
+not_prone,Semi fowlers;Reverse Trendelenburg;Head midline,1,JHU
+not_prone,Semi fowlers;Reverse Trendelenburg;Head right,1,JHU
+not_prone,Semi fowlers;Reverse Trendelenburg;Pillow support,1,JHU
+not_prone,Semi fowlers;Reverse Trendelenburg;Supine,1,JHU
+not_prone,Semi fowlers;Standing,1,JHU
+not_prone,Semi fowlers;Supine;Infant nested;Lying left side;Lying right side;Pillow support,1,JHU
+not_prone,Semi fowlers;Supine;Pillow support;Head right,1,JHU
+not_prone,Semi fowlers;Supine;Pillow support;Lying right side;Lying left side,1,JHU
+not_prone,Semi fowlers;Supine;Pillow support;Sitting,1,JHU
+not_prone,Semi fowlers;Supine;Reverse Trendelenburg,1,JHU
+not_prone,Semi fowlers;Supine;Turns self;Pillow support,1,JHU
+not_prone,Semi fowlers;Turns self;Head right,1,JHU
+not_prone,Semi fowlers;Turns self;Lying left side,1,JHU
+not_prone,Semi fowlers;Turns self;Pillow support;Lying right side,1,JHU
+not_prone,Semi fowlers;Up in chair;Pillow support,1,JHU
+not_prone,Semi fowlers;Up in chair;Sitting,1,JHU
+not_prone,Sitting EOB for lunch,1,JHU
+not_prone,"Sitting in the chair, eating dinner",1,JHU
+not_prone,Sitting up at side of bed,1,JHU
+not_prone,Sitting up in bed; Eating lunch,1,JHU
+not_prone,Sitting up in chair,1,JHU
+not_prone,Sitting up to chair,1,JHU
+not_prone,Sitting;HOB less than 30 degrees;HOB self-regulated,1,JHU
+not_prone,Sitting;Head midline,1,JHU
+not_prone,Sitting;Lying down;HOB less than 30 degrees,1,JHU
+not_prone,Sitting;Lying down;Standing;HOB equal/greater than 30 degrees,1,JHU
+not_prone,Sitting;Lying left side;Pillow support,1,JHU
+not_prone,Sitting;Lying right side;Turns self,1,JHU
+not_prone,Sitting;Other (Comment);Pillow support;Head midline,1,JHU
+not_prone,Sitting;Other (Comment);Pillow support;Lying left side,1,JHU
+not_prone,Sitting;Other (Comment);Standing;Turns self,1,JHU
+not_prone,Sitting;Other (comment);HOB equal/greater than 30 degrees,1,JHU
+not_prone,Sitting;Pillow support;Head right;Lying right side,1,JHU
+not_prone,Sitting;Pillow support;Lying left side,1,JHU
+not_prone,Sitting;Semi fowlers;High fowlers,1,JHU
+not_prone,Sitting;Semi fowlers;Lying left side,1,JHU
+not_prone,Sitting;Semi fowlers;Supine;Pillow support,1,JHU
+not_prone,Sitting;Standing;Pillow support,1,JHU
+not_prone,Sitting;Standing;Semi fowlers;Pillow support,1,JHU
+not_prone,Sitting;Supine;Head midline,1,JHU
+not_prone,Sitting;Supine;Other (Comment),1,JHU
+not_prone,Sitting;Supine;Turns self,1,JHU
+not_prone,Sitting;Up in chair;Lying left side,1,JHU
+not_prone,"Spoke with Judith, MD to see if I can d/c pt's CVL. Pt has 3 PIVs and is on no medications that require central access. Pt's sats have been stable since extubation, and thus far pt has tolerated lying flat for turns with dropping O2 sats. Awaiting confirmation",1,JHU
+not_prone,Standing;Lying right side,1,JHU
+not_prone,Standing;Sitting;Up in chair;Head right;Head left,1,JHU
+not_prone,Standing;Turns self;Pillow support;Semi fowlers,1,JHU
+not_prone,Standing;Up in chair;Supine,1,JHU
+not_prone,Supine for Bedpan,1,JHU
+not_prone,Supine posn.,1,JHU
+not_prone,Supine sitting edge of bed,1,JHU
+not_prone,"Supine, just sat at edge of bed",1,JHU
+not_prone,"Supine, sitting position, eating",1,JHU
+not_prone,Supine;Head left;Other (Comment),1,JHU
+not_prone,Supine;Head left;Reverse Trendelenburg;Pillow support,1,JHU
+not_prone,Supine;Head left;Semi fowlers;Pillow support,1,JHU
+not_prone,Supine;Head midline;Lying right side,1,JHU
+not_prone,Supine;Head midline;Pillow support;Lying right side,1,JHU
+not_prone,Supine;Head midline;Pillow support;Semi fowlers,1,JHU
+not_prone,Supine;Head midline;Turns self,1,JHU
+not_prone,Supine;Head right;Lying right side;Pillow support,1,JHU
+not_prone,Supine;Lying left side;Head midline;Pillow support,1,JHU
+not_prone,Supine;Lying right side;Lying left side;Semi fowlers;Pillow support,1,JHU
+not_prone,Supine;Lying right side;Pillow support;Sitting,1,JHU
+not_prone,Supine;Other (Comment);Lying right side,1,JHU
+not_prone,Supine;Other (Comment);Reverse Trendelenburg,1,JHU
+not_prone,Supine;Pillow support;Head left,1,JHU
+not_prone,Supine;Pillow support;Head right;Lying right side,1,JHU
+not_prone,Supine;Pillow support;Infant nested,1,JHU
+not_prone,Supine;Pillow support;Lying right side;Lying left side,1,JHU
+not_prone,Supine;Pillow support;Lying right side;Reverse Trendelenburg,1,JHU
+not_prone,Supine;Pillow support;Lying right side;Semi fowlers,1,JHU
+not_prone,Supine;Pillow support;Reverse Trendelenburg;Lying left side,1,JHU
+not_prone,Supine;Pillow support;Reverse Trendelenburg;Lying right side,1,JHU
+not_prone,Supine;Pillow support;Semi fowlers;Lying left side;Lying right side,1,JHU
+not_prone,Supine;Pillow support;Semi fowlers;Other (Comment),1,JHU
+not_prone,Supine;Pillow support;Semi fowlers;Turns self,1,JHU
+not_prone,Supine;Pillow support;Turns self;Refused by patient,1,JHU
+not_prone,Supine;Refused by patient;Pillow support,1,JHU
+not_prone,Supine;Reverse Trendelenburg;Lying right side,1,JHU
+not_prone,Supine;Reverse Trendelenburg;Pillow support;Head left,1,JHU
+not_prone,Supine;Semi fowlers;Head midline;Pillow support,1,JHU
+not_prone,Supine;Semi fowlers;Head right,1,JHU
+not_prone,Supine;Semi fowlers;Lying left side;Head midline,1,JHU
+not_prone,Supine;Semi fowlers;Lying right side;Lying left side;Pillow support,1,JHU
+not_prone,Supine;Semi fowlers;Other (Comment);Unable to reposition,1,JHU
+not_prone,Supine;Semi fowlers;Pillow support;Head left;Lying left side,1,JHU
+not_prone,Supine;Semi fowlers;Pillow support;Head right;Lying left side,1,JHU
+not_prone,Supine;Semi fowlers;Pillow support;Lying left side;Lying right side;Turns self,1,JHU
+not_prone,Supine;Semi fowlers;Pillow support;Reverse Trendelenburg;Head midline,1,JHU
+not_prone,Supine;Semi fowlers;Pillow support;Trendelenburg,1,JHU
+not_prone,Supine;Semi fowlers;Reverse Trendelenburg;Head midline,1,JHU
+not_prone,Supine;Semi fowlers;Reverse Trendelenburg;Head right,1,JHU
+not_prone,Supine;Semi fowlers;Reverse Trendelenburg;Lying right side,1,JHU
+not_prone,Supine;Sitting;Turns self,1,JHU
+not_prone,Supine;Sitting;Up in chair,1,JHU
+not_prone,Supine;Turns self;Refused by patient,1,JHU
+not_prone,Supine;Unable to reposition;Semi fowlers;Pillow support,1,JHU
+not_prone,Supined ,1,JHU
+not_prone,Supined at 2100,1,JHU
+not_prone,Supined for line placement,1,JHU
+not_prone,Supined the Pt.,1,JHU
+not_prone,Supined the patient,1,JHU
+not_prone,Supined the pt.,1,JHU
+not_prone,"Talked with M. Shelley, CRNP about advancment of ETT. Plan is to supine pt today and then advance ETT. ",1,JHU
+not_prone,Trendelenburg;Supine;Pillow support,1,JHU
+not_prone,"Turned; Upside: Right, lying left.",1,JHU
+not_prone,Turns self;Head midline;Head left;Head right;Lying right side;Lying left side;Sitting;Standing;Up in chair,1,JHU
+not_prone,Turns self;Head midline;Lying right side;Pillow support,1,JHU
+not_prone,Turns self;Head midline;Lying right side;Semi fowlers;Pillow support,1,JHU
+not_prone,Turns self;Head midline;Pillow support;Supine,1,JHU
+not_prone,Turns self;Head midline;Semi fowlers;Pillow support;Lying left side,1,JHU
+not_prone,Turns self;Head midline;Semi fowlers;Pillow support;Supine,1,JHU
+not_prone,Turns self;Head midline;Sitting,1,JHU
+not_prone,Turns self;Head midline;Supine;Semi fowlers;Pillow support;Reverse Trendelenburg,1,JHU
+not_prone,Turns self;Head right;Lying right side,1,JHU
+not_prone,Turns self;Lying left side;Head left,1,JHU
+not_prone,Turns self;Lying left side;Semi fowlers;Pillow support;Head left,1,JHU
+not_prone,Turns self;Lying left side;Supine,1,JHU
+not_prone,Turns self;Lying left side;Supine;Pillow support,1,JHU
+not_prone,Turns self;Lying right side;Lying left side;Head left;Head right;Up in chair,1,JHU
+not_prone,Turns self;Lying right side;Sitting,1,JHU
+not_prone,Turns self;Lying right side;Supine,1,JHU
+not_prone,Turns self;Other (Comment);Lying right side,1,JHU
+not_prone,Turns self;Other (Comment);Sitting;Semi fowlers,1,JHU
+not_prone,Turns self;Other (Comment);Supine,1,JHU
+not_prone,Turns self;Pillow support;Lying left side;Supine,1,JHU
+not_prone,Turns self;Pillow support;Lying right side;Semi fowlers,1,JHU
+not_prone,Turns self;Pillow support;Semi fowlers;Head midline,1,JHU
+not_prone,Turns self;Pillow support;Semi fowlers;Head right,1,JHU
+not_prone,Turns self;Pillow support;Semi fowlers;Lying left side,1,JHU
+not_prone,Turns self;Pillow support;Semi fowlers;Sitting,1,JHU
+not_prone,Turns self;Pillow support;Sitting;Standing,1,JHU
+not_prone,Turns self;Pillow support;Supine;Lying left side,1,JHU
+not_prone,Turns self;Pillow support;Trendelenburg;Lying right side;Lying left side,1,JHU
+not_prone,Turns self;Semi fowlers;Lying right side;Pillow support,1,JHU
+not_prone,Turns self;Semi fowlers;Pillow support;Lying right side;Sitting;Up in chair,1,JHU
+not_prone,Turns self;Semi fowlers;Pillow support;Up in chair,1,JHU
+not_prone,Turns self;Semi fowlers;Sitting;Up in chair,1,JHU
+not_prone,Turns self;Semi fowlers;Supine;Pillow support;Head midline,1,JHU
+not_prone,Turns self;Sitting;Lying left side,1,JHU
+not_prone,Turns self;Sitting;Semi fowlers,1,JHU
+not_prone,Turns self;Sitting;Supine,1,JHU
+not_prone,Turns self;Standing;Sitting;Up in chair,1,JHU
+not_prone,Turns self;Supine;Head midline,1,JHU
+not_prone,Turns self;Supine;Lying right side;Pillow support,1,JHU
+not_prone,Turns self;Supine;Pillow support;Sitting,1,JHU
+not_prone,Turns self;Supine;Reverse Trendelenburg,1,JHU
+not_prone,Turns self;Supine;Semi fowlers;Head midline,1,JHU
+not_prone,Turns self;Supine;Semi fowlers;Pillow support;Head midline,1,JHU
+not_prone,Turns self;Supine;Unable to reposition,1,JHU
+not_prone,Unable to reposition;Head left;Lying left side;Pillow support,1,JHU
+not_prone,Unable to reposition;Head left;Lying left side;Semi fowlers;Pillow support,1,JHU
+not_prone,Unable to reposition;Head midline;Supine;Pillow support,1,JHU
+not_prone,Unable to reposition;Lying left side;Pillow support;Other (Comment),1,JHU
+not_prone,Unable to reposition;Lying left side;Semi fowlers,1,JHU
+not_prone,Unable to reposition;Lying right side;Reverse Trendelenburg,1,JHU
+not_prone,Unable to reposition;Other (Comment);Lying right side;Pillow support,1,JHU
+not_prone,Unable to reposition;Pillow support;Lying right side,1,JHU
+not_prone,Unable to reposition;Pillow support;Lying right side;Semi fowlers,1,JHU
+not_prone,Unable to reposition;Pillow support;Semi fowlers,1,JHU
+not_prone,Unable to reposition;Pillow support;Supine;Semi fowlers,1,JHU
+not_prone,Unable to reposition;Semi fowlers;Pillow support;Head midline,1,JHU
+not_prone,Unable to reposition;Semi fowlers;Pillow support;Lying right side,1,JHU
+not_prone,Unable to reposition;Semi fowlers;Pillow support;Supine,1,JHU
+not_prone,Unable to reposition;Semi fowlers;Supine;Lying left side,1,JHU
+not_prone,Unable to reposition;Semi fowlers;Supine;Pillow support,1,JHU
+not_prone,Unable to reposition;Supine;Semi fowlers;Lying left side,1,JHU
+not_prone,Up in chair;Lying left side;Semi fowlers;Pillow support,1,JHU
+not_prone,Up in chair;Pillow support;Lying left side,1,JHU
+not_prone,Up in chair;Sitting;Pillow support;Other (Comment),1,JHU
+not_prone,Up in chair;Sitting;Semi fowlers,1,JHU
+not_prone,Up in chair;Standing;Semi fowlers;Pillow support,1,JHU
+not_prone,"Working with OT, sitting up",1,JHU
+not_prone,after sitting EOB,1,JHU
+not_prone,applying TED stockings,1,JHU
+not_prone,back to bed lying left side,1,JHU
+not_prone,compliance improved while lying flat,1,JHU
+not_prone,desat while asleep sitting upright,1,JHU
+not_prone,"desat with final driving pressure, increased PEEP to 8, then 10 and finally to 12 with sats sitting in low 90,s. Team aware.",1,JHU
+not_prone,lying in bed,1,JHU
+not_prone,orthostats lying down,1,JHU
+not_prone,orthostats sitting,1,JHU
+not_prone,patient is now supine,1,JHU
+not_prone,patient positioned to supine. Patient tolerated well. ,1,JHU
+not_prone,patient repositioned to supine,1,JHU
+not_prone,patient supine. ,1,JHU
+not_prone,patient supined,1,JHU
+not_prone,patient supined. ETT retaped,1,JHU
+not_prone,"per MD Drumheller to hold off on retaping pt until pt is supine, ETT tape is due to be changed but he does not want to risk the pt stability before supining, ETT tape is intact",1,JHU
+not_prone,per RN's report that pt tend to desat when she is in the sitting up position; trach checked and changed inner cannula; try her sitting more up in bed for a while; SpO2 94-96%,1,JHU
+not_prone,"post ambulation, pt in semi-fowlers back in bed",1,JHU
+not_prone,pt SUPINE,1,JHU
+not_prone,pt flipped to supine position,1,JHU
+not_prone,"pt is lying comfortably in bed , denies any pain or disomfort this time",1,JHU
+not_prone,pt is now supine ,1,JHU
+not_prone,pt is resting sitting in chair,1,JHU
+not_prone,pt moved to supine position,1,JHU
+not_prone,pt sitting,1,JHU
+not_prone,pt sitting up eating breakfast,1,JHU
+not_prone,pt sitting up in bed ,1,JHU
+not_prone,"pt sitting up in bed, c/o dyspnia",1,JHU
+not_prone,pt sitting up in chair,1,JHU
+not_prone,"pt sitting up in chair with cough, morphine 2mg given",1,JHU
+not_prone,pt supine /ETT retaped center,1,JHU
+not_prone,"pt supine, taking a while to recover ",1,JHU
+not_prone,pt supined,1,JHU
+not_prone,pt turned from lying R side to lying L side ,1,JHU
+not_prone,pt. decompensating supine,1,JHU
+not_prone,right side lying ,1,JHU
+not_prone,sats improved when lying right side,1,JHU
+not_prone,sitting,1,JHU
+not_prone,sitting OOB,1,JHU
+not_prone,"sitting in bed, coughing",1,JHU
+not_prone,sitting on edge of bed and standing with PT,1,JHU
+not_prone,sitting on side of bed,1,JHU
+not_prone,sitting up,1,JHU
+not_prone,"sitting up in chair position, at edge of bed to stand- unable d/t BP, pt reported dizziness as well. ",1,JHU
+not_prone,"supined pt, bedside bronch, retaped ett",1,JHU
+not_prone,supined pt.,1,JHU
+not_prone,supined the pt.,1,JHU
+not_prone,turned supine,1,JHU
+prone,Prone,22599,JHU
+prone,Prone;Reverse Trendelenburg,7343,JHU
+prone,Prone;Lying left side,1940,JHU
+prone,Prone;Lying right side,1901,JHU
+prone,Prone;Pillow support,1491,JHU
+prone,Turns self;Prone,715,JHU
+prone,Pillow support;Prone,630,JHU
+prone,Lying right side;Prone,626,JHU
+prone,Lying left side;Prone,596,JHU
+prone,Reverse Trendelenburg;Prone,585,JHU
+prone,Prone;Head right,535,JHU
+prone,Prone;Head left,523,JHU
+prone,Prone;Turns self,410,JHU
+prone,Prone;Left lateral,363,JHU
+prone,Head right;Prone;Reverse Trendelenburg,334,JHU
+prone,Head left;Prone;Reverse Trendelenburg,331,JHU
+prone,Prone;Right lateral,325,JHU
+prone,Lying down;Prone,317,JHU
+prone,Prone;Reverse Trendelenburg;Pillow support,262,JHU
+prone,Head right;Prone,239,JHU
+prone,Head left;Prone,223,JHU
+prone,Lying down;Prone;HOB equal/greater than 30 degrees,182,JHU
+prone,Prone;Reverse Trendelenburg;Head left,181,JHU
+prone,Prone;Reverse Trendelenburg;Head right,180,JHU
+prone,Prone;Lying right side;Pillow support,164,JHU
+prone,Pillow support;Prone;Reverse Trendelenburg,161,JHU
+prone,Prone;Other (Comment),156,JHU
+prone,Prone;Pillow support;Reverse Trendelenburg,151,JHU
+prone,Prone;Reverse Trendelenburg;Left lateral,141,JHU
+prone,Head left;Pillow support;Prone;Reverse Trendelenburg,138,JHU
+prone,Prone;Lying left side;Pillow support,138,JHU
+prone,Head right;Lying left side;Prone;Reverse Trendelenburg,136,JHU
+prone,Prone;HOB flat,136,JHU
+prone,Prone;Reverse Trendelenburg;Right lateral,135,JHU
+prone,Prone;HOB equal/greater than 30 degrees,130,JHU
+prone,HOB flat;Prone,129,JHU
+prone,Lying left side;Prone;Reverse Trendelenburg,128,JHU
+prone,Head left;Lying right side;Prone;Reverse Trendelenburg,127,JHU
+prone,Head right;Pillow support;Prone;Reverse Trendelenburg,126,JHU
+prone,HOB equal/greater than 30 degrees;Prone,120,JHU
+prone,Lying right side;Prone;Reverse Trendelenburg,115,JHU
+prone,Left lateral;Prone,113,JHU
+prone,Right lateral;Prone,106,JHU
+prone,Prone;Reverse Trendelenburg;Lying right side,105,JHU
+prone,Prone;Head left;Reverse Trendelenburg,104,JHU
+prone,Prone;Lying right side;Reverse Trendelenburg,102,JHU
+prone,Prone;Left lateral;Reverse Trendelenburg,99,JHU
+prone,Prone;Lying left side;Reverse Trendelenburg,98,JHU
+prone,Prone;Reverse Trendelenburg;Lying left side,97,JHU
+prone,PRONE head repositioned,96,JHU
+prone,Prone;Lying right side;Head left,96,JHU
+prone,Prone;Lying left side;Head right,95,JHU
+prone,Prone;Head right;Reverse Trendelenburg,94,JHU
+prone,Prone;Right lateral;Reverse Trendelenburg,90,JHU
+prone,Left lateral;Prone;Reverse Trendelenburg,81,JHU
+prone,Right lateral;Prone;Reverse Trendelenburg,75,JHU
+prone,Prone;Pillow support;Lying left side,72,JHU
+prone,Prone;Head left;Lying right side,68,JHU
+prone,Prone;Head right;Lying left side,67,JHU
+prone,Lying down;HOB equal/greater than 30 degrees;Prone,62,JHU
+prone,Prone;Trendelenburg,62,JHU
+prone,Prone;HOB less than 30 degrees,61,JHU
+prone,Prone;Lying right side;Head left;Reverse Trendelenburg,61,JHU
+prone,Prone;Lying down,60,JHU
+prone,Prone;Lying left side;Head right;Reverse Trendelenburg,60,JHU
+prone,Head right;Lying left side;Pillow support;Prone;Reverse Trendelenburg,51,JHU
+prone,Prone;Pillow support;Lying right side,51,JHU
+prone,Head right;Lying right side;Prone;Reverse Trendelenburg,48,JHU
+prone,Reverse Trendelenburg;Prone;Pillow support,48,JHU
+prone,Head right;Prone;Reverse Trendelenburg;Pillow support,47,JHU
+prone,Proned,47,JHU
+prone,Head left;Lying left side;Prone;Reverse Trendelenburg,46,JHU
+prone,Prone;Lying left side;Other (Comment),46,JHU
+prone,HOB flat;Prone;Reverse Trendelenburg,45,JHU
+prone,Prone;Pillow support;Other (Comment),45,JHU
+prone,Lying down;Prone;Reverse Trendelenburg,44,JHU
+prone,HOB less than 30 degrees;Prone,43,JHU
+prone,proned,43,JHU
+prone,prone head turn,42,JHU
+prone,Prone;Reverse Trendelenburg;Lying left side;Head right,41,JHU
+prone,Turns self;Prone;Pillow support,41,JHU
+prone,Head left;Lying right side;Pillow support;Prone;Reverse Trendelenburg,40,JHU
+prone,Lying left side;Pillow support;Prone,40,JHU
+prone,Prone;Head left;Lying right side;Reverse Trendelenburg,40,JHU
+prone,Right lateral;HOB equal/greater than 30 degrees;Prone;Reverse Trendelenburg,40,JHU
+prone,Head left;Prone;Reverse Trendelenburg;Pillow support,39,JHU
+prone,Prone;Other (comment),38,JHU
+prone,Prone;Reverse Trendelenburg;HOB equal/greater than 30 degrees,38,JHU
+prone,Prone;Reverse Trendelenburg;Pillow support;Head left,38,JHU
+prone,Prone;Pillow support;Head right,37,JHU
+prone,pt proned,37,JHU
+prone,Left lateral;HOB equal/greater than 30 degrees;Prone;Reverse Trendelenburg,36,JHU
+prone,Prone;Reverse Trendelenburg;Lying right side;Head left,36,JHU
+prone,Lying left side;Prone;Pillow support,35,JHU
+prone,Lying right side;Prone;Pillow support,35,JHU
+prone,Prone;Pillow support;Head left,35,JHU
+prone,Lying right side;Pillow support;Prone,34,JHU
+prone,Prone;Lying right side;Other (Comment),34,JHU
+prone,Prone;Reverse Trendelenburg;Pillow support;Head right,34,JHU
+prone,Lying down;Prone;HOB flat,32,JHU
+prone,Lying left side;Head right;Prone;Reverse Trendelenburg,32,JHU
+prone,PRONE,32,JHU
+prone,HOB equal/greater than 30 degrees;Prone;Reverse Trendelenburg,31,JHU
+prone,Prone;Head right;Lying left side;Reverse Trendelenburg,31,JHU
+prone,Turns self;Pillow support;Prone,31,JHU
+prone,PRONE HEAD REPOSITIONED,30,JHU
+prone,Prone;Reverse Trendelenburg;Head left;Lying right side,29,JHU
+prone,Head right;Prone;Pillow support;Reverse Trendelenburg,28,JHU
+prone,PRONED,27,JHU
+prone,Prone;Lying left side;Head left,27,JHU
+prone,Head left;Lying right side;Prone,26,JHU
+prone,Prone;Head left;Lying left side,26,JHU
+prone,prone,26,JHU
+prone,Head right;Lying left side;Prone,25,JHU
+prone,Lying down;Prone;HOB less than 30 degrees,25,JHU
+prone,Lying right side;Head left;Prone;Reverse Trendelenburg,25,JHU
+prone,Prone;Unable to reposition,25,JHU
+prone,Prone;Head right;Pillow support,24,JHU
+prone,Prone;Reverse Trendelenburg;Head right;Lying left side,24,JHU
+prone,Head right;Prone;Pillow support,23,JHU
+prone,Unable to reposition;Prone,23,JHU
+prone,Head left;Lying left side;Pillow support;Prone;Reverse Trendelenburg,22,JHU
+prone,Head left;Lying left side;Prone,22,JHU
+prone,Head left;Prone;Pillow support;Reverse Trendelenburg,22,JHU
+prone,Lying right side;Reverse Trendelenburg;Prone,22,JHU
+prone,Prone;Head left;Pillow support,22,JHU
+prone,Prone;Head right;Lying right side,22,JHU
+prone,Prone;Lying right side;Head right,22,JHU
+prone,Head left;Reverse Trendelenburg;Prone,21,JHU
+prone,Head right;Lying right side;Pillow support;Prone;Reverse Trendelenburg,21,JHU
+prone,Prone;Reverse Trendelenburg;HOB less than 30 degrees,21,JHU
+prone,prone turn,21,JHU
+prone,Prone;HOB flat;Reverse Trendelenburg,20,JHU
+prone,Reverse Trendelenburg;Prone;Other (Comment),20,JHU
+prone,Head right;Reverse Trendelenburg;Prone,19,JHU
+prone,Head left;Prone;Pillow support,18,JHU
+prone,Pillow support;Prone;Lying right side,18,JHU
+prone,Prone;Reverse Trendelenburg;Other (Comment),18,JHU
+prone,Prone;Pillow support;Reverse Trendelenburg;Head right,17,JHU
+prone,Reverse Trendelenburg;Prone;Left lateral,17,JHU
+prone,HOB less than 30 degrees;Prone;Reverse Trendelenburg,16,JHU
+prone,Head right;Lying right side;Prone,16,JHU
+prone,Head right;Prone;Lying left side,16,JHU
+prone,Pillow support;Prone;Reverse Trendelenburg;Head left,16,JHU
+prone,Pillow support;Reverse Trendelenburg;Prone,16,JHU
+prone,Prone;Pillow support;Turns self,16,JHU
+prone,Pt proned,16,JHU
+prone,Head left;Lying right side;Prone;Reverse Trendelenburg;Pillow support,15,JHU
+prone,Head left;Lying right side;Reverse Trendelenburg;Prone,15,JHU
+prone,Head right;Lying right side;Pillow support;Prone,15,JHU
+prone,Head right;Prone;Reverse Trendelenburg;Lying left side,15,JHU
+prone,Lying left side;Prone;Other (Comment),15,JHU
+prone,Lying left side;Reverse Trendelenburg;Prone,15,JHU
+prone,Other (Comment);Prone,15,JHU
+prone,PRONE head repositoned,15,JHU
+prone,"PRONE, head repositioned",15,JHU
+prone,Prone;Reverse Trendelenburg;Head right;Pillow support,15,JHU
+prone,Prone;Reverse Trendelenburg;Pillow support;Head left;Lying right side,15,JHU
+prone,Head right;Lying left side;Reverse Trendelenburg;Prone,14,JHU
+prone,Lying left side;Head right;Prone,14,JHU
+prone,Prone;Head right;Pillow support;Reverse Trendelenburg,14,JHU
+prone,Prone;Head right;Reverse Trendelenburg;Pillow support,14,JHU
+prone,Prone;Lying left side;Pillow support;Reverse Trendelenburg,14,JHU
+prone,Prone;Reverse Trendelenburg;Other (comment),14,JHU
+prone,Prone;Reverse Trendelenburg;Pillow support;Head right;Lying left side,14,JHU
+prone,Reverse Trendelenburg;Prone;Head right,14,JHU
+prone,prone head repositioned,14,JHU
+prone,Head left;Pillow support;Prone,13,JHU
+prone,Head left;Prone;Lying right side,13,JHU
+prone,Head right;Pillow support;Prone,13,JHU
+prone,Lying right side;Head left;Prone,13,JHU
+prone,Lying right side;Pillow support;Prone;Reverse Trendelenburg,13,JHU
+prone,Prone;Pillow support;Lying right side;Head left,13,JHU
+prone,Prone;Reverse Trendelenburg;Lying right side;Head right,13,JHU
+prone,Prone;Trendelenburg;HOB flat,13,JHU
+prone,Prone;Turns self;Pillow support,13,JHU
+prone,Reverse Trendelenburg;Prone;Head left,13,JHU
+prone,Reverse Trendelenburg;Prone;Pillow support;Head right,13,JHU
+prone,Reverse Trendelenburg;Prone;Right lateral,13,JHU
+prone,Head right;Lying left side;Prone;Reverse Trendelenburg;Pillow support,12,JHU
+prone,Head right;Pillow support;Reverse Trendelenburg;Prone,12,JHU
+prone,Lying down;HOB less than 30 degrees;Prone,12,JHU
+prone,Prone;Pillow support;Reverse Trendelenburg;Head left,12,JHU
+prone,Prone;Refused by patient,12,JHU
+prone,Prone;Reverse Trendelenburg;Head left;Pillow support,12,JHU
+prone,Reverse Trendelenburg;Pillow support;Prone,12,JHU
+prone,HOB equal/greater than 30 degrees;Reverse Trendelenburg;Prone,11,JHU
+prone,Head left;Pillow support;Reverse Trendelenburg;Prone,11,JHU
+prone,Head left;Prone;Reverse Trendelenburg;Lying right side,11,JHU
+prone,Left lateral;HOB equal/greater than 30 degrees;Prone,11,JHU
+prone,Lying right side;Prone;Other (Comment),11,JHU
+prone,Pillow support;Prone;Reverse Trendelenburg;Head right,11,JHU
+prone,Prone;Lying right side;Pillow support;Reverse Trendelenburg,11,JHU
+prone,Prone;Reverse Trendelenburg;HOB flat,11,JHU
+prone,Prone;Reverse Trendelenburg;Lying left side;Head left,11,JHU
+prone,PRONE Head repositioned,10,JHU
+prone,Prone;Head left;Reverse Trendelenburg;Pillow support,10,JHU
+prone,Prone;Head right;Lying right side;Reverse Trendelenburg,10,JHU
+prone,Reverse Trendelenburg;Prone;Pillow support;Head left,10,JHU
+prone,Turns self;Prone;Lying right side,10,JHU
+prone,Turns self;Prone;Reverse Trendelenburg,10,JHU
+prone,patient proned,10,JHU
+prone,Head left;Lying left side;Pillow support;Prone,9,JHU
+prone,Lying down;HOB flat;Prone;Reverse Trendelenburg,9,JHU
+prone,Lying left side;Head left;Prone,9,JHU
+prone,Lying right side;Head right;Prone;Reverse Trendelenburg,9,JHU
+prone,PRONE head repostioned,9,JHU
+prone,Prone;Pillow support;Unable to reposition,9,JHU
+prone,Prone;Reverse Trendelenburg;Head right;Lying right side,9,JHU
+prone,Reverse Trendelenburg;Prone;Lying right side,9,JHU
+prone,repositioned proned patient,9,JHU
+prone,Lying left side;Head right;Reverse Trendelenburg;Prone,8,JHU
+prone,Lying right side;Prone;Reverse Trendelenburg;Head left,8,JHU
+prone,PRONE HEAD repositioned,8,JHU
+prone,PT PRONED,8,JHU
+prone,Pillow support;Prone;Other (Comment),8,JHU
+prone,Prone;HOB equal/greater than 30 degrees;Reverse Trendelenburg,8,JHU
+prone,Prone;Reverse Trendelenburg;Pillow support;Lying left side,8,JHU
+prone,Right lateral;HOB equal/greater than 30 degrees;Prone,8,JHU
+prone,Right lateral;Reverse Trendelenburg;Prone,8,JHU
+prone,Unable to reposition;Prone;Reverse Trendelenburg,8,JHU
+prone,HOB flat;Reverse Trendelenburg;Prone,7,JHU
+prone,Head left;Reverse Trendelenburg;Prone;Pillow support,7,JHU
+prone,Head right;Lying left side;Pillow support;Prone,7,JHU
+prone,Lying down;HOB flat;Prone,7,JHU
+prone,Lying right side;Head right;Prone,7,JHU
+prone,PRONE HEAD REPOSITONED,7,JHU
+prone,Prone;Head left;Lying left side;Reverse Trendelenburg,7,JHU
+prone,Prone;Lying left side;Head left;Reverse Trendelenburg,7,JHU
+prone,Prone;Lying right side;Reverse Trendelenburg;Pillow support,7,JHU
+prone,Prone;Other (Comment);Pillow support,7,JHU
+prone,Prone;Reverse Trendelenburg;Head left;Lying left side,7,JHU
+prone,Reverse Trendelenburg;Prone;Lying left side,7,JHU
+prone,turning proned patient,7,JHU
+prone,HOB equal/greater than 30 degrees;Prone;Left lateral,6,JHU
+prone,Head right;Prone;Reverse Trendelenburg;Lying right side,6,JHU
+prone,Left lateral;Reverse Trendelenburg;Prone,6,JHU
+prone,Lying left side;Head left;Pillow support;Prone;Reverse Trendelenburg,6,JHU
+prone,Lying left side;Pillow support;Prone;Reverse Trendelenburg,6,JHU
+prone,Lying left side;Prone;Reverse Trendelenburg;Head right,6,JHU
+prone,Lying right side;Head left;Reverse Trendelenburg;Prone,6,JHU
+prone,Patient proned,6,JHU
+prone,Pillow support;Prone;Turns self,6,JHU
+prone,Prone;Head left;Pillow support;Reverse Trendelenburg,6,JHU
+prone,Prone;Left lateral;HOB less than 30 degrees,6,JHU
+prone,Prone;Lying down;Reverse Trendelenburg,6,JHU
+prone,Prone;Pillow support;Lying left side;Head right,6,JHU
+prone,Prone;Reverse Trendelenburg;Turns self,6,JHU
+prone,Prone;Right lateral;HOB equal/greater than 30 degrees,6,JHU
+prone,Pt. proned,6,JHU
+prone,Refused by patient;Prone,6,JHU
+prone,Reverse Trendelenburg;Prone;HOB equal/greater than 30 degrees,6,JHU
+prone,Reverse Trendelenburg;Prone;Lying right side;Head left,6,JHU
+prone,Turns self;Lying right side;Prone,6,JHU
+prone,Turns self;Prone;Lying left side,6,JHU
+prone,head turn prone,6,JHU
+prone,head turn; prone position,6,JHU
+prone,Head left;Lying left side;Prone;Reverse Trendelenburg;Pillow support,5,JHU
+prone,Head left;Lying left side;Reverse Trendelenburg;Prone,5,JHU
+prone,Head left;Lying right side;Prone;Pillow support;Reverse Trendelenburg,5,JHU
+prone,Head right;Prone;Lying right side,5,JHU
+prone,Lying left side;Head left;Prone;Reverse Trendelenburg,5,JHU
+prone,Lying left side;Prone;Pillow support;Reverse Trendelenburg,5,JHU
+prone,PRONE HEAD REPOSTIONED,5,JHU
+prone,Pillow support;Prone;Head left,5,JHU
+prone,Pillow support;Prone;Lying left side,5,JHU
+prone,Pillow support;Reverse Trendelenburg;Prone;Head right,5,JHU
+prone,Prone;Head midline,5,JHU
+prone,Prone;Left lateral;HOB equal/greater than 30 degrees;Reverse Trendelenburg,5,JHU
+prone,Prone;Lying right side;Head right;Reverse Trendelenburg,5,JHU
+prone,Prone;Reverse Trendelenburg;Left lateral;HOB equal/greater than 30 degrees,5,JHU
+prone,Prone;Reverse Trendelenburg;Lying right side;Head left;Pillow support,5,JHU
+prone,Prone;Reverse Trendelenburg;Lying right side;Pillow support,5,JHU
+prone,Prone;Reverse Trendelenburg;Pillow support;Lying right side,5,JHU
+prone,Prone;Right lateral;Reverse Trendelenburg;HOB equal/greater than 30 degrees,5,JHU
+prone,Proned ,5,JHU
+prone,Proned pt.,5,JHU
+prone,Reverse Trendelenburg;Prone;Lying left side;Head right,5,JHU
+prone,Unable to reposition;Head left;Pillow support;Prone,5,JHU
+prone,Unable to reposition;Reverse Trendelenburg;Prone,5,JHU
+prone,pt prone,5,JHU
+prone,HOB equal/greater than 30 degrees;Prone;Right lateral,4,JHU
+prone,Head left;Lying right side;Prone;Pillow support,4,JHU
+prone,Head left;Prone;Pillow support;Reverse Trendelenburg;Other (Comment),4,JHU
+prone,Head right;Lying left side;Pillow support;Reverse Trendelenburg;Prone,4,JHU
+prone,Head right;Lying left side;Prone;Pillow support;Reverse Trendelenburg,4,JHU
+prone,Left lateral;HOB less than 30 degrees;Prone;Reverse Trendelenburg,4,JHU
+prone,Lying left side;Head left;Reverse Trendelenburg;Prone,4,JHU
+prone,Lying left side;Prone;Head left,4,JHU
+prone,Lying right side;Prone;Head right,4,JHU
+prone,PRONE  head repositioned,4,JHU
+prone,"PRONE, repositioned head",4,JHU
+prone,Patient Proned,4,JHU
+prone,Pillow support;Head right;Prone;Reverse Trendelenburg,4,JHU
+prone,Pillow support;Prone;Reverse Trendelenburg;Lying right side,4,JHU
+prone,Prone;HOB flat;Left lateral,4,JHU
+prone,Prone;HOB self-regulated,4,JHU
+prone,Prone;Head right;Lying left side;Pillow support;Reverse Trendelenburg,4,JHU
+prone,Prone;Head right;Other (Comment),4,JHU
+prone,Prone;Lying right side;Turns self,4,JHU
+prone,Prone;Pillow support;Head right;Lying left side,4,JHU
+prone,Prone;Pillow support;Reverse Trendelenburg;Head left;Lying right side,4,JHU
+prone,Prone;Pillow support;Reverse Trendelenburg;Head right;Lying left side,4,JHU
+prone,Prone;Reverse Trendelenburg;Right lateral;HOB equal/greater than 30 degrees,4,JHU
+prone,Prone;Reverse Trendelenburg;Unable to reposition,4,JHU
+prone,Prone;Right lateral;HOB equal/greater than 30 degrees;Reverse Trendelenburg,4,JHU
+prone,Prone;Turns self;Lying left side,4,JHU
+prone,Pt PRONED,4,JHU
+prone,Pt Proned,4,JHU
+prone,Pt prone. Head turned. Right side down.,4,JHU
+prone,Reverse Trendelenburg;Left lateral;Prone,4,JHU
+prone,Reverse Trendelenburg;Prone;HOB flat,4,JHU
+prone,Reverse Trendelenburg;Prone;Head left;Lying right side;Pillow support,4,JHU
+prone,Reverse Trendelenburg;Right lateral;Prone,4,JHU
+prone,Right lateral;HOB less than 30 degrees;Prone;Reverse Trendelenburg,4,JHU
+prone,Turns self;Lying left side;Prone;Pillow support,4,JHU
+prone,Unable to reposition;Prone;Reverse Trendelenburg;Pillow support,4,JHU
+prone,head turn/ proned,4,JHU
+prone,pt in prone position; SBP likely inaccurate,4,JHU
+prone,turned proned patient,4,JHU
+prone,HOB equal/greater than 30 degrees;Right lateral;Prone;Reverse Trendelenburg,3,JHU
+prone,Head left;Lying left side;Prone;Pillow support,3,JHU
+prone,Head left;Lying left side;Prone;Pillow support;Reverse Trendelenburg,3,JHU
+prone,Head left;Lying right side;Pillow support;Prone,3,JHU
+prone,Head left;Pillow support;Prone;Reverse Trendelenburg;Other (Comment),3,JHU
+prone,Head left;Prone;Reverse Trendelenburg;Lying left side,3,JHU
+prone,Head right;Lying left side;Pillow support;Prone;Reverse Trendelenburg;Unable to reposition,3,JHU
+prone,Head right;Lying right side;Pillow support;Reverse Trendelenburg;Prone,3,JHU
+prone,Head right;Lying right side;Prone;Pillow support,3,JHU
+prone,Head right;Lying right side;Prone;Reverse Trendelenburg;Pillow support,3,JHU
+prone,Head right;Prone;Lying left side;Reverse Trendelenburg,3,JHU
+prone,Head right;Reverse Trendelenburg;Prone;Pillow support,3,JHU
+prone,Lying down;HOB equal/greater than 30 degrees;Prone;Reverse Trendelenburg,3,JHU
+prone,Lying down;Prone;Other (comment),3,JHU
+prone,Lying left side;Head left;Pillow support;Prone,3,JHU
+prone,Lying left side;Head right;Pillow support;Reverse Trendelenburg;Prone,3,JHU
+prone,Lying left side;Other (Comment);Prone,3,JHU
+prone,Lying left side;Prone;Head right,3,JHU
+prone,Lying left side;Prone;Turns self,3,JHU
+prone,Lying right side;Other (Comment);Prone,3,JHU
+prone,Lying right side;Prone;Reverse Trendelenburg;Pillow support,3,JHU
+prone,Lying right side;Prone;Turns self,3,JHU
+prone,PRONE TURN,3,JHU
+prone,PRONE head turn,3,JHU
+prone,"PRONE, HEAD REPOSITIONED",3,JHU
+prone,Pillow support;Head right;Prone,3,JHU
+prone,Pillow support;Prone;Head left;Lying right side,3,JHU
+prone,Pillow support;Prone;Head right;Lying left side,3,JHU
+prone,Pillow support;Reverse Trendelenburg;Prone;Head left,3,JHU
+prone,Pillow support;Reverse Trendelenburg;Prone;Head left;Lying right side,3,JHU
+prone,Pillow support;Turns self;Prone,3,JHU
+prone,Prone position,3,JHU
+prone,Prone. Turned onto right side.,3,JHU
+prone,Prone;HOB equal/greater than 30 degrees;Left lateral,3,JHU
+prone,Prone;HOB less than 30 degrees;Left lateral,3,JHU
+prone,Prone;HOB less than 30 degrees;Reverse Trendelenburg,3,JHU
+prone,Prone;Head left;Lying right side;Reverse Trendelenburg;Pillow support,3,JHU
+prone,Prone;Head left;Other (Comment),3,JHU
+prone,Prone;Head right;Lying left side;Pillow support,3,JHU
+prone,Prone;Head right;Unable to reposition,3,JHU
+prone,Prone;Left lateral;HOB equal/greater than 30 degrees,3,JHU
+prone,Prone;Left lateral;HOB flat,3,JHU
+prone,Prone;Left lateral;Reverse Trendelenburg;HOB equal/greater than 30 degrees,3,JHU
+prone,Prone;Lying left side;Reverse Trendelenburg;Head right,3,JHU
+prone,Prone;Lying left side;Reverse Trendelenburg;Pillow support,3,JHU
+prone,Prone;Lying left side;Turns self,3,JHU
+prone,Prone;Lying right side;Reverse Trendelenburg;Other (Comment),3,JHU
+prone,Prone;Other (Comment);Lying right side,3,JHU
+prone,Prone;Pillow support;Head left;Lying left side,3,JHU
+prone,Prone;Pillow support;Head left;Lying right side,3,JHU
+prone,Prone;Pillow support;Head right;Reverse Trendelenburg,3,JHU
+prone,Prone;Pillow support;Refused by patient,3,JHU
+prone,Prone;Reverse Trendelenburg;HOB equal/greater than 30 degrees;Left lateral,3,JHU
+prone,Prone;Reverse Trendelenburg;Head left;Lying right side;Pillow support,3,JHU
+prone,Prone;Reverse Trendelenburg;Lying left side;Head right;Pillow support,3,JHU
+prone,Prone;Reverse Trendelenburg;Lying left side;Other (Comment),3,JHU
+prone,Prone;Reverse Trendelenburg;Lying left side;Pillow support,3,JHU
+prone,Prone;Reverse Trendelenburg;Pillow support;Other (Comment),3,JHU
+prone,Prone;Right lateral;HOB flat,3,JHU
+prone,Prone;Turns self;Lying right side,3,JHU
+prone,Prone;Unable to reposition;Pillow support,3,JHU
+prone,Prone;Up in chair,3,JHU
+prone,Pt proned ,3,JHU
+prone,Pt proned. Head turned,3,JHU
+prone,Reverse Trendelenburg;Prone;Head left;Pillow support,3,JHU
+prone,Reverse Trendelenburg;Prone;Head right;Lying left side;Pillow support,3,JHU
+prone,Reverse Trendelenburg;Prone;Head right;Pillow support,3,JHU
+prone,Right lateral;HOB equal/greater than 30 degrees;Reverse Trendelenburg;Prone,3,JHU
+prone,Turns self;Prone;Other (Comment),3,JHU
+prone,Unable to reposition;Head left;Prone;Reverse Trendelenburg,3,JHU
+prone,Unable to reposition;Head right;Prone,3,JHU
+prone,Unable to reposition;Lying right side;Prone;Reverse Trendelenburg,3,JHU
+prone,Unable to reposition;Prone;Lying right side;Reverse Trendelenburg,3,JHU
+prone,patient prone,3,JHU
+prone,post prone assessment,3,JHU
+prone,prone head turn completed,3,JHU
+prone,proned ,3,JHU
+prone,proned pt,3,JHU
+prone,pt self proned,3,JHU
+prone,HEAD TURNED WHILE PRONE,2,JHU
+prone,HOB equal/greater than 30 degrees;Left lateral;Prone,2,JHU
+prone,HOB equal/greater than 30 degrees;Left lateral;Prone;Reverse Trendelenburg,2,JHU
+prone,HOB equal/greater than 30 degrees;Lying down;Prone,2,JHU
+prone,HOB flat;Lying down;Prone,2,JHU
+prone,HOB less than 30 degrees;Reverse Trendelenburg;Prone,2,JHU
+prone,HOB self-regulated;Prone,2,JHU
+prone,Half proned,2,JHU
+prone,Head left;Lying right side;Pillow support;Prone;Reverse Trendelenburg;Unable to reposition,2,JHU
+prone,Head left;Lying right side;Prone;Pillow support;Reverse Trendelenburg;Unable to reposition,2,JHU
+prone,Head left;Lying right side;Reverse Trendelenburg;Prone;Pillow support,2,JHU
+prone,Head left;Lying right side;Reverse Trendelenburg;Trendelenburg;Prone,2,JHU
+prone,Head left;Pillow support;Prone;Reverse Trendelenburg;Lying left side,2,JHU
+prone,Head left;Prone;Lying left side,2,JHU
+prone,Head left;Prone;Reverse Trendelenburg;Other (Comment),2,JHU
+prone,Head left;Prone;Reverse Trendelenburg;Unable to reposition,2,JHU
+prone,Head left;Prone;Trendelenburg,2,JHU
+prone,Head right;Lying left side;Prone;Pillow support,2,JHU
+prone,Head right;Lying left side;Prone;Reverse Trendelenburg;Trendelenburg,2,JHU
+prone,Head right;Lying left side;Prone;Trendelenburg,2,JHU
+prone,Head right;Lying left side;Reverse Trendelenburg;Prone;Pillow support,2,JHU
+prone,Head right;Lying right side;Prone;Trendelenburg,2,JHU
+prone,Head right;Lying right side;Reverse Trendelenburg;Prone,2,JHU
+prone,Head right;Pillow support;Prone;Lying left side,2,JHU
+prone,Head right;Prone;Lying left side;Reverse Trendelenburg;Pillow support,2,JHU
+prone,Head right;Prone;Lying right side;Reverse Trendelenburg,2,JHU
+prone,Head right;Prone;Other (Comment),2,JHU
+prone,Head right;Prone;Pillow support;Lying right side,2,JHU
+prone,Head right;Prone;Reverse Trendelenburg;Pillow support;Lying left side,2,JHU
+prone,Head right;Prone;Reverse Trendelenburg;Pillow support;Other (Comment),2,JHU
+prone,Head right;Prone;Reverse Trendelenburg;Unable to reposition,2,JHU
+prone,Head right;Prone;Trendelenburg,2,JHU
+prone,Head right;Reverse Trendelenburg;Pillow support;Prone,2,JHU
+prone,Head right;Reverse Trendelenburg;Prone;Pillow support;Lying right side,2,JHU
+prone,Head turn- Prone posn.,2,JHU
+prone,Left lateral;HOB less than 30 degrees;Prone,2,JHU
+prone,Lying down;Left lateral;Prone;HOB self-regulated,2,JHU
+prone,Lying down;Prone;Trendelenburg,2,JHU
+prone,Lying down;Reverse Trendelenburg;Prone,2,JHU
+prone,Lying left side;Head right;Pillow support;Prone;Reverse Trendelenburg,2,JHU
+prone,Lying left side;Pillow support;Prone;Other (Comment),2,JHU
+prone,Lying left side;Prone;Reverse Trendelenburg;Pillow support,2,JHU
+prone,Lying right side;Head left;Pillow support;Prone;Reverse Trendelenburg,2,JHU
+prone,Lying right side;Head left;Prone;Pillow support,2,JHU
+prone,Lying right side;Head right;Pillow support;Prone;Reverse Trendelenburg,2,JHU
+prone,Lying right side;Pillow support;Prone;Other (Comment),2,JHU
+prone,Lying right side;Prone;Head left,2,JHU
+prone,Lying right side;Prone;Pillow support;Reverse Trendelenburg,2,JHU
+prone,Lying right side;Reverse Trendelenburg;Pillow support;Prone,2,JHU
+prone,Other (Comment);Pillow support;Prone,2,JHU
+prone,Other (Comment);Prone;Lying right side,2,JHU
+prone,Other (Comment);Prone;Reverse Trendelenburg,2,JHU
+prone,PRONE HEAD TURN,2,JHU
+prone,PRONED PATIENT,2,JHU
+prone,Pillow support;Lying right side;Prone,2,JHU
+prone,Pillow support;Prone;Reverse Trendelenburg;Head left;Lying left side,2,JHU
+prone,Pillow support;Prone;Reverse Trendelenburg;Head right;Lying left side,2,JHU
+prone,Pillow support;Prone;Reverse Trendelenburg;Head right;Lying right side,2,JHU
+prone,Pillow support;Prone;Unable to reposition,2,JHU
+prone,Post Prone,2,JHU
+prone,Prone ,2,JHU
+prone,Prone. Turned onto right side,2,JHU
+prone,Prone;HOB equal/greater than 30 degrees;Left lateral;Reverse Trendelenburg,2,JHU
+prone,Prone;HOB equal/greater than 30 degrees;Right lateral,2,JHU
+prone,Prone;HOB flat;Right lateral,2,JHU
+prone,Prone;HOB less than 30 degrees;Right lateral,2,JHU
+prone,Prone;Head left;Lying left side;Pillow support;Reverse Trendelenburg,2,JHU
+prone,Prone;Head left;Lying left side;Reverse Trendelenburg;Pillow support,2,JHU
+prone,Prone;Head left;Lying right side;Pillow support,2,JHU
+prone,Prone;Head left;Reverse Trendelenburg;Lying left side,2,JHU
+prone,Prone;Head left;Reverse Trendelenburg;Lying right side,2,JHU
+prone,Prone;Head left;Trendelenburg,2,JHU
+prone,Prone;Head left;Unable to reposition,2,JHU
+prone,Prone;Head right;Lying right side;Other (Comment),2,JHU
+prone,Prone;Head right;Pillow support;Lying left side,2,JHU
+prone,Prone;Head right;Pillow support;Lying left side;Reverse Trendelenburg,2,JHU
+prone,Prone;Head right;Trendelenburg,2,JHU
+prone,Prone;Left lateral;Reverse Trendelenburg;Other (comment),2,JHU
+prone,Prone;Lying down;HOB equal/greater than 30 degrees,2,JHU
+prone,Prone;Lying left side;Head right;Reverse Trendelenburg;Pillow support,2,JHU
+prone,Prone;Lying left side;Trendelenburg,2,JHU
+prone,Prone;Lying right side;Head left;Trendelenburg,2,JHU
+prone,Prone;Lying right side;Head right;Pillow support,2,JHU
+prone,Prone;Lying right side;Head right;Pillow support;Reverse Trendelenburg,2,JHU
+prone,Prone;Lying right side;Reverse Trendelenburg;Head left,2,JHU
+prone,Prone;Lying right side;Trendelenburg,2,JHU
+prone,Prone;Other (Comment);Lying left side,2,JHU
+prone,Prone;Pillow support;Head left;Reverse Trendelenburg,2,JHU
+prone,Prone;Pillow support;Head midline,2,JHU
+prone,Prone;Pillow support;Lying left side;Head left,2,JHU
+prone,Prone;Pillow support;Lying right side;Head right,2,JHU
+prone,Prone;Pillow support;Reverse Trendelenburg;Lying left side,2,JHU
+prone,Prone;Pillow support;Reverse Trendelenburg;Lying right side;Head left,2,JHU
+prone,Prone;Reverse Trendelenburg;HOB equal/greater than 30 degrees;Other (comment),2,JHU
+prone,Prone;Reverse Trendelenburg;HOB equal/greater than 30 degrees;Right lateral,2,JHU
+prone,Prone;Reverse Trendelenburg;Head right;Lying left side;Pillow support,2,JHU
+prone,Prone;Reverse Trendelenburg;Head right;Other (Comment),2,JHU
+prone,Prone;Reverse Trendelenburg;Lying left side;Head right;Unable to reposition,2,JHU
+prone,Prone;Reverse Trendelenburg;Lying right side;Lying left side,2,JHU
+prone,Prone;Reverse Trendelenburg;Pillow support;Lying left side;Head right,2,JHU
+prone,Prone;Reverse Trendelenburg;Pillow support;Lying right side;Head left,2,JHU
+prone,Prone;Reverse Trendelenburg;Trendelenburg,2,JHU
+prone,Prone;Right lateral;HOB less than 30 degrees,2,JHU
+prone,Prone;Trendelenburg;Left lateral,2,JHU
+prone,Prone;Turns self;Reverse Trendelenburg,2,JHU
+prone,Proned Right,2,JHU
+prone,Proned patient,2,JHU
+prone,Proned pt. ,2,JHU
+prone,Proned the Pt.,2,JHU
+prone,Proned the pt.,2,JHU
+prone,Proned- pt turned,2,JHU
+prone,Pt Prone. Head turned. Right side down.,2,JHU
+prone,Pt prone. Head turned. Left side down.,2,JHU
+prone,Pt prone. Turned onto left side.,2,JHU
+prone,Pt proned. Left side down.,2,JHU
+prone,Pt. Proned,2,JHU
+prone,Pt. in prone position,2,JHU
+prone,Reverse Trendelenburg;HOB flat;Prone,2,JHU
+prone,Reverse Trendelenburg;Lying left side;Prone,2,JHU
+prone,Reverse Trendelenburg;Lying right side;Prone,2,JHU
+prone,Reverse Trendelenburg;Prone;Head right;Lying right side,2,JHU
+prone,Reverse Trendelenburg;Prone;Lying right side;Other (Comment),2,JHU
+prone,Reverse Trendelenburg;Prone;Other (Comment);Lying left side,2,JHU
+prone,Reverse Trendelenburg;Prone;Pillow support;Other (Comment),2,JHU
+prone,Right lateral;HOB flat;Prone,2,JHU
+prone,Right lateral;Lying down;HOB flat;Prone,2,JHU
+prone,Right lateral;Prone;HOB less than 30 degrees,2,JHU
+prone,Right lateral;Prone;Trendelenburg,2,JHU
+prone,Turns self;Lying left side;Prone,2,JHU
+prone,Turns self;Lying right side;Pillow support;Prone,2,JHU
+prone,Unable to reposition;Head left;Prone,2,JHU
+prone,Unable to reposition;Head right;Lying left side;Prone;Reverse Trendelenburg,2,JHU
+prone,Unable to reposition;Lying left side;Prone,2,JHU
+prone,Unable to reposition;Prone;Head left,2,JHU
+prone,Unable to reposition;Prone;Lying right side,2,JHU
+prone,changing prone position,2,JHU
+prone,head repositioned PRONE,2,JHU
+prone,head turn/prone,2,JHU
+prone,head turned while prone,2,JHU
+prone,moved to prone position,2,JHU
+prone,patient proned at this time,2,JHU
+prone,prone ,2,JHU
+prone,"prone , repositioned head",2,JHU
+prone,prone head repositined,2,JHU
+prone,prone head reposition,2,JHU
+prone,prone head repostioned,2,JHU
+prone,proned pt at this time,2,JHU
+prone,pt PRONED,2,JHU
+prone,pt proned turned facing left,2,JHU
+prone,"pt proned, head turned facing right",2,JHU
+prone,pt reproned,2,JHU
+prone,self prone,2,JHU
+prone,self proned,2,JHU
+prone,turned head proned,2,JHU
+prone,turning proned patient ,2,JHU
+prone, Proned,1,JHU
+prone, Self proned,1,JHU
+prone,1hr post prone ,1,JHU
+prone,;PRONE HEAD REPOSITIONED,1,JHU
+prone,ABG sent  prior to prone,1,JHU
+prone,After Prone,1,JHU
+prone,Attempting to reposition patient while proned ,1,JHU
+prone,Before self prone,1,JHU
+prone,Beginning attempt to prone,1,JHU
+prone,CSTAT30 proned PT,1,JHU
+prone,CT assist pt to prone position,1,JHU
+prone,CXR done & pt re-proned.,1,JHU
+prone,Changing pt's prone position,1,JHU
+prone,"DEXI 203, prone turn",1,JHU
+prone,Desat to 53 post slide up in prone position. RT bagging,1,JHU
+prone,Getting to proned position,1,JHU
+prone,HEAD TURN WHILE PRONE,1,JHU
+prone,HOB equal/greater than 30 degrees;HOB self-regulated;Prone,1,JHU
+prone,HOB equal/greater than 30 degrees;Left lateral;Reverse Trendelenburg;Prone,1,JHU
+prone,HOB equal/greater than 30 degrees;Prone;Left lateral;Reverse Trendelenburg,1,JHU
+prone,HOB equal/greater than 30 degrees;Prone;Reverse Trendelenburg;Right lateral,1,JHU
+prone,HOB equal/greater than 30 degrees;Reverse Trendelenburg;Prone;Left lateral,1,JHU
+prone,HOB flat;HOB less than 30 degrees;Prone,1,JHU
+prone,HOB less than 30 degrees;Left lateral;Prone;Reverse Trendelenburg,1,JHU
+prone,HOB self-regulated;Prone;HOB less than 30 degrees,1,JHU
+prone,HOB self-regulated;Prone;Other (comment),1,JHU
+prone,Head left;Lying left side;Pillow support;Reverse Trendelenburg;Prone,1,JHU
+prone,Head left;Lying left side;Prone;Pillow support;Reverse Trendelenburg;Other (Comment),1,JHU
+prone,Head left;Lying right side;Pillow support;Reverse Trendelenburg;Prone,1,JHU
+prone,Head left;Lying right side;Reverse Trendelenburg;Prone;Pillow support;Unable to reposition,1,JHU
+prone,Head left;Other (Comment);Prone,1,JHU
+prone,Head left;Pillow support;Prone;Lying right side,1,JHU
+prone,Head left;Pillow support;Prone;Reverse Trendelenburg;Lying right side,1,JHU
+prone,Head left;Pillow support;Prone;Reverse Trendelenburg;Unable to reposition;Lying left side,1,JHU
+prone,Head left;Pillow support;Prone;Reverse Trendelenburg;Unable to reposition;Lying right side,1,JHU
+prone,Head left;Pillow support;Reverse Trendelenburg;Prone;Lying left side,1,JHU
+prone,Head left;Prone;Other (Comment),1,JHU
+prone,Head left;Prone;Pillow support;Lying right side,1,JHU
+prone,Head left;Prone;Pillow support;Reverse Trendelenburg;Unable to reposition;Lying left side,1,JHU
+prone,Head left;Prone;Reverse Trendelenburg;Pillow support;Lying left side,1,JHU
+prone,Head left;Prone;Reverse Trendelenburg;Pillow support;Lying right side,1,JHU
+prone,Head left;Prone;Reverse Trendelenburg;Pillow support;Other (Comment),1,JHU
+prone,Head left;Prone;Reverse Trendelenburg;Pillow support;Unable to reposition,1,JHU
+prone,Head left;Reverse Trendelenburg;Lying right side;Prone,1,JHU
+prone,Head left;Reverse Trendelenburg;Prone;Lying left side,1,JHU
+prone,Head left;Reverse Trendelenburg;Prone;Lying right side,1,JHU
+prone,Head left;Reverse Trendelenburg;Prone;Pillow support;Lying left side,1,JHU
+prone,Head left;Reverse Trendelenburg;Prone;Unable to reposition,1,JHU
+prone,Head midline;Prone,1,JHU
+prone,Head right;Lying left side;Prone;Reverse Trendelenburg;Unable to reposition,1,JHU
+prone,Head right;Lying right side;Prone;Pillow support;Reverse Trendelenburg,1,JHU
+prone,Head right;Lying right side;Prone;Reverse Trendelenburg;Other (Comment),1,JHU
+prone,Head right;Pillow support;Prone;Lying left side;Unable to reposition,1,JHU
+prone,Head right;Pillow support;Prone;Reverse Trendelenburg;Lying right side,1,JHU
+prone,Head right;Pillow support;Reverse Trendelenburg;Prone;Lying left side,1,JHU
+prone,Head right;Pillow support;Trendelenburg;Prone;Other (Comment),1,JHU
+prone,Head right;Prone;Lying left side;Pillow support,1,JHU
+prone,Head right;Prone;Pillow support;Lying left side,1,JHU
+prone,Head right;Prone;Pillow support;Reverse Trendelenburg;Other (Comment),1,JHU
+prone,Head right;Prone;Pillow support;Trendelenburg,1,JHU
+prone,Head right;Prone;Reverse Trendelenburg;Other (Comment),1,JHU
+prone,Head right;Prone;Reverse Trendelenburg;Pillow support;Lying right side,1,JHU
+prone,Head right;Prone;Reverse Trendelenburg;Trendelenburg,1,JHU
+prone,Head right;Reverse Trendelenburg;Prone;Lying left side,1,JHU
+prone,Head turn for prone pt,1,JHU
+prone,"Head turn, Pt is proned",1,JHU
+prone,"Head turn, prone",1,JHU
+prone,Head turned- Prone position,1,JHU
+prone,Head turned- Proned posn.,1,JHU
+prone,Head turned- prone position,1,JHU
+prone,Head turned-Prone posn,1,JHU
+prone,Head turned-prone posn,1,JHU
+prone,Head turned-prone posn.,1,JHU
+prone,Head turned. Prone position,1,JHU
+prone,Head turned. Prone position. ,1,JHU
+prone,Left lateral;HOB equal/greater than 30 degrees;HOB less than 30 degrees;Prone,1,JHU
+prone,Left lateral;HOB flat;Lying down;Prone,1,JHU
+prone,Left lateral;HOB flat;Prone,1,JHU
+prone,Left lateral;HOB flat;Prone;Reverse Trendelenburg,1,JHU
+prone,Left lateral;Prone;HOB equal/greater than 30 degrees,1,JHU
+prone,Left lateral;Prone;HOB flat,1,JHU
+prone,Left lateral;Prone;HOB less than 30 degrees;Reverse Trendelenburg,1,JHU
+prone,Left lateral;Prone;Lying down,1,JHU
+prone,Left lateral;Prone;Reverse Trendelenburg;HOB less than 30 degrees,1,JHU
+prone,Left lateral;Prone;Trendelenburg,1,JHU
+prone,Lying down;Left lateral;HOB less than 30 degrees;Prone,1,JHU
+prone,Lying down;Prone;HOB self-regulated,1,JHU
+prone,Lying down;Prone;HOB self-regulated;HOB flat,1,JHU
+prone,Lying down;Prone;Left lateral,1,JHU
+prone,Lying down;Prone;Right lateral,1,JHU
+prone,Lying down;Right lateral;Prone,1,JHU
+prone,Lying left side;Head left;Pillow support;Prone;Other (Comment),1,JHU
+prone,Lying left side;Head left;Pillow support;Reverse Trendelenburg;Prone,1,JHU
+prone,Lying left side;Head left;Prone;Pillow support,1,JHU
+prone,Lying left side;Head right;Pillow support;Prone;Trendelenburg,1,JHU
+prone,Lying left side;Lying right side;Prone,1,JHU
+prone,Lying left side;Pillow support;Prone;Head left,1,JHU
+prone,Lying left side;Pillow support;Prone;Reverse Trendelenburg;Other (Comment),1,JHU
+prone,Lying left side;Pillow support;Reverse Trendelenburg;Prone,1,JHU
+prone,Lying left side;Prone;Pillow support;Other (Comment),1,JHU
+prone,Lying left side;Prone;Pillow support;Trendelenburg,1,JHU
+prone,Lying left side;Prone;Reverse Trendelenburg;Other (Comment),1,JHU
+prone,Lying left side;Reverse Trendelenburg;Prone;Head left,1,JHU
+prone,Lying left side;Reverse Trendelenburg;Prone;Head right,1,JHU
+prone,Lying left side;Reverse Trendelenburg;Prone;Other (Comment),1,JHU
+prone,Lying left side;Reverse Trendelenburg;Prone;Pillow support,1,JHU
+prone,Lying left side;Turns self;Prone,1,JHU
+prone,Lying right side;Head right;Prone;Reverse Trendelenburg;Unable to reposition,1,JHU
+prone,Lying right side;Head right;Reverse Trendelenburg;Prone,1,JHU
+prone,Lying right side;Lying left side;Prone,1,JHU
+prone,Lying right side;Pillow support;Prone;Head left;Other (Comment),1,JHU
+prone,Lying right side;Pillow support;Prone;Reverse Trendelenburg;Head right,1,JHU
+prone,Lying right side;Pillow support;Reverse Trendelenburg;Prone,1,JHU
+prone,Lying right side;Prone;Head left;Reverse Trendelenburg,1,JHU
+prone,Lying right side;Prone;Pillow support;Head left,1,JHU
+prone,Lying right side;Prone;Pillow support;Turns self,1,JHU
+prone,Lying right side;Prone;Reverse Trendelenburg;Head left;Pillow support,1,JHU
+prone,Lying right side;Prone;Reverse Trendelenburg;Head right,1,JHU
+prone,Lying right side;Prone;Reverse Trendelenburg;Other (Comment),1,JHU
+prone,Lying right side;Reverse Trendelenburg;Prone;Head left,1,JHU
+prone,Lying right side;Reverse Trendelenburg;Prone;Pillow support,1,JHU
+prone,Lying right side;Turns self;Prone,1,JHU
+prone,Lying right side;Unable to reposition;Reverse Trendelenburg;Prone,1,JHU
+prone,MDs at bedside assessing pt - frequent desaturations noted on monitor and high peak pressure alarms. Suctioning of minimal benefit to patient at this time. Discussed ongoing hypoxia with providers. Plan to prone patient with MICU team once available and maintain current vent settings. FIO2 increased to 70% by Fellow Al-Kawaz.,1,JHU
+prone,Other (Comment);Head left;Lying right side;Prone;Reverse Trendelenburg;Pillow support,1,JHU
+prone,Other (Comment);Head left;Prone,1,JHU
+prone,Other (Comment);Lying left side;Prone,1,JHU
+prone,Other (Comment);Lying right side;Prone,1,JHU
+prone,Other (Comment);Pillow support;Prone;Lying right side,1,JHU
+prone,Other (Comment);Prone;Reverse Trendelenburg;Pillow support,1,JHU
+prone,PATIENT PRONED. ,1,JHU
+prone,PEEP at 14 for prone,1,JHU
+prone,PRONE  HEAD reposition,1,JHU
+prone,PRONE  head repostioned,1,JHU
+prone,PRONE  pt proned,1,JHU
+prone,"PRONE , head repositioned",1,JHU
+prone,"PRONE ,HEAD REPOSITIONED",1,JHU
+prone,PRONE .,1,JHU
+prone,"PRONE . pt again desated and then bradycardic. MD and RN, RT at bedside pt has a pulse. HR increased to 107. spo2 92% will not do head turn due to pt's tenous condition",1,JHU
+prone,PRONE HEAD  REPOSITONED,1,JHU
+prone,PRONE HEAD REPOSIONED,1,JHU
+prone,PRONE HEAD REPOSITIONE,1,JHU
+prone,PRONE HEAD REPOSITONE,1,JHU
+prone,PRONE HEAD REPOSITONED PLACE ON 100 FIO2 DURING HEAD TURN,1,JHU
+prone,PRONE HEAD repositioned. placed on 100% for head turn and sheet change,1,JHU
+prone,PRONE HEAD reposituoned,1,JHU
+prone,PRONE HEAD repsoitoned,1,JHU
+prone,PRONE HEad repositioned,1,JHU
+prone,PRONE head reopositioned,1,JHU
+prone,PRONE head reositioned,1,JHU
+prone,PRONE head repoistioned,1,JHU
+prone,PRONE head repositioned placed on 100%,1,JHU
+prone,PRONE head repositionede,1,JHU
+prone,PRONE head repositoned pt hyperoxygenatedw/ 100%,1,JHU
+prone,PRONE head reposotioned,1,JHU
+prone,PRONE head repostioned pt hyperoxygenerate 100% prior,1,JHU
+prone,PRONE head repsoitioned,1,JHU
+prone,PRONE head respositoned,1,JHU
+prone,PRONE head turn at this time,1,JHU
+prone,PRONE head turn at this time ,1,JHU
+prone,PRONE repositioned head,1,JHU
+prone,"PRONE, HEAD REPOSITONED",1,JHU
+prone,"PRONE, Head repositioned",1,JHU
+prone,"PRONE, No turning per provider",1,JHU
+prone,"PRONE, called at bedside by NP and resident pt desating to 83% PEEP increased to 16 plateau pressure =49. decreased tidal volume to 350 per NP verbal order and increased PEEP to +12. spo2 improved to 90%  plateau pressure=31. will obtain ABG in 30minutes",1,JHU
+prone,"PRONE, head reposition",1,JHU
+prone,"PRONE, head repositoned",1,JHU
+prone,"PRONE, head repostioned",1,JHU
+prone,"PRONE, no q4 turns due to pt tenous resp status",1,JHU
+prone,"PRONE, paged to bedside. pt became hypotensive and hypoxic. fio2 increased to 100% MD at bedside. suctioned for moderate amt of thick tan/brown secretions. pt sometimes breath stacks and bite down on ETT md made aware. plan to increase sedation. head turn delayed to midnight. spo2 improved. will continue to monitor",1,JHU
+prone,"PRONE, pt head repositioned",1,JHU
+prone,"PRONE, reposition head",1,JHU
+prone,"PRONE,head repositioned",1,JHU
+prone,PRONE. Head repositioned,1,JHU
+prone,PRONE. ON RIGHT SIDE.,1,JHU
+prone,PRONE. Turned onto Right side,1,JHU
+prone,PRONE. no head turns at this time per Resident due to pt's hemodyanmic instability,1,JHU
+prone,PRONE. pt hyperoxygenated w 100% prior to PRONING. pt tolerated turn well,1,JHU
+prone,PRONE.head repositioned,1,JHU
+prone,PRONED ( HEAD TO THE RIGH,1,JHU
+prone,PRONED @ 1045,1,JHU
+prone,PRONED ON LEFT ,1,JHU
+prone,PRONED ON RIGHT,1,JHU
+prone,PRONED R side down,1,JHU
+prone,PRONED head repositoned,1,JHU
+prone,PRONED. Left side Down.,1,JHU
+prone,PT BEING PRONED,1,JHU
+prone,PT PRONE,1,JHU
+prone,"PT PRONED, PaO2 60  last ABG",1,JHU
+prone,"PT PRONED, hyperoxygenate 100% prior",1,JHU
+prone,PT PRONED. LEFT SIDE DOWN.,1,JHU
+prone,PT Proned,1,JHU
+prone,PT RE-PRONED,1,JHU
+prone,PT Reproned,1,JHU
+prone,PT proned,1,JHU
+prone,"PT was proned during this assessment, tolerated well.",1,JHU
+prone,Patient Prone with head turned to Left Side.,1,JHU
+prone,Patient Prone with head turned to Right Side,1,JHU
+prone,Patient Proned with Proning team at bedside,1,JHU
+prone,Patient Proned!,1,JHU
+prone,Patient Self Proned,1,JHU
+prone,Patient is now prone,1,JHU
+prone,Patient is prone and sleeping,1,JHU
+prone,Patient prone ,1,JHU
+prone,Patient proned ,1,JHU
+prone,Patient proned and turned. RT and MD bedside,1,JHU
+prone,Patient proned at 2317,1,JHU
+prone,Patient proned at this time,1,JHU
+prone,Patient self-proned with significant improvement in SpO2.,1,JHU
+prone,"PiCCO #'s obtained with patient proned, HOB flat, PEEP 10",1,JHU
+prone,"PiCCO #'s obtained with patient proned, PEEP 14",1,JHU
+prone,"PiCCO #'s obtained with patient proned, PEEP 18",1,JHU
+prone,"PiCCO #'s obtained with patient proned, PEEP 18 & Nitric Oxide",1,JHU
+prone,Pillow support;Head left;Prone,1,JHU
+prone,Pillow support;Lying right side;Head right;Reverse Trendelenburg;Prone,1,JHU
+prone,Pillow support;Lying right side;Prone;Reverse Trendelenburg;Head left,1,JHU
+prone,Pillow support;Prone;Head left;Lying left side,1,JHU
+prone,Pillow support;Prone;Head midline,1,JHU
+prone,Pillow support;Prone;Head right,1,JHU
+prone,Pillow support;Prone;Lying left side;Reverse Trendelenburg,1,JHU
+prone,Pillow support;Prone;Refused by patient,1,JHU
+prone,Pillow support;Prone;Reverse Trendelenburg;Head left;Lying right side,1,JHU
+prone,Pillow support;Prone;Reverse Trendelenburg;Lying left side,1,JHU
+prone,Pillow support;Prone;Reverse Trendelenburg;Lying left side;Head left,1,JHU
+prone,Pillow support;Prone;Reverse Trendelenburg;Lying right side;Head left,1,JHU
+prone,Pillow support;Prone;Reverse Trendelenburg;Other (Comment),1,JHU
+prone,Pillow support;Prone;Reverse Trendelenburg;Other (Comment);Head left,1,JHU
+prone,Pillow support;Prone;Reverse Trendelenburg;Unable to reposition,1,JHU
+prone,Pillow support;Prone;Trendelenburg,1,JHU
+prone,Pillow support;Reverse Trendelenburg;Prone;Head left;Lying left side,1,JHU
+prone,Pillow support;Reverse Trendelenburg;Prone;Head right;Lying left side,1,JHU
+prone,Pillow support;Reverse Trendelenburg;Prone;Lying right side,1,JHU
+prone,Pillow support;Reverse Trendelenburg;Prone;Lying right side;Head left,1,JHU
+prone,Pillow support;Reverse Trendelenburg;Prone;Lying right side;Head right,1,JHU
+prone,Plan to prone,1,JHU
+prone,Preparing to prone.,1,JHU
+prone,Prone Position (Left Lateral),1,JHU
+prone,Prone posn,1,JHU
+prone,Prone posn- Head turned,1,JHU
+prone,Prone posn. Turned pt's head.,1,JHU
+prone,Prone repositioning. Head turned to the right. ,1,JHU
+prone,Prone the patient (Right side down),1,JHU
+prone,Prone turn- head to R side ,1,JHU
+prone,"Prone, spontaneous movement before Fent bolus",1,JHU
+prone,Prone. Head turned. Left side down,1,JHU
+prone,Prone. Head turned. Right side down.,1,JHU
+prone,Prone. On left side,1,JHU
+prone,Prone. Turned onto Right side.,1,JHU
+prone,Prone. Turned onto left side.,1,JHU
+prone,Prone/ Vecuronium Bolus,1,JHU
+prone,"Prone: UPSIDE Left, Lying right side.",1,JHU
+prone,Prone: head repositioned,1,JHU
+prone,Prone;HOB equal/greater than 30 degrees;Right lateral;Reverse Trendelenburg,1,JHU
+prone,Prone;HOB flat;Trendelenburg,1,JHU
+prone,Prone;HOB less than 30 degrees;Trendelenburg,1,JHU
+prone,Prone;Head left;Lying right side;Other (Comment),1,JHU
+prone,Prone;Head left;Lying right side;Pillow support;Reverse Trendelenburg,1,JHU
+prone,Prone;Head left;Lying right side;Reverse Trendelenburg;Other (Comment),1,JHU
+prone,Prone;Head left;Lying right side;Reverse Trendelenburg;Unable to reposition,1,JHU
+prone,Prone;Head left;Pillow support;Lying right side,1,JHU
+prone,Prone;Head left;Pillow support;Reverse Trendelenburg;Unable to reposition,1,JHU
+prone,Prone;Head left;Pillow support;Trendelenburg,1,JHU
+prone,Prone;Head left;Reverse Trendelenburg;Unable to reposition,1,JHU
+prone,Prone;Head right;Lying right side;Pillow support,1,JHU
+prone,Prone;Head right;Lying right side;Pillow support;Reverse Trendelenburg,1,JHU
+prone,Prone;Head right;Reverse Trendelenburg;Lying left side,1,JHU
+prone,Prone;Head right;Reverse Trendelenburg;Pillow support;Other (Comment),1,JHU
+prone,Prone;Head right;Unable to reposition;Pillow support,1,JHU
+prone,Prone;Left lateral;HOB equal/greater than 30 degrees;Trendelenburg,1,JHU
+prone,Prone;Left lateral;Trendelenburg,1,JHU
+prone,Prone;Lying down;HOB flat,1,JHU
+prone,Prone;Lying down;Left lateral,1,JHU
+prone,Prone;Lying down;Right lateral,1,JHU
+prone,Prone;Lying left side;Head left;Other (Comment),1,JHU
+prone,Prone;Lying left side;Head left;Pillow support;Reverse Trendelenburg,1,JHU
+prone,Prone;Lying left side;Head right;Pillow support,1,JHU
+prone,Prone;Lying left side;Head right;Reverse Trendelenburg;Unable to reposition,1,JHU
+prone,Prone;Lying left side;Head right;Trendelenburg,1,JHU
+prone,Prone;Lying left side;Lying right side,1,JHU
+prone,Prone;Lying left side;Pillow support;Head right,1,JHU
+prone,Prone;Lying left side;Pillow support;Trendelenburg,1,JHU
+prone,Prone;Lying left side;Reverse Trendelenburg;Head right;Pillow support,1,JHU
+prone,Prone;Lying right side;Head left;Other (Comment),1,JHU
+prone,Prone;Lying right side;Lying left side,1,JHU
+prone,Prone;Lying right side;Other (Comment);Head left;Reverse Trendelenburg,1,JHU
+prone,Prone;Lying right side;Pillow support;Trendelenburg,1,JHU
+prone,Prone;Lying right side;Reverse Trendelenburg;Head right,1,JHU
+prone,Prone;Lying right side;Reverse Trendelenburg;Unable to reposition,1,JHU
+prone,Prone;Lying right side;Trendelenburg;Unable to reposition,1,JHU
+prone,Prone;Other (Comment);Head left,1,JHU
+prone,Prone;Other (Comment);Head right,1,JHU
+prone,Prone;Other (Comment);Refused by patient,1,JHU
+prone,Prone;Other (Comment);Reverse Trendelenburg;Pillow support,1,JHU
+prone,Prone;Other (Comment);Unable to reposition,1,JHU
+prone,Prone;Pillow support;Head left;Lying right side;Reverse Trendelenburg,1,JHU
+prone,Prone;Pillow support;Head left;Other (Comment),1,JHU
+prone,Prone;Pillow support;Head right;Lying left side;Reverse Trendelenburg,1,JHU
+prone,Prone;Pillow support;Head right;Lying right side,1,JHU
+prone,Prone;Pillow support;Head right;Lying right side;Other (Comment),1,JHU
+prone,Prone;Pillow support;Head right;Lying right side;Reverse Trendelenburg,1,JHU
+prone,Prone;Pillow support;Lying right side;Reverse Trendelenburg,1,JHU
+prone,Prone;Pillow support;Reverse Trendelenburg;Head left;Unable to reposition;Lying left side,1,JHU
+prone,Prone;Pillow support;Reverse Trendelenburg;Head right;Other (Comment),1,JHU
+prone,Prone;Pillow support;Reverse Trendelenburg;Lying left side;Other (Comment),1,JHU
+prone,Prone;Pillow support;Reverse Trendelenburg;Lying right side,1,JHU
+prone,Prone;Pillow support;Reverse Trendelenburg;Other (Comment);Head right,1,JHU
+prone,Prone;Pillow support;Standing,1,JHU
+prone,Prone;Pillow support;Trendelenburg,1,JHU
+prone,Prone;Pillow support;Trendelenburg;Head right,1,JHU
+prone,Prone;Pillow support;Trendelenburg;Lying right side,1,JHU
+prone,Prone;Pillow support;Turns self;Lying left side,1,JHU
+prone,Prone;Refused by patient;Other (Comment),1,JHU
+prone,Prone;Reverse Trendelenburg;Head right;Pillow support;Lying left side,1,JHU
+prone,Prone;Reverse Trendelenburg;Head right;Pillow support;Lying right side,1,JHU
+prone,Prone;Reverse Trendelenburg;Lying right side;Head left;Unable to reposition,1,JHU
+prone,Prone;Reverse Trendelenburg;Other (Comment);Lying left side,1,JHU
+prone,Prone;Reverse Trendelenburg;Other (Comment);Lying right side,1,JHU
+prone,Prone;Reverse Trendelenburg;Other (comment);HOB equal/greater than 30 degrees,1,JHU
+prone,Prone;Reverse Trendelenburg;Pillow support;Head left;Lying left side;Lying right side,1,JHU
+prone,Prone;Reverse Trendelenburg;Pillow support;Head midline,1,JHU
+prone,Prone;Reverse Trendelenburg;Pillow support;Head right;Lying right side,1,JHU
+prone,Prone;Reverse Trendelenburg;Pillow support;Lying left side;Head left,1,JHU
+prone,Prone;Reverse Trendelenburg;Pillow support;Lying left side;Lying right side,1,JHU
+prone,Prone;Reverse Trendelenburg;Pillow support;Lying right side;Head right,1,JHU
+prone,Prone;Reverse Trendelenburg;Pillow support;Other (Comment);Head left,1,JHU
+prone,Prone;Reverse Trendelenburg;Pillow support;Turns self,1,JHU
+prone,Prone;Reverse Trendelenburg;Trendelenburg;Head right,1,JHU
+prone,Prone;Reverse Trendelenburg;Trendelenburg;Lying left side;Pillow support,1,JHU
+prone,Prone;Right lateral;HOB less than 30 degrees;Reverse Trendelenburg,1,JHU
+prone,Prone;Right lateral;Left lateral,1,JHU
+prone,Prone;Right lateral;Other (comment),1,JHU
+prone,Prone;Right lateral;Reverse Trendelenburg;Trendelenburg,1,JHU
+prone,Prone;Right lateral;Trendelenburg,1,JHU
+prone,Prone;Standing,1,JHU
+prone,Prone;Trendelenburg;Head left,1,JHU
+prone,Prone;Trendelenburg;Lying left side,1,JHU
+prone,Prone;Trendelenburg;Lying left side;Head right,1,JHU
+prone,Prone;Trendelenburg;Pillow support,1,JHU
+prone,Prone;Trendelenburg;Pillow support;Head right,1,JHU
+prone,Prone;Trendelenburg;Right lateral,1,JHU
+prone,Prone;Unable to reposition;Lying right side,1,JHU
+prone,Prone;Unable to reposition;Other (Comment),1,JHU
+prone,Prone@ 11a,1,JHU
+prone,Proned - facing door,1,JHU
+prone,Proned - turn towards windows,1,JHU
+prone,Proned @ ~1110a - facing the vent,1,JHU
+prone,Proned Left,1,JHU
+prone,Proned Left side down,1,JHU
+prone,Proned Pt,1,JHU
+prone,Proned Right down,1,JHU
+prone,Proned Right side,1,JHU
+prone,Proned at 1250,1,JHU
+prone,Proned at this time,1,JHU
+prone,"Proned at ~1320, facing R side",1,JHU
+prone,Proned at ~1750; head facing R side,1,JHU
+prone,Proned at ~1800.,1,JHU
+prone,Proned for bone marrow biopsy,1,JHU
+prone,Proned patient. Head towards window,1,JHU
+prone,Proned posn- Head turned,1,JHU
+prone,Proned pt at this time,1,JHU
+prone,Proned pt.Spo2-70's,1,JHU
+prone,Proned the pt. for biopsy,1,JHU
+prone,"Proned, Head Turn to left",1,JHU
+prone,"Proned, Head turn to right",1,JHU
+prone,Proned- turned pt.,1,JHU
+prone,Proned.  Head towards window,1,JHU
+prone,Proned. Head turn to left side ,1,JHU
+prone,Proned. Head turn to right side ,1,JHU
+prone,Proned. Left side up,1,JHU
+prone,Proned. Upside: Left; lying right side.,1,JHU
+prone,Proned/ DP,1,JHU
+prone,Proned/no complications,1,JHU
+prone,Proned: head facing right ,1,JHU
+prone,Proned; head facing right,1,JHU
+prone,Pt PRONE. ON LEFT SIDE,1,JHU
+prone,Pt Prone (Left Lateral),1,JHU
+prone,Pt Prone. Head Turned. Left side down.,1,JHU
+prone,Pt Prone. Head turned. Left side down.,1,JHU
+prone,Pt Prone; able to pass suction catheter,1,JHU
+prone,Pt Proned (with patient help) with MDs at bedside ,1,JHU
+prone,Pt Proned at 0040,1,JHU
+prone,Pt Proned. Left side down,1,JHU
+prone,Pt Proned. Left side down.,1,JHU
+prone,"Pt flipped (proned, Left side)",1,JHU
+prone,"Pt in bed, prone and tachypneic",1,JHU
+prone,Pt irritated when asked to stay in prone position,1,JHU
+prone,Pt is now PRONE,1,JHU
+prone,Pt is prone,1,JHU
+prone,Pt is prone.,1,JHU
+prone,Pt is proned. Unstable to move head at this time. Will attempt a little later when more stable,1,JHU
+prone,"Pt is refusing to maintain prone position, RN educated pt x3. MD Taylor aware",1,JHU
+prone,Pt is self proned,1,JHU
+prone,Pt moving from prone to side lying ,1,JHU
+prone,Pt prone positon,1,JHU
+prone,Pt prone. Head turned Left side down,1,JHU
+prone,Pt prone. Head turned Right side down.,1,JHU
+prone,Pt prone. Head turned left side down,1,JHU
+prone,"Pt prone. Head turned, left side down.",1,JHU
+prone,Pt prone. Head turned. Right side down,1,JHU
+prone,Pt prone. Left side down.,1,JHU
+prone,Pt prone. Turned Right side down,1,JHU
+prone,Pt prone. Turned left side down.,1,JHU
+prone,Pt prone. Turned onto left side down.,1,JHU
+prone,Pt prone. Turned onto right side,1,JHU
+prone,Pt prone. Turned onto right side down.,1,JHU
+prone,Pt prone. Turned onto right side.,1,JHU
+prone,Pt prone. turned onto left side,1,JHU
+prone,Pt proned & head turned to the right.,1,JHU
+prone,Pt proned 1015,1,JHU
+prone,Pt proned @9:45AM. ,1,JHU
+prone,Pt proned and placed on C1 vent in 12west for transport to NCCU,1,JHU
+prone,Pt proned at 0030,1,JHU
+prone,Pt proned at this time,1,JHU
+prone,Pt proned onto left side.,1,JHU
+prone,Pt proned onto right side,1,JHU
+prone,Pt proned w MD at bedside at this time,1,JHU
+prone,"Pt proned with assistance of MICU team. Tolerated the positioning well. Will send ABG to followup in 1 hr per Al-Kawaz, MD.",1,JHU
+prone,Pt proned without incident,1,JHU
+prone,Pt proned. ON left side.,1,JHU
+prone,Pt proned. Right side down.,1,JHU
+prone,Pt re-proned d/t desating,1,JHU
+prone,Pt reproned,1,JHU
+prone,Pt reproned at this time,1,JHU
+prone,"Pt requesting to be positioned prone, Pt able to with assist with repositioning.",1,JHU
+prone,"Pt rotated prone - Kidd MD present - 12 lead obtained after, VSS",1,JHU
+prone,Pt self proned,1,JHU
+prone,Pt was prone @ this time,1,JHU
+prone,Pt was proned,1,JHU
+prone,Pt's head turnded on Prone position,1,JHU
+prone,"Pt, Proned",1,JHU
+prone,Pt. Prone. Head turned. Left side down.,1,JHU
+prone,Pt. Prone. Head turned. Right side down.,1,JHU
+prone,Pt. is in Prone posn. turned the head. ,1,JHU
+prone,Pt. is on Prone posn.,1,JHU
+prone,Pt. is proned,1,JHU
+prone,Pt. is proned and turned the head .,1,JHU
+prone,Pt. prone,1,JHU
+prone,Pt. prone with rt side up 2/2 rul collaspe per CXR,1,JHU
+prone,Pt. prone. Head turned. Right side down.,1,JHU
+prone,Pt. prone. Turned onto left side.,1,JHU
+prone,Pt. prone. Turned onto right side.,1,JHU
+prone,Pt. proned at this time,1,JHU
+prone,Pt. proned. ,1,JHU
+prone,Pt. proned/ ,1,JHU
+prone,Pt. self proned with hekp,1,JHU
+prone,Pt.turned to Right side down. Proned posn.,1,JHU
+prone,Pt.turned. Prone position. left side down. ,1,JHU
+prone,RN went into room to advise pt to prone.  Pt sleeping comfortably mostly prone.,1,JHU
+prone,Re-position proned pt,1,JHU
+prone,Re-proned,1,JHU
+prone,Refused by patient;Lying left side;Prone,1,JHU
+prone,Reverse Trendelenburg;HOB equal/greater than 30 degrees;Prone,1,JHU
+prone,Reverse Trendelenburg;HOB equal/greater than 30 degrees;Prone;Left lateral,1,JHU
+prone,Reverse Trendelenburg;Head left;Prone,1,JHU
+prone,Reverse Trendelenburg;Head left;Prone;Pillow support,1,JHU
+prone,Reverse Trendelenburg;Head right;Pillow support;Prone,1,JHU
+prone,Reverse Trendelenburg;Head right;Prone,1,JHU
+prone,Reverse Trendelenburg;Lying right side;Prone;Head right,1,JHU
+prone,Reverse Trendelenburg;Pillow support;Prone;Head left,1,JHU
+prone,Reverse Trendelenburg;Pillow support;Prone;Head right,1,JHU
+prone,Reverse Trendelenburg;Pillow support;Prone;Lying right side;Head right,1,JHU
+prone,Reverse Trendelenburg;Prone;Head left;Lying right side,1,JHU
+prone,Reverse Trendelenburg;Prone;Head right;Lying left side,1,JHU
+prone,Reverse Trendelenburg;Prone;Lying left side;Pillow support,1,JHU
+prone,Reverse Trendelenburg;Prone;Lying right side;Head left;Pillow support,1,JHU
+prone,Reverse Trendelenburg;Prone;Lying right side;Head right,1,JHU
+prone,Reverse Trendelenburg;Prone;Other (Comment);Lying right side,1,JHU
+prone,Reverse Trendelenburg;Prone;Pillow support;Head left;Other (Comment),1,JHU
+prone,Reverse Trendelenburg;Prone;Pillow support;Head right;Lying left side,1,JHU
+prone,Reverse Trendelenburg;Prone;Pillow support;Lying left side,1,JHU
+prone,Reverse Trendelenburg;Prone;Pillow support;Lying left side;Head right,1,JHU
+prone,Reverse Trendelenburg;Prone;Pillow support;Lying right side,1,JHU
+prone,Reverse Trendelenburg;Prone;Unable to reposition,1,JHU
+prone,Reverse Trendelenburg;Prone;Unable to reposition;Other (Comment),1,JHU
+prone,Right lateral;HOB equal/greater than 30 degrees;HOB less than 30 degrees;Prone,1,JHU
+prone,Right lateral;HOB less than 30 degrees;Reverse Trendelenburg;Prone,1,JHU
+prone,Right lateral;Lying down;Prone,1,JHU
+prone,Right lateral;Prone;HOB equal/greater than 30 degrees,1,JHU
+prone,Right lateral;Prone;HOB flat,1,JHU
+prone,SELF PRONE,1,JHU
+prone,"SICU Admit; pt. self-proned, on HF 40/40, agitated and refusing care",1,JHU
+prone,SICU team at bedside- patient in prone position,1,JHU
+prone,START SELF PRONE,1,JHU
+prone,Self Prone,1,JHU
+prone,Self-Proned,1,JHU
+prone,"Sleeping, proned",1,JHU
+prone,SpO2 desat and hypotensive w/ R. Sided turn while prone ,1,JHU
+prone,Spoke with patient's daughter by phone to provide updates. Discussed frequent desaturations and decision to prone patient. ,1,JHU
+prone,Sputum Culture Sent/ Patient Prone with head turned to Left Side,1,JHU
+prone,Standing;Prone,1,JHU
+prone,Start prone position,1,JHU
+prone,TAPED FOR PRONED POSITION; MEPILEX PLACED ON PT CHEEKS AND UPPER LIP.  SMALL BREAKDOWN ON LEFT CHEEK AND UPPER LIP (LEFT SIDE),1,JHU
+prone,"Transferred to MPCU 586. Prone (Right Lateral),",1,JHU
+prone,Trendelenburg;Prone,1,JHU
+prone,Trendelenburg;Prone;Pillow support;Head right,1,JHU
+prone,Turned Head-Prone posn.,1,JHU
+prone,Turned the head- Prone posn.,1,JHU
+prone,Turning patient from lying to prone,1,JHU
+prone,Turns self;Head left;Prone,1,JHU
+prone,Turns self;Lying left side;Pillow support;Prone,1,JHU
+prone,Turns self;Lying right side;Lying left side;Prone,1,JHU
+prone,Turns self;Pillow support;Prone;Reverse Trendelenburg,1,JHU
+prone,Turns self;Reverse Trendelenburg;Pillow support;Prone,1,JHU
+prone,Turns self;Up in chair;Prone,1,JHU
+prone,Unable to perform flutter therapy this morning due to pt being proned. ,1,JHU
+prone,Unable to reposition;Head left;Pillow support;Prone;Reverse Trendelenburg;Lying right side,1,JHU
+prone,Unable to reposition;Head right;Prone;Reverse Trendelenburg,1,JHU
+prone,Unable to reposition;Lying left side;Head right;Prone;Reverse Trendelenburg,1,JHU
+prone,Unable to reposition;Lying right side;Prone,1,JHU
+prone,Unable to reposition;Pillow support;Prone;Reverse Trendelenburg,1,JHU
+prone,Unable to reposition;Prone;Head left;Reverse Trendelenburg,1,JHU
+prone,Unable to reposition;Prone;Lying left side;Head right,1,JHU
+prone,Unable to reposition;Prone;Pillow support,1,JHU
+prone,Unable to reposition;Prone;Pillow support;Reverse Trendelenburg,1,JHU
+prone,Unproned,1,JHU
+prone,admit HAL from Sinai; proned on admission,1,JHU
+prone,after prone ,1,JHU
+prone,after prone positioning,1,JHU
+prone,aline insertion complete. Pt returned to prone position,1,JHU
+prone,assisted to self prone,1,JHU
+prone,awaiting Vec gtt from pharmacy in order to prone,1,JHU
+prone,before prone ,1,JHU
+prone,bronch at beside with pt proned,1,JHU
+prone,changing prone position (left side),1,JHU
+prone,changing proned position (left side),1,JHU
+prone,"head repositioned , pt is proned",1,JHU
+prone,head repositioned.PRONE,1,JHU
+prone,head turn - prone,1,JHU
+prone,head turn Left down  prone,1,JHU
+prone,head turn Right down  prone,1,JHU
+prone,head turn while in prone,1,JHU
+prone,head turn-Prone posn.,1,JHU
+prone,head turn/ prone,1,JHU
+prone,head turn/ pt proned,1,JHU
+prone,head turn/proned,1,JHU
+prone,head turned L down prone,1,JHU
+prone,head turned Left down  prone,1,JHU
+prone,head turned prone,1,JHU
+prone,head turned prone position,1,JHU
+prone,head turned to patient's left side. Prone,1,JHU
+prone,head turned-prone,1,JHU
+prone,head turned-prone postion,1,JHU
+prone,orders to prone pt,1,JHU
+prone,patient just turned -- pt proned,1,JHU
+prone,"patient not tolerating Left facing prone, head turned back to R facing d/t persistent desaturations to mid to upper 80. Sats improved with move back to R facing",1,JHU
+prone,patient positioned to prone,1,JHU
+prone,patient proned ,1,JHU
+prone,patient proned at this time without complications,1,JHU
+prone,patient proned with team,1,JHU
+prone,"patient re-proned, head turned to the left",1,JHU
+prone,patient self-proned,1,JHU
+prone,"patient self-proned, tachypnea 50-60 bbm with exertion",1,JHU
+prone,patient transferred to transport stretcher in prone position without incident,1,JHU
+prone,placed PRONE,1,JHU
+prone,placed in prone,1,JHU
+prone,preparing to prone,1,JHU
+prone,prone  turn,1,JHU
+prone,prone alert and calm,1,JHU
+prone,prone heAD TURN,1,JHU
+prone,prone head  turn,1,JHU
+prone,prone head and arms repositioned,1,JHU
+prone,prone head reposistioned,1,JHU
+prone,prone head repositioned hyperoxygenated 100%,1,JHU
+prone,prone head repositoned,1,JHU
+prone,prone head repostioned pt hyperoxygentated 100%,1,JHU
+prone,prone head turn ,1,JHU
+prone,prone head turn toward vent (to left),1,JHU
+prone,prone position,1,JHU
+prone,prone position- R. side down,1,JHU
+prone,prone postion-Left side down,1,JHU
+prone,prone repositioning,1,JHU
+prone,prone repositioning. head turned to the left,1,JHU
+prone,prone repositioning. head turned to the right ,1,JHU
+prone,prone turn initiated,1,JHU
+prone,prone turn to right side,1,JHU
+prone,"prone turn, levo start",1,JHU
+prone,prone turned,1,JHU
+prone,prone turned at this time,1,JHU
+prone,"prone, assessment",1,JHU
+prone,"prone, changed positions",1,JHU
+prone,"prone, head repositoned",1,JHU
+prone,"prone, repositioned head",1,JHU
+prone,prone- Head turn,1,JHU
+prone,proned left,1,JHU
+prone,proned on RIGHT ride,1,JHU
+prone,proned on left side,1,JHU
+prone,proned on right side,1,JHU
+prone,proned patient,1,JHU
+prone,proned pt. ,1,JHU
+prone,proned pt. head to left side,1,JHU
+prone,proned the pt.,1,JHU
+prone,proned turned left,1,JHU
+prone,proned turned right,1,JHU
+prone,proned with no complications,1,JHU
+prone,proned wthout complications,1,JHU
+prone,"proned, copious oral secretions, thick inline secretion",1,JHU
+prone,"proned, head turned",1,JHU
+prone,"proned, paralyzed",1,JHU
+prone,proned- 3rd time,1,JHU
+prone,"proned- bagged and suctioned, md's notified",1,JHU
+prone,proned- tolerated well,1,JHU
+prone,pt PRONED - head turn right,1,JHU
+prone,pt beginning prone,1,JHU
+prone,pt being proned,1,JHU
+prone,"pt being turned, proned, fighting turning",1,JHU
+prone,pt breathing over vent and hypertesnive after prone position change ,1,JHU
+prone,pt continues to be proned,1,JHU
+prone,pt head turn prone,1,JHU
+prone,pt is not maintaining Prone position; Dr. Taylor aware,1,JHU
+prone,pt is now proned,1,JHU
+prone,pt is prone at this time.,1,JHU
+prone,"pt is prone, head turned",1,JHU
+prone,pt is proned,1,JHU
+prone,"pt is proned, head turn done",1,JHU
+prone,pt not compliant with maintaining prone position when instructed to do so,1,JHU
+prone,pt not cooperating with maintaining prone positioning,1,JHU
+prone,pt now proned,1,JHU
+prone,pt placed prone with prone team,1,JHU
+prone,pt prone ,1,JHU
+prone,pt prone for 1 hr,1,JHU
+prone,pt prone position,1,JHU
+prone,"pt prone, head facing left side",1,JHU
+prone,pt prone/ turned to left now,1,JHU
+prone,pt proned ,1,JHU
+prone,pt proned @ 1730,1,JHU
+prone,pt proned @ 2110,1,JHU
+prone,pt proned @12/15 6:15,1,JHU
+prone,pt proned and immediately improved pulse ox from mid 70's to mid 90's.,1,JHU
+prone,pt proned head turned facing right side,1,JHU
+prone,pt proned turned facing right,1,JHU
+prone,pt proned w/o incident,1,JHU
+prone,"pt proned, MD Burns at bedside, adjustments made to iNO/vent with MD Burns bedside, charting to follow",1,JHU
+prone,"pt proned, appears sedated",1,JHU
+prone,"pt proned, head turned facing left",1,JHU
+prone,"pt proned, head turned left side up",1,JHU
+prone,"pt proned, head turned to right side down",1,JHU
+prone,"pt proned, moved to right side",1,JHU
+prone,"pt proned, turned head facing left",1,JHU
+prone,"pt proned, turned head facing right",1,JHU
+prone,pt proned. right side down,1,JHU
+prone,pt proned; left cheek down,1,JHU
+prone,pt re proned,1,JHU
+prone,"pt roated to right sided prone with RN team, md aware.",1,JHU
+prone,pt self proned. ,1,JHU
+prone,pt starting prone protocol,1,JHU
+prone,pt turned towards window/ proned,1,JHU
+prone,pt turned while prone- BP increas,1,JHU
+prone,"pt turned, pt proned",1,JHU
+prone,pt. proned,1,JHU
+prone,pt. unproned ,1,JHU
+prone,pt.proned,1,JHU
+prone,refused self prone,1,JHU
+prone,refusing prone position,1,JHU
+prone,reposition proned patient,1,JHU
+prone,repositioned prone pt,1,JHU
+prone,repositioned proned patient to his left,1,JHU
+prone,"repositioned proned patient, head turn ",1,JHU
+prone,reproned,1,JHU
+prone,"reproned at this time, head facing door",1,JHU
+prone,resting in bed. Does not want to pronate at this time. Educated on benefits. Verbalized understanding. Instructed to call when ready to prone. WIill recheck and cont to monitor. NAD at this time.,1,JHU
+prone,retaped ETT and proned pt.,1,JHU
+prone,sedated in prone position. resting quietly,1,JHU
+prone,self prone start,1,JHU
+prone,self proned pt,1,JHU
+prone,self-proned,1,JHU
+prone,side lying; encourage prone position per MD order,1,JHU
+prone,taught the patient to self prone and assisted him into prone position,1,JHU
+prone,turned head L down prone,1,JHU
+prone,turned head R down prone,1,JHU
+prone,turned head in prone position,1,JHU
+prone,turned head-prone posn,1,JHU
+prone,turned head-prone posn.,1,JHU
+prone,turning proned pateint,1,JHU
+prone,"turning proned patient, breath stacking",1,JHU
+prone,turning proned pt,1,JHU
+prone,unable to move ETT on proned Pt/ Dr aware,1,JHU
+prone,"when lying R side down (proned) BP rises, core body temp rises and sats dropped",1,JHU
