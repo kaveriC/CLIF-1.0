@@ -1,0 +1,15 @@
+mode_category,mode_name,n,site
+Assist Control-Volume control,A/C Volume,324362,JHU
+Other,T-Piece,23369,JHU
+Other,Bi-level/Bi-vent,7523,JHU
+Other,ASV,2359,JHU
+Other,APRV,409,JHU
+Other,MMV,373,JHU
+Other,PAV+,250,JHU
+Other,AVAPS,43,JHU
+Other,NAVA,28,JHU
+Pressure Control,A/C Pressure,32285,JHU
+Pressure Support/CPAP,PS/CPAP,225258,JHU
+Pressure-regulated Volume Control,PRVC,165144,JHU
+SIMV,SIMV,59375,JHU
+NA,NA,19905488,JHU

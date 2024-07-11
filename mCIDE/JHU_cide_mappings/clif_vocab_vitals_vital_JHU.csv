@@ -1,0 +1,17 @@
+vital_category,vital_name,n,site
+dbp,BP,20249045,JHU
+dbp,Arterial Line 1 BP,7715416,JHU
+height_inches,Height,506077,JHU
+map,MAP (mmHg),18026160,JHU
+map,Arterial Line 1 MAP,7658092,JHU
+map,Arterial Line 3 MAP,248461,JHU
+map,Mean Arterial Pressure (mmHg),146888,JHU
+map,Arterial Line 2 MAP,126581,JHU
+map,MAP (Monitor),1,JHU
+pulse,Pulse,27681015,JHU
+respiratory_rate,Resp,24389626,JHU
+sbp,BP,20249045,JHU
+sbp,Arterial Line 1 BP,7715416,JHU
+spo2,SpO2,26631801,JHU
+temp_c,Temp,15434953,JHU
+weight_kg,Weight,1485290,JHU
