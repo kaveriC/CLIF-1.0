@@ -12,3 +12,7 @@
 
 # jupter checkpoints
 .ipynb_checkpoints/
+
+# test files
+test.csv
+test_predictions.csv
