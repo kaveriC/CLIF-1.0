@@ -88,37 +88,11 @@ clif_respiratory_support <- clif_respiratory_support %>%
 
 ```{r}
 clif_respiratory_support %>%
-  #filter(device_category %in%) %>%
   group_by(device_category) %>%
   count(device_name) %>%
   filter(n > 100) %>%
   arrange(device_category, -n) %>%
-  kable()
-```
-
-This simple mapping check revealed a few mapping errors for U of C. The chunk below fixes these, but this should appear in your pre-CLIF script that constructs `clif_respiratory_support`. This exercise also demonstrates the utility of keeping the "raw" `device_name` variable in CLIF.
-
-```{r}
-clif_respiratory_support <- clif_respiratory_support %>%
-  mutate(
-    device_category = case_when(
-      device_name == "NIPPV" & device_category != "Vent" ~ "NIPPV",
-      (device_category %in% c("Nasal Cannula", "Other") & str_detect(device_name, "Face Tent")) ~ "Face Mask",
-      (device_category %in% c("Nasal Cannula", "Other") & str_detect(device_name, "NRB Mask")) ~ "Face Mask",
-      TRUE ~ device_category
-    )
-  )
-```
-
-### Re-check post-fix
-
-```{r}
-clif_respiratory_support %>%
-  #filter(device_category %in%) %>%
-  group_by(device_category) %>%
-  count(device_name) %>%
-  filter(n > 100) %>%
-  arrange(device_category, -n) %>%
+  select(device_name, device_category, n) %>%
   kable()
 ```
 
@@ -178,7 +152,9 @@ summary_table <- function(device, mode = NA){
 summary_table("Nasal Cannula")
 ```
 
-As expected, LPM is the only value routinely documented when `device_category == "Nasal Cannula`.
+Only `lpm_set` should be routinely documented when `device_category == "Nasal Cannula`.
+
+`resp_rate_obs` should also be mostly missing, as this should only be the respiratory rate recorded by the ventilator.
 
 # `High Flow NC` quality checks
 
@@ -186,7 +162,9 @@ As expected, LPM is the only value routinely documented when `device_category ==
 summary_table("High Flow NC")
 ```
 
-Same results for `device_category == "High Flow NC"`.
+Only `lpm_set` and `fio2_set` should be routinely documented when `device_category == "High Flow NC"`.
+
+`resp_rate_obs` should also be mostly missing, as this should only be the respiratory rate recorded by the ventilator.
 
 # `NIPPV` quality checks
 
@@ -213,28 +191,7 @@ clif_respiratory_support %>%
   kable()
 ```
 
-"BiPAP" should be mapped to "Pressure Support/CPAP"
-
-### Temporary fix for BiPAP
-
-this should be "pre-CLIF", so this code chunk would appear in the `clif_respiratory_support` setup pipeline script
-
-```{r}
-clif_respiratory_support <- clif_respiratory_support %>%
-  mutate(mode_category = ifelse(mode_name == "BiPAP" & 
-                                  device_category %in% c("NIPPV", "CPAP"), 
-                                "Pressure Support/CPAP", mode_category))
-```
-
-```{r}
-clif_respiratory_support %>%
-  filter(device_category %in% c("NIPPV", "CPAP")) %>%
-  group_by(device_category, mode_category) %>%
-  count(mode_name) %>%
-  arrange(device_category, -n) %>%
-  filter(n > 100) %>%
-  kable()
-```
+`mode_category` for CPAP and NIPPV should be `Pressure Support/CPAP` in general, with a few exceptions (e.g. `mode_name == "NIV-PC` should be mapped to `mode_categpry == "Pressure Control"`)
 
 ## CPAP summary table
 
@@ -242,7 +199,22 @@ clif_respiratory_support %>%
 summary_table("CPAP")
 ```
 
-We've identified a mapping issue for `device_category == "CPAP"`, the EPAP is not being mapped correctly to `peep_set`
+For `device_category == "CPAP"`, we expect to see `peep_set`, and `fio2_set` documented. `tidal_volume_obs`, `resp_rate_obs`, `peak_inspiratory_pressure_obs` may be present if the CPAP machine records it.
+
+### Encounter level missingness of `fio2_set`, `peep_set` for encounters receiving `CPAP`
+
+```{r}
+clif_respiratory_support %>%
+  filter(device_category == "CPAP") %>%
+  group_by(encounter_id) %>%
+  summarize(fio2_set_missing = mean(is.na(fio2_set)),
+            peep_set_missing = mean(is.na(peep_set))) %>%
+  ungroup() %>%
+  summarise(fio2_set_missing = mean(fio2_set_missing),
+            peep_set_missing = mean(peep_set_missing)) %>%
+  kable()
+
+```
 
 ## NIPPV summary table
 
@@ -250,36 +222,41 @@ We've identified a mapping issue for `device_category == "CPAP"`, the EPAP is no
 summary_table("NIPPV")
 ```
 
+### NIPPV spot check example
+
 ```{r}
 clif_respiratory_support %>%
   filter(device_name == "NIPPV") %>%
   group_by(encounter_id) %>%
   mutate(min_time = min(recorded_dttm),
          time = difftime(recorded_dttm, min_time, units = "hours")) %>%
-  select(encounter_id, time, device_category, mode_category, fio2_set, peep_set, 
+  select(encounter_id, time, device_name, device_category, mode_name, mode_category, fio2_set, peep_set, 
          pressure_support_set, peak_inspiratory_pressure_set)  %>%
   head(n = 20) %>%
   kable()
 ```
 
-### Encounter level missingness of `pressure_support_set` and `peep_set` for encounters receiving `NIPPV`
+### Encounter level missingness of `fio2_set`, `peep_set`, and *either* (`pressure_support_set` or `peep_set`) for encounters receiving `NIPPV`
 
 ```{r}
 clif_respiratory_support %>%
-  filter(device_name == "NIPPV") %>%
+  filter(device_category == "NIPPV") %>%
   group_by(encounter_id) %>%
-  summarise(mean_peep_set = mean(peep_set, na.rm = TRUE),
-            mean_pressure_support_set = mean(pressure_support_set, na.rm = TRUE),
-            mean_peak_inspiratory_pressure_set = mean(peak_inspiratory_pressure_set, 
-                                                      na.rm = TRUE)) %>%
+  summarize(fio2_set_missing = mean(is.na(fio2_set)),
+            peep_set_missing = mean(is.na(peep_set)),
+            ps_or_peak_insp_set_missing = mean(is.na(pressure_support_set & peak_inspiratory_pressure_set))) %>%
   ungroup() %>%
-  summarise(missing_peep = mean(is.na(mean_peep_set))*100,
-            missing_pressure_support_set = mean(is.na(mean_pressure_support_set))*100,
-            missing_peak_inspiratory_pressure_set = mean(is.na(mean_peak_inspiratory_pressure_set))*100)  %>%
+  summarise(fio2_set_missing = mean(fio2_set_missing),
+            peep_set_missing = mean(peep_set_missing),
+            ps_or_peak_insp_set_missing = mean(ps_or_peak_insp_set_missing)) %>%
   kable()
 ```
 
-We likely have mapping issues with `NIPPV` as well, as we have high levels of complete missingness for PEEP and Pressure support. I assume there are `EPAP` and `IPAP` fields we haven't mapped properly
+For `device_category == "NIPPV"`, we expect to see `peep_set`, `fio2_set`, and *either* `pressure_support_set` or `peak_inspiratory_pressure_set` documented.
+
+`resp_rate_set` may be documented, if there is a set respiratory rate.
+
+`tidal_volume_obs`, `resp_rate_obs`, `peak_inspiratory_pressure_obs` may be present if the NIPPV machine records it.
 
 # Ventilator data QC
 
@@ -318,7 +295,7 @@ vent_resp_tables %>%
   kable()
 ```
 
-Our `mode_name` to `mode_category` mapping looks good. Looks like `NAVA`is popular on the peds side at UCMC..
+Refer to CDE tables on the CLIF github for the most up-to-date mapping of `mode_name` to `mode_category` for `device_name == "Vent"`
 
 ## Mode Specific QC checks
 
@@ -328,7 +305,9 @@ Our `mode_name` to `mode_category` mapping looks good. Looks like `NAVA`is popul
 summary_table("Vent", "Assist Control-Volume Control")
 ```
 
-Very low levels of missingness at UCMC, seems like most parameters you expect are recorded simultaneously.
+For `device_category == "Vent"` and `mode_category == "Assist Control-Volume Control"`, we expect to see `tidal_volume_set`, `resp_rate_set`, `fio2_set`, `peep_set` documented.
+
+We expect *either* `inspiratory_time_set` or `flow_rate_set` to be documented.
 
 ### Pressure Support/CPAP
 
@@ -336,11 +315,15 @@ Very low levels of missingness at UCMC, seems like most parameters you expect ar
 summary_table("Vent", "Pressure Support/CPAP")
 ```
 
+for `device_category == "Vent"` and `mode_category == "Pressure Support/CPAP"`, we expect to see `pressure_support_set`, `fio2_set`, `peep_set` documented.
+
 ### Pressure Control
 
 ```{r}
 summary_table("Vent", "Pressure Control")
 ```
+
+for `device_category == "Vent"` and `mode_category == "Pressure Control"`, we expect to see `pressure_control_set`, `fio2_set`, `peep_set` documented.
 
 ### SIMV
 
@@ -348,13 +331,25 @@ summary_table("Vent", "Pressure Control")
 summary_table("Vent", "SIMV")
 ```
 
+for `device_category == "Vent"` and `mode_category == "SIMV"`, we expect to see `resp_rate_set`, `fio2_set`, `peep_set` documented.
+
+If it's `SIMV-VC`, we should see `tidal_volume_set`and `pressure_support_set` documented.
+
+If it's `SIMV-PC`, we should see `pressure_control_set` and `pressure_support_set` documented.
+
+If it's `SIMV-PRVC`, we should see `tidal_volume_set` and `pressure_support_set` documented.
+
+### Pressure Regulated Volume Control
+
+```{r}
+summary_table("Vent", "Pressure-Regulated Volume Control")
+```
+
+for `device_category == "Vent"` and `mode_category == "Pressure-Regulated Volume Control"`, we expect to see `tidal_volume_set`, `resp_rate_set`, `fio2_set`, `peep_set` documented.
+
 ## Visualization of respiratory course
 
 These visualizations are meant to QC check several individual patients course
-
-```{r}
-ecounters_to_check <- encounters_w_vent[c(1,100,700)]
-```
 
 ```{r}
 vent_resp_tables %>%
@@ -402,132 +397,12 @@ visualize_patient_course(encounters_w_vent[100])
 visualize_patient_course(encounters_w_vent[700])
 ```
 
-# Exploratory analyses of ventilator data
-
-## initial mode choice for mechanical ventilation
-
-```{r}
-vent_resp_tables %>%
-  group_by(encounter_id) %>%
-  filter(is.na(mode_category) == FALSE) %>%
-  filter(row_number() ==1) %>%
-  ungroup() %>%
-  count(mode_category) %>%
-  arrange(-n)  %>%
-  kable()
-```
-
-## LTTV hours
-
-Ideal body weight (IBW) (men) = 50 kg + 2.3 kg x (height, in - 60) Ideal body weight (IBW) (women) = 45.5 kg + 2.3 kg x (height, in - 60)
-
-Pai MP, Paloucek FP. The origin of the "ideal" body weight equations. Ann Pharmacother. 2000 Sep;34(9):1066-9. doi: 10.1345/aph.19381. PMID: 10981254.
-
-Authors Note: need to QC the IBW calculator! Seems super out of date...need to advance the field here, what a joke. This is exactly why we need CLIF.
-
-```{r}
-first_height <- clif_vitals %>%
-  filter(encounter_id %in% encounters_w_vent) %>%
-  filter(vital_name == "HEIGHT") %>%
-  arrange(encounter_id, recorded_dttm) %>%
-  group_by(encounter_id) %>%
-  filter(row_number() ==1)
-
-first_height <- first_height %>%
-  select(encounter_id, vital_name, vital_value) %>%
-  pivot_wider(names_from = "vital_name", values_from = "vital_value")
-```
-
-### Overall cc/(kg IBW) distribution for VC
-
-```{r}
-## note this works if height is in INCHES
-IBW <- function(height, sex) {
-  case_when(
-    sex == "Male" ~ 50 + 2.3 * (height - 60),
-    sex == "Female" ~ 45.5 + 2.3 *(height - 60),
-  )
-}
 
 
-vent_resp_tables %>%
-  filter(mode_category == "Assist Control-Volume Control")%>%
-  left_join(first_height) %>%
-  left_join(clif_patient_demographics %>% select(encounter_id, sex)) %>%
-  mutate(ideal_wt_kg = IBW(HEIGHT, sex),
-         tv_per_kg_ibw = tidal_volume_set/ideal_wt_kg,
-         vt_bin = cut(tv_per_kg_ibw, breaks = c(0, 4, 6, 7, 8, 9, 10, 15))) %>%
-  filter(tidal_volume_set > 0 & ideal_wt_kg > 0 & tv_per_kg_ibw < 15) %>%
-  ggplot(aes(x= tv_per_kg_ibw, fill = vt_bin)) +
-  geom_histogram(aes(y = (..count..) / sum(..count..) * 100),binwidth = 1, boundary = 0) + 
-  scale_fill_brewer(palette = "RdBu", direction = -1) +
-  ggthemes::theme_gdocs() +
-  labs(x= "TV cc/kg IBW", y = "Patient hours")
-```
 
-### cc/(kg IBW) distribution by sex
 
-```{r}
-vent_resp_tables %>%
-  filter(mode_category == "Assist Control-Volume Control")%>%
-  left_join(first_height) %>%
-  left_join(clif_patient_demographics %>% select(encounter_id, sex)) %>%
-  mutate(ideal_wt_kg = IBW(HEIGHT, sex),
-         tv_per_kg_ibw = tidal_volume_set/ideal_wt_kg,
-         vt_bin = cut(tv_per_kg_ibw, breaks = c(0, 4, 6, 7, 8, 9, 10, 15))) %>%
-  filter(tidal_volume_set > 0 & ideal_wt_kg > 0 & tv_per_kg_ibw < 15) %>%
-  ggplot(aes(x= tv_per_kg_ibw, fill = vt_bin)) +
-  geom_histogram(binwidth = 1, boundary = 0) + 
-  scale_fill_brewer(palette = "RdBu", direction = -1) +
-  ggthemes::theme_gdocs() +
-  labs(x= "TV cc/kg IBW", y = "Patient hours") +
-  facet_wrap(~ sex)
-```
 
-### Percentage of patient hours for `sex == Male`
 
-```{r}
-vent_resp_tables %>%
-  filter(mode_category == "Assist Control-Volume Control")%>%
-  left_join(first_height) %>%
-  left_join(clif_patient_demographics %>% select(encounter_id, sex)) %>%
-  filter(sex == "Male") %>%
-  mutate(ideal_wt_kg = IBW(HEIGHT, sex),
-         tv_per_kg_ibw = tidal_volume_set/ideal_wt_kg,
-         vt_bin = cut(tv_per_kg_ibw, breaks = c(0, 4, 6, 7, 8, 9, 10, 15))) %>%
-  filter(tidal_volume_set > 0 & ideal_wt_kg > 0 & tv_per_kg_ibw < 15) %>%
-  ggplot(aes(x= tv_per_kg_ibw, fill = vt_bin)) +
-  geom_histogram(aes(y = (..count..) / sum(..count..) * 100),
-                 binwidth = 1, boundary = 0) + 
-  scale_fill_brewer(palette = "RdBu", direction = -1) +
-  ggthemes::theme_gdocs() +
-  labs(x= "TV cc/kg IBW", y = "% patient hours")
-```
 
-### Percentage of patient hours for `sex == Female`
 
-```{r}
-vent_resp_tables %>%
-  filter(mode_category == "Assist Control-Volume Control")%>%
-  left_join(first_height) %>%
-  left_join(clif_patient_demographics %>% select(encounter_id, sex)) %>%
-  filter(sex == "Female") %>%
-  mutate(ideal_wt_kg = IBW(HEIGHT, sex),
-         tv_per_kg_ibw = tidal_volume_set/ideal_wt_kg,
-         vt_bin = cut(tv_per_kg_ibw, 
-                      breaks = c(0, 4, 6, 7, 8, 9, 10, 15))) %>%
-  filter(tidal_volume_set > 0 & ideal_wt_kg > 0 & tv_per_kg_ibw < 15) %>%
-  ggplot(aes(x= tv_per_kg_ibw, fill = vt_bin)) +
-  geom_histogram(aes(y = (..count..) / sum(..count..) * 100),
-                 binwidth = 1, boundary = 0) + 
-  scale_fill_brewer(palette = "RdBu", direction = -1) +
-  ggthemes::theme_gdocs() +
-  labs(x= "TV cc/kg IBW", y = "% patient hours")
-```
 
-Sex disparity in TV apparent!
-
-# TO DO
-
--   define a `device_session` and check for missingness across it
--   code up an Spontaneous breathing trial identifier
