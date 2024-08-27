@@ -2,6 +2,11 @@
 
 Official Website to the CLIF Consortium - [CLIF Consortium](https://kaveric.github.io/clif-consortium/about.html)
 
+[![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+
+![Maturity Level](https://img.shields.io/badge/maturity-Beta-yellow)
+
+
 ## Introduction
 Multicenter critical care research often relies on sharing sensitive patient data across sites, requiring complex data use agreements (DUAs) and yielding redundant work to account for diverse data infrastructures. Common data models (CDMs) like the Observational Medical Outcomes Partnership can allow for standardized analysis scripts, mitigating these challenges but requiring advanced data engineering skills and risking a loss of crucial granular clinical information. To overcome these barriers, we present the Common Longitudinal ICU Format (CLIF), designed specifically for observational studies of critically ill patients across multiple centres. Through CLIF, we aim to streamline data organization into a longitudinal format and establish standard vocabularies to facilitate standardized analysis scripts and improve data readability for researchers and clinicians.
 
