@@ -25,6 +25,29 @@ To develop a structured relational database, we initiated a comprehensive data c
 ||
 
 
+## CLIF development stage
+
+
+
+| CLIF Table Name                      | Maturity Level                                                                 |
+|--------------------------------------|--------------------------------------------------------------------------------|
+| `patient_encounters`                 | [![Beta](https://img.shields.io/badge/Maturity-Beta-yellow)](maturity.md)      |
+| `patient_demographics`               | [![Stable](https://img.shields.io/badge/Maturity-Stable-brightgreen)](maturity.md) |
+| `limited_identifiers`                | [![Concept](https://img.shields.io/badge/Maturity-Concept-orange)](maturity.md)  |
+| `encounter_demographics_dispo`       | [![Mature](https://img.shields.io/badge/Maturity-Mature-blue)](maturity.md)       |
+| `adt`                                | [![Beta](https://img.shields.io/badge/Maturity-Beta-yellow)](maturity.md)      |
+| `vitals`                             | [![Stable](https://img.shields.io/badge/Maturity-Stable-brightgreen)](maturity.md) |
+| `labs`                               | [![Stable](https://img.shields.io/badge/Maturity-Stable-brightgreen)](maturity.md) |
+| `respiratory_support`                | [![Beta](https://img.shields.io/badge/Maturity-Beta-yellow)](maturity.md)      |
+| `medication_admin_continuous`        | [![Beta](https://img.shields.io/badge/Maturity-Beta-yellow)](maturity.md)      |
+| `dialysis`                           | [![Concept](https://img.shields.io/badge/Maturity-Concept-orange)](maturity.md)  |
+| `provider`                           | [![Concept](https://img.shields.io/badge/Maturity-Concept-orange)](maturity.md)  |
+| `admission_diagnosis`                | [![Beta](https://img.shields.io/badge/Maturity-Beta-yellow)](maturity.md)      |
+| `scores`                             | [![Stable](https://img.shields.io/badge/Maturity-Stable-brightgreen)](maturity.md) |
+| `
+
+
+
 ## Data Architecture 
 
 One of CLIF's key contributions is an open-source web application that enables users to convert a relational database into a longitudinal dataset with custom time intervals, select study-specific variables, and choose a preferred programming language. This facilitates straightforward data processing and enables effortless cross-center comparisons and integrations, bypassing the need for DUAs when analytic queries do not need pooled patient-level data. CLIF's deployment across four of the planned eight health systems has successfully compiled a robust ICU encounter-centric relational database, documenting 87,120 ICU admissions and capturing data from 71,190 unique patients.
