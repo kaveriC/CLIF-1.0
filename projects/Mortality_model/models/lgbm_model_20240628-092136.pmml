@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PMML xmlns="http://www.dmg.org/PMML-4_4" version="4.4.1">
+    <Header copyright="Copyright (c) 2021 Software AG" description="Default description">
+        <Application name="Nyoka" version="5.5.0"/>
+        <Timestamp>2024-07-09 13:00:41.631135</Timestamp>
+    </Header>
+    <DataDictionary numberOfFields="75">
+        <DataField name="isfemale" optype="continuous" dataType="double"/>
+        <DataField name="age" optype="continuous" dataType="double"/>
+        <DataField name="min_bmi" optype="continuous" dataType="double"/>
+        <DataField name="max_bmi" optype="continuous" dataType="double"/>
+        <DataField name="avg_bmi" optype="continuous" dataType="double"/>
+        <DataField name="min_weight_kg" optype="continuous" dataType="double"/>
+        <DataField name="max_weight_kg" optype="continuous" dataType="double"/>
+        <DataField name="avg_weight_kg" optype="continuous" dataType="double"/>
+        <DataField name="min_pulse" optype="continuous" dataType="double"/>
+        <DataField name="max_pulse" optype="continuous" dataType="double"/>
+        <DataField name="avg_pulse" optype="continuous" dataType="double"/>
+        <DataField name="min_sbp" optype="continuous" dataType="double"/>
+        <DataField name="max_sbp" optype="continuous" dataType="double"/>
+        <DataField name="avg_sbp" optype="continuous" dataType="double"/>
+        <DataField name="min_dbp" optype="continuous" dataType="double"/>
+        <DataField name="max_dbp" optype="continuous" dataType="double"/>
+        <DataField name="avg_dbp" optype="continuous" dataType="double"/>
+        <DataField name="min_temp_c" optype="continuous" dataType="double"/>
+        <DataField name="max_temp_c" optype="continuous" dataType="double"/>
+        <DataField name="avg_temp_c" optype="continuous" dataType="double"/>
+        <DataField name="albumin_min" optype="continuous" dataType="double"/>
+        <DataField name="albumin_max" optype="continuous" dataType="double"/>
+        <DataField name="albumin_mean" optype="continuous" dataType="double"/>
+        <DataField name="alkaline_phosphatase_min" optype="continuous" dataType="double"/>
+        <DataField name="alkaline_phosphatase_max" optype="continuous" dataType="double"/>
+        <DataField name="alkaline_phosphatase_mean" optype="continuous" dataType="double"/>
+        <DataField name="ast_min" optype="continuous" dataType="double"/>
+        <DataField name="ast_max" optype="continuous" dataType="double"/>
+        <DataField name="ast_mean" optype="continuous" dataType="double"/>
+        <DataField name="basophil_min" optype="continuous" dataType="double"/>
+        <DataField name="basophil_max" optype="continuous" dataType="double"/>
+        <DataField name="basophil_mean" optype="continuous" dataType="double"/>
+        <DataField name="bilirubin_conjugated_min" optype="continuous" dataType="double"/>
+        <DataField name="bilirubin_conjugated_max" optype="continuous" dataType="double"/>
+        <DataField name="bilirubin_conjugated_mean" optype="continuous" dataType="double"/>
+        <DataField name="bilirubin_total_min" optype="continuous" dataType="double"/>
+        <DataField name="bilirubin_total_max" optype="continuous" dataType="double"/>
+        <DataField name="bilirubin_total_mean" optype="continuous" dataType="double"/>
+        <DataField name="calcium_min" optype="continuous" dataType="double"/>
+        <DataField name="calcium_max" optype="continuous" dataType="double"/>
+        <DataField name="calcium_mean" optype="continuous" dataType="double"/>
+        <DataField name="chloride_min" optype="continuous" dataType="double"/>
+        <DataField name="chloride_max" optype="continuous" dataType="double"/>
+        <DataField name="chloride_mean" optype="continuous" dataType="double"/>
+        <DataField name="glucose_serum_min" optype="continuous" dataType="double"/>
+        <DataField name="glucose_serum_max" optype="continuous" dataType="double"/>
+        <DataField name="glucose_serum_mean" optype="continuous" dataType="double"/>
+        <DataField name="hemoglobin_min" optype="continuous" dataType="double"/>
+        <DataField name="hemoglobin_max" optype="continuous" dataType="double"/>
+        <DataField name="hemoglobin_mean" optype="continuous" dataType="double"/>
+        <DataField name="lymphocyte_min" optype="continuous" dataType="double"/>
+        <DataField name="lymphocyte_max" optype="continuous" dataType="double"/>
+        <DataField name="lymphocyte_mean" optype="continuous" dataType="double"/>
+        <DataField name="monocyte_min" optype="continuous" dataType="double"/>
+        <DataField name="monocyte_max" optype="continuous" dataType="double"/>
+        <DataField name="monocyte_mean" optype="continuous" dataType="double"/>
+        <DataField name="neutrophil_min" optype="continuous" dataType="double"/>
+        <DataField name="neutrophil_max" optype="continuous" dataType="double"/>
+        <DataField name="neutrophil_mean" optype="continuous" dataType="double"/>
+        <DataField name="platelet_count_min" optype="continuous" dataType="double"/>
+        <DataField name="platelet_count_max" optype="continuous" dataType="double"/>
+        <DataField name="platelet_count_mean" optype="continuous" dataType="double"/>
+        <DataField name="potassium_min" optype="continuous" dataType="double"/>
+        <DataField name="potassium_max" optype="continuous" dataType="double"/>
+        <DataField name="potassium_mean" optype="continuous" dataType="double"/>
+        <DataField name="sodium_min" optype="continuous" dataType="double"/>
+        <DataField name="sodium_max" optype="continuous" dataType="double"/>
+        <DataField name="sodium_mean" optype="continuous" dataType="double"/>
+        <DataField name="total_protein_min" optype="continuous" dataType="double"/>
+        <DataField name="total_protein_max" optype="continuous" dataType="double"/>
+        <DataField name="total_protein_mean" optype="continuous" dataType="double"/>
+        <DataField name="wbc_min" optype="continuous" dataType="double"/>
+        <DataField name="wbc_max" optype="continuous" dataType="double"/>
+        <DataField name="wbc_mean" optype="continuous" dataType="double"/>
+        <DataField name="isdeathdispo" optype="continuous" dataType="double"/>
+    </DataDictionary>
+    <MiningModel modelName="LightGBModel" functionName="regression">
+        <MiningSchema>
+            <MiningField name="isfemale" usageType="active" optype="continuous"/>
+            <MiningField name="age" usageType="active" optype="continuous"/>
+            <MiningField name="min_bmi" usageType="active" optype="continuous"/>
+            <MiningField name="max_bmi" usageType="active" optype="continuous"/>
+            <MiningField name="avg_bmi" usageType="active" optype="continuous"/>
+            <MiningField name="min_weight_kg" usageType="active" optype="continuous"/>
+            <MiningField name="max_weight_kg" usageType="active" optype="continuous"/>
+            <MiningField name="avg_weight_kg" usageType="active" optype="continuous"/>
+            <MiningField name="min_pulse" usageType="active" optype="continuous"/>
+            <MiningField name="max_pulse" usageType="active" optype="continuous"/>
+            <MiningField name="avg_pulse" usageType="active" optype="continuous"/>
+            <MiningField name="min_sbp" usageType="active" optype="continuous"/>
+            <MiningField name="max_sbp" usageType="active" optype="continuous"/>
+            <MiningField name="avg_sbp" usageType="active" optype="continuous"/>
+            <MiningField name="min_dbp" usageType="active" optype="continuous"/>
+            <MiningField name="max_dbp" usageType="active" optype="continuous"/>
+            <MiningField name="avg_dbp" usageType="active" optype="continuous"/>
+            <MiningField name="min_temp_c" usageType="active" optype="continuous"/>
+            <MiningField name="max_temp_c" usageType="active" optype="continuous"/>
+            <MiningField name="avg_temp_c" usageType="active" optype="continuous"/>
+            <MiningField name="albumin_min" usageType="active" optype="continuous"/>
+            <MiningField name="albumin_max" usageType="active" optype="continuous"/>
+            <MiningField name="albumin_mean" usageType="active" optype="continuous"/>
+            <MiningField name="alkaline_phosphatase_min" usageType="active" optype="continuous"/>
+            <MiningField name="alkaline_phosphatase_max" usageType="active" optype="continuous"/>
+            <MiningField name="alkaline_phosphatase_mean" usageType="active" optype="continuous"/>
+            <MiningField name="ast_min" usageType="active" optype="continuous"/>
+            <MiningField name="ast_max" usageType="active" optype="continuous"/>
+            <MiningField name="ast_mean" usageType="active" optype="continuous"/>
+            <MiningField name="basophil_min" usageType="active" optype="continuous"/>
+            <MiningField name="basophil_max" usageType="active" optype="continuous"/>
+            <MiningField name="basophil_mean" usageType="active" optype="continuous"/>
+            <MiningField name="bilirubin_conjugated_min" usageType="active" optype="continuous"/>
+            <MiningField name="bilirubin_conjugated_max" usageType="active" optype="continuous"/>
+            <MiningField name="bilirubin_conjugated_mean" usageType="active" optype="continuous"/>
+            <MiningField name="bilirubin_total_min" usageType="active" optype="continuous"/>
+            <MiningField name="bilirubin_total_max" usageType="active" optype="continuous"/>
+            <MiningField name="bilirubin_total_mean" usageType="active" optype="continuous"/>
+            <MiningField name="calcium_min" usageType="active" optype="continuous"/>
+            <MiningField name="calcium_max" usageType="active" optype="continuous"/>
+            <MiningField name="calcium_mean" usageType="active" optype="continuous"/>
+            <MiningField name="chloride_min" usageType="active" optype="continuous"/>
+            <MiningField name="chloride_max" usageType="active" optype="continuous"/>
+            <MiningField name="chloride_mean" usageType="active" optype="continuous"/>
+            <MiningField name="glucose_serum_min" usageType="active" optype="continuous"/>
+            <MiningField name="glucose_serum_max" usageType="active" optype="continuous"/>
+            <MiningField name="glucose_serum_mean" usageType="active" optype="continuous"/>
+            <MiningField name="hemoglobin_min" usageType="active" optype="continuous"/>
+            <MiningField name="hemoglobin_max" usageType="active" optype="continuous"/>
+            <MiningField name="hemoglobin_mean" usageType="active" optype="continuous"/>
+            <MiningField name="lymphocyte_min" usageType="active" optype="continuous"/>
+            <MiningField name="lymphocyte_max" usageType="active" optype="continuous"/>
+            <MiningField name="lymphocyte_mean" usageType="active" optype="continuous"/>
+            <MiningField name="monocyte_min" usageType="active" optype="continuous"/>
+            <MiningField name="monocyte_max" usageType="active" optype="continuous"/>
+            <MiningField name="monocyte_mean" usageType="active" optype="continuous"/>
+            <MiningField name="neutrophil_min" usageType="active" optype="continuous"/>
+            <MiningField name="neutrophil_max" usageType="active" optype="continuous"/>
+            <MiningField name="neutrophil_mean" usageType="active" optype="continuous"/>
+            <MiningField name="platelet_count_min" usageType="active" optype="continuous"/>
+            <MiningField name="platelet_count_max" usageType="active" optype="continuous"/>
+            <MiningField name="platelet_count_mean" usageType="active" optype="continuous"/>
+            <MiningField name="potassium_min" usageType="active" optype="continuous"/>
+            <MiningField name="potassium_max" usageType="active" optype="continuous"/>
+            <MiningField name="potassium_mean" usageType="active" optype="continuous"/>
+            <MiningField name="sodium_min" usageType="active" optype="continuous"/>
+            <MiningField name="sodium_max" usageType="active" optype="continuous"/>
+            <MiningField name="sodium_mean" usageType="active" optype="continuous"/>
+            <MiningField name="total_protein_min" usageType="active" optype="continuous"/>
+            <MiningField name="total_protein_max" usageType="active" optype="continuous"/>
+            <MiningField name="total_protein_mean" usageType="active" optype="continuous"/>
+            <MiningField name="wbc_min" usageType="active" optype="continuous"/>
+            <MiningField name="wbc_max" usageType="active" optype="continuous"/>
+            <MiningField name="wbc_mean" usageType="active" optype="continuous"/>
+            <MiningField name="isdeathdispo" usageType="target" optype="continuous"/>
+        </MiningSchema>
+        <Output>
+            <OutputField name="predicted_isdeathdispo" optype="continuous" dataType="double" feature="predictedValue"/>
+        </Output>
+        <Segmentation multipleModelMethod="sum" missingThreshold="1"/>
+    </MiningModel>
+</PMML>
