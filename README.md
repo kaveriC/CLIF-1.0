@@ -4,7 +4,7 @@ Official Website to the CLIF Consortium - [CLIF Consortium](https://kaveric.gith
 
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-![Maturity Level](https://img.shields.io/badge/maturity-Beta-yellow)
+[![Maturity Level](https://img.shields.io/badge/maturity-Beta-yellow)](https://github.com/08wparker/CLIF-1.0/blob/main/maturity.md)
 
 
 ## Introduction
@@ -23,6 +23,37 @@ To develop a structured relational database, we initiated a comprehensive data c
 | ![ERD.png](/images/ERD.png) | 
 |:--:| 
 ||
+
+
+## CLIF development stage
+
+CLIF is an evolving format, and some parts of the format are more mature than others. Specifically, the ER model and the tables have two different maturity levels.
+
+The entity-relationship model for this project is currently at the ![Beta](https://img.shields.io/badge/Maturity-Beta-yellow) **Beta** level. We are actively seeking feedback and will move to Stable once more testing is completed.
+
+| CLIF Table Name                      | Maturity Level                                                                 |
+|--------------------------------------|--------------------------------------------------------------------------------|
+| `patient_encounters`                 | [![Concept](https://img.shields.io/badge/Maturity-Concept-orange)](maturity.md)  |
+| `patient_demographics`               | [![Concept](https://img.shields.io/badge/Maturity-Concept-orange)](maturity.md)  |
+| `limited_identifiers`                | [![Concept](https://img.shields.io/badge/Maturity-Concept-orange)](maturity.md)  |
+| `encounter_demographics_dispo`       | [![Concept](https://img.shields.io/badge/Maturity-Concept-orange)](maturity.md)  |
+| `adt`                                | [![Concept](https://img.shields.io/badge/Maturity-Concept-orange)](maturity.md)  |
+| `vitals`                             | [![Beta](https://img.shields.io/badge/Maturity-Beta-yellow)](maturity.md)      |
+| `labs`                               | [![Beta](https://img.shields.io/badge/Maturity-Beta-yellow)](maturity.md)      |
+| `respiratory_support`                | [![Beta](https://img.shields.io/badge/Maturity-Beta-yellow)](maturity.md)      |
+| `medication_admin_continuous`        | [![Beta](https://img.shields.io/badge/Maturity-Beta-yellow)](maturity.md)      |
+| `dialysis`                           | [![Concept](https://img.shields.io/badge/Maturity-Concept-orange)](maturity.md)  |
+| `provider`                           | [![Concept](https://img.shields.io/badge/Maturity-Concept-orange)](maturity.md)  |
+| `admission_diagnosis`                | [![Concept](https://img.shields.io/badge/Maturity-Concept-orange)](maturity.md)  |
+| `scores`                             | [![Concept](https://img.shields.io/badge/Maturity-Concept-orange)](maturity.md)  |
+| `medication_orders`                  | [![Concept](https://img.shields.io/badge/Maturity-Concept-orange)](maturity.md)  |
+| `medication_admin_intermittent`      | [![Beta](https://img.shields.io/badge/Maturity-Beta-yellow)](maturity.md)      |
+| `procedures`                         | [![Concept](https://img.shields.io/badge/Maturity-Concept-orange)](maturity.md)  |
+| `prone`                              | [![Beta](https://img.shields.io/badge/Maturity-Beta-yellow)](maturity.md)      |
+| `intake_output`                      | [![Concept](https://img.shields.io/badge/Maturity-Concept-orange)](maturity.md)  |
+| `ecmo`                               | [![Concept](https://img.shields.io/badge/Maturity-Concept-orange)](maturity.md)  |
+| `microbiology`                       | [![Beta](https://img.shields.io/badge/Maturity-Beta-yellow)](maturity.md)      |
+| `sensitivity`                        | [![Concept](https://img.shields.io/badge/Maturity-Concept-orange)](maturity.md)  |
 
 
 ## Data Architecture 
