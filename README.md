@@ -1,6 +1,6 @@
 # Common Longitudinal ICU Format (CLIF) -  ⚠️ Deprecated ⚠️
 
-This project is no longer maintained. Please access the official repository [here](https://github.com/clif-consortium/CLIF)
+This project is no longer maintained. Access the official repository [here](https://github.com/clif-consortium/CLIF)
 
 Official Website to the CLIF Consortium - [CLIF Consortium](https://clif-consortium.github.io/website/)
 
