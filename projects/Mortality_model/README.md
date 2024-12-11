@@ -49,5 +49,5 @@ Follow these steps to create a virtual environment.
     ```
 3. Select the new kernel `Python (mortality_model)` in your Jupyter notebook.
 
-Ready to run the Inference_py/Inference_R notebook to run the model! 
+Ready to run the Inference_py/Inference_R notebook to run the model (Avaliable in .pkl, .json & .txt )! 
 
